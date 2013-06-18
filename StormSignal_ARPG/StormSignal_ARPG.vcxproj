@@ -83,7 +83,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Font.cpp" />
+    <ClCompile Include="Functions.cpp" />
+    <ClCompile Include="Image_2D.cpp" />
     <ClCompile Include="Main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ConstantValue.h" />
+    <ClInclude Include="Font.h" />
+    <ClInclude Include="Functions.h" />
+    <ClInclude Include="Image_2D.h" />
+    <ClInclude Include="Includes.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
