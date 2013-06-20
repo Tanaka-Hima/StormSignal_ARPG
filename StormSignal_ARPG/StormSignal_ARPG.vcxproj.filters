@@ -22,6 +22,15 @@
     <Filter Include="リソース ファイル\Font\Big_Red">
       <UniqueIdentifier>{7596f5b7-c3ce-44b7-a30e-1e3c7109a0df}</UniqueIdentifier>
     </Filter>
+    <Filter Include="リソース ファイル\Font\Middle_Green">
+      <UniqueIdentifier>{6e1e6ec6-4c92-49da-9415-a89d93c4391f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\Font\Small_Green">
+      <UniqueIdentifier>{9aa95fc5-b339-42ad-bc08-443bedc2deb1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\Font\Small_Red">
+      <UniqueIdentifier>{fb72b4a2-28c9-40ad-9035-56361acdc22e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -60,6 +69,378 @@
   <ItemGroup>
     <Image Include="Font\Big_Green\A.png">
       <Filter>リソース ファイル\Font\Big_Green</Filter>
+    </Image>
+    <Image Include="Font\Big_Green\G.png">
+      <Filter>リソース ファイル\Font\Big_Green</Filter>
+    </Image>
+    <Image Include="Font\Big_Green\H.png">
+      <Filter>リソース ファイル\Font\Big_Green</Filter>
+    </Image>
+    <Image Include="Font\Big_Green\I.png">
+      <Filter>リソース ファイル\Font\Big_Green</Filter>
+    </Image>
+    <Image Include="Font\Big_Green\J.png">
+      <Filter>リソース ファイル\Font\Big_Green</Filter>
+    </Image>
+    <Image Include="Font\Big_Green\K.png">
+      <Filter>リソース ファイル\Font\Big_Green</Filter>
+    </Image>
+    <Image Include="Font\Big_Green\L.png">
+      <Filter>リソース ファイル\Font\Big_Green</Filter>
+    </Image>
+    <Image Include="Font\Big_Green\M.png">
+      <Filter>リソース ファイル\Font\Big_Green</Filter>
+    </Image>
+    <Image Include="Font\Big_Green\N.png">
+      <Filter>リソース ファイル\Font\Big_Green</Filter>
+    </Image>
+    <Image Include="Font\Big_Green\O.png">
+      <Filter>リソース ファイル\Font\Big_Green</Filter>
+    </Image>
+    <Image Include="Font\Big_Green\P.png">
+      <Filter>リソース ファイル\Font\Big_Green</Filter>
+    </Image>
+    <Image Include="Font\Big_Green\R.png">
+      <Filter>リソース ファイル\Font\Big_Green</Filter>
+    </Image>
+    <Image Include="Font\Big_Green\S.png">
+      <Filter>リソース ファイル\Font\Big_Green</Filter>
+    </Image>
+    <Image Include="Font\Big_Green\T.png">
+      <Filter>リソース ファイル\Font\Big_Green</Filter>
+    </Image>
+    <Image Include="Font\Big_Green\U.png">
+      <Filter>リソース ファイル\Font\Big_Green</Filter>
+    </Image>
+    <Image Include="Font\Big_Green\V.png">
+      <Filter>リソース ファイル\Font\Big_Green</Filter>
+    </Image>
+    <Image Include="Font\Big_Green\W.png">
+      <Filter>リソース ファイル\Font\Big_Green</Filter>
+    </Image>
+    <Image Include="Font\Big_Green\X.png">
+      <Filter>リソース ファイル\Font\Big_Green</Filter>
+    </Image>
+    <Image Include="Font\Big_Green\Y.png">
+      <Filter>リソース ファイル\Font\Big_Green</Filter>
+    </Image>
+    <Image Include="Font\Big_Green\Z.png">
+      <Filter>リソース ファイル\Font\Big_Green</Filter>
+    </Image>
+    <Image Include="Font\Big_Green\B.png">
+      <Filter>リソース ファイル\Font\Big_Green</Filter>
+    </Image>
+    <Image Include="Font\Big_Green\C.png">
+      <Filter>リソース ファイル\Font\Big_Green</Filter>
+    </Image>
+    <Image Include="Font\Big_Green\D.png">
+      <Filter>リソース ファイル\Font\Big_Green</Filter>
+    </Image>
+    <Image Include="Font\Big_Green\E.png">
+      <Filter>リソース ファイル\Font\Big_Green</Filter>
+    </Image>
+    <Image Include="Font\Big_Green\F.png">
+      <Filter>リソース ファイル\Font\Big_Green</Filter>
+    </Image>
+    <Image Include="Font\Big_Red\O.png">
+      <Filter>リソース ファイル\Font\Big_Red</Filter>
+    </Image>
+    <Image Include="Font\Big_Red\P.png">
+      <Filter>リソース ファイル\Font\Big_Red</Filter>
+    </Image>
+    <Image Include="Font\Big_Red\R.png">
+      <Filter>リソース ファイル\Font\Big_Red</Filter>
+    </Image>
+    <Image Include="Font\Big_Red\S.png">
+      <Filter>リソース ファイル\Font\Big_Red</Filter>
+    </Image>
+    <Image Include="Font\Big_Red\T.png">
+      <Filter>リソース ファイル\Font\Big_Red</Filter>
+    </Image>
+    <Image Include="Font\Big_Red\U.png">
+      <Filter>リソース ファイル\Font\Big_Red</Filter>
+    </Image>
+    <Image Include="Font\Big_Red\V.png">
+      <Filter>リソース ファイル\Font\Big_Red</Filter>
+    </Image>
+    <Image Include="Font\Big_Red\W.png">
+      <Filter>リソース ファイル\Font\Big_Red</Filter>
+    </Image>
+    <Image Include="Font\Big_Red\Y.png">
+      <Filter>リソース ファイル\Font\Big_Red</Filter>
+    </Image>
+    <Image Include="Font\Big_Red\A.png">
+      <Filter>リソース ファイル\Font\Big_Red</Filter>
+    </Image>
+    <Image Include="Font\Big_Red\B.png">
+      <Filter>リソース ファイル\Font\Big_Red</Filter>
+    </Image>
+    <Image Include="Font\Big_Red\C.png">
+      <Filter>リソース ファイル\Font\Big_Red</Filter>
+    </Image>
+    <Image Include="Font\Big_Red\D.png">
+      <Filter>リソース ファイル\Font\Big_Red</Filter>
+    </Image>
+    <Image Include="Font\Big_Red\E.png">
+      <Filter>リソース ファイル\Font\Big_Red</Filter>
+    </Image>
+    <Image Include="Font\Big_Red\F.png">
+      <Filter>リソース ファイル\Font\Big_Red</Filter>
+    </Image>
+    <Image Include="Font\Big_Red\G.png">
+      <Filter>リソース ファイル\Font\Big_Red</Filter>
+    </Image>
+    <Image Include="Font\Big_Red\H.png">
+      <Filter>リソース ファイル\Font\Big_Red</Filter>
+    </Image>
+    <Image Include="Font\Big_Red\I.png">
+      <Filter>リソース ファイル\Font\Big_Red</Filter>
+    </Image>
+    <Image Include="Font\Big_Red\K.png">
+      <Filter>リソース ファイル\Font\Big_Red</Filter>
+    </Image>
+    <Image Include="Font\Big_Red\L.png">
+      <Filter>リソース ファイル\Font\Big_Red</Filter>
+    </Image>
+    <Image Include="Font\Big_Red\M.png">
+      <Filter>リソース ファイル\Font\Big_Red</Filter>
+    </Image>
+    <Image Include="Font\Big_Red\N.png">
+      <Filter>リソース ファイル\Font\Big_Red</Filter>
+    </Image>
+    <Image Include="Font\Middle_Green\8.png">
+      <Filter>リソース ファイル\Font\Middle_Green</Filter>
+    </Image>
+    <Image Include="Font\Middle_Green\9.png">
+      <Filter>リソース ファイル\Font\Middle_Green</Filter>
+    </Image>
+    <Image Include="Font\Middle_Green\A.png">
+      <Filter>リソース ファイル\Font\Middle_Green</Filter>
+    </Image>
+    <Image Include="Font\Middle_Green\B.png">
+      <Filter>リソース ファイル\Font\Middle_Green</Filter>
+    </Image>
+    <Image Include="Font\Middle_Green\C.png">
+      <Filter>リソース ファイル\Font\Middle_Green</Filter>
+    </Image>
+    <Image Include="Font\Middle_Green\D.png">
+      <Filter>リソース ファイル\Font\Middle_Green</Filter>
+    </Image>
+    <Image Include="Font\Middle_Green\E.png">
+      <Filter>リソース ファイル\Font\Middle_Green</Filter>
+    </Image>
+    <Image Include="Font\Middle_Green\F.png">
+      <Filter>リソース ファイル\Font\Middle_Green</Filter>
+    </Image>
+    <Image Include="Font\Middle_Green\G.png">
+      <Filter>リソース ファイル\Font\Middle_Green</Filter>
+    </Image>
+    <Image Include="Font\Middle_Green\H.png">
+      <Filter>リソース ファイル\Font\Middle_Green</Filter>
+    </Image>
+    <Image Include="Font\Middle_Green\I.png">
+      <Filter>リソース ファイル\Font\Middle_Green</Filter>
+    </Image>
+    <Image Include="Font\Middle_Green\J.png">
+      <Filter>リソース ファイル\Font\Middle_Green</Filter>
+    </Image>
+    <Image Include="Font\Middle_Green\K.png">
+      <Filter>リソース ファイル\Font\Middle_Green</Filter>
+    </Image>
+    <Image Include="Font\Middle_Green\L.png">
+      <Filter>リソース ファイル\Font\Middle_Green</Filter>
+    </Image>
+    <Image Include="Font\Middle_Green\M.png">
+      <Filter>リソース ファイル\Font\Middle_Green</Filter>
+    </Image>
+    <Image Include="Font\Middle_Green\N.png">
+      <Filter>リソース ファイル\Font\Middle_Green</Filter>
+    </Image>
+    <Image Include="Font\Middle_Green\O.png">
+      <Filter>リソース ファイル\Font\Middle_Green</Filter>
+    </Image>
+    <Image Include="Font\Middle_Green\P.png">
+      <Filter>リソース ファイル\Font\Middle_Green</Filter>
+    </Image>
+    <Image Include="Font\Middle_Green\Q.png">
+      <Filter>リソース ファイル\Font\Middle_Green</Filter>
+    </Image>
+    <Image Include="Font\Middle_Green\R.png">
+      <Filter>リソース ファイル\Font\Middle_Green</Filter>
+    </Image>
+    <Image Include="Font\Middle_Green\S.png">
+      <Filter>リソース ファイル\Font\Middle_Green</Filter>
+    </Image>
+    <Image Include="Font\Middle_Green\T.png">
+      <Filter>リソース ファイル\Font\Middle_Green</Filter>
+    </Image>
+    <Image Include="Font\Middle_Green\U.png">
+      <Filter>リソース ファイル\Font\Middle_Green</Filter>
+    </Image>
+    <Image Include="Font\Middle_Green\V.png">
+      <Filter>リソース ファイル\Font\Middle_Green</Filter>
+    </Image>
+    <Image Include="Font\Middle_Green\W.png">
+      <Filter>リソース ファイル\Font\Middle_Green</Filter>
+    </Image>
+    <Image Include="Font\Middle_Green\X.png">
+      <Filter>リソース ファイル\Font\Middle_Green</Filter>
+    </Image>
+    <Image Include="Font\Middle_Green\Y.png">
+      <Filter>リソース ファイル\Font\Middle_Green</Filter>
+    </Image>
+    <Image Include="Font\Middle_Green\Z.png">
+      <Filter>リソース ファイル\Font\Middle_Green</Filter>
+    </Image>
+    <Image Include="Font\Middle_Green\0.png">
+      <Filter>リソース ファイル\Font\Middle_Green</Filter>
+    </Image>
+    <Image Include="Font\Middle_Green\1.png">
+      <Filter>リソース ファイル\Font\Middle_Green</Filter>
+    </Image>
+    <Image Include="Font\Middle_Green\2.png">
+      <Filter>リソース ファイル\Font\Middle_Green</Filter>
+    </Image>
+    <Image Include="Font\Middle_Green\3.png">
+      <Filter>リソース ファイル\Font\Middle_Green</Filter>
+    </Image>
+    <Image Include="Font\Middle_Green\4.png">
+      <Filter>リソース ファイル\Font\Middle_Green</Filter>
+    </Image>
+    <Image Include="Font\Middle_Green\5.png">
+      <Filter>リソース ファイル\Font\Middle_Green</Filter>
+    </Image>
+    <Image Include="Font\Middle_Green\6.png">
+      <Filter>リソース ファイル\Font\Middle_Green</Filter>
+    </Image>
+    <Image Include="Font\Middle_Green\7.png">
+      <Filter>リソース ファイル\Font\Middle_Green</Filter>
+    </Image>
+    <Image Include="Font\Small_Green\V.png">
+      <Filter>リソース ファイル\Font\Small_Green</Filter>
+    </Image>
+    <Image Include="Font\Small_Green\A.png">
+      <Filter>リソース ファイル\Font\Small_Green</Filter>
+    </Image>
+    <Image Include="Font\Small_Green\E.png">
+      <Filter>リソース ファイル\Font\Small_Green</Filter>
+    </Image>
+    <Image Include="Font\Small_Green\G.png">
+      <Filter>リソース ファイル\Font\Small_Green</Filter>
+    </Image>
+    <Image Include="Font\Small_Green\M.png">
+      <Filter>リソース ファイル\Font\Small_Green</Filter>
+    </Image>
+    <Image Include="Font\Small_Green\O.png">
+      <Filter>リソース ファイル\Font\Small_Green</Filter>
+    </Image>
+    <Image Include="Font\Small_Green\R.png">
+      <Filter>リソース ファイル\Font\Small_Green</Filter>
+    </Image>
+    <Image Include="Font\Small_Red\B.png">
+      <Filter>リソース ファイル\Font\Small_Red</Filter>
+    </Image>
+    <Image Include="Font\Small_Red\C.png">
+      <Filter>リソース ファイル\Font\Small_Red</Filter>
+    </Image>
+    <Image Include="Font\Small_Red\D.png">
+      <Filter>リソース ファイル\Font\Small_Red</Filter>
+    </Image>
+    <Image Include="Font\Small_Red\E.png">
+      <Filter>リソース ファイル\Font\Small_Red</Filter>
+    </Image>
+    <Image Include="Font\Small_Red\F.png">
+      <Filter>リソース ファイル\Font\Small_Red</Filter>
+    </Image>
+    <Image Include="Font\Small_Red\G.png">
+      <Filter>リソース ファイル\Font\Small_Red</Filter>
+    </Image>
+    <Image Include="Font\Small_Red\H.png">
+      <Filter>リソース ファイル\Font\Small_Red</Filter>
+    </Image>
+    <Image Include="Font\Small_Red\I.png">
+      <Filter>リソース ファイル\Font\Small_Red</Filter>
+    </Image>
+    <Image Include="Font\Small_Red\K.png">
+      <Filter>リソース ファイル\Font\Small_Red</Filter>
+    </Image>
+    <Image Include="Font\Small_Red\L.png">
+      <Filter>リソース ファイル\Font\Small_Red</Filter>
+    </Image>
+    <Image Include="Font\Small_Red\M.png">
+      <Filter>リソース ファイル\Font\Small_Red</Filter>
+    </Image>
+    <Image Include="Font\Small_Red\N.png">
+      <Filter>リソース ファイル\Font\Small_Red</Filter>
+    </Image>
+    <Image Include="Font\Small_Red\O.png">
+      <Filter>リソース ファイル\Font\Small_Red</Filter>
+    </Image>
+    <Image Include="Font\Small_Red\P.png">
+      <Filter>リソース ファイル\Font\Small_Red</Filter>
+    </Image>
+    <Image Include="Font\Small_Red\R.png">
+      <Filter>リソース ファイル\Font\Small_Red</Filter>
+    </Image>
+    <Image Include="Font\Small_Red\S.png">
+      <Filter>リソース ファイル\Font\Small_Red</Filter>
+    </Image>
+    <Image Include="Font\Small_Red\T.png">
+      <Filter>リソース ファイル\Font\Small_Red</Filter>
+    </Image>
+    <Image Include="Font\Small_Red\U.png">
+      <Filter>リソース ファイル\Font\Small_Red</Filter>
+    </Image>
+    <Image Include="Font\Small_Red\V.png">
+      <Filter>リソース ファイル\Font\Small_Red</Filter>
+    </Image>
+    <Image Include="Font\Small_Red\W.png">
+      <Filter>リソース ファイル\Font\Small_Red</Filter>
+    </Image>
+    <Image Include="Font\Small_Red\X.png">
+      <Filter>リソース ファイル\Font\Small_Red</Filter>
+    </Image>
+    <Image Include="Font\Small_Red\Y.png">
+      <Filter>リソース ファイル\Font\Small_Red</Filter>
+    </Image>
+    <Image Include="Font\Small_Red\Z.png">
+      <Filter>リソース ファイル\Font\Small_Red</Filter>
+    </Image>
+    <Image Include="Font\Small_Red\^.png">
+      <Filter>リソース ファイル\Font\Small_Red</Filter>
+    </Image>
+    <Image Include="Font\Small_Red\0.png">
+      <Filter>リソース ファイル\Font\Small_Red</Filter>
+    </Image>
+    <Image Include="Font\Small_Red\1.png">
+      <Filter>リソース ファイル\Font\Small_Red</Filter>
+    </Image>
+    <Image Include="Font\Small_Red\2.png">
+      <Filter>リソース ファイル\Font\Small_Red</Filter>
+    </Image>
+    <Image Include="Font\Small_Red\3.png">
+      <Filter>リソース ファイル\Font\Small_Red</Filter>
+    </Image>
+    <Image Include="Font\Small_Red\4.png">
+      <Filter>リソース ファイル\Font\Small_Red</Filter>
+    </Image>
+    <Image Include="Font\Small_Red\5.png">
+      <Filter>リソース ファイル\Font\Small_Red</Filter>
+    </Image>
+    <Image Include="Font\Small_Red\6.png">
+      <Filter>リソース ファイル\Font\Small_Red</Filter>
+    </Image>
+    <Image Include="Font\Small_Red\7.png">
+      <Filter>リソース ファイル\Font\Small_Red</Filter>
+    </Image>
+    <Image Include="Font\Small_Red\8.png">
+      <Filter>リソース ファイル\Font\Small_Red</Filter>
+    </Image>
+    <Image Include="Font\Small_Red\9.png">
+      <Filter>リソース ファイル\Font\Small_Red</Filter>
+    </Image>
+    <Image Include="Font\Small_Red\A.png">
+      <Filter>リソース ファイル\Font\Small_Red</Filter>
     </Image>
   </ItemGroup>
 </Project>
