@@ -26,4 +26,16 @@ const int DrawString_Left = 0;//文字を描画する位置
 const int DrawString_Center = 1;
 const int DrawString_Right = 2;
 
+//Scene
+const int Title = 0;
+const int ModeSelect = 1;
+const int StoryMode = 2;
+const int ArcadeMode = 3;
+const int TrainingMode = 4;
+const int OptionMode = 5;
+
+//BOX2D関連
+const bool doSleep = true;//スリープを有効にするか否か
+const int Box_Rate = 10;//Box2Dの1 = DxlibのBox_Rate Pixel
+
 #endif

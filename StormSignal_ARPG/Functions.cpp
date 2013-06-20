@@ -1,4 +1,6 @@
-#include "Includes.h"
+#include "DxLib.h"
+#include "Functions.h"
+#include "ConstantValue.h"
 
 void ShowFPS(void)
 {//FPS’l•\Ž¦

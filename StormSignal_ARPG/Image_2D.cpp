@@ -1,4 +1,5 @@
 #include "Image_2D.h"
+#include "DxLib.h"
 
 struct Vect
 {

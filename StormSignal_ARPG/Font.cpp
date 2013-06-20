@@ -1,4 +1,5 @@
 #include "Font.h"
+#include "DxLib.h"
 
 //‰æ‘œ‚ðŽg—p‚µ‚Ä•¶Žš‚ð•`‰æ‚·‚é
 void Font::DrawString_UseImage(int x,int y,int Space,float ext,const char* String,int FontIndex)
@@ -125,7 +126,7 @@ void Font::DrawString(int x,int y,int Space,float ext,string String,string Pass,
 	}
 
 	int Width = CalculateWidth(0,0,Space,ext,String.c_str(),i);
-	DrawString_UseImage(x-Width * (Position / 2.0),y,Space,ext,String.c_str(),i);
+	DrawString_UseImage(x-(int)(Width * (Position / 2.0)),y,Space,ext,String.c_str(),i);
 	
 	return;
 }

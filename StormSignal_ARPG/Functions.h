@@ -1,3 +1,12 @@
+#include <Windows.h>
+#include <mmsystem.h>
+#include <sstream>
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <vector>
+using namespace std;
+
 #ifndef _FUNCTIONS
 #define _FUNCTIONS
 

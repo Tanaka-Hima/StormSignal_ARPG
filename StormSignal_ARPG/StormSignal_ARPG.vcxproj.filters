@@ -13,6 +13,15 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="リソース ファイル\Font">
+      <UniqueIdentifier>{0b738f80-7166-4e98-96e9-574ce7573c6c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\Font\Big_Green">
+      <UniqueIdentifier>{c2ddc476-9a06-4016-b7ea-3de04c55337c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\Font\Big_Red">
+      <UniqueIdentifier>{7596f5b7-c3ce-44b7-a30e-1e3c7109a0df}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -35,14 +44,22 @@
     <ClInclude Include="Image_2D.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="Includes.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="ConstantValue.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Font.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="DebugDraw.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Font\Big_Green\A.png">
+      <Filter>リソース ファイル\Font\Big_Green</Filter>
+    </Image>
   </ItemGroup>
 </Project>

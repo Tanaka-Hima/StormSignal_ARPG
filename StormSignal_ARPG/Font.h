@@ -1,4 +1,9 @@
-#include "Includes.h"
+#include <string>
+#include <vector>
+using namespace std;
+
+#ifndef _FONT
+#define _FONT
 
 class Font
 {
@@ -13,3 +18,4 @@ public:
 	Font();
 	void DrawString(int x,int y,int Space,float ext,string String,string Pass,int Position,float Alpha_Speed = 0.0f);
 };
+#endif

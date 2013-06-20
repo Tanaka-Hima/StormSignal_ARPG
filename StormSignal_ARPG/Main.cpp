@@ -1,4 +1,14 @@
-#include "Includes.h"
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <vector>
+using namespace std;
+
+#include "Box2D/Box2D.h"
+#include "DebugDraw.h"
+#include "DxLib.h"
+#include "Functions.h"
+#include "ConstantValue.h"
 #include "Font.h"
 
 int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
@@ -31,14 +41,92 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	//非アクティブ時でも処理を行う
 	SetAlwaysRunFlag(true);
 
+	//BOX2D
+	b2Vec2 Gravity(0.f,98.f);
+	b2World World(Gravity);
+
+	float32 TimeStep = 1.0f / 60.0f;
+	int32 VelocityIterations = 6;
+	int32 PositionIterations = 2;
+
+	DebugDraw DebugDraw;
+	DebugDraw.SetFlags(0xff);
+	World.SetDebugDraw(&DebugDraw);
+
 	Font Fonts;
+
+	int Scene = TrainingMode;
+
 
 	//メインループ
 	while( ProcessMessage() == 0)
 	{
 		ScreenTimer(0,RefreshRate);
 
-		Fonts.DrawString(Screen_Width / 2,100,5,1,"STORMSIGNAL ARPG","Font/Big_Red",DrawString_Center);
+		switch(Scene)
+		{
+			case Title:
+			{
+				#pragma region タイトル
+
+				Fonts.DrawString(Screen_Width / 2,Screen_Height/5,5,1,"STORMSIGNAL ARPG","Font/Big_Red",DrawString_Center);
+
+				Fonts.DrawString(Screen_Width / 2,Screen_Height*0.6,5,1,"PRESS ENTER KEY","Font/Big_Red",DrawString_Center);
+
+				break;
+				#pragma endregion
+			}
+			case ModeSelect:
+			{
+				#pragma region モードセレクト
+
+				Fonts.DrawString(Screen_Width / 2,100,5,1,"STORMSIGNAL ARPG","Font/Big_Red",DrawString_Center);
+
+				break;
+				#pragma endregion
+			}
+			case StoryMode:
+			{
+				#pragma region ストーリーモード
+
+				Fonts.DrawString(Screen_Width / 2,100,5,1,"STORMSIGNAL ARPG","Font/Big_Red",DrawString_Center);
+
+				break;
+				#pragma endregion
+			}
+			case ArcadeMode:
+			{
+				#pragma region アーケードモード
+
+				Fonts.DrawString(Screen_Width / 2,100,5,1,"STORMSIGNAL ARPG","Font/Big_Red",DrawString_Center);
+
+				break;
+				#pragma endregion
+			}
+			case TrainingMode:
+			{
+				#pragma region トレーニングモード
+
+				Fonts.DrawString(Screen_Width / 2,100,5,1,"TRAINING","Font/Big_Red",DrawString_Center);
+
+				World.Step(TimeStep, VelocityIterations, PositionIterations);
+				World.DrawDebugData();
+
+				break;
+				#pragma endregion
+			}
+			case OptionMode:
+			{
+				#pragma region オプション
+
+				Fonts.DrawString(Screen_Width / 2,100,5,1,"STORMSIGNAL ARPG","Font/Big_Red",DrawString_Center);
+
+				break;
+				#pragma endregion
+			}
+
+		}
+		
 
 		ScreenTimer(1,RefreshRate);
 	}

@@ -1,4 +1,5 @@
-#include "Includes.h"
+#include <vector>
+using namespace std;
 
 #ifndef _IMAGE_2D
 #define _IMAGE_2D
