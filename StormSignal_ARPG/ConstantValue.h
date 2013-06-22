@@ -1,3 +1,5 @@
+#include <DxLib.h>
+
 #ifndef _CONST
 #define _CONST
 

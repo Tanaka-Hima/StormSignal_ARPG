@@ -10,6 +10,7 @@ using namespace std;
 #include "Functions.h"
 #include "ConstantValue.h"
 #include "Font.h"
+#include "Physics2DImage.h"
 
 int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 						 LPSTR lpCmdLine, int nCmdShow )
@@ -42,7 +43,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	SetAlwaysRunFlag(true);
 
 	//BOX2D
-	b2Vec2 Gravity(0.f,98.f);
+	b2Vec2 Gravity(0.f,9.8f);
 	b2World World(Gravity);
 
 	float32 TimeStep = 1.0f / 60.0f;
@@ -52,6 +53,19 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	DebugDraw DebugDraw;
 	DebugDraw.SetFlags(0xff);
 	World.SetDebugDraw(&DebugDraw);
+
+	//’n–Ê
+	b2BodyDef GroundBodyDef;
+	GroundBodyDef.position.Set(96.f,Screen_Height/Box_Rate);
+	b2Body* GroundBody = World.CreateBody(&GroundBodyDef);
+	GroundBody->SetUserData("Ground");
+	b2PolygonShape GroundBox;
+	GroundBox.SetAsBox(96.f,1.5f);
+	GroundBody->CreateFixture(&GroundBox,0.f);
+
+	Physics2DImage Image;
+	Image.Load("Font/Big_Green/A.png");
+	Image.Initialize(&World,"Test",1,1);
 
 	Font Fonts;
 
@@ -109,6 +123,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
 				Fonts.DrawString(Screen_Width / 2,100,5,1,"TRAINING","Font/Big_Red",DrawString_Center);
 
+				Image.Draw(true);
 				World.Step(TimeStep, VelocityIterations, PositionIterations);
 				World.DrawDebugData();
 

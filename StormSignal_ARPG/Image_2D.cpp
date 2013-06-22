@@ -7,6 +7,24 @@ struct Vect
 	int y;
 };
 
+void Image_2D::Load(string Pass)
+{
+	Graph.push_back(LoadGraph(Pass.c_str()));
+	SIHandle.push_back(LoadSoftImage(Pass.c_str()));
+}
+
+void Image_2D::Unload(void)
+{
+	int Length = Graph.size();
+	for(int i=0;i<Length;i++)
+	{
+		DeleteGraph(Graph[i]);
+		DeleteSoftImage(SIHandle[i]);
+	}
+	Graph.clear();
+	SIHandle.clear();
+}
+
 void Image_2D::Initialize(void)
 {//‰Šú‰»
 	int SizeW,SizeH;

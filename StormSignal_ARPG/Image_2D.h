@@ -1,4 +1,5 @@
 #include <vector>
+#include <string>
 using namespace std;
 
 #ifndef _IMAGE_2D
@@ -19,6 +20,8 @@ public:
 	int Center_y;
 	float Ext;
 	float Angle;
+	void Load(string Pass);
+	void Unload(void);
 	virtual void Initialize(void);
 	virtual bool Draw(bool Trans);
 	virtual int GetAlpha(int X,int Y);
