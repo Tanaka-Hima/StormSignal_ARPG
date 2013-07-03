@@ -38,6 +38,6 @@ const int OptionMode = 5;
 
 //BOX2D関連
 const bool doSleep = true;//スリープを有効にするか否か
-const int Box_Rate = 10;//Box2Dの1 = DxlibのBox_Rate Pixel
+const float Box_Rate = 10;//Box2Dの1 = DxlibのBox_Rate Pixel
 
 #endif

@@ -10,7 +10,8 @@ using namespace std;
 #include "Functions.h"
 #include "ConstantValue.h"
 #include "Font.h"
-#include "Physics2DImage.h"
+#include "Player.h"
+#include "Enemy.h"
 
 int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 						 LPSTR lpCmdLine, int nCmdShow )
@@ -63,9 +64,13 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	GroundBox.SetAsBox(96.f,1.5f);
 	GroundBody->CreateFixture(&GroundBox,0.f);
 
-	Physics2DImage Image;
-	Image.Load("Font/Big_Green/A.png");
-	Image.Initialize(&World,"Test",1,1);
+	Player Player;
+	Player.Load("Image/Chara/None.png");
+	Player.Initialize(&World,"Player",1,1,100);
+
+	Enemy PunchingBag;
+	PunchingBag.Load("Font/Big_Green/A.png");
+	PunchingBag.Initialize(&World,"Enemy",1,1,100);
 
 	Font Fonts;
 
@@ -123,7 +128,13 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
 				Fonts.DrawString(Screen_Width / 2,100,5,1,"TRAINING","Font/Big_Red",DrawString_Center);
 
-				Image.Draw(true);
+				Player.Ctrl();
+				Player.Step();
+				Player.Draw(true);
+
+				PunchingBag.Step();
+				PunchingBag.Draw(true);
+
 				World.Step(TimeStep, VelocityIterations, PositionIterations);
 				World.DrawDebugData();
 

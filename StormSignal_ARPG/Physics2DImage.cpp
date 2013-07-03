@@ -2,7 +2,7 @@
 #include "ConstantValue.h"
 #include <DxLib.h>
 
-void Physics2DImage::Initialize(b2World *World,void* UserData,float Density,float Friction)
+void Physics2DImage::Init(b2World *World,void* UserData,float Density,float Friction)
 {
 	int SizeW,SizeH;
 	//while(CheckHandleASyncLoad(Graph[0]) && ProcessMessage() == 0){}
@@ -23,6 +23,7 @@ void Physics2DImage::Initialize(b2World *World,void* UserData,float Density,floa
 	BodyDef.position.Set(x/Box_Rate, y/Box_Rate);
 	Body = World->CreateBody(&BodyDef);
 	Body->SetUserData(UserData);
+	Direction = 1;
 
 	DynamicBox.SetAsBox((float)Center_x/(float)Box_Rate, (float)Center_y/(float)Box_Rate);
 
@@ -30,11 +31,11 @@ void Physics2DImage::Initialize(b2World *World,void* UserData,float Density,floa
 	FixtureDef.density = Density;
 	FixtureDef.friction = Friction;
 
-	Body->CreateFixture(&FixtureDef);
+	Fixture = Body->CreateFixture(&FixtureDef);
 }
 
 //•`‰æ
-bool Physics2DImage::Draw(bool Trans)
+bool Physics2DImage::Draw(bool Trans,bool AutoDirection)
 {//•`‰æ
 	if(Graph.size() > 1)Anime_Frame++;
 	if(Anime_Speed <= 0)Anime_Speed = 1;
@@ -45,8 +46,10 @@ bool Physics2DImage::Draw(bool Trans)
 		b2Vec2 Pos = Body->GetPosition();
 		Pos.x *= Box_Rate;
 		Pos.y *= Box_Rate;
+		x = Pos.x;
+		y = Pos.y;
 
-		if(Vect.x < 0)DrawRotaGraph2(Pos.x,Pos.y,Center_x,Center_y,Ext,Body->GetAngle(),Graph[Anime_ShowNum],Trans,false);
+		if((Vect.x < 0 && AutoDirection) || Direction > 0)DrawRotaGraph2(Pos.x,Pos.y,Center_x,Center_y,Ext,Body->GetAngle(),Graph[Anime_ShowNum],Trans,false);
 		else DrawRotaGraph2(Pos.x,Pos.y,Center_x,Center_y,Ext,Body->GetAngle(),Graph[Anime_ShowNum],Trans,true);
 	}
 
@@ -58,4 +61,24 @@ bool Physics2DImage::Draw(bool Trans)
 	}
 	return false;
 
+}
+
+b2Body* Physics2DImage::GetBody(void)
+{
+	return Body;
+}
+
+b2PolygonShape* Physics2DImage::GetShape(void)
+{
+	return &DynamicBox;
+}
+
+b2FixtureDef* Physics2DImage::GetFixtureDef(void)
+{
+	return &FixtureDef;
+}
+
+b2Fixture* Physics2DImage::GetFixture(void)
+{
+	return Fixture;
 }

@@ -11,10 +11,22 @@ private:
 	b2Body* Body;
 	b2PolygonShape DynamicBox;
 	b2FixtureDef FixtureDef;
-
+	b2Fixture* Fixture;
 public:
-	void Initialize(b2World *World,void* UserData,float Density,float Friction);
-	bool Draw(bool Trans);
+	int Direction;
+
+	virtual void Init(b2World *World,void* UserData,float Density,float Friction);
+	virtual bool Draw(bool Trans = true,bool AutoDirection = false);
+	b2Body* GetBody(void);
+	b2PolygonShape* GetShape(void);
+	b2FixtureDef* GetFixtureDef(void);
+	b2Fixture* GetFixture(void);
+	~Physics2DImage()
+	{
+		Unload();
+		b2World *World = Body->GetWorld();
+		World->DestroyBody(Body);
+	}
 };
 
 #endif
