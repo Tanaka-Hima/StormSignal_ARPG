@@ -240,6 +240,9 @@
     <Image Include="Image\Chara\Sword\Front_3.png" />
     <Image Include="Image\Chara\Sword\None_Sword.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\構想まとめ.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
