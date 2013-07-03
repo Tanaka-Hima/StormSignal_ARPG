@@ -233,6 +233,12 @@
     <Image Include="Font\Small_Red\Y.png" />
     <Image Include="Font\Small_Red\Z.png" />
     <Image Include="Font\Small_Red\^.png" />
+    <Image Include="Image\Chara\None.png" />
+    <Image Include="Image\Chara\Sword\Front_0.png" />
+    <Image Include="Image\Chara\Sword\Front_1.png" />
+    <Image Include="Image\Chara\Sword\Front_2.png" />
+    <Image Include="Image\Chara\Sword\Front_3.png" />
+    <Image Include="Image\Chara\Sword\None_Sword.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

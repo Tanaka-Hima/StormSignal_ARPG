@@ -31,6 +31,15 @@
     <Filter Include="リソース ファイル\Font\Small_Red">
       <UniqueIdentifier>{fb72b4a2-28c9-40ad-9035-56361acdc22e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="リソース ファイル\Image">
+      <UniqueIdentifier>{e402f36b-f099-45af-a633-f9f25f46e4e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\Image\Chara">
+      <UniqueIdentifier>{a8431409-7f67-49eb-96a3-92bfc1ffdcee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\Image\Chara\Sword">
+      <UniqueIdentifier>{5d80ebdd-234f-45e9-8047-e33a4469b634}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -468,6 +477,24 @@
     </Image>
     <Image Include="Font\Small_Red\A.png">
       <Filter>リソース ファイル\Font\Small_Red</Filter>
+    </Image>
+    <Image Include="Image\Chara\None.png">
+      <Filter>リソース ファイル\Image\Chara</Filter>
+    </Image>
+    <Image Include="Image\Chara\Sword\Front_0.png">
+      <Filter>リソース ファイル\Image\Chara\Sword</Filter>
+    </Image>
+    <Image Include="Image\Chara\Sword\Front_1.png">
+      <Filter>リソース ファイル\Image\Chara\Sword</Filter>
+    </Image>
+    <Image Include="Image\Chara\Sword\Front_2.png">
+      <Filter>リソース ファイル\Image\Chara\Sword</Filter>
+    </Image>
+    <Image Include="Image\Chara\Sword\Front_3.png">
+      <Filter>リソース ファイル\Image\Chara\Sword</Filter>
+    </Image>
+    <Image Include="Image\Chara\Sword\None_Sword.png">
+      <Filter>リソース ファイル\Image\Chara\Sword</Filter>
     </Image>
   </ItemGroup>
 </Project>
