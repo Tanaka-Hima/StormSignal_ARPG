@@ -52,5 +52,6 @@
 　　- 当身(Skill_Chara_Counter)
 
 　・その他
+
 　　- 空欄(Skill_None_None)
 
