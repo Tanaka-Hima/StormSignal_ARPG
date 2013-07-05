@@ -76,6 +76,9 @@
 　　- 当身		(Skill_Chara_Counter)
 
 　・その他
-
 　　- 空欄(Skill_None_None)
 
+　○アイテム
+	基本命令法則 - Item_(アイテム名)
+	・HP系
+	・補助効果系
