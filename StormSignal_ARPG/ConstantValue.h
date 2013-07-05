@@ -5,8 +5,8 @@
 
 //‰æ–Êİ’è
 const int RefreshRate = 60;
-const int Screen_Width = 960;
-const int Screen_Height = 540;
+const int Screen_Width = 800;
+const int Screen_Height = 450;
 
 //F
 const int White = GetColor(255,255,255);

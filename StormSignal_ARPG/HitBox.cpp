@@ -2,16 +2,18 @@
 #include "ConstantValue.h"
 #include <DxLib.h>
 
-void HitBox::Initialize(b2PolygonShape InputShape,b2Transform InputTransform,Character* InputAttacker,bool SuicideFlag,b2Vec2 InputHitVect,int InputDamage,int InputHitCount,int InputDuration,int InputStanTime)
+void HitBox::Initialize(b2PolygonShape InputShape,b2Transform InputTransform,Character* InputAttacker,bool SuicideFlag,b2Vec2 InputHitVect,int InputDamage,int InputHitCount,int InputDuration,int InputStanTime,bool FollowFlag)
 {
 	Shape = InputShape;
 	Transform = InputTransform;
 	Attacker = InputAttacker;
+	AttackerBeforeTrans = Attacker->GetBody()->GetTransform();
 	Suicide = SuicideFlag;
 	HitVect = InputHitVect;
 	Damage = InputDamage;
 	HitCount = InputHitCount;
 	Duration = InputDuration;
+	Follow = FollowFlag;
 
 	Time = GetNowCount();
 	StanTime = InputStanTime;
@@ -41,6 +43,14 @@ bool HitBox::HitTestShape(Character* Target,b2PolygonShape *TargetShape,b2Transf
 
 bool HitBox::Step(void)
 {
+	if(Follow)
+	{
+		b2Transform Trans = Attacker->GetBody()->GetTransform();
+		b2Vec2 Vect = Trans.p - AttackerBeforeTrans.p;
+		Transform.p += Vect;
+		AttackerBeforeTrans = Trans;
+	}
+
 	if(GetNowCount() - Time > Duration)
 	{//‘±ŠÔ‚ğ‰ß‚¬‚Ä‚¢‚ê‚Îíœ
 		return true;

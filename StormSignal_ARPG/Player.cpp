@@ -29,6 +29,10 @@ void Player::Initialize(b2World *World,void* UserData,float Density,float Fricti
 
 	Center_x = 64;
 	Center_y = 52;
+
+	//800,450;
+	SkillWindow.Initialize(25,25,Screen_Width-50,Screen_Height-50,Black,LightBlack);
+	SkillWindow.Visible = false;
 }
 
 void Player::Ctrl(void)
@@ -46,7 +50,7 @@ void Player::Ctrl(void)
 		Vect.x = MoveSpeed;
 		Direction = 1;
 	}
-	if(CheckKeyDown(KEY_INPUT_SPACE))Vect.y = -MoveSpeed*3;
+	if(CheckKeyDown(KEY_INPUT_SPACE))Vect.y = -MoveSpeed*2;
 
 	//スキル使用
 	int Key[9] = {KEY_INPUT_Q,KEY_INPUT_W,KEY_INPUT_E,
@@ -62,5 +66,32 @@ void Player::Ctrl(void)
 		}
 	}
 
+	//スキルウィンドウトグル
+	if(CheckKeyDown(KEY_INPUT_LALT))SkillWindow.Visible = 1 - SkillWindow.Visible;
+
 	GetBody()->SetLinearVelocity(Vect);
+}
+
+void Player::DrawSkillWindow(void)
+{
+	if(!SkillWindow.Visible)return;
+
+	SkillWindow.ReWindow();
+	SkillWindow.SetDrawThisWindow();
+
+	DrawBox(15,10,110,35,Black,false);
+
+	for(int i=0;i<4;i++)
+	{
+		for(int j=0;j<3;j++)
+		{
+			if(i>0)DrawRotaGraph2(15+j*70+32,50+i*70+32,64,40,1,0,AnimeGraphs[SkillSet[j][i-1][0]][0],true);
+			DrawBox(15+j*70,50+i*70,15+j*70+64,50+i*70+64,Black,false);
+		}
+	}
+
+	DrawBox(15,330,15+256,390,Black,false);
+
+	SetDrawScreen(DX_SCREEN_BACK);
+	SkillWindow.Draw();
 }

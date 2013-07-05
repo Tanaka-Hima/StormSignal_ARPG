@@ -40,6 +40,9 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 		 return -1;	// エラーが起きたら直ちに終了
 	}
 
+	//Alt、F10等のポーズを無効化
+	SetSysCommandOffFlag(true);
+
 	//非アクティブ時でも処理を行う
 	SetAlwaysRunFlag(true);
 
@@ -134,6 +137,8 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
 				PunchingBag.Step();
 				PunchingBag.Draw(true);
+
+				Player.DrawSkillWindow();
 
 				World.Step(TimeStep, VelocityIterations, PositionIterations);
 				World.DrawDebugData();

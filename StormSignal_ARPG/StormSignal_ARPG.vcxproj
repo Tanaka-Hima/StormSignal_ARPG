@@ -94,6 +94,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Physics2DImage.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConstantValue.h" />
@@ -106,6 +107,7 @@
     <ClInclude Include="Physics2DImage.h" />
     <ClInclude Include="Character.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Font\Big_Green\A.png" />
