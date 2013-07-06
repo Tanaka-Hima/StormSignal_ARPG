@@ -22,7 +22,7 @@ void Window::Initialize(double Input_x,double Input_y,int Input_Width,int Input_
 	Visible = true;
 
 	SetDrawScreen(Screen);
-	ClearDrawScreen();
+	DrawBox(0,0,Width,Height,GetColor(255,255,255),true);
 	SetDrawBlendMode( DX_BLENDMODE_ALPHA, 128);
 	DrawBox(0,0,Width,Height,PanelColor,true);
 	SetDrawBlendMode( DX_BLENDMODE_ALPHA, 256);
@@ -32,8 +32,9 @@ void Window::Initialize(double Input_x,double Input_y,int Input_Width,int Input_
 
 void Window::ReWindow(void)
 {
+	SetDrawScreen(DX_SCREEN_BACK);
 	SetDrawScreen(Screen);
-	ClearDrawScreen();
+	DrawBox(0,0,Width,Height,GetColor(255,255,255),true);
 	SetDrawBlendMode( DX_BLENDMODE_ALPHA, 128);
 	DrawBox(0,0,Width,Height,PanelColor,true);
 	SetDrawBlendMode( DX_BLENDMODE_ALPHA, 256);
@@ -79,4 +80,14 @@ void Window::DrawStringInWindow(int Input_x,int Input_y,int Input_Pos,string Inp
 void Window::SetDrawThisWindow(void)
 {
 	SetDrawScreen(Screen);
+}
+
+int Window::GetWidth(void)
+{
+	return Width;
+}
+
+int Window::GetHeight(void)
+{
+	return Height;
 }

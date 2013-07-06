@@ -11,7 +11,8 @@ public:
 	vector<int> Graph;
 	int Anime_Speed;
 	int Anime_ShowNum;
-	int Anime_Frame;
+	int Anime_Time;
+	int Time;
 	vector<int> SIHandle;
 	bool Visible;
 	int x;
@@ -27,10 +28,6 @@ public:
 	virtual int GetAlpha(int X,int Y);
 	virtual bool HitTestPoint(int Target_X,int Target_Y,bool Shape);
 	virtual int HitTestGraph(Image_2D *Target,bool Shape);
-	~Image_2D()
-	{
-		Unload();
-	}
 };
 
 #endif

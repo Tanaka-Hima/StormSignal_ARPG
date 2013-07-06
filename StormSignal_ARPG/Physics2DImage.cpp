@@ -16,8 +16,9 @@ void Physics2DImage::Init(b2World *World,void* UserData,float Density,float Fric
 	Angle = 0.0f;
 	
 	Anime_Speed = 1;
-	Anime_Frame = 0;
+	Anime_Time = 0;
 	Anime_ShowNum = 0;
+	Time = GetNowCount();
 
 	BodyDef.type = b2_dynamicBody;
 	BodyDef.position.Set(x/Box_Rate, y/Box_Rate);
@@ -37,7 +38,12 @@ void Physics2DImage::Init(b2World *World,void* UserData,float Density,float Fric
 //•`‰æ
 bool Physics2DImage::Draw(bool Trans,bool AutoDirection)
 {//•`‰æ
-	if(Graph.size() > 1)Anime_Frame++;
+	if(Graph.size() > 1)
+	{
+		int NowTime = GetNowCount();
+		Anime_Time += NowTime - Time;
+		Time = NowTime;
+	}
 	if(Anime_Speed <= 0)Anime_Speed = 1;
 
 	if(Visible)
@@ -53,7 +59,11 @@ bool Physics2DImage::Draw(bool Trans,bool AutoDirection)
 		else DrawRotaGraph2(Pos.x,Pos.y,Center_x,Center_y,Ext,Body->GetAngle(),Graph[Anime_ShowNum],Trans,true);
 	}
 
-	if((Anime_Frame % Anime_Speed) == 0)Anime_ShowNum++;
+	if(Anime_Time >= Anime_Speed)
+	{
+		Anime_ShowNum++;
+		Anime_Time -= Anime_Speed;
+	}
 	if(Anime_ShowNum >= (int)Graph.size())
 	{
 		Anime_ShowNum = 0;

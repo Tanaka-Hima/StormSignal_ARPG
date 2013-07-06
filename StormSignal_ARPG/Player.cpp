@@ -30,9 +30,24 @@ void Player::Initialize(b2World *World,void* UserData,float Density,float Fricti
 	Center_x = 64;
 	Center_y = 52;
 
-	//800,450;
+	//スキル設定ウィンドウ作成
 	SkillWindow.Initialize(25,25,Screen_Width-50,Screen_Height-50,Black,LightBlack);
 	SkillWindow.Visible = false;
+
+	int Length = AnimeGraphs.size();
+	for(int i=0;i<Length;i++)
+	{
+		Image_2D Image;
+		Image.Graph.reserve(AnimeGraphs[i].size());
+		copy(AnimeGraphs[i].begin(),AnimeGraphs[i].end(),back_inserter(Image.Graph));
+		Image.Initialize();
+		Image.Anime_Speed = 500;
+		SkillImages.push_back(Image);
+		
+		Window Panel;
+		Panel.Initialize(0,0,64,64,Black,LightBlack);
+		SkillPanels.push_back(Panel);
+	}
 }
 
 void Player::Ctrl(void)
@@ -81,11 +96,30 @@ void Player::DrawSkillWindow(void)
 
 	DrawBox(15,10,110,35,Black,false);
 
+	int Length = AnimeGraphs.size();
+	for(int i=1;i<Length;i++)
+	{
+		SkillPanels[i].ReWindow();
+		SkillPanels[i].SetDrawThisWindow();
+
+		SkillImages[i].x = SkillPanels[i].GetWidth()/2;
+		SkillImages[i].y = SkillPanels[i].GetHeight()/2;
+		SkillImages[i].Draw(true);
+	}
+
+	SkillWindow.SetDrawThisWindow();
+
 	for(int i=0;i<4;i++)
 	{
 		for(int j=0;j<3;j++)
 		{
-			if(i>0)DrawRotaGraph2(15+j*70+32,50+i*70+32,64,40,1,0,AnimeGraphs[SkillSet[j][i-1][0]][0],true);
+			if(i>0)
+			{
+				//DrawRotaGraph2(15+j*70+32,50+i*70+32,64,40,1,0,AnimeGraphs[SkillSet[j][i-1][0]][0],true);
+				SkillPanels[SkillSet[j][i-1][0]].x = 15+j*70;
+				SkillPanels[SkillSet[j][i-1][0]].y = 50+i*70;
+				SkillPanels[SkillSet[j][i-1][0]].Draw();
+			}
 			DrawBox(15+j*70,50+i*70,15+j*70+64,50+i*70+64,Black,false);
 		}
 	}

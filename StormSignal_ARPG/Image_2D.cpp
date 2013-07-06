@@ -38,19 +38,30 @@ void Image_2D::Initialize(void)
 	Ext = 1.0f;
 	Angle = 0.0f;
 	
-	Anime_Speed = 1;
-	Anime_Frame = 0;
+	Anime_Speed = 16;
+	Anime_Time = 0;
 	Anime_ShowNum = 0;
+
+	Time = GetNowCount();
 }
 
 bool Image_2D::Draw(bool Trans)
 {//•`‰æ
-	if(Graph.size() > 1)Anime_Frame++;
+	if(Graph.size() > 1)
+	{
+		int NowTime = GetNowCount();
+		Anime_Time += NowTime - Time;
+		Time = NowTime;
+	}
 	if(Anime_Speed <= 0)Anime_Speed = 1;
 
 	if(Visible)DrawRotaGraph2(x,y,Center_x,Center_y,Ext,Angle,Graph[Anime_ShowNum],Trans);
 
-	if((Anime_Frame % Anime_Speed) == 0)Anime_ShowNum++;
+	if(Anime_Time >= Anime_Speed)
+	{
+		Anime_ShowNum++;
+		Anime_Time = 0;
+	}
 	if(Anime_ShowNum >= (int)Graph.size())
 	{
 		Anime_ShowNum = 0;

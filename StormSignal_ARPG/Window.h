@@ -23,10 +23,8 @@ public:
 	void Draw(void);
 	void DrawStringInWindow(int Input_x,int Input_y,int Input_Pos,string Input_String,int FontData,int Color);
 	void SetDrawThisWindow(void);
-	~Window()
-	{
-		DeleteGraph(Screen);
-	}
+	int GetWidth(void);
+	int GetHeight(void);
 };
 
 #endif
