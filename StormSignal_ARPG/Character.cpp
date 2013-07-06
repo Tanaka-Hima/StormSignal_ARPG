@@ -6,6 +6,7 @@
 vector<Character*> Character::CharacterList;
 vector<HitBox> Character::HitBoxList;
 vector<vector<int>> Character::AnimeGraphs;
+vector<vector<int>> Character::EquipmentGraphs;
 
 void Character::InitChara(b2World *World,void* UserData,float Density,float Friction,int MaxHP)
 {
@@ -24,27 +25,51 @@ void Character::InitChara(b2World *World,void* UserData,float Density,float Fric
 
 	vector<int> TempGraphs;
 
+	#pragma region ëïîıâÊëúì«Ç›çûÇ›
+
+	//Equipment_None_None 0
+	TempGraphs.push_back(LoadGraph("Image/Equipment/None.png"));
+	EquipmentGraphs.push_back(TempGraphs);
+	TempGraphs.clear();
+
+	//Equipment_Sword_Normal 1
+	TempGraphs.push_back(LoadGraph("Image/Equipment/Sword/Normal_0.png"));
+	EquipmentGraphs.push_back(TempGraphs);
+	TempGraphs.clear();
+
+	//Equipment_Sword_Flame 2
+	TempGraphs.push_back(LoadGraph("Image/Equipment/Sword/Flame_0.png"));
+	EquipmentGraphs.push_back(TempGraphs);
+	TempGraphs.clear();
+
+	#pragma endregion
+
+	#pragma region ÉXÉLÉãâÊëúì«Ç›çûÇ›
+
 	//Skill_None_None 0
-	TempGraphs.push_back(LoadGraph("Image/Chara/None.png"));
+	TempGraphs.push_back(LoadGraph("Image/Skill/None.png"));
 	AnimeGraphs.push_back(TempGraphs);
 	TempGraphs.clear();
 
 	//Skill_Sword_Front 1
-	TempGraphs.push_back(LoadGraph("Image/Chara/Sword/Front_0.png"));
-	TempGraphs.push_back(LoadGraph("Image/Chara/Sword/Front_1.png"));
-	TempGraphs.push_back(LoadGraph("Image/Chara/Sword/Front_2.png"));
-	TempGraphs.push_back(LoadGraph("Image/Chara/Sword/Front_3.png"));
+	TempGraphs.push_back(LoadGraph("Image/Skill/Sword/Front_0.png"));
+	TempGraphs.push_back(LoadGraph("Image/Skill/Sword/Front_1.png"));
+	TempGraphs.push_back(LoadGraph("Image/Skill/Sword/Front_2.png"));
+	TempGraphs.push_back(LoadGraph("Image/Skill/Sword/Front_3.png"));
 	AnimeGraphs.push_back(TempGraphs);
 	TempGraphs.clear();
+
+	#pragma endregion
+
 }
 
-bool Character::UseSkill(int Number)
+bool Character::UseSkill(int SkillNumber,int EquipmentNumber)
 {
 	int NowTime = GetNowCount();
 	StateTime -= NowTime - Time;
 	Time = NowTime;
 
-	switch(Number)
+	switch(SkillNumber)
 	{
 		case Skill_None_None:
 		{

@@ -138,7 +138,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 				PunchingBag.Step();
 				PunchingBag.Draw(true);
 
-				Player.DrawSkillWindow();
+				Player.StepSkillWindow();
 
 				World.Step(TimeStep, VelocityIterations, PositionIterations);
 				World.DrawDebugData();

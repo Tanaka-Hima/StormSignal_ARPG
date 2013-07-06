@@ -46,6 +46,9 @@
 　　- 氷剣	(Equipment_Sword_Ice)
 　　- 雷剣	(Equipment_Sword_Thunder)
 
+　・その他
+　　- 空欄	(Equipment_None_None)
+
 ○スキル
 　基本命名法則 - Skill_(スキル名)_(行動)
 　{種類,レベル,経験値,CD}

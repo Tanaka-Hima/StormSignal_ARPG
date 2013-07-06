@@ -17,7 +17,7 @@ void Window::Initialize(double Input_x,double Input_y,int Input_Width,int Input_
 	Height = Input_Height;
 	PanelColor = Input_PanelColor;
 	EdgeColor = Input_EdgeColor;
-	DeleteGraph(Screen);
+	//DeleteGraph(Screen);
 	Screen = MakeScreen(Width,Height,true);
 	Visible = true;
 
@@ -32,7 +32,7 @@ void Window::Initialize(double Input_x,double Input_y,int Input_Width,int Input_
 
 void Window::ReWindow(void)
 {
-	SetDrawScreen(DX_SCREEN_BACK);
+	//SetDrawScreen(DX_SCREEN_BACK);
 	SetDrawScreen(Screen);
 	DrawBox(0,0,Width,Height,GetColor(255,255,255),true);
 	SetDrawBlendMode( DX_BLENDMODE_ALPHA, 128);

@@ -9,6 +9,7 @@ void Player::Initialize(b2World *World,void* UserData,float Density,float Fricti
 
 	for(int i=0;i<3;i++)
 	{
+		Equipments[i] = 0;
 		for(int j=0;j<3;j++)
 		{
 			SkillSet[i][j][0] = Skill_Sword_Front;
@@ -48,6 +49,21 @@ void Player::Initialize(b2World *World,void* UserData,float Density,float Fricti
 		Panel.Initialize(0,0,64,64,Black,LightBlack);
 		SkillPanels.push_back(Panel);
 	}
+
+	Length = EquipmentGraphs.size();
+	for(int i=0;i<Length;i++)
+	{
+		Image_2D Image;
+		Image.Graph.reserve(EquipmentGraphs[i].size());
+		copy(EquipmentGraphs[i].begin(),EquipmentGraphs[i].end(),back_inserter(Image.Graph));
+		Image.Initialize();
+		Image.Anime_Speed = 500;
+		EquipmentImages.push_back(Image);
+		
+		Window Panel;
+		Panel.Initialize(0,0,64,64,Black,LightBlack);
+		EquipmentPanels.push_back(Panel);
+	}
 }
 
 void Player::Ctrl(void)
@@ -55,7 +71,21 @@ void Player::Ctrl(void)
 	//スキルウィンドウトグル
 	if(CheckKeyDown(KEY_INPUT_LALT))SkillWindow.Visible = 1 - SkillWindow.Visible;
 
-	//スキル使用中は行動できない
+	//スキル使用
+	int Key[9] = {KEY_INPUT_Q,KEY_INPUT_W,KEY_INPUT_E,
+					KEY_INPUT_A,KEY_INPUT_S,KEY_INPUT_D,
+					KEY_INPUT_Z,KEY_INPUT_X,KEY_INPUT_C};
+
+	for(int i=0;i<9;i++)
+	{
+		if(CheckKeyDown(Key[i]))
+		{
+			UseSkill(SkillSet[i%3][(int)(i/3)][0],Equipments[0]);
+			SkillSet[i%3][(int)(i/3)][3] = GetNowCount();
+		}
+	}
+
+	//スキル使用中は移動できない
 	if(State != Skill_None_None)return;
 
 	b2Vec2 Vect = GetBody()->GetLinearVelocity();
@@ -72,35 +102,23 @@ void Player::Ctrl(void)
 		Direction = 1;
 	}
 	if(CheckKeyDown(KEY_INPUT_SPACE))Vect.y = -MoveSpeed*2;
-
-	//スキル使用
-	int Key[9] = {KEY_INPUT_Q,KEY_INPUT_W,KEY_INPUT_E,
-					KEY_INPUT_A,KEY_INPUT_S,KEY_INPUT_D,
-					KEY_INPUT_Z,KEY_INPUT_X,KEY_INPUT_C};
-
-	for(int i=0;i<9;i++)
-	{
-		if(CheckKeyDown(Key[i]))
-		{
-			UseSkill(SkillSet[i%3][(int)(i/3)][0]);
-			SkillSet[i%3][(int)(i/3)][3] = GetNowCount();
-		}
-	}
-
 	GetBody()->SetLinearVelocity(Vect);
 }
 
-void Player::DrawSkillWindow(void)
+void Player::StepSkillWindow(void)
 {
 	if(!SkillWindow.Visible)return;
 
+
+	//描画
 	SkillWindow.ReWindow();
 	SkillWindow.SetDrawThisWindow();
 
 	DrawBox(15,10,110,35,Black,false);
 
+	//パネルの制作
 	int Length = AnimeGraphs.size();
-	for(int i=1;i<Length;i++)
+	for(int i=0;i<Length;i++)
 	{
 		SkillPanels[i].ReWindow();
 		SkillPanels[i].SetDrawThisWindow();
@@ -110,6 +128,17 @@ void Player::DrawSkillWindow(void)
 		SkillImages[i].Draw(true);
 	}
 
+	Length = EquipmentGraphs.size();
+	for(int i=0;i<Length;i++)
+	{
+		EquipmentPanels[i].ReWindow();
+		EquipmentPanels[i].SetDrawThisWindow();
+
+		EquipmentImages[i].x = EquipmentPanels[i].GetWidth()/2;
+		EquipmentImages[i].y = EquipmentPanels[i].GetHeight()/2+24;
+		EquipmentImages[i].Draw(true);
+	}
+
 	SkillWindow.SetDrawThisWindow();
 
 	for(int i=0;i<4;i++)
@@ -117,11 +146,16 @@ void Player::DrawSkillWindow(void)
 		for(int j=0;j<3;j++)
 		{
 			if(i>0)
-			{
+			{//スキル窓の描画
 				//DrawRotaGraph2(15+j*70+32,50+i*70+32,64,40,1,0,AnimeGraphs[SkillSet[j][i-1][0]][0],true);
 				SkillPanels[SkillSet[j][i-1][0]].x = 15+j*70;
 				SkillPanels[SkillSet[j][i-1][0]].y = 50+i*70;
 				SkillPanels[SkillSet[j][i-1][0]].Draw();
+			}else
+			{//装備窓の追加
+				EquipmentPanels[Equipments[j]].x = 15+j*70;
+				EquipmentPanels[Equipments[j]].y = 50+i*70;
+				EquipmentPanels[Equipments[j]].Draw();
 			}
 			DrawBox(15+j*70,50+i*70,15+j*70+64,50+i*70+64,Black,false);
 		}

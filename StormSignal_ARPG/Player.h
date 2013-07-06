@@ -14,10 +14,13 @@ private:
 	Window SkillWindow;
 	vector<Window> SkillPanels;
 	vector<Image_2D> SkillImages;
+	vector<Window> EquipmentPanels;
+	vector<Image_2D> EquipmentImages;
+	int Equipments[3];
 public:
 	void Initialize(b2World *World,void* UserData,float Density,float Friction,int MaxHP);
 	void Ctrl(void);//ëÄçÏ
-	void DrawSkillWindow(void);
+	void StepSkillWindow(void);
 };
 
 #endif
