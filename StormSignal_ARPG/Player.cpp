@@ -52,6 +52,12 @@ void Player::Initialize(b2World *World,void* UserData,float Density,float Fricti
 
 void Player::Ctrl(void)
 {
+	//スキルウィンドウトグル
+	if(CheckKeyDown(KEY_INPUT_LALT))SkillWindow.Visible = 1 - SkillWindow.Visible;
+
+	//スキル使用中は行動できない
+	if(State != Skill_None_None)return;
+
 	b2Vec2 Vect = GetBody()->GetLinearVelocity();
 
 	//移動関連
@@ -81,9 +87,6 @@ void Player::Ctrl(void)
 		}
 	}
 
-	//スキルウィンドウトグル
-	if(CheckKeyDown(KEY_INPUT_LALT))SkillWindow.Visible = 1 - SkillWindow.Visible;
-
 	GetBody()->SetLinearVelocity(Vect);
 }
 
@@ -103,7 +106,7 @@ void Player::DrawSkillWindow(void)
 		SkillPanels[i].SetDrawThisWindow();
 
 		SkillImages[i].x = SkillPanels[i].GetWidth()/2;
-		SkillImages[i].y = SkillPanels[i].GetHeight()/2;
+		SkillImages[i].y = SkillPanels[i].GetHeight()/2+24;
 		SkillImages[i].Draw(true);
 	}
 
