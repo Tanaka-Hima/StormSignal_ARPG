@@ -1,4 +1,4 @@
-#include <vector>
+ï»¿#include <vector>
 #include <string>
 using namespace std;
 
@@ -6,7 +6,7 @@ using namespace std;
 #define _IMAGE_2D
 
 class Image_2D
-{//2D‰æ‘œƒNƒ‰ƒX
+{//2Dç”»åƒã‚¯ãƒ©ã‚¹
 public:
 	vector<int> Graph;
 	int Anime_Speed;

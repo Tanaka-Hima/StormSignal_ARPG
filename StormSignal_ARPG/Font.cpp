@@ -1,7 +1,7 @@
-#include "Font.h"
+ï»¿#include "Font.h"
 #include "DxLib.h"
 
-//‰æ‘œ‚ğg—p‚µ‚Ä•¶š‚ğ•`‰æ‚·‚é
+//ç”»åƒã‚’ä½¿ç”¨ã—ã¦æ–‡å­—ã‚’æç”»ã™ã‚‹
 void Font::DrawString_UseImage(int x,int y,int Space,float ext,const char* String,int FontIndex)
 {
 	int StrLen = strlen(String);
@@ -15,7 +15,7 @@ void Font::DrawString_UseImage(int x,int y,int Space,float ext,const char* Strin
 	for(int i=0;i<StrLen;i++)
 	{
 		char Alphabet = String[i];
-		//‰üs”»’è
+		//æ”¹è¡Œåˆ¤å®š
 		if(Alphabet == '\\')
 		{
 			x_Pos = ImgWidth;
@@ -23,22 +23,22 @@ void Font::DrawString_UseImage(int x,int y,int Space,float ext,const char* Strin
 			y_Pos += Height + Space;
 			continue;
 		}
-		//w’è•¶š‚Ì‰æ‘œ‚ğ“Ç‚İ‚Ş
+		//æŒ‡å®šæ–‡å­—ã®ç”»åƒã‚’èª­ã¿è¾¼ã‚€
 		if(String[i] == ' ')goto Blank;
 		
 		Img = FontData[FontIndex][Alphabet-'A'];
 
-		//•`‰æ
+		//æç”»
 		if(Img)
 		{
 			GetGraphSize(Img,&Width,&Height);
 			Width = (int)(Width * ext);
 			Height = (int)(Height * ext);
 			DrawRotaGraph2(x_Pos,y_Pos,0,0,ext,0,Img,true);
-			//Ÿ‚Ì•`‰æˆÊ’u‚ğw’è
+			//æ¬¡ã®æç”»ä½ç½®ã‚’æŒ‡å®š
 			x_Pos += Width + Space;
 		}else
-		{//ƒuƒ‰ƒ“ƒN‘}“ü
+		{//ãƒ–ãƒ©ãƒ³ã‚¯æŒ¿å…¥
 			Blank:;
 			x_Pos += AverageSpace;
 		}
@@ -59,7 +59,7 @@ int Font::CalculateWidth(int x,int y,int Space,float ext,const char* String,int 
 	for(int i=0;i<StrLen;i++)
 	{
 		char Alphabet = String[i];
-		//‰üs”»’è
+		//æ”¹è¡Œåˆ¤å®š
 		if(Alphabet == '\\')
 		{
 			x_Pos = ImgWidth;
@@ -67,22 +67,22 @@ int Font::CalculateWidth(int x,int y,int Space,float ext,const char* String,int 
 			y_Pos += Height + Space;
 			continue;
 		}
-		//w’è•¶š‚Ì‰æ‘œ‚ğ“Ç‚İ‚Ş
+		//æŒ‡å®šæ–‡å­—ã®ç”»åƒã‚’èª­ã¿è¾¼ã‚€
 		if(String[i] == ' ')goto Blank;
 		
 		Img = FontData[FontIndex][Alphabet-'A'];
 
-		//•`‰æ
+		//æç”»
 		if(Img)
 		{
 			GetGraphSize(Img,&Width,&Height);
 			Width = (int)(Width * ext);
 			Height = (int)(Height * ext);
 			//DrawRotaGraph2(x_Pos,y_Pos,0,0,ext,0,Img,true);
-			//Ÿ‚Ì•`‰æˆÊ’u‚ğw’è
+			//æ¬¡ã®æç”»ä½ç½®ã‚’æŒ‡å®š
 			x_Pos += Width + Space;
 		}else
-		{//ƒuƒ‰ƒ“ƒN‘}“ü
+		{//ãƒ–ãƒ©ãƒ³ã‚¯æŒ¿å…¥
 			Blank:;
 			x_Pos += AverageSpace;
 		}
@@ -113,7 +113,7 @@ void Font::DrawString(int x,int y,int Space,float ext,string String,string Pass,
 	}
 
 	if(!isLoaded)
-	{//ƒtƒHƒ“ƒgƒf[ƒ^‚Ì“Ç‚İ‚İ
+	{//ãƒ•ã‚©ãƒ³ãƒˆãƒ‡ãƒ¼ã‚¿ã®èª­ã¿è¾¼ã¿
 		vector<int> Images;
 		for(char Alphabet='A';Alphabet<='Z';Alphabet++)
 		{

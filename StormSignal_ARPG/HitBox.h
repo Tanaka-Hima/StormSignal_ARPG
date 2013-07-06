@@ -1,4 +1,4 @@
-#include <Box2D\Box2D.h>
+ï»¿#include <Box2D\Box2D.h>
 
 #ifndef _HITBOX
 #define _HITBOX
@@ -12,14 +12,14 @@ private:
 	b2Transform Transform;
 	Character* Attacker;
 	b2Transform AttackerBeforeTrans;
-	bool Suicide;//UŒ‚‚µ‚½–{l‚Éƒ_ƒ[ƒW‚Í“ü‚é‚©H
-	b2Vec2 HitVect;//ƒqƒbƒg‚É‘Šè‚Ö—^‚¦‚éƒxƒNƒgƒ‹
-	int Damage;//ƒ_ƒ[ƒW
-	int HitCount;//“¯‚¶‘Šè‚Ö‰½‰ñƒqƒbƒg‚·‚é‚©(-1‚Å‡)
-	int Duration;//‘±ŠÔ
+	bool Suicide;//æ”»æ’ƒã—ãŸæœ¬äººã«ãƒ€ãƒ¡ãƒ¼ã‚¸ã¯å…¥ã‚‹ã‹ï¼Ÿ
+	b2Vec2 HitVect;//ãƒ’ãƒƒãƒˆæ™‚ã«ç›¸æ‰‹ã¸ä¸ãˆã‚‹ãƒ™ã‚¯ãƒˆãƒ«
+	int Damage;//ãƒ€ãƒ¡ãƒ¼ã‚¸
+	int HitCount;//åŒã˜ç›¸æ‰‹ã¸ä½•å›ãƒ’ãƒƒãƒˆã™ã‚‹ã‹(-1ã§âˆ)
+	int Duration;//æŒç¶šæ™‚é–“
 	int Time;
-	int StanTime;//ƒqƒbƒgs“®•s”\ŠÔ
-	bool Follow;//ƒLƒƒƒ‰‚ªˆÚ“®‚µ‚½‚Éƒqƒbƒgƒ|ƒbƒNƒX‚àˆÚ“®‚³‚¹‚é‚©H
+	int StanTime;//ãƒ’ãƒƒãƒˆæ™‚è¡Œå‹•ä¸èƒ½æ™‚é–“
+	bool Follow;//ã‚­ãƒ£ãƒ©ãŒç§»å‹•ã—ãŸæ™‚ã«ãƒ’ãƒƒãƒˆãƒãƒƒã‚¯ã‚¹ã‚‚ç§»å‹•ã•ã›ã‚‹ã‹ï¼Ÿ
 
 	vector<b2PolygonShape*> HittedChara;
 

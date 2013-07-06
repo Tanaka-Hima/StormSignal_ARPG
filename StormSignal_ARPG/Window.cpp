@@ -1,4 +1,4 @@
-#include <DxLib.h>
+﻿#include <DxLib.h>
 #include "Functions.h"
 #include "ConstantValue.h"
 #include "Window.h"

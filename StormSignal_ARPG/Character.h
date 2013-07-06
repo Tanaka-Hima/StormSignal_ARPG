@@ -1,4 +1,4 @@
-#include "Physics2DImage.h"
+ï»¿#include "Physics2DImage.h"
 
 #ifndef _CHARACTER
 #define _CHARACTER
@@ -11,11 +11,11 @@ const int Skill_Sword_Front = 1;
 const string SkillValueNames[] = {"Skill_None_None",
 							"Skill_Sword_Front"};
 
-const string SkillNames[] = {"–³‚µ",
-							"‘O•û‚ÖŒ•‚ğU‚è‰º‚ë‚·(‰¼)"};
+const string SkillNames[] = {"ç„¡ã—",
+							"å‰æ–¹ã¸å‰£ã‚’æŒ¯ã‚Šä¸‹ã‚ã™(ä»®)"};
 
-const string SkillInfo[] = {"ƒXƒLƒ‹‚ğİ’è‚µ‚Ü‚¹‚ñB\n•K—v‘•”õ : –³‚µ CD : –³‚µ",
-							"‘O•û‚ÖŒ•‚ğU‚è‰º‚ë‚µ‚Ü‚·B\n•K—v‘•”õ : Œ• CD : –³‚µ"};
+const string SkillInfo[] = {"ã‚¹ã‚­ãƒ«ã‚’è¨­å®šã—ã¾ã›ã‚“ã€‚\nå¿…è¦è£…å‚™ : ç„¡ã— CD : ç„¡ã—",
+							"å‰æ–¹ã¸å‰£ã‚’æŒ¯ã‚Šä¸‹ã‚ã—ã¾ã™ã€‚\nå¿…è¦è£…å‚™ : å‰£ CD : ç„¡ã—"};
 
 
 const int Equipment_None_None = 0;
@@ -26,13 +26,13 @@ const string EquipmentValueNames[] = {"Equipment_None_None",
 							"Equipment_Sword_Normal",
 							"Equipment_Sword_Flame"};
 
-const string EquipmentNames[] = {"–³‚µ",
-							"’ÊíŒ•",
-							"‰ŠŒ•"};
+const string EquipmentNames[] = {"ç„¡ã—",
+							"é€šå¸¸å‰£",
+							"ç‚å‰£"};
 
-const string EquipmentInfo[] = {"‘•”õ‚ğg—p‚µ‚Ü‚¹‚ñB\n‘•”õí—Ş : –³‚µ",
-							"’ÊíŒ•‚ğ—p‚¢‚ÄUŒ‚‚ğs‚¢‚Ü‚·B\n‘•”õí—Ş : Œ•",
-							"‰ŠŒ•‚ğ—p‚¢‚ÄUŒ‚‚ğs‚¢‚Ü‚·B\n‘•”õí—Ş : Œ•"};
+const string EquipmentInfo[] = {"è£…å‚™ã‚’ä½¿ç”¨ã—ã¾ã›ã‚“ã€‚\nè£…å‚™ç¨®é¡ : ç„¡ã—",
+							"é€šå¸¸å‰£ã‚’ç”¨ã„ã¦æ”»æ’ƒã‚’è¡Œã„ã¾ã™ã€‚\nè£…å‚™ç¨®é¡ : å‰£",
+							"ç‚å‰£ã‚’ç”¨ã„ã¦æ”»æ’ƒã‚’è¡Œã„ã¾ã™ã€‚\nè£…å‚™ç¨®é¡ : å‰£"};
 
 int SearchEquipment();
 

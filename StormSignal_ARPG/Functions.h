@@ -1,4 +1,4 @@
-#include <Windows.h>
+ï»¿#include <Windows.h>
 #include <mmsystem.h>
 #include <sstream>
 #include <iostream>
@@ -10,13 +10,13 @@ using namespace std;
 #ifndef _FUNCTIONS
 #define _FUNCTIONS
 
-//ˆ—‰‚ß(0)Aˆ—I‚í‚è(1)
+//å‡¦ç†åˆã‚(0)ã€å‡¦ç†çµ‚ã‚ã‚Š(1)
 void ScreenTimer(int Type,int FrameRate);
 
-//ƒL[‚ª‰Ÿ‚³‚ê‚½‚©‚Ç‚¤‚©‚ğŠm‚©‚ß‚é
+//ã‚­ãƒ¼ãŒæŠ¼ã•ã‚ŒãŸã‹ã©ã†ã‹ã‚’ç¢ºã‹ã‚ã‚‹
 bool CheckKeyDown(int KeyCode);
 
-//•¶š—ñ‚ğ•ªŠ„‚·‚é
+//æ–‡å­—åˆ—ã‚’åˆ†å‰²ã™ã‚‹
 vector<string> split(string str, string delim);
 
 template <class T> string ntos(T Num)
@@ -26,7 +26,7 @@ template <class T> string ntos(T Num)
 	return Temp.str();
 }
 
-//A“_‚ÆB“_‚Ì‹——£‚ğ‹‚ß‚é
+//Aç‚¹ã¨Bç‚¹ã®è·é›¢ã‚’æ±‚ã‚ã‚‹
 template <class T> double inline GetDistance(T A_X,T A_Y,T B_X,T B_Y)
 {
 	return hypot(A_X - B_X,A_Y - B_Y);
@@ -34,17 +34,17 @@ template <class T> double inline GetDistance(T A_X,T A_Y,T B_X,T B_Y)
 
 int SetScoreFile(int Score,string Name,string ScoreFileName);
 
-//ƒXƒRƒAƒtƒ@ƒCƒ‹‚Ì“à—e‚ğ•Ô‚·
+//ã‚¹ã‚³ã‚¢ãƒ•ã‚¡ã‚¤ãƒ«ã®å†…å®¹ã‚’è¿”ã™
 vector<string> GetScoreFile(string ScoreFileName);
 
-//ƒtƒ@ƒCƒ‹ƒŠƒXƒg‚Ìæ“¾
+//ãƒ•ã‚¡ã‚¤ãƒ«ãƒªã‚¹ãƒˆã®å–å¾—
 vector<string> GetFolderList(string folder);
 
 /**
- * •¶š—ñ’†‚©‚ç•¶š—ñ‚ğŒŸõ‚µ‚Ä•Ê‚Ì•¶š—ñ‚É’uŠ·‚·‚é
- * @param str  : ’uŠ·‘ÎÛ‚Ì•¶š—ñBã‘‚©‚ê‚Ü‚·B
- * @param from : ŒŸõ•¶š—ñ
- * @param to   : ’uŠ·Œã‚Ì•¶š—ñ
+ * æ–‡å­—åˆ—ä¸­ã‹ã‚‰æ–‡å­—åˆ—ã‚’æ¤œç´¢ã—ã¦åˆ¥ã®æ–‡å­—åˆ—ã«ç½®æ›ã™ã‚‹
+ * @param str  : ç½®æ›å¯¾è±¡ã®æ–‡å­—åˆ—ã€‚ä¸Šæ›¸ã‹ã‚Œã¾ã™ã€‚
+ * @param from : æ¤œç´¢æ–‡å­—åˆ—
+ * @param to   : ç½®æ›å¾Œã®æ–‡å­—åˆ—
  */
 void strReplace (std::string& str, const std::string& from, const std::string& to);
 

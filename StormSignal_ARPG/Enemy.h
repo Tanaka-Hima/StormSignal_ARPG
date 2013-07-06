@@ -1,4 +1,4 @@
-#include "Character.h"
+﻿#include "Character.h"
 
 #ifndef _ENEMY
 #define _ENEMY

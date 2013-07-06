@@ -1,4 +1,4 @@
-#include <string>
+ï»¿#include <string>
 #include <vector>
 using namespace std;
 
@@ -11,7 +11,7 @@ private:
 	vector<string> FontIndexs;
 	vector<vector<int>> FontData;
 
-	//‰æ‘œ‚ğg—p‚µ‚Ä•¶š‚ğ•`‰æ‚·‚é
+	//ç”»åƒã‚’ä½¿ç”¨ã—ã¦æ–‡å­—ã‚’æç”»ã™ã‚‹
 	void DrawString_UseImage(int x,int y,int Space,float ext,const char* String,int FontIndex);
 	int CalculateWidth(int x,int y,int Space,float ext,const char* String,int FontIndex);
 public:

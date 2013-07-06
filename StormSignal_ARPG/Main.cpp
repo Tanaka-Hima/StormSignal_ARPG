@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <fstream>
 #include <string>
 #include <vector>
@@ -16,34 +16,34 @@ using namespace std;
 int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 						 LPSTR lpCmdLine, int nCmdShow )
 {
-	//ƒEƒBƒ“ƒhƒEƒ‚[ƒh‚ğ•ÏX‚·‚é
+	//ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãƒ¢ãƒ¼ãƒ‰ã‚’å¤‰æ›´ã™ã‚‹
 	ChangeWindowMode(true);
 	SetDrawScreen(DX_SCREEN_BACK);
 
-	//‰æ–Êƒ‚[ƒh
+	//ç”»é¢ãƒ¢ãƒ¼ãƒ‰
 	SetGraphMode(Screen_Width,Screen_Height,32);
 
-	//”wŒiF‚ğ”’‚Éİ’è
+	//èƒŒæ™¯è‰²ã‚’ç™½ã«è¨­å®š
 	SetBackgroundColor(255,255,255);
 
-	//ƒAƒ“ƒ`ƒGƒCƒŠƒAƒXİ’è
+	//ã‚¢ãƒ³ãƒã‚¨ã‚¤ãƒªã‚¢ã‚¹è¨­å®š
 	//SetFullSceneAntiAliasingMode(4,3);
 
-	//ƒ^ƒCƒgƒ‹
+	//ã‚¿ã‚¤ãƒˆãƒ«
 	SetMainWindowText("StormSignal ARPG");
 
-	//‚’¼“¯ŠúM†‚ğ‘Ò‚½‚È‚¢
+	//å‚ç›´åŒæœŸä¿¡å·ã‚’å¾…ãŸãªã„
 	SetWaitVSyncFlag(false);
 
-	if( DxLib_Init() == -1 )	// ‚c‚wƒ‰ƒCƒuƒ‰ƒŠ‰Šú‰»ˆ—
+	if( DxLib_Init() == -1 )	// ï¼¤ï¼¸ãƒ©ã‚¤ãƒ–ãƒ©ãƒªåˆæœŸåŒ–å‡¦ç†
 	{
-		 return -1;	// ƒGƒ‰[‚ª‹N‚«‚½‚ç’¼‚¿‚ÉI—¹
+		 return -1;	// ã‚¨ãƒ©ãƒ¼ãŒèµ·ããŸã‚‰ç›´ã¡ã«çµ‚äº†
 	}
 
-	//AltAF10“™‚Ìƒ|[ƒY‚ğ–³Œø‰»
+	//Altã€F10ç­‰ã®ãƒãƒ¼ã‚ºã‚’ç„¡åŠ¹åŒ–
 	SetSysCommandOffFlag(true);
 
-	//”ñƒAƒNƒeƒBƒu‚Å‚àˆ—‚ğs‚¤
+	//éã‚¢ã‚¯ãƒ†ã‚£ãƒ–æ™‚ã§ã‚‚å‡¦ç†ã‚’è¡Œã†
 	SetAlwaysRunFlag(true);
 
 	//BOX2D
@@ -58,7 +58,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	DebugDraw.SetFlags(0xff);
 	World.SetDebugDraw(&DebugDraw);
 
-	//’n–Ê
+	//åœ°é¢
 	b2BodyDef GroundBodyDef;
 	GroundBodyDef.position.Set(96.f,Screen_Height/Box_Rate);
 	b2Body* GroundBody = World.CreateBody(&GroundBodyDef);
@@ -80,7 +80,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	int Scene = TrainingMode;
 
 
-	//ƒƒCƒ“ƒ‹[ƒv
+	//ãƒ¡ã‚¤ãƒ³ãƒ«ãƒ¼ãƒ—
 	while( ProcessMessage() == 0)
 	{
 		ScreenTimer(0,RefreshRate);
@@ -89,7 +89,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 		{
 			case Title:
 			{
-				#pragma region ƒ^ƒCƒgƒ‹
+				#pragma region ã‚¿ã‚¤ãƒˆãƒ«
 
 				Fonts.DrawString(Screen_Width / 2,Screen_Height/5,5,1,"STORMSIGNAL ARPG","Font/Big_Red",DrawString_Center);
 
@@ -100,7 +100,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 			}
 			case ModeSelect:
 			{
-				#pragma region ƒ‚[ƒhƒZƒŒƒNƒg
+				#pragma region ãƒ¢ãƒ¼ãƒ‰ã‚»ãƒ¬ã‚¯ãƒˆ
 
 				Fonts.DrawString(Screen_Width / 2,100,5,1,"STORMSIGNAL ARPG","Font/Big_Red",DrawString_Center);
 
@@ -109,7 +109,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 			}
 			case StoryMode:
 			{
-				#pragma region ƒXƒg[ƒŠ[ƒ‚[ƒh
+				#pragma region ã‚¹ãƒˆãƒ¼ãƒªãƒ¼ãƒ¢ãƒ¼ãƒ‰
 
 				Fonts.DrawString(Screen_Width / 2,100,5,1,"STORMSIGNAL ARPG","Font/Big_Red",DrawString_Center);
 
@@ -118,7 +118,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 			}
 			case ArcadeMode:
 			{
-				#pragma region ƒA[ƒP[ƒhƒ‚[ƒh
+				#pragma region ã‚¢ãƒ¼ã‚±ãƒ¼ãƒ‰ãƒ¢ãƒ¼ãƒ‰
 
 				Fonts.DrawString(Screen_Width / 2,100,5,1,"STORMSIGNAL ARPG","Font/Big_Red",DrawString_Center);
 
@@ -127,7 +127,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 			}
 			case TrainingMode:
 			{
-				#pragma region ƒgƒŒ[ƒjƒ“ƒOƒ‚[ƒh
+				#pragma region ãƒˆãƒ¬ãƒ¼ãƒ‹ãƒ³ã‚°ãƒ¢ãƒ¼ãƒ‰
 
 				Fonts.DrawString(Screen_Width / 2,100,5,1,"TRAINING","Font/Big_Red",DrawString_Center);
 
@@ -148,7 +148,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 			}
 			case OptionMode:
 			{
-				#pragma region ƒIƒvƒVƒ‡ƒ“
+				#pragma region ã‚ªãƒ—ã‚·ãƒ§ãƒ³
 
 				Fonts.DrawString(Screen_Width / 2,100,5,1,"STORMSIGNAL ARPG","Font/Big_Red",DrawString_Center);
 

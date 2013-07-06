@@ -1,4 +1,4 @@
-#include "DxLib.h"
+ï»¿#include "DxLib.h"
 #include "Box2D\Box2D.h"
 #include "ConstantValue.h"
 
@@ -22,8 +22,8 @@ void DrawCircle_Dxlib(int x,int y,int r,int Color,bool FillFlag)
 void DebugDraw::DrawPolygon(const b2Vec2* vertices, int32 vertexCount, const b2Color& color)
 {
 
-	int mode;//ˆêBLEND‹L˜^—Ìˆæ
-	int parm;//ˆêBLENDƒpƒ‰ƒ[ƒ^‹L˜^—Ìˆæ
+	int mode;//ä¸€æ™‚BLENDè¨˜éŒ²é ˜åŸŸ
+	int parm;//ä¸€æ™‚BLENDãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿è¨˜éŒ²é ˜åŸŸ
 	GetDrawBlendMode(&mode,&parm);
 
 	SetDrawBlendMode(DX_BLENDMODE_NOBLEND,128);
@@ -48,8 +48,8 @@ void DebugDraw::DrawPolygon(const b2Vec2* vertices, int32 vertexCount, const b2C
 
 void DebugDraw::DrawSolidPolygon(const b2Vec2* vertices, int32 vertexCount, const b2Color& color)
 {
-	int mode;//ˆêBLEND‹L˜^—Ìˆæ
-	int parm;//ˆêBLENDƒpƒ‰ƒ[ƒ^‹L˜^—Ìˆæ
+	int mode;//ä¸€æ™‚BLENDè¨˜éŒ²é ˜åŸŸ
+	int parm;//ä¸€æ™‚BLENDãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿è¨˜éŒ²é ˜åŸŸ
 
 	GetDrawBlendMode(&mode,&parm);
 
@@ -57,7 +57,7 @@ void DebugDraw::DrawSolidPolygon(const b2Vec2* vertices, int32 vertexCount, cons
 
 	//DrawString(0,0,"DrawSolidPolygon",GetColor(255,0,0));
 
-	//”¼“§–¾‰»
+	//åŠé€æ˜åŒ–
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA,128);
 
 	for(int i=2; i < vertexCount; i++)
@@ -73,8 +73,8 @@ void DebugDraw::DrawSolidPolygon(const b2Vec2* vertices, int32 vertexCount, cons
 
 void DebugDraw::DrawCircle(const b2Vec2& center, float32 radius, const b2Color& color)
 {
-	int mode;//BLEND‹L˜^—Ìˆæ
-	int parm;//BLENDƒpƒ‰ƒ[ƒ^‹L˜^—Ìˆæ
+	int mode;//BLENDè¨˜éŒ²é ˜åŸŸ
+	int parm;//BLENDãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿è¨˜éŒ²é ˜åŸŸ
 	GetDrawBlendMode(&mode,&parm);
 
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA,128);
@@ -86,8 +86,8 @@ void DebugDraw::DrawCircle(const b2Vec2& center, float32 radius, const b2Color& 
 
 void DebugDraw::DrawSolidCircle(const b2Vec2& center, float32 radius, const b2Vec2& axis, const b2Color& color)
 {
-	int mode;//BLEND‹L˜^—Ìˆæ
-	int parm;//BLENDƒpƒ‰ƒ[ƒ^‹L˜^—Ìˆæ
+	int mode;//BLENDè¨˜éŒ²é ˜åŸŸ
+	int parm;//BLENDãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿è¨˜éŒ²é ˜åŸŸ
 	GetDrawBlendMode(&mode,&parm);
 
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA,128);
@@ -99,8 +99,8 @@ void DebugDraw::DrawSolidCircle(const b2Vec2& center, float32 radius, const b2Ve
 
 void DebugDraw::DrawSegment(const b2Vec2& p1, const b2Vec2& p2, const b2Color& color)
 {
-	int mode;//BLEND‹L˜^—Ìˆæ
-	int parm;//BLENDƒpƒ‰ƒ[ƒ^‹L˜^—Ìˆæ
+	int mode;//BLENDè¨˜éŒ²é ˜åŸŸ
+	int parm;//BLENDãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿è¨˜éŒ²é ˜åŸŸ
 
 	GetDrawBlendMode(&mode,&parm);
 

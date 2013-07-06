@@ -1,4 +1,4 @@
-#include "Player.h"
+ï»¿#include "Player.h"
 #include "Functions.h"
 #include "ConstantValue.h"
 #include <DxLib.h>
@@ -7,9 +7,9 @@ void Player::Initialize(b2World *World,void* UserData,float Density,float Fricti
 {
 	InitChara(World,UserData,Density,Friction,MaxHP);
 
-	FontSmall = CreateFontToHandle( "ƒƒCƒŠƒI" , 15 , 3 ,-1,-1,2) ;
-	FontMiddle = CreateFontToHandle( "ƒƒCƒŠƒI" , 20 , 7 ,-1,-1,2) ;
-	FontBig = CreateFontToHandle( "ƒƒCƒŠƒI" , 40 , 10 ,-1,-1,3) ;
+	FontSmall = CreateFontToHandle( "ãƒ¡ã‚¤ãƒªã‚ª" , 15 , 3 ,-1,-1,2) ;
+	FontMiddle = CreateFontToHandle( "ãƒ¡ã‚¤ãƒªã‚ª" , 20 , 7 ,-1,-1,2) ;
+	FontBig = CreateFontToHandle( "ãƒ¡ã‚¤ãƒªã‚ª" , 40 , 10 ,-1,-1,3) ;
 
 	for(int i=0;i<3;i++)
 	{
@@ -37,7 +37,7 @@ void Player::Initialize(b2World *World,void* UserData,float Density,float Fricti
 	Center_x = 64;
 	Center_y = 52;
 
-	//ƒXƒLƒ‹İ’èƒEƒBƒ“ƒhƒEì¬
+	//ã‚¹ã‚­ãƒ«è¨­å®šã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ä½œæˆ
 	SkillWindow.Initialize(25,25,Screen_Width-50,Screen_Height-50,Black,LightBlack);
 	SkillWindow.Visible = false;
 	InfoPanel.Initialize(15,330,256,60,Black,LightBlack);
@@ -75,13 +75,13 @@ void Player::Initialize(b2World *World,void* UserData,float Density,float Fricti
 
 void Player::Ctrl(void)
 {
-	//ƒXƒLƒ‹ƒEƒBƒ“ƒhƒEƒgƒOƒ‹
+	//ã‚¹ã‚­ãƒ«ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãƒˆã‚°ãƒ«
 	if(CheckKeyDown(KEY_INPUT_LALT))SkillWindow.Visible = 1 - SkillWindow.Visible;
 
-	//ƒXƒLƒ‹ƒEƒBƒ“ƒhƒE•\¦’†‚Ís“®‚Å‚«‚È‚¢
+	//ã‚¹ã‚­ãƒ«ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦è¡¨ç¤ºä¸­ã¯è¡Œå‹•ã§ããªã„
 	if(SkillWindow.Visible)return;
 
-	//ƒXƒLƒ‹g—p
+	//ã‚¹ã‚­ãƒ«ä½¿ç”¨
 	int Key[9] = {KEY_INPUT_Q,KEY_INPUT_W,KEY_INPUT_E,
 					KEY_INPUT_A,KEY_INPUT_S,KEY_INPUT_D,
 					KEY_INPUT_Z,KEY_INPUT_X,KEY_INPUT_C};
@@ -95,12 +95,12 @@ void Player::Ctrl(void)
 		}
 	}
 
-	//ƒXƒLƒ‹g—p’†‚ÍˆÚ“®‚Å‚«‚È‚¢
+	//ã‚¹ã‚­ãƒ«ä½¿ç”¨ä¸­ã¯ç§»å‹•ã§ããªã„
 	if(State != Skill_None_None)return;
 
 	b2Vec2 Vect = GetBody()->GetLinearVelocity();
 
-	//ˆÚ“®ŠÖ˜A
+	//ç§»å‹•é–¢é€£
 	if(CheckHitKey(KEY_INPUT_LEFT))
 	{
 		Vect.x = -MoveSpeed;
@@ -119,7 +119,7 @@ void Player::StepSkillWindow(void)
 {
 	if(!SkillWindow.Visible)return;
 
-	//ƒJ[ƒ\ƒ‹‘€ì
+	//ã‚«ãƒ¼ã‚½ãƒ«æ“ä½œ
 	if(CheckKeyDown(KEY_INPUT_LEFT))SkillCursorPoint.x--;
 	if(CheckKeyDown(KEY_INPUT_RIGHT))SkillCursorPoint.x++;
 	if(CheckKeyDown(KEY_INPUT_UP))SkillCursorPoint.y--;
@@ -130,13 +130,13 @@ void Player::StepSkillWindow(void)
 	if(SkillCursorPoint.y < 0)SkillCursorPoint.y = 3;
 	else if(SkillCursorPoint.y > 3)SkillCursorPoint.y = 0;
 
-	//•`‰æ
+	//æç”»
 	SkillWindow.ReWindow();
 	SkillWindow.SetDrawThisWindow();
 
 	DrawBox(15,10,110,35,Black,false);
 	
-	//ƒpƒlƒ‹‚Ì§ì
+	//ãƒ‘ãƒãƒ«ã®åˆ¶ä½œ
 	int Length = AnimeGraphs.size();
 	for(int i=0;i<Length;i++)
 	{
@@ -168,13 +168,13 @@ void Player::StepSkillWindow(void)
 			int Select = 0;
 			if(SkillCursorPoint.x == j && SkillCursorPoint.y == i)Select = 10;
 			if(i>0)
-			{//ƒXƒLƒ‹‘‹‚Ì•`‰æ
+			{//ã‚¹ã‚­ãƒ«çª“ã®æç”»
 				//DrawRotaGraph2(15+j*70+32,50+i*70+32,64,40,1,0,AnimeGraphs[SkillSet[j][i-1][0]][0],true);
 				SkillPanels[SkillSet[j][i-1][0]].x = 15+j*70;
 				SkillPanels[SkillSet[j][i-1][0]].y = 50+i*70-Select;
 				SkillPanels[SkillSet[j][i-1][0]].Draw();
 			}else
-			{//‘•”õ‘‹‚Ì•`‰æ
+			{//è£…å‚™çª“ã®æç”»
 				EquipmentPanels[Equipments[j]].x = 15+j*70;
 				EquipmentPanels[Equipments[j]].y = 50+i*70-Select;
 				EquipmentPanels[Equipments[j]].Draw();

@@ -1,4 +1,4 @@
-#include "HitBox.h"
+ï»¿#include "HitBox.h"
 #include "ConstantValue.h"
 #include <DxLib.h>
 
@@ -52,7 +52,7 @@ bool HitBox::Step(void)
 	}
 
 	if(GetNowCount() - Time > Duration)
-	{//‘±ŠÔ‚ğ‰ß‚¬‚Ä‚¢‚ê‚Îíœ
+	{//æŒç¶šæ™‚é–“ã‚’éãã¦ã„ã‚Œã°å‰Šé™¤
 		return true;
 	}
 	return false;
@@ -82,8 +82,8 @@ void HitBox::Draw(void)
 {
 	const b2Color& color = b2Color(1,0,0);
 
-	int mode;//ˆêBLEND‹L˜^—Ìˆæ
-	int parm;//ˆêBLENDƒpƒ‰ƒ[ƒ^‹L˜^—Ìˆæ
+	int mode;//ä¸€æ™‚BLENDè¨˜éŒ²é ˜åŸŸ
+	int parm;//ä¸€æ™‚BLENDãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿è¨˜éŒ²é ˜åŸŸ
 	GetDrawBlendMode(&mode,&parm);
 
 	SetDrawBlendMode(DX_BLENDMODE_NOBLEND,128);

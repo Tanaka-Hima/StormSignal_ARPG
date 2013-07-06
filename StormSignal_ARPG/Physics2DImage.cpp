@@ -1,4 +1,4 @@
-#include "Physics2DImage.h"
+ï»¿#include "Physics2DImage.h"
 #include "ConstantValue.h"
 #include <DxLib.h>
 
@@ -35,9 +35,9 @@ void Physics2DImage::Init(b2World *World,void* UserData,float Density,float Fric
 	Fixture = Body->CreateFixture(&FixtureDef);
 }
 
-//•`‰æ
+//æç”»
 bool Physics2DImage::Draw(bool Trans,bool AutoDirection)
-{//•`‰æ
+{//æç”»
 	if(Graph.size() > 1)
 	{
 		int NowTime = GetNowCount();

@@ -1,14 +1,14 @@
-#include <DxLib.h>
+ï»¿#include <DxLib.h>
 
 #ifndef _CONST
 #define _CONST
 
-//‰æ–Êİ’è
+//ç”»é¢è¨­å®š
 const int RefreshRate = 60;
 const int Screen_Width = 800;
 const int Screen_Height = 450;
 
-//F
+//è‰²
 const int White = GetColor(255,255,255);
 const int Black = GetColor(0,0,0);
 const int LightBlack = GetColor(128,128,128);
@@ -23,8 +23,8 @@ const int LightPink = GetColor(255,128,255);
 const int Yellow = GetColor(255,217,0);
 const int LightYellow = GetColor(255,217,128);
 
-//FontŠÖ˜A
-const int DrawString_Left = 0;//•¶š‚ğ•`‰æ‚·‚éˆÊ’u
+//Fonté–¢é€£
+const int DrawString_Left = 0;//æ–‡å­—ã‚’æç”»ã™ã‚‹ä½ç½®
 const int DrawString_Center = 1;
 const int DrawString_Right = 2;
 
@@ -36,8 +36,8 @@ const int ArcadeMode = 3;
 const int TrainingMode = 4;
 const int OptionMode = 5;
 
-//BOX2DŠÖ˜A
-const bool doSleep = true;//ƒXƒŠ[ƒv‚ğ—LŒø‚É‚·‚é‚©”Û‚©
-const float Box_Rate = 10;//Box2D‚Ì1 = Dxlib‚ÌBox_Rate Pixel
+//BOX2Dé–¢é€£
+const bool doSleep = true;//ã‚¹ãƒªãƒ¼ãƒ—ã‚’æœ‰åŠ¹ã«ã™ã‚‹ã‹å¦ã‹
+const float Box_Rate = 10;//Box2Dã®1 = Dxlibã®Box_Rate Pixel
 
 #endif

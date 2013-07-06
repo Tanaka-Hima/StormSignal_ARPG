@@ -1,4 +1,4 @@
-#include "Character.h"
+ï»¿#include "Character.h"
 #include "HitBox.h"
 #include "ConstantValue.h"
 #include <DxLib.h>
@@ -25,7 +25,7 @@ void Character::InitChara(b2World *World,void* UserData,float Density,float Fric
 
 	vector<int> TempGraphs;
 
-	#pragma region ‘•”õ‰æ‘œ“Ç‚İ‚İ
+	#pragma region è£…å‚™ç”»åƒèª­ã¿è¾¼ã¿
 
 	//Equipment_None_None 0
 	TempGraphs.push_back(LoadGraph("Image/Equipment/None.png"));
@@ -44,7 +44,7 @@ void Character::InitChara(b2World *World,void* UserData,float Density,float Fric
 
 	#pragma endregion
 
-	#pragma region ƒXƒLƒ‹‰æ‘œ“Ç‚İ‚İ
+	#pragma region ã‚¹ã‚­ãƒ«ç”»åƒèª­ã¿è¾¼ã¿
 
 	//Skill_None_None 0
 	TempGraphs.push_back(LoadGraph("Image/Skill/None.png"));
@@ -77,7 +77,7 @@ bool Character::UseSkill(int SkillNumber,int EquipmentNumber)
 			break;
 		}
 
-		#pragma region ’nãŒ•
+		#pragma region åœ°ä¸Šå‰£
 		case Skill_Sword_Front:
 		{
 			if(StateTime > 100)return false;
@@ -107,7 +107,7 @@ void Character::Step(void)
 	StateTime -= NowTime - Time;
 	Time = NowTime;
 
-	//ƒAƒjƒ[ƒVƒ‡ƒ“ˆ—
+	//ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³å‡¦ç†
 	switch(State)
 	{
 		case Skill_None_None:
@@ -116,7 +116,7 @@ void Character::Step(void)
 			break;
 		}
 
-		#pragma region ’nãŒ•
+		#pragma region åœ°ä¸Šå‰£
 		case Skill_Sword_Front:
 		{
 			if(StateTime > 450)Graph[0] = AnimeGraphs[State][0];
@@ -133,12 +133,12 @@ void Character::Step(void)
 		#pragma endregion
 	}
 
-	//ƒqƒbƒgƒ{ƒbƒNƒX‚Æ‚Ì“–‚½‚è”»’è
+	//ãƒ’ãƒƒãƒˆãƒœãƒƒã‚¯ã‚¹ã¨ã®å½“ãŸã‚Šåˆ¤å®š
 	int Length = HitBoxList.size();
 	for(int i=0;i<Length;i++)
 	{
 		if(HitBoxList[i].HitTestShape(this,this->GetShape(),this->GetBody()->GetTransform()))
-		{//“–‚½‚Á‚Ä‚¢‚½ê‡
+		{//å½“ãŸã£ã¦ã„ãŸå ´åˆ
 			GetBody()->ApplyLinearImpulse(HitBoxList[i].GetHitVect(),GetBody()->GetPosition());
 			HP -= HitBoxList[i].GetDamage();
 		}
@@ -154,6 +154,6 @@ void Character::Step(void)
 		}
 	}
 
-	//ƒLƒƒƒ‰‚ª“|‚ê‚È‚¢‚æ‚¤‚É‚·‚é
+	//ã‚­ãƒ£ãƒ©ãŒå€’ã‚Œãªã„ã‚ˆã†ã«ã™ã‚‹
 	GetBody()->SetTransform(GetBody()->GetPosition(),0);
 }

@@ -1,4 +1,4 @@
-#include "Image_2D.h"
+ï»¿#include "Image_2D.h"
 #include "DxLib.h"
 
 struct Vect
@@ -26,7 +26,7 @@ void Image_2D::Unload(void)
 }
 
 void Image_2D::Initialize(void)
-{//‰Šú‰»
+{//åˆæœŸåŒ–
 	int SizeW,SizeH;
 	//while(CheckHandleASyncLoad(Graph[0]) && ProcessMessage() == 0){}
 	GetGraphSize(Graph[0],&SizeW,&SizeH);
@@ -46,7 +46,7 @@ void Image_2D::Initialize(void)
 }
 
 bool Image_2D::Draw(bool Trans)
-{//•`‰æ
+{//æç”»
 	if(Graph.size() > 1)
 	{
 		int NowTime = GetNowCount();
@@ -71,20 +71,20 @@ bool Image_2D::Draw(bool Trans)
 }
 
 int Image_2D::GetAlpha(int X,int Y)
-{//ƒAƒ‹ƒtƒ@’l‚ğæ“¾
+{//ã‚¢ãƒ«ãƒ•ã‚¡å€¤ã‚’å–å¾—
 	int R,G,B,A;
 	GetPixelSoftImage(SIHandle[Anime_ShowNum],X - (x - Center_x),Y - (y - Center_y),&R,&G,&B,&A);
 	return A;
 }
 
 bool Image_2D::HitTestPoint(int Target_X,int Target_Y,bool Shape)
-{//“_‚Æ‚Ì“–‚½‚è”»’è
+{//ç‚¹ã¨ã®å½“ãŸã‚Šåˆ¤å®š
 	int R,G,B,A;
 	if(x - Center_x <= Target_X && Target_X <= Center_x + x && y - Center_y <= Target_Y && Target_Y <= Center_y + y)
 	{
 		if(!Shape)return true;
 		else
-		{//‰æ‘œŒ©‚½–Ú’Ê‚è‚Ì”»’è
+		{//ç”»åƒè¦‹ãŸç›®é€šã‚Šã®åˆ¤å®š
 			GetPixelSoftImage(SIHandle[Anime_ShowNum],Target_X - (x - Center_x),Target_Y - (y - Center_y),&R,&G,&B,&A);
 			if(!A)return false;
 			else return true;
@@ -94,7 +94,7 @@ bool Image_2D::HitTestPoint(int Target_X,int Target_Y,bool Shape)
 }
 
 int Image_2D::HitTestGraph(Image_2D *Target,bool Shape)
-{//‰æ‘œ‚Æ‚Ì“–‚½‚è”»’è
+{//ç”»åƒã¨ã®å½“ãŸã‚Šåˆ¤å®š
 	Vect A1,A2,B1,B2;
 	A1.x = x - Center_x;
 	A1.y = y - Center_y;
@@ -106,12 +106,12 @@ int Image_2D::HitTestGraph(Image_2D *Target,bool Shape)
 	B2.y = Target->y + Target->Center_y;
 
 	if(B1.x < A2.x && A2.y > B1.y && B2.x > A1.x && B2.y > A1.y)
-	{//‘åG”c‚È“–‚½‚è”»’è
+	{//å¤§é›‘æŠŠãªå½“ãŸã‚Šåˆ¤å®š
 		if(!Shape)
 		{
 			return true;
 		}else
-		{//Œ©‚½–Ú’Ê‚è‚Ì“–‚½‚è”»’è
+		{//è¦‹ãŸç›®é€šã‚Šã®å½“ãŸã‚Šåˆ¤å®š
 			int X,Y,Width,Height;
 			if(B1.x > A1.x)X = B1.x;
 			else X = A1.x;
@@ -134,7 +134,7 @@ int Image_2D::HitTestGraph(Image_2D *Target,bool Shape)
 			return false;
 		}
 	}else
-	{//‚©‚·‚è‚à‚µ‚È‚¢ê‡
+	{//ã‹ã™ã‚Šã‚‚ã—ãªã„å ´åˆ
 		return false;
 	}
 }

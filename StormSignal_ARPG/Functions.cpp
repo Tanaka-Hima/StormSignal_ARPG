@@ -1,9 +1,9 @@
-#include "DxLib.h"
+ï»¿#include "DxLib.h"
 #include "Functions.h"
 #include "ConstantValue.h"
 
 void ShowFPS(void)
-{//FPS’l•\¦
+{//FPSå€¤è¡¨ç¤º
 	static int Count = -1;
 	static double Show_Count = 0;
 	static int Second = 0;
@@ -27,13 +27,13 @@ void ShowFPS(void)
 	DrawFormatString(0,0,Black,"FPS : %f",Show_Count);	
 }
 
-//ˆ—‰‚ß(0)Aˆ—I‚í‚è(1)
+//å‡¦ç†åˆã‚(0)ã€å‡¦ç†çµ‚ã‚ã‚Š(1)
 void ScreenTimer(int Type,int FrameRate)
 {
-	//ƒ^ƒCƒ}[
+	//ã‚¿ã‚¤ãƒãƒ¼
 	static int Timer = 0;
 	static double Wait = 0.0;
-	//ƒtƒŒ[ƒ€ƒXƒLƒbƒvƒtƒ‰ƒO
+	//ãƒ•ãƒ¬ãƒ¼ãƒ ã‚¹ã‚­ãƒƒãƒ—ãƒ•ãƒ©ã‚°
 	static int FrameSkip = 0;
 
 	if(!Type)
@@ -57,7 +57,7 @@ void ScreenTimer(int Type,int FrameRate)
 	}
 }
 
-//ƒL[‚ª‰Ÿ‚³‚ê‚½‚©‚Ç‚¤‚©‚ğŠm‚©‚ß‚é
+//ã‚­ãƒ¼ãŒæŠ¼ã•ã‚ŒãŸã‹ã©ã†ã‹ã‚’ç¢ºã‹ã‚ã‚‹
 bool CheckKeyDown(int KeyCode)
 {
 	static char OldKeyBuf[256];
@@ -85,7 +85,7 @@ bool CheckKeyDown(int KeyCode)
 	}
 }
 
-//•¶š—ñ‚ğ•¶š‚²‚Æ‚É‹æØ‚é
+//æ–‡å­—åˆ—ã‚’æ–‡å­—ã”ã¨ã«åŒºåˆ‡ã‚‹
 vector<string> split(string str, string delim)
 {
     vector<string> result;
@@ -105,16 +105,16 @@ vector<string> split(string str, string delim)
 return result;
 }
 
-//ƒtƒ@ƒCƒ‹ƒŠƒXƒg‚Ìæ“¾
+//ãƒ•ã‚¡ã‚¤ãƒ«ãƒªã‚¹ãƒˆã®å–å¾—
 vector<string> GetFolderList(string folder)
 {
-	// éŒ¾
+	// å®£è¨€
 	vector<string> fileList;
 	HANDLE hFind;
 	WIN32_FIND_DATA fd;
 
-	// ƒtƒ@ƒCƒ‹–¼ŒŸõ‚Ì‚½‚ß‚ÉƒƒCƒ‹ƒhƒJ[ƒh’Ç‰Á
-	// —á : "D:\\Users\\Pictures\\*.*"
+	// ãƒ•ã‚¡ã‚¤ãƒ«åæ¤œç´¢ã®ãŸã‚ã«ãƒ¯ã‚¤ãƒ«ãƒ‰ã‚«ãƒ¼ãƒ‰è¿½åŠ 
+	// ä¾‹ : "D:\\Users\\Pictures\\*.*"
 	stringstream ss;
 	ss << folder;
 	string::iterator itr = folder.end();
@@ -122,40 +122,40 @@ vector<string> GetFolderList(string folder)
 	if(*itr != '\\') ss << '\\';
 	ss << "*.*";
 
-	// ƒtƒ@ƒCƒ‹’Tõ
-	// FindFirstFile(ƒtƒ@ƒCƒ‹–¼, &fd);
+	// ãƒ•ã‚¡ã‚¤ãƒ«æ¢ç´¢
+	// FindFirstFile(ãƒ•ã‚¡ã‚¤ãƒ«å, &fd);
 	hFind = FindFirstFile(ss.str().c_str(), &fd);
 
-	// ŒŸõ¸”s
+	// æ¤œç´¢å¤±æ•—
 	if(hFind == INVALID_HANDLE_VALUE){
-		std::cout << "ƒtƒ@ƒCƒ‹ˆê——‚ğæ“¾‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½" << std::endl;
-		exit(1); // ƒGƒ‰[I—¹
+		std::cout << "ãƒ•ã‚¡ã‚¤ãƒ«ä¸€è¦§ã‚’å–å¾—ã§ãã¾ã›ã‚“ã§ã—ãŸ" << std::endl;
+		exit(1); // ã‚¨ãƒ©ãƒ¼çµ‚äº†
 	}
 
-	// ƒtƒ@ƒCƒ‹–¼‚ğƒŠƒXƒg‚ÉŠi”[‚·‚é‚½‚ß‚Ìƒ‹[ƒv
+	// ãƒ•ã‚¡ã‚¤ãƒ«åã‚’ãƒªã‚¹ãƒˆã«æ ¼ç´ã™ã‚‹ãŸã‚ã®ãƒ«ãƒ¼ãƒ—
 	do{
-		// ƒtƒHƒ‹ƒ_‚Íœ‚­
+		// ãƒ•ã‚©ãƒ«ãƒ€ã¯é™¤ã
 		if(!(fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)
 		  && !(fd.dwFileAttributes & FILE_ATTRIBUTE_HIDDEN))
 		{
-			//ƒtƒ@ƒCƒ‹–¼‚ğƒŠƒXƒg‚ÉŠi”[
+			//ãƒ•ã‚¡ã‚¤ãƒ«åã‚’ãƒªã‚¹ãƒˆã«æ ¼ç´
 			char *file = fd.cFileName;
 			string str = file;
 			fileList.push_back(str);
 		}
-	}while(FindNextFile(hFind, &fd)); //Ÿ‚Ìƒtƒ@ƒCƒ‹‚ğ’Tõ
+	}while(FindNextFile(hFind, &fd)); //æ¬¡ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’æ¢ç´¢
 	
-	// hFind‚ÌƒNƒ[ƒY
+	// hFindã®ã‚¯ãƒ­ãƒ¼ã‚º
 	FindClose(hFind); 
 
 	return fileList;
 }
 
 /**
- * •¶š—ñ’†‚©‚ç•¶š—ñ‚ğŒŸõ‚µ‚Ä•Ê‚Ì•¶š—ñ‚É’uŠ·‚·‚é
- * @param str  : ’uŠ·‘ÎÛ‚Ì•¶š—ñBã‘‚©‚ê‚Ü‚·B
- * @param from : ŒŸõ•¶š—ñ
- * @param to   : ’uŠ·Œã‚Ì•¶š—ñ
+ * æ–‡å­—åˆ—ä¸­ã‹ã‚‰æ–‡å­—åˆ—ã‚’æ¤œç´¢ã—ã¦åˆ¥ã®æ–‡å­—åˆ—ã«ç½®æ›ã™ã‚‹
+ * @param str  : ç½®æ›å¯¾è±¡ã®æ–‡å­—åˆ—ã€‚ä¸Šæ›¸ã‹ã‚Œã¾ã™ã€‚
+ * @param from : æ¤œç´¢æ–‡å­—åˆ—
+ * @param to   : ç½®æ›å¾Œã®æ–‡å­—åˆ—
  */
 void strReplace (std::string& str, const std::string& from, const std::string& to) {
     std::string::size_type pos = 0;

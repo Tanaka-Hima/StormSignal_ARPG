@@ -1,4 +1,4 @@
-#include "Character.h"
+ï»¿#include "Character.h"
 #include "Window.h"
 #include <DxLib.h>
 
@@ -10,7 +10,7 @@ const float MoveSpeed = 5.0f;
 class Player : public Character
 {
 private:
-	int SkillSet[3][3][4];//x,y,{í—Ş,ƒŒƒxƒ‹,ŒoŒ±’l,CD}
+	int SkillSet[3][3][4];//x,y,{ç¨®é¡,ãƒ¬ãƒ™ãƒ«,çµŒé¨“å€¤,CD}
 	vector<int*> SkillList;
 	Window SkillWindow;
 	vector<Window> SkillPanels;
@@ -24,7 +24,7 @@ private:
 	int FontSmall,FontMiddle,FontBig;
 public:
 	void Initialize(b2World *World,void* UserData,float Density,float Friction,int MaxHP);
-	void Ctrl(void);//‘€ì
+	void Ctrl(void);//æ“ä½œ
 	void StepSkillWindow(void);
 };
 

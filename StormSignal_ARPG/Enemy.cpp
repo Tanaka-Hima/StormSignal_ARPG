@@ -1,4 +1,4 @@
-#include "Enemy.h"
+﻿#include "Enemy.h"
 
 void Enemy::Initialize(b2World *World,void* UserData,float Density,float Friction,int MaxHP)
 {
