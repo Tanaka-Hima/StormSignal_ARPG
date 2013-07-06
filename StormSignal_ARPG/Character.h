@@ -34,6 +34,7 @@ const string EquipmentInfo[] = {"装備を使用しません。\n装備種類 : 無し",
 							"通常剣を用いて攻撃を行います。\n装備種類 : 剣",
 							"炎剣を用いて攻撃を行います。\n装備種類 : 剣"};
 
+int SearchEquipment();
 
 class Character : public Physics2DImage
 {

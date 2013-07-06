@@ -1,5 +1,6 @@
 #include "Character.h"
 #include "Window.h"
+#include <DxLib.h>
 
 #ifndef _PLAYER
 #define _PLAYER
@@ -16,7 +17,11 @@ private:
 	vector<Image_2D> SkillImages;
 	vector<Window> EquipmentPanels;
 	vector<Image_2D> EquipmentImages;
+	Window InfoPanel;
 	int Equipments[3];
+	POINT SkillCursorPoint;
+
+	int FontSmall,FontMiddle,FontBig;
 public:
 	void Initialize(b2World *World,void* UserData,float Density,float Friction,int MaxHP);
 	void Ctrl(void);//ëÄçÏ

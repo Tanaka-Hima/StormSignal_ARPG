@@ -50,7 +50,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	b2Vec2 Gravity(0.f,9.8f);
 	b2World World(Gravity);
 
-	float32 TimeStep = 1.0f / 60.0f;
+	float32 TimeStep = 1.0f / (float)RefreshRate;
 	int32 VelocityIterations = 6;
 	int32 PositionIterations = 2;
 

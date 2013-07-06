@@ -17,7 +17,7 @@ public:
 	double Ext;
 	double Angle;
 	bool Visible;
-	void InitScreen(void);
+	void DeleteScreen(void);
 	void Initialize(double Input_x,double Input_y,int Input_Width,int Input_Height,int Input_EdgeColor,int Input_PanelColor);
 	void ReWindow(void);
 	void Draw(void);

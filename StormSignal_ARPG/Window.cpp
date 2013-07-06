@@ -1,10 +1,11 @@
 #include <DxLib.h>
+#include "Functions.h"
 #include "ConstantValue.h"
 #include "Window.h"
 
-void Window::InitScreen(void)
+void Window::DeleteScreen(void)
 {
-	Screen = -1;
+	DeleteGraph(Screen);
 }
 
 void Window::Initialize(double Input_x,double Input_y,int Input_Width,int Input_Height,int Input_EdgeColor,int Input_PanelColor)
@@ -52,28 +53,36 @@ void Window::Draw(void)
 
 void Window::DrawStringInWindow(int Input_x,int Input_y,int Input_Pos,string Input_String,int FontData,int Color)
 {
-	int Graph;
-	int Draw_x = Input_x;
-	int Draw_y = Input_y;
-	int DrawWidth = GetDrawStringWidthToHandle(Input_String.c_str(),Input_String.size(),FontData);
-	int Size;
-	float Ext = 1.0f;
-	if(Input_Pos == DrawString_Center)Draw_x -= DrawWidth/2;
-	else if(Input_Pos == DrawString_Right)Draw_x -= DrawWidth;
-	GetFontStateToHandle(0,&Size,0,FontData);
-	Graph = MakeScreen(DrawWidth,Size*2,true);
-	SetDrawScreen(Graph);
-	DrawStringToHandle(0,0,Input_String.c_str(),Color,FontData);
-
-	if(DrawWidth + Draw_x >= Width)
+	vector<string> Strs = split(Input_String,"\n");
+	int Height;
+	GetFontStateToHandle(NULL,&Height,NULL,FontData);
+	Height *= 1.4;
+	int Length = Strs.size();
+	int Draw_y = Input_y-Height;
+	for(int i=0;i<Length;i++)
 	{
-		Ext = (float)Width / (float)(DrawWidth  + Draw_x) - 0.01f;
+		int Graph;
+		int Draw_x = Input_x;
+		Draw_y += Height;
+		int DrawWidth = GetDrawStringWidthToHandle(Strs[i].c_str(),Strs[i].size(),FontData);
+		int Size;
+		float Ext = 1.0f;
+		if(Input_Pos == DrawString_Center)Draw_x -= DrawWidth/2;
+		else if(Input_Pos == DrawString_Right)Draw_x -= DrawWidth;
+		GetFontStateToHandle(0,&Size,0,FontData);
+		Graph = MakeScreen(DrawWidth,Size*2,true);
+		SetDrawScreen(Graph);
+		DrawStringToHandle(0,0,Strs[i].c_str(),Color,FontData);
+
+		if(DrawWidth + Draw_x >= Width)
+		{
+			Ext = (float)Width / (float)(DrawWidth  + Draw_x) - 0.01f;
+		}
+
+		SetDrawScreen(Screen);
+		DrawRotaGraph2(Draw_x,Draw_y,0,0,Ext,0.f,Graph,true);
+		DeleteGraph(Graph);
 	}
-
-	SetDrawScreen(Screen);
-	DrawRotaGraph2(Draw_x,Draw_y,0,0,Ext,0.f,Graph,true);
-	DeleteGraph(Graph);
-
 	SetDrawScreen(DX_SCREEN_BACK);
 }
 
