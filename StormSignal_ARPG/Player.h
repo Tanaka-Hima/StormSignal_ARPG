@@ -20,6 +20,8 @@ private:
 	Window InfoPanel;
 	int Equipments[3];
 	POINT SkillCursorPoint;
+	POINT ChangeSkillPoint;
+	bool SkillChangeFlag;
 
 	int FontSmall,FontMiddle,FontBig;
 public:

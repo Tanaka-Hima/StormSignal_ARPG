@@ -48,4 +48,14 @@ vector<string> GetFolderList(string folder);
  */
 void strReplace (std::string& str, const std::string& from, const std::string& to);
 
+template
+<   
+    typename TYPE,
+    size_t SIZE
+>
+size_t GetArrayLength(const TYPE (&)[SIZE])
+{   
+    return SIZE;
+}
+
 #endif

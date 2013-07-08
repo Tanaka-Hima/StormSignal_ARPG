@@ -1,12 +1,43 @@
 ﻿#include "Character.h"
 #include "HitBox.h"
 #include "ConstantValue.h"
+#include "Functions.h"
 #include <DxLib.h>
 
 vector<Character*> Character::CharacterList;
 vector<HitBox> Character::HitBoxList;
 vector<vector<int>> Character::AnimeGraphs;
 vector<vector<int>> Character::EquipmentGraphs;
+
+vector<int> GetSkillList(string EquipmentName)
+{
+	vector<int> Skills;
+	int Length = GetArrayLength(SkillValueNames);
+	for(int i=0;i<Length;i++)
+	{
+		if(SkillValueNames[i].find(EquipmentName) != string::npos)
+		{
+			Skills.push_back(i);
+		}
+	}
+	return Skills;
+}
+
+string GetEquipmentNameforSkill(int Skill)
+{
+	int Pos1,Pos2;
+	Pos1 = SkillValueNames[Skill].find("_") + 1;
+	Pos2 = SkillValueNames[Skill].rfind("_") - 1;
+	return SkillValueNames[Skill].substr(Pos1,Pos2);
+}
+
+string GetEquipmentNameforEquipment(int Equipment)
+{
+	int Pos1,Pos2;
+	Pos1 = EquipmentValueNames[Equipment].find("_") + 1;
+	Pos2 = EquipmentValueNames[Equipment].rfind("_") - 1;
+	return EquipmentValueNames[Equipment].substr(Pos1,Pos2);
+}
 
 void Character::InitChara(b2World *World,void* UserData,float Density,float Friction,int MaxHP)
 {

@@ -24,6 +24,8 @@ void Player::Initialize(b2World *World,void* UserData,float Density,float Fricti
 	}
 
 	SkillCursorPoint.x = SkillCursorPoint.y = 0;
+	ChangeSkillPoint.x = ChangeSkillPoint.y = -1;
+	SkillChangeFlag = false;
 
 	GetShape()->SetAsBox(12/2/Box_Rate,24/2/Box_Rate);
 
@@ -119,7 +121,7 @@ void Player::StepSkillWindow(void)
 {
 	if(!SkillWindow.Visible)return;
 
-	//カーソル操作
+	//操作
 	if(CheckKeyDown(KEY_INPUT_LEFT))SkillCursorPoint.x--;
 	if(CheckKeyDown(KEY_INPUT_RIGHT))SkillCursorPoint.x++;
 	if(CheckKeyDown(KEY_INPUT_UP))SkillCursorPoint.y--;
@@ -129,6 +131,27 @@ void Player::StepSkillWindow(void)
 	else if(SkillCursorPoint.x > 2)SkillCursorPoint.x = 0;
 	if(SkillCursorPoint.y < 0)SkillCursorPoint.y = 3;
 	else if(SkillCursorPoint.y > 3)SkillCursorPoint.y = 0;
+
+	if(CheckKeyDown(KEY_INPUT_RETURN))
+	{
+		static vector<int> SkillList;
+
+		if(!SkillChangeFlag)
+		{
+			SkillList = GetSkillList(GetEquipmentNameforSkill(SkillSet[SkillCursorPoint.x][SkillCursorPoint.y-1][0]));
+			ChangeSkillPoint = SkillCursorPoint;
+			SkillCursorPoint.x = 0;
+		}else
+		{
+			SkillSet[ChangeSkillPoint.x][ChangeSkillPoint.y-1][0] = 
+			SkillCursorPoint.x = ChangeSkillPoint.x;
+			SkillCursorPoint.y = ChangeSkillPoint.y;
+		}
+	
+
+		if(SkillChangeFlag)ChangeSkillPoint.x = ChangeSkillPoint.y = -1;
+		SkillChangeFlag = 1 - SkillChangeFlag;
+	}
 
 	//描画
 	SkillWindow.ReWindow();
