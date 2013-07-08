@@ -12,6 +12,7 @@ vector<vector<int>> Character::EquipmentGraphs;
 vector<int> GetSkillList(string EquipmentName)
 {
 	vector<int> Skills;
+	Skills.push_back(0);
 	int Length = GetArrayLength(SkillValueNames);
 	for(int i=0;i<Length;i++)
 	{

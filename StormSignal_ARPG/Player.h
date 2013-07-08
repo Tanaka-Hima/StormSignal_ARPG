@@ -22,6 +22,7 @@ private:
 	POINT SkillCursorPoint;
 	POINT ChangeSkillPoint;
 	bool SkillChangeFlag;
+	vector<int> EnableSkillList[3];
 
 	int FontSmall,FontMiddle,FontBig;
 public:

@@ -121,33 +121,51 @@ void Player::StepSkillWindow(void)
 {
 	if(!SkillWindow.Visible)return;
 
+	for(int i=0;i<3;i++)
+	{//装備中武器に合わせたスキルセットを取得
+		EnableSkillList[i] = GetSkillList(GetEquipmentNameforSkill(Equipments[i]));
+	}
+
 	//操作
-	if(CheckKeyDown(KEY_INPUT_LEFT))SkillCursorPoint.x--;
-	if(CheckKeyDown(KEY_INPUT_RIGHT))SkillCursorPoint.x++;
-	if(CheckKeyDown(KEY_INPUT_UP))SkillCursorPoint.y--;
-	if(CheckKeyDown(KEY_INPUT_DOWN))SkillCursorPoint.y++;
+	if(!SkillChangeFlag)
+	{
+		if(CheckKeyDown(KEY_INPUT_LEFT))SkillCursorPoint.x--;
+		if(CheckKeyDown(KEY_INPUT_RIGHT))SkillCursorPoint.x++;
+		if(CheckKeyDown(KEY_INPUT_UP))SkillCursorPoint.y--;
+		if(CheckKeyDown(KEY_INPUT_DOWN))SkillCursorPoint.y++;
 	
-	if(SkillCursorPoint.x < 0)SkillCursorPoint.x = 2;
-	else if(SkillCursorPoint.x > 2)SkillCursorPoint.x = 0;
-	if(SkillCursorPoint.y < 0)SkillCursorPoint.y = 3;
-	else if(SkillCursorPoint.y > 3)SkillCursorPoint.y = 0;
+		if(SkillCursorPoint.x < 0)SkillCursorPoint.x = 2;
+		else if(SkillCursorPoint.x > 2)SkillCursorPoint.x = 0;
+		if(SkillCursorPoint.y < 0)SkillCursorPoint.y = 3;
+		else if(SkillCursorPoint.y > 3)SkillCursorPoint.y = 0;
+	}else
+	{
+		if(CheckKeyDown(KEY_INPUT_LEFT))ChangeSkillPoint.x--;
+		if(CheckKeyDown(KEY_INPUT_RIGHT))ChangeSkillPoint.x++;
+		if(CheckKeyDown(KEY_INPUT_UP))ChangeSkillPoint.y--;
+		if(CheckKeyDown(KEY_INPUT_DOWN))ChangeSkillPoint.y++;
+
+		if(ChangeSkillPoint.x < 0)ChangeSkillPoint.x = 4;
+		else if(ChangeSkillPoint.x > 4)ChangeSkillPoint.x = 0;
+		if(SkillCursorPoint.y != 0)
+		{
+			if(ChangeSkillPoint.y < 1)ChangeSkillPoint.y = 3;
+			else if(ChangeSkillPoint.y > 3)ChangeSkillPoint.y = 1;
+		}
+	}
 
 	if(CheckKeyDown(KEY_INPUT_RETURN))
 	{
-		static vector<int> SkillList;
-
 		if(!SkillChangeFlag)
 		{
-			SkillList = GetSkillList(GetEquipmentNameforSkill(SkillSet[SkillCursorPoint.x][SkillCursorPoint.y-1][0]));
-			ChangeSkillPoint = SkillCursorPoint;
-			SkillCursorPoint.x = 0;
+			ChangeSkillPoint.x = 0;
+			ChangeSkillPoint.y = SkillCursorPoint.y;
 		}else
 		{
-			SkillSet[ChangeSkillPoint.x][ChangeSkillPoint.y-1][0] = 
-			SkillCursorPoint.x = ChangeSkillPoint.x;
-			SkillCursorPoint.y = ChangeSkillPoint.y;
+			SkillSet[SkillCursorPoint.x][SkillCursorPoint.y-1][0] = EnableSkillList[ChangeSkillPoint.y-1][ChangeSkillPoint.x];
+			SkillList.clear();
 		}
-	
+		
 
 		if(SkillChangeFlag)ChangeSkillPoint.x = ChangeSkillPoint.y = -1;
 		SkillChangeFlag = 1 - SkillChangeFlag;
@@ -203,6 +221,30 @@ void Player::StepSkillWindow(void)
 				EquipmentPanels[Equipments[j]].Draw();
 			}
 			//DrawBox(15+j*70,50+i*70,15+j*70+64,50+i*70+64,Black,false);
+		}
+	}
+
+	for(int i=0;i<4;i++)
+	{
+		for(int j=0;j<5;j++)
+		{
+			int Select = 0;
+			if(ChangeSkillPoint.x == j && ChangeSkillPoint.y == i && SkillChangeFlag)Select = 10;
+			if(i>0)
+			{//スキル窓の描画
+				//DrawRotaGraph2(15+j*70+32,50+i*70+32,64,40,1,0,AnimeGraphs[SkillSet[j][i-1][0]][0],true);
+				if(EnableSkillList[i-1].size() <= j)continue;
+				SkillPanels[EnableSkillList[i-1][j]].x = 15+j*70 + SkillWindow.GetWidth()/2;
+				SkillPanels[EnableSkillList[i-1][j]].y = 50+i*70-Select;
+				SkillPanels[EnableSkillList[i-1][j]].Draw();
+			}else
+			{//装備窓の描画
+				/*
+				EquipmentPanels[Equipments[j]].x = 15+j*70 + SkillWindow.GetWidth()/2;
+				EquipmentPanels[Equipments[j]].y = 50+i*70-Select;
+				EquipmentPanels[Equipments[j]].Draw();
+				*/
+			}
 		}
 	}
 
