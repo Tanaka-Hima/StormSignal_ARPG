@@ -123,7 +123,7 @@ void Player::StepSkillWindow(void)
 
 	for(int i=0;i<3;i++)
 	{//装備中武器に合わせたスキルセットを取得
-		EnableSkillList[i] = GetSkillList(GetEquipmentNameforSkill(Equipments[i]));
+		EnableSkillList[i] = GetSkillList(GetEquipmentNameforEquipment(Equipments[i]));
 	}
 
 	//操作
@@ -162,8 +162,8 @@ void Player::StepSkillWindow(void)
 			ChangeSkillPoint.y = SkillCursorPoint.y;
 		}else
 		{
-			SkillSet[SkillCursorPoint.x][SkillCursorPoint.y-1][0] = EnableSkillList[ChangeSkillPoint.y-1][ChangeSkillPoint.x];
-			SkillList.clear();
+			if(SkillCursorPoint.y != 0)SkillSet[SkillCursorPoint.x][SkillCursorPoint.y-1][0] = EnableSkillList[ChangeSkillPoint.y-1][ChangeSkillPoint.x];
+			else Equipments[SkillCursorPoint.x] = ChangeSkillPoint.x;
 		}
 		
 
@@ -206,19 +206,37 @@ void Player::StepSkillWindow(void)
 	{
 		for(int j=0;j<3;j++)
 		{
-			int Select = 0;
-			if(SkillCursorPoint.x == j && SkillCursorPoint.y == i)Select = 10;
+			int Select1 = 0,Select2 = 0;
+			if(SkillCursorPoint.x == j && SkillCursorPoint.y == i)Select1 = 10;
+			if(ChangeSkillPoint.x == j && ChangeSkillPoint.y == i && SkillChangeFlag)Select2 = 10;
 			if(i>0)
 			{//スキル窓の描画
 				//DrawRotaGraph2(15+j*70+32,50+i*70+32,64,40,1,0,AnimeGraphs[SkillSet[j][i-1][0]][0],true);
-				SkillPanels[SkillSet[j][i-1][0]].x = 15+j*70;
-				SkillPanels[SkillSet[j][i-1][0]].y = 50+i*70-Select;
-				SkillPanels[SkillSet[j][i-1][0]].Draw();
+				if(i < 4)
+				{//使用中スキル
+					SkillPanels[SkillSet[j][i-1][0]].x = 15+j*70;
+					SkillPanels[SkillSet[j][i-1][0]].y = 50+i*70-Select1;
+					SkillPanels[SkillSet[j][i-1][0]].Draw();
+				}
+				if(EnableSkillList[i-1].size() > j)
+				{
+					SkillPanels[EnableSkillList[i-1][j]].x = 15+j*70 + SkillWindow.GetWidth()/2;
+					SkillPanels[EnableSkillList[i-1][j]].y = 50+i*70-Select2;
+					SkillPanels[EnableSkillList[i-1][j]].Draw();
+				}
 			}else
 			{//装備窓の描画
+				//使用中装備
 				EquipmentPanels[Equipments[j]].x = 15+j*70;
-				EquipmentPanels[Equipments[j]].y = 50+i*70-Select;
+				EquipmentPanels[Equipments[j]].y = 50+i*70-Select1;
 				EquipmentPanels[Equipments[j]].Draw();
+
+				if(GetArrayLength(EquipmentValueNames) > j)
+				{
+					EquipmentPanels[j].x = 15+j*70 + SkillWindow.GetWidth()/2;
+					EquipmentPanels[j].y = 50+i*70-Select2;
+					EquipmentPanels[j].Draw();
+				}
 			}
 			//DrawBox(15+j*70,50+i*70,15+j*70+64,50+i*70+64,Black,false);
 		}

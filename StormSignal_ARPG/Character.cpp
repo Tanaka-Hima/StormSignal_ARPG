@@ -16,7 +16,7 @@ vector<int> GetSkillList(string EquipmentName)
 	int Length = GetArrayLength(SkillValueNames);
 	for(int i=0;i<Length;i++)
 	{
-		if(SkillValueNames[i].find(EquipmentName) != string::npos)
+		if(SkillValueNames[i].find(EquipmentName) != string::npos && i != 0)
 		{
 			Skills.push_back(i);
 		}
@@ -37,7 +37,7 @@ string GetEquipmentNameforEquipment(int Equipment)
 	int Pos1,Pos2;
 	Pos1 = EquipmentValueNames[Equipment].find("_") + 1;
 	Pos2 = EquipmentValueNames[Equipment].rfind("_") - 1;
-	return EquipmentValueNames[Equipment].substr(Pos1,Pos2);
+	return EquipmentValueNames[Equipment].substr(Pos1,Pos2-Pos1);
 }
 
 void Character::InitChara(b2World *World,void* UserData,float Density,float Friction,int MaxHP)
