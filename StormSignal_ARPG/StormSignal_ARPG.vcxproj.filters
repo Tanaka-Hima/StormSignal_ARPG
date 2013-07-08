@@ -525,5 +525,8 @@
     <Text Include="..\構想まとめ.txt">
       <Filter>リソース ファイル</Filter>
     </Text>
+    <Text Include="..\妄想まとめ.txt">
+      <Filter>リソース ファイル</Filter>
+    </Text>
   </ItemGroup>
 </Project>
