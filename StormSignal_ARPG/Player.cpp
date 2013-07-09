@@ -42,7 +42,8 @@ void Player::Initialize(b2World *World,void* UserData,float Density,float Fricti
 	//スキル設定ウィンドウ作成
 	SkillWindow.Initialize(25,25,Screen_Width-50,Screen_Height-50,Black,LightBlack);
 	SkillWindow.Visible = false;
-	InfoPanel.Initialize(15,330,256,60,Black,LightBlack);
+	InfoPanel.Initialize(15,330,300,60,Black,LightBlack);
+	InfoPanel2.Initialize(SkillWindow.GetWidth()/2,330,300,60,Black,LightBlack);
 
 	int Length = AnimeGraphs.size();
 	for(int i=0;i<Length;i++)
@@ -142,15 +143,24 @@ void Player::StepSkillWindow(void)
 	{
 		if(CheckKeyDown(KEY_INPUT_LEFT))ChangeSkillPoint.x--;
 		if(CheckKeyDown(KEY_INPUT_RIGHT))ChangeSkillPoint.x++;
-		if(CheckKeyDown(KEY_INPUT_UP))ChangeSkillPoint.y--;
-		if(CheckKeyDown(KEY_INPUT_DOWN))ChangeSkillPoint.y++;
 
-		if(ChangeSkillPoint.x < 0)ChangeSkillPoint.x = 4;
-		else if(ChangeSkillPoint.x > 4)ChangeSkillPoint.x = 0;
 		if(SkillCursorPoint.y != 0)
 		{
+			if(CheckKeyDown(KEY_INPUT_UP))ChangeSkillPoint.y--;
+			if(CheckKeyDown(KEY_INPUT_DOWN))ChangeSkillPoint.y++;
+
+			int Length = EnableSkillList[ChangeSkillPoint.y-1].size()-1;
+
+			if(Length < ChangeSkillPoint.x)ChangeSkillPoint.x = 0;
+			else if(0 > ChangeSkillPoint.x)ChangeSkillPoint.x = Length;
+
 			if(ChangeSkillPoint.y < 1)ChangeSkillPoint.y = 3;
 			else if(ChangeSkillPoint.y > 3)ChangeSkillPoint.y = 1;
+		}else
+		{
+			int Length = GetArrayLength(EquipmentNames)-1;
+			if(ChangeSkillPoint.x < 0)ChangeSkillPoint.x = Length;
+			else if(ChangeSkillPoint.x > Length)ChangeSkillPoint.x = 0;
 		}
 	}
 
@@ -164,8 +174,54 @@ void Player::StepSkillWindow(void)
 		{
 			if(SkillCursorPoint.y != 0)SkillSet[SkillCursorPoint.x][SkillCursorPoint.y-1][0] = EnableSkillList[ChangeSkillPoint.y-1][ChangeSkillPoint.x];
 			else Equipments[SkillCursorPoint.x] = ChangeSkillPoint.x;
+
+			for(int i=0;i<3;i++)
+			{//装備中武器に合わせたスキルセットを取得
+				EnableSkillList[i] = GetSkillList(GetEquipmentNameforEquipment(Equipments[i]));
+			}
+
+			#pragma region 使用できないスキルを検索し、無効にする
+			vector<POINT> Points;
+
+			int Skill[3][3];
+			for(int i=0;i<3;i++)
+			{
+				for(int j=0;j<3;j++)
+				{
+					Skill[i][j] = 0;
+				}
+			}
+			
+			for(int i=0;i<3;i++)
+			{
+				int Length = EnableSkillList[i].size();
+				for(int j=0;j<Length;j++)
+				{
+					for(int x=0;x<3;x++)
+					{
+						for(int y=0;y<3;y++)
+						{
+							if(SkillSet[x][y][0] == EnableSkillList[i][j])
+							{
+								Skill[x][y] = 1;
+							}
+						}
+					}
+				}
+			}
+
+			for(int i=0;i<3;i++)
+			{
+				for(int j=0;j<3;j++)
+				{
+					if(!Skill[i][j])
+					{
+						SkillSet[i][j][0] = 0;
+					}
+				}
+			}
+			#pragma endregion
 		}
-		
 
 		if(SkillChangeFlag)ChangeSkillPoint.x = ChangeSkillPoint.y = -1;
 		SkillChangeFlag = 1 - SkillChangeFlag;
@@ -175,7 +231,7 @@ void Player::StepSkillWindow(void)
 	SkillWindow.ReWindow();
 	SkillWindow.SetDrawThisWindow();
 
-	DrawBox(15,10,110,35,Black,false);
+	//DrawBox(15,10,110,35,Black,false);
 	
 	//パネルの制作
 	int Length = AnimeGraphs.size();
@@ -267,6 +323,7 @@ void Player::StepSkillWindow(void)
 	}
 
 	InfoPanel.ReWindow();
+	InfoPanel2.ReWindow();
 
 	string StrInfo;
 	if(SkillCursorPoint.y != 0)StrInfo = SkillInfo[SkillSet[SkillCursorPoint.x][SkillCursorPoint.y-1][0]];
@@ -274,6 +331,17 @@ void Player::StepSkillWindow(void)
 	InfoPanel.DrawStringInWindow(5,5,DrawString_Left,StrInfo,FontSmall,White);
 	SkillWindow.SetDrawThisWindow();
 	InfoPanel.Draw();
+
+	StrInfo = "";
+	if(SkillChangeFlag)
+	{
+		if(SkillCursorPoint.y != 0)StrInfo = SkillInfo[EnableSkillList[ChangeSkillPoint.y-1][ChangeSkillPoint.x]];
+		else StrInfo = EquipmentInfo[ChangeSkillPoint.x];
+		InfoPanel2.DrawStringInWindow(5,5,DrawString_Left,StrInfo,FontSmall,White);
+	}
+	SkillWindow.SetDrawThisWindow();
+	InfoPanel2.Draw();
+
 	SetDrawScreen(DX_SCREEN_BACK);
 	SkillWindow.Draw();
 }

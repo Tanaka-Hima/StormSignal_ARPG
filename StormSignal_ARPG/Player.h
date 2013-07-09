@@ -17,7 +17,7 @@ private:
 	vector<Image_2D> SkillImages;
 	vector<Window> EquipmentPanels;
 	vector<Image_2D> EquipmentImages;
-	Window InfoPanel;
+	Window InfoPanel,InfoPanel2;
 	int Equipments[3];
 	POINT SkillCursorPoint;
 	POINT ChangeSkillPoint;
