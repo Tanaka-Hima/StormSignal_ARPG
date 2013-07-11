@@ -92,6 +92,7 @@
     <ClCompile Include="HitBox.cpp" />
     <ClCompile Include="Image_2D.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Map.cpp" />
     <ClCompile Include="Physics2DImage.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Window.cpp" />
@@ -104,6 +105,7 @@
     <ClInclude Include="Functions.h" />
     <ClInclude Include="HitBox.h" />
     <ClInclude Include="Image_2D.h" />
+    <ClInclude Include="Map.h" />
     <ClInclude Include="Physics2DImage.h" />
     <ClInclude Include="Character.h" />
     <ClInclude Include="Player.h" />
@@ -244,6 +246,8 @@
     <Image Include="Image\Equipment\None.png" />
     <Image Include="Image\Equipment\Sword\Flame_0.png" />
     <Image Include="Image\Equipment\Sword\Normal_0.png" />
+    <Image Include="Image\Map\1.png" />
+    <Image Include="Image\Map\2.png" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\妄想まとめ.txt" />

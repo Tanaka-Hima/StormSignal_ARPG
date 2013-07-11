@@ -49,6 +49,9 @@
     <Filter Include="リソース ファイル\Image\Chara\Sword">
       <UniqueIdentifier>{3e12621e-0260-477c-b4b1-fbba601eec84}</UniqueIdentifier>
     </Filter>
+    <Filter Include="リソース ファイル\Image\Map">
+      <UniqueIdentifier>{3014a719-95bd-4324-b5db-6f4d3479c04b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -79,6 +82,9 @@
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="Character.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
@@ -114,6 +120,9 @@
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Window.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
@@ -519,6 +528,12 @@
     </Image>
     <Image Include="Image\Equipment\Sword\Normal_0.png">
       <Filter>リソース ファイル\Image\Chara\Sword</Filter>
+    </Image>
+    <Image Include="Image\Map\1.png">
+      <Filter>リソース ファイル\Image\Map</Filter>
+    </Image>
+    <Image Include="Image\Map\2.png">
+      <Filter>リソース ファイル\Image\Map</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>

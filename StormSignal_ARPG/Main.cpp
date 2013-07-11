@@ -12,6 +12,7 @@ using namespace std;
 #include "Font.h"
 #include "Player.h"
 #include "Enemy.h"
+#include "Map.h"
 
 int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 						 LPSTR lpCmdLine, int nCmdShow )
@@ -59,14 +60,6 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	World.SetDebugDraw(&DebugDraw);
 
 	//地面
-	b2BodyDef GroundBodyDef;
-	GroundBodyDef.position.Set(96.f,Screen_Height/Box_Rate);
-	b2Body* GroundBody = World.CreateBody(&GroundBodyDef);
-	GroundBody->SetUserData("Ground");
-	b2PolygonShape GroundBox;
-	GroundBox.SetAsBox(96.f,1.5f);
-	GroundBody->CreateFixture(&GroundBox,0.f);
-
 	Player Player;
 	Player.Load("Image/Chara/None.png");
 	Player.Initialize(&World,"Player",1,1,100);
@@ -79,6 +72,10 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
 	int Scene = TrainingMode;
 
+	Map Map;
+	Map.Initialize();
+	Map.LoadMapData("Map/Training.txt");
+	Map.CreateMap(&World);
 
 	//メインループ
 	while( ProcessMessage() == 0)
@@ -130,6 +127,8 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 				#pragma region トレーニングモード
 
 				Fonts.DrawString(Screen_Width / 2,100,5,1,"TRAINING","Font/Big_Red",DrawString_Center);
+
+				Map.Draw();
 
 				Player.Ctrl();
 				Player.Step();
