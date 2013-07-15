@@ -52,6 +52,9 @@
     <Filter Include="リソース ファイル\Image\Map">
       <UniqueIdentifier>{3014a719-95bd-4324-b5db-6f4d3479c04b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="リソース ファイル\Map">
+      <UniqueIdentifier>{f4745574-285a-4b02-bfd6-b24d988df1e4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -542,6 +545,9 @@
     </Text>
     <Text Include="..\妄想まとめ.txt">
       <Filter>リソース ファイル</Filter>
+    </Text>
+    <Text Include="Map\Training.txt">
+      <Filter>リソース ファイル\Map</Filter>
     </Text>
   </ItemGroup>
 </Project>
