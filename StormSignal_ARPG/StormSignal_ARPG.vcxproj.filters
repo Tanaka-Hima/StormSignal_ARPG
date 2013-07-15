@@ -34,26 +34,23 @@
     <Filter Include="リソース ファイル\Image">
       <UniqueIdentifier>{e402f36b-f099-45af-a633-f9f25f46e4e5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="リソース ファイル\Image\Skill">
-      <UniqueIdentifier>{a8431409-7f67-49eb-96a3-92bfc1ffdcee}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="リソース ファイル\Image\Skill\Sword">
-      <UniqueIdentifier>{5d80ebdd-234f-45e9-8047-e33a4469b634}</UniqueIdentifier>
-    </Filter>
     <Filter Include="リソース ファイル\Image\Equipment">
       <UniqueIdentifier>{ca6eddf9-fbfb-4413-a3de-beb02c9594ed}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="リソース ファイル\Image\Chara">
-      <UniqueIdentifier>{daaab896-1919-498c-b4ff-e0d2590c03b9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="リソース ファイル\Image\Chara\Sword">
-      <UniqueIdentifier>{3e12621e-0260-477c-b4b1-fbba601eec84}</UniqueIdentifier>
     </Filter>
     <Filter Include="リソース ファイル\Image\Map">
       <UniqueIdentifier>{3014a719-95bd-4324-b5db-6f4d3479c04b}</UniqueIdentifier>
     </Filter>
     <Filter Include="リソース ファイル\Map">
       <UniqueIdentifier>{f4745574-285a-4b02-bfd6-b24d988df1e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\Image\Skill">
+      <UniqueIdentifier>{d3174362-cd18-4a27-8fe2-0b751689528e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\Image\Chara">
+      <UniqueIdentifier>{8ab2ca45-b779-44bb-b633-638f398ed83d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\Image\Skill\Sword">
+      <UniqueIdentifier>{6499028d-b092-48f4-8367-f40d824687e0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -505,38 +502,29 @@
     <Image Include="Font\Small_Red\A.png">
       <Filter>リソース ファイル\Font\Small_Red</Filter>
     </Image>
-    <Image Include="Image\Chara\None.png">
-      <Filter>リソース ファイル\Image\Skill</Filter>
-    </Image>
-    <Image Include="Image\Chara\Sword\Front_0.png">
-      <Filter>リソース ファイル\Image\Skill\Sword</Filter>
-    </Image>
-    <Image Include="Image\Chara\Sword\Front_1.png">
-      <Filter>リソース ファイル\Image\Skill\Sword</Filter>
-    </Image>
-    <Image Include="Image\Chara\Sword\Front_2.png">
-      <Filter>リソース ファイル\Image\Skill\Sword</Filter>
-    </Image>
-    <Image Include="Image\Chara\Sword\Front_3.png">
-      <Filter>リソース ファイル\Image\Skill\Sword</Filter>
-    </Image>
-    <Image Include="Image\Chara\Sword\None_Sword.png">
-      <Filter>リソース ファイル\Image\Skill\Sword</Filter>
-    </Image>
-    <Image Include="Image\Equipment\None.png">
-      <Filter>リソース ファイル\Image\Chara</Filter>
-    </Image>
-    <Image Include="Image\Equipment\Sword\Flame_0.png">
-      <Filter>リソース ファイル\Image\Chara\Sword</Filter>
-    </Image>
-    <Image Include="Image\Equipment\Sword\Normal_0.png">
-      <Filter>リソース ファイル\Image\Chara\Sword</Filter>
-    </Image>
     <Image Include="Image\Map\1.png">
       <Filter>リソース ファイル\Image\Map</Filter>
     </Image>
     <Image Include="Image\Map\2.png">
       <Filter>リソース ファイル\Image\Map</Filter>
+    </Image>
+    <Image Include="Image\Skill\None.png">
+      <Filter>リソース ファイル\Image\Skill</Filter>
+    </Image>
+    <Image Include="Image\Skill\Sword\Front_0.png">
+      <Filter>リソース ファイル\Image\Skill\Sword</Filter>
+    </Image>
+    <Image Include="Image\Skill\Sword\Front_1.png">
+      <Filter>リソース ファイル\Image\Skill\Sword</Filter>
+    </Image>
+    <Image Include="Image\Skill\Sword\Front_2.png">
+      <Filter>リソース ファイル\Image\Skill\Sword</Filter>
+    </Image>
+    <Image Include="Image\Skill\Sword\Front_3.png">
+      <Filter>リソース ファイル\Image\Skill\Sword</Filter>
+    </Image>
+    <Image Include="Image\Skill\Sword\None_Sword.png">
+      <Filter>リソース ファイル\Image\Skill\Sword</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>
