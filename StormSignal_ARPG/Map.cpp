@@ -5,7 +5,7 @@
 #include "Functions.h"
 #include "ConstantValue.h"
 
-void Map::Initialize(void)
+void Map::Initialize(b2World *World)
 {
 	//空欄 0
 	MapChips.push_back(-1);
@@ -15,6 +15,9 @@ void Map::Initialize(void)
 
 	//土上 2
 	MapChips.push_back(LoadGraph("Image/Map/2.png"));
+
+	PlayerData.Load("Image/Chara/None.png");
+	PlayerData.Initialize(World,"Player",1,1,100);
 
 }
 
@@ -27,16 +30,11 @@ void Map::LoadMapData(string Pass)
 		char *Data;
 		Data = (char*)malloc(Width);
 		FileRead_gets(Data,Width,LineData);
-		vector<char> DataTemp;
-		
-		for(int j=0;j<Width;j++)
-		{
-			//改行コード、null文字の削除
-			if(Data[j] == 10 || Data[j] == 0 || Data[j] == 13)continue;
-			MapData[i].push_back(Data[j]);
-		}
+
+		//改行コード、null文字の削除
+		MapData[i] = split(Data,",");
 	}
-	Width-=3;
+	Width = MapData[0].size();
 }
 
 void Map::CreateMap(b2World *World)
@@ -49,11 +47,28 @@ void Map::CreateMap(b2World *World)
 		for(int x=0;x<Width;x++)
 		{
 			if(MapData[y][x] == Mapchip_Blank)continue;
+			if(MapData[y][x] == Mapchip_Player)
+			{
+				PlayerData.GetBody()->SetTransform(b2Vec2((x*32+16)/Box_Rate,(y*32+16)/Box_Rate),0);
+				continue;
+			}
 			GroundBox.SetAsBox(16/Box_Rate,16/Box_Rate,b2Vec2((x*32+16)/Box_Rate,(y*32+16)/Box_Rate),0);
 			GroundBody->CreateFixture(&GroundBox,0.f);
 		}
 	}
 	//GroundBody->CreateFixture(&GroundBox,0.f);
+}
+
+void Map::Step(void)
+{
+	PlayerData.Ctrl();
+	PlayerData.Step();
+
+	int Length = EnemyData.size();
+	for(int i=0;i<Length;i++)
+	{
+		EnemyData[i].Step();
+	}
 }
 
 void Map::Draw(void)
@@ -69,4 +84,15 @@ void Map::Draw(void)
 			DrawGraph(x*32,y*32,Graph,true);
 		}
 	}
+
+	PlayerData.Draw(true);
+
+	int Length = EnemyData.size();
+	for(int i=0;i<Length;i++)
+	{
+		EnemyData[i].Step();
+		EnemyData[i].Draw();
+	}
+
+	PlayerData.StepSkillWindow();
 }

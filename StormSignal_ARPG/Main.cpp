@@ -59,11 +59,6 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	DebugDraw.SetFlags(0xff);
 	World.SetDebugDraw(&DebugDraw);
 
-	//地面
-	Player Player;
-	Player.Load("Image/Chara/None.png");
-	Player.Initialize(&World,"Player",1,1,100);
-
 	Enemy PunchingBag;
 	PunchingBag.Load("Font/Big_Green/A.png");
 	PunchingBag.Initialize(&World,"Enemy",1,1,100);
@@ -73,7 +68,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	int Scene = TrainingMode;
 
 	Map Map;
-	Map.Initialize();
+	Map.Initialize(&World);
 	Map.LoadMapData("Map/Training.txt");
 	Map.CreateMap(&World);
 
@@ -128,16 +123,12 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
 				Fonts.DrawString(Screen_Width / 2,100,5,1,"TRAINING","Font/Big_Red",DrawString_Center);
 
-				Map.Draw();
-
-				Player.Ctrl();
-				Player.Step();
-				Player.Draw(true);
+				Map.Step();
 
 				PunchingBag.Step();
 				PunchingBag.Draw(true);
 
-				Player.StepSkillWindow();
+				Map.Draw();
 
 				World.Step(TimeStep, VelocityIterations, PositionIterations);
 				World.DrawDebugData();

@@ -1,139 +1,143 @@
-ï»¿â—‹ãƒ¢ãƒ¼ãƒ‰
-ã€€ãƒ»Story
-ã€€ãƒ»Arcade
-ã€€ãƒ»Training
-ã€€ãƒ»Option
+›ƒ‚[ƒh
+@EStory
+@EArcade
+@ETraining
+@EOption
 
-â—‹æ“ä½œæ–¹æ³•
-ã€€ã‚«ãƒ¼ã‚½ãƒ«ã‚­ãƒ¼ - ç§»å‹•ã€ã‚¢ã‚¯ã‚·ãƒ§ãƒ³
-ã€€Enter - æ±ºå®š
-ã€€Space - ã‚¸ãƒ£ãƒ³ãƒ—
-ã€€QWEASDZXC - ã‚¹ã‚­ãƒ«
-ã€€Alt - ãƒ¡ãƒ‹ãƒ¥ãƒ¼
+›‘€ì•û–@
+@ƒJ[ƒ\ƒ‹ƒL[ - ˆÚ“®AƒAƒNƒVƒ‡ƒ“
+@Enter - Œˆ’è
+@Space - ƒWƒƒƒ“ƒv
+@QWEASDZXC - ƒXƒLƒ‹
+@Alt - ƒƒjƒ…[
 
-â—‹Option
-ã€€ãƒ»BGM
-ã€€ãƒ»SE
-ã€€ãƒ»KeyConfig
+›Option
+@EBGM
+@ESE
+@EKeyConfig
 
-â—‹ãƒžãƒƒãƒ—
-ã€€32*32ã®ãƒžãƒƒãƒ—ãƒãƒƒãƒ—ã‚’ä½¿ç”¨(ç¸¦ã«14æžš 2ãƒ‰ãƒƒãƒˆä½™ã‚‹)
-ã€€ã¾ã•ãŠã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚·ãƒ§ãƒ³ã®ã‚ˆã†ã«ã€ãƒ†ã‚­ã‚¹ãƒˆã‚¨ãƒ‡ã‚£ã‚¿ã§ãƒžãƒƒãƒ—åˆ¶ä½œã‚’è¡Œãˆã‚‹ã‚ˆã†ã«ã™ã‚‹
-ã€€
-ã€€åŸºæœ¬å‘½åæ³•å‰‡ - Mapchip_(ç¨®é¡ž)
-ã€€ãƒ»åœ°å½¢
-ã€€ã€€- "0"	ç©ºæ¬„	(Mapchip_Blank)
-ã€€ã€€- "1"	åœŸ	(Mapchip_Clay)
-ã€€ã€€- "2"	åœŸåºŠ	(Mapchip_ClayFloor)
-ã€€ã€€- "3"	æœ¨ç®±	(Mapchip_Woodbox)
-	æŠ¼ã—ãŸã‚Šã™ã‚‹ã¨å‹•ã
-ã€€ã€€- "A~Z"	ç‰¹æ®Šãƒ–ãƒ­ãƒƒã‚¯
-	ç§»å‹•åºŠ,ã‚¹ã‚¤ãƒƒãƒ,ã‚²ãƒ¼ãƒˆç­‰
-	åƒãã«ã¤ã„ã¦ã¯åˆ¥ã«å®šç¾©ã™ã‚‹
+›ƒ}ƒbƒv
+@32*32‚Ìƒ}ƒbƒvƒ`ƒbƒv‚ðŽg—p(c‚É14–‡ 2ƒhƒbƒg—]‚é)
+@‚Ü‚³‚¨ƒRƒ“ƒXƒgƒ‰ƒNƒVƒ‡ƒ“‚Ì‚æ‚¤‚ÉAƒeƒLƒXƒgƒGƒfƒBƒ^‚Åƒ}ƒbƒv§ì‚ðs‚¦‚é‚æ‚¤‚É‚·‚é
+@
+@Šî–{–½–¼–@‘¥ - Mapchip_(Ží—Þ)
+@E’nŒ` 0
+@@- "00"	‹ó—“		(Mapchip_Blank)
+@@- "01"	“y		(Mapchip_Clay)
+@@- "02"	“y°		(Mapchip_ClayFloor)
+@@- "03"	–Ø” 		(Mapchip_Woodbox)
+	‰Ÿ‚µ‚½‚è‚·‚é‚Æ“®‚­
+@E“G 1
+@@- "10" ƒTƒ“ƒhƒoƒbƒO
+	–³“GA‰½‚à‚µ‚È‚¢—ûK‘ä
 
-ã€€ãƒ»æ•µ
-ã€€ã€€- "4" ã‚µãƒ³ãƒ‰ãƒãƒƒã‚°
-	ç„¡æ•µã€ä½•ã‚‚ã—ãªã„ç·´ç¿’å°
+@E‚»‚Ì‘¼
+@@- "99"	ƒvƒŒƒCƒ„[	(Mapchip_Player)
+	ƒvƒŒƒCƒ„[‚Ì‰Šú’n“_
+@@- "AA~ZZ"	“ÁŽêƒuƒƒbƒN
+	ˆÚ“®°,ƒXƒCƒbƒ`,ƒQ[ƒg“™
+	“­‚«‚É‚Â‚¢‚Ä‚Í•Ê‚É’è‹`‚·‚é
 
-â—‹ç‰¹æ®Šãƒ–ãƒ­ãƒƒã‚¯
-ã€€æ—¢è¿°æ³•å‰‡ - å¯¾è±¡ã‚¢ãƒ«ãƒ•ã‚¡ãƒ™ãƒƒãƒˆ,å¤–è¦‹,ãƒˆãƒªã‚¬ãƒ¼,å‹•ä½œ
 
-ã€€ãƒ»å¯¾è±¡ã‚¢ãƒ«ãƒ•ã‚¡ãƒ™ãƒƒãƒˆ
-ã€€ã€€A~Zã®ã©ã‚Œã«é©å¿œã™ã‚‹ã‹ã‚’æŒ‡å®š
+›“ÁŽêƒuƒƒbƒN
+@Šùq–@‘¥ - ‘ÎÛƒAƒ‹ƒtƒ@ƒxƒbƒg,ŠOŒ©,ƒgƒŠƒK[,“®ì
 
-ã€€ãƒ»å¤–è¦‹
-ã€€ã€€ã©ã®è¦‹ãŸç›®ã«ã™ã‚‹ã‹ã‚’æŒ‡å®š
-ã€€ã€€ä¾‹ãˆã°ã€1ã‚’æŒ‡å®šã™ã‚Œã°åœŸã®è¦‹ãŸç›®ã¨ãªã‚‹
+@E‘ÎÛƒAƒ‹ƒtƒ@ƒxƒbƒg
+@@A~Z‚Ì‚Ç‚ê‚É“K‰ž‚·‚é‚©‚ðŽw’è
 
-ã€€ãƒ»ãƒˆãƒªã‚¬ãƒ¼
-ã€€ã€€å¯¾è±¡ã«ä½•ãŒèµ·ããŸã‚‰å‹•ä½œã‚’ã™ã‚‹ã‹æŒ‡å®š
-ã€€ã€€- Touch
-	å¯¾è±¡ã«è§¦ã‚Œã‚‹ã¨èµ·å‹•
-ã€€ã€€- Flag
-	ä»–å¯¾è±¡ã‹ã‚‰ãƒ•ãƒ©ã‚°ã‚’ç«‹ã¦ã‚‰ã‚Œã‚‹ã¨èµ·å‹•
-ã€€ã€€- Repeat|Wait(ms)
-	æœ€åˆã‹ã‚‰èµ·å‹•ã—ã¦ãŠã‚Šã€å‹•ä½œãŒçµ‚ã‚ã‚‹ã¨åå¯¾ã®å‹•ä½œã‚’å§‹ã‚ã‚‹
-	å‹•ä½œå‰ã«ã¯Waitåˆ†å¾…ã¤
+@EŠOŒ©
+@@‚Ç‚ÌŒ©‚½–Ú‚É‚·‚é‚©‚ðŽw’è
+@@—á‚¦‚ÎA1‚ðŽw’è‚·‚ê‚Î“y‚ÌŒ©‚½–Ú‚Æ‚È‚é
 
-ã€€ãƒ»å‹•ä½œ
-ã€€ã€€ãƒˆãƒªã‚¬ãƒ¼ãŒå¼•ã‹ã‚ŒãŸæ™‚ã€ä½•ã‚’è¡Œã†ã‹æŒ‡å®š
-ã€€ã€€- Flag|Target(A~Z)
-	Targetã®ãƒ•ãƒ©ã‚°ã‚’ç«‹ã¦ã‚‹
-ã€€ã€€- Move|x/ms|y/ms|msec
-	è‡ªåˆ†ã‚’msecåˆ†ç§»å‹•ã•ã›ã‚‹
-ã€€ã€€- Delete
-	è‡ªåˆ†ã‚’ãƒžãƒƒãƒ—ã‹ã‚‰å‰Šé™¤ã™ã‚‹
-ã€€ã€€- Redraw|Number
-	è‡ªåˆ†ã®è¦‹ãŸç›®ã‚’Numberã¸å¤‰æ›´ã™ã‚‹
-ã€€ã€€- Sound|FileName
-	æŒ‡å®šã‚µã‚¦ãƒ³ãƒ‰ã‚’é³´ã‚‰ã™
+@EƒgƒŠƒK[
+@@‘ÎÛ‚É‰½‚ª‹N‚«‚½‚ç“®ì‚ð‚·‚é‚©Žw’è
+@@- Touch
+	‘ÎÛ‚ÉG‚ê‚é‚Æ‹N“®
+@@- Flag
+	‘¼‘ÎÛ‚©‚çƒtƒ‰ƒO‚ð—§‚Ä‚ç‚ê‚é‚Æ‹N“®
+@@- Repeat|Wait(ms)
+	Å‰‚©‚ç‹N“®‚µ‚Ä‚¨‚èA“®ì‚ªI‚í‚é‚Æ”½‘Î‚Ì“®ì‚ðŽn‚ß‚é
+	“®ì‘O‚É‚ÍWait•ª‘Ò‚Â
 
-â—‹è£…å‚™
-ã€€è£…å‚™æ¬„ã‚’3ã¤ç”¨æ„ã—ã€ãã“ã¸ã¯ã‚ã‚‹
-ã€€ã‚¹ã‚­ãƒ«ã¯è£…å‚™ã—ãŸæ­¦å™¨ã«é–¢é€£ã™ã‚‹ã‚‚ã®ã—ã‹ä½¿ç”¨ã§ããªã„
-ã€€è£…å‚™ãŒ"å‰£ã€ãƒãƒ³ãƒ‰ã‚¬ãƒ³ã€ç›¾"ã ã¨ã™ã‚‹ã¨ã€æ§ã‚„æ–§ãªã©ã‚’ä½¿ç”¨ã™ã‚‹ã‚¹ã‚­ãƒ«ã¯ä½¿ç”¨ä¸èƒ½
+@E“®ì
+@@ƒgƒŠƒK[‚ªˆø‚©‚ê‚½ŽžA‰½‚ðs‚¤‚©Žw’è
+@@- Flag|Target(A~Z)
+	Target‚Ìƒtƒ‰ƒO‚ð—§‚Ä‚é
+@@- Move|x/ms|y/ms|msec
+	Ž©•ª‚ðmsec•ªˆÚ“®‚³‚¹‚é
+@@- Delete
+	Ž©•ª‚ðƒ}ƒbƒv‚©‚çíœ‚·‚é
+@@- Redraw|Number
+	Ž©•ª‚ÌŒ©‚½–Ú‚ðNumber‚Ö•ÏX‚·‚é
+@@- Sound|FileName
+	Žw’èƒTƒEƒ“ƒh‚ð–Â‚ç‚·
 
-â—‹ã‚¹ã‚­ãƒ«ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦(750,400)
+›‘•”õ
+@‘•”õ—“‚ð3‚Â—pˆÓ‚µA‚»‚±‚Ö‚Í‚ß‚é
+@ƒXƒLƒ‹‚Í‘•”õ‚µ‚½•Ší‚ÉŠÖ˜A‚·‚é‚à‚Ì‚µ‚©Žg—p‚Å‚«‚È‚¢
+@‘•”õ‚ª"Œ•Aƒnƒ“ƒhƒKƒ“A‚"‚¾‚Æ‚·‚é‚ÆA‘„‚â•€‚È‚Ç‚ðŽg—p‚·‚éƒXƒLƒ‹‚ÍŽg—p•s”\
+
+›ƒXƒLƒ‹ƒEƒBƒ“ƒhƒE(750,400)
 --------------------------------------
-ã€€ã‚¹ã‚­ãƒ«ã€è£…å‚™ã‚¿ãƒ–(3*1)	
+@ƒXƒLƒ‹A‘•”õƒ^ƒu(3*1)	
 
-ã€€è£…å‚™çª“(3*1)		â†è£…å‚™ä¸€è¦§â†’
+@‘•”õ‘‹(3*1)		©‘•”õˆê——¨
 
-ã€€ã‚¹ã‚­ãƒ«çª“(3*3)		â†â‘ ã‚¹ã‚­ãƒ«ä¸€è¦§(5*3)â†’
-ã€€ã‚¹ã‚­ãƒ«çª“		â†â‘¡ã‚¹ã‚­ãƒ«ä¸€è¦§â†’
-ã€€ã‚¹ã‚­ãƒ«çª“		â†â‘¢ã‚¹ã‚­ãƒ«ä¸€è¦§â†’
+@ƒXƒLƒ‹‘‹(3*3)		©‡@ƒXƒLƒ‹ˆê——(5*3)¨
+@ƒXƒLƒ‹‘‹		©‡AƒXƒLƒ‹ˆê——¨
+@ƒXƒLƒ‹‘‹		©‡BƒXƒLƒ‹ˆê——¨
 
-	é¸æŠžã‚¹ã‚­ãƒ«ã€ã€€è£…å‚™èª¬æ˜Ž(2*2)
-	é¸æŠžã‚¹ã‚­ãƒ«ã€ã€€è£…å‚™èª¬æ˜Ž
+	‘I‘ðƒXƒLƒ‹A@‘•”õà–¾(2*2)
+	‘I‘ðƒXƒLƒ‹A@‘•”õà–¾
 ---------------------------------------
-ã€€è£…å‚™çª“ã«è£…å‚™ã—ãŸã‚‚ã®ã«å¯¾å¿œã™ã‚‹ã‚¹ã‚­ãƒ«ã‚’ä¸€è¦§ã¸è¡¨ç¤º
-ã€€ä¸€åº¦è¨­å®šã—ãŸè£…å‚™ã¯ä¿å­˜ã•ã‚Œã€ã‚¿ãƒ–åˆ‡ã‚Šæ›¿ãˆã§å‘¼ã³å‡ºã—ãŒå¯èƒ½
+@‘•”õ‘‹‚É‘•”õ‚µ‚½‚à‚Ì‚É‘Î‰ž‚·‚éƒXƒLƒ‹‚ðˆê——‚Ö•\Ž¦
+@ˆê“xÝ’è‚µ‚½‘•”õ‚Í•Û‘¶‚³‚êAƒ^ƒuØ‚è‘Ö‚¦‚ÅŒÄ‚Ño‚µ‚ª‰Â”\
 
-â—‹è£…å‚™
-ã€€åŸºæœ¬å‘½åæ³•å‰‡ - Equipment_(è£…å‚™å)_(ç¨®é¡ž)
+›‘•”õ
+@Šî–{–½–¼–@‘¥ - Equipment_(‘•”õ–¼)_(Ží—Þ)
 
-ã€€ãƒ»å‰£
-ã€€ã€€- é€šå¸¸å‰£	(Equipment_Sword_Normal)
-ã€€ã€€- ç‚Žå‰£	(Equipment_Sword_Flame)
-ã€€ã€€- æ°·å‰£	(Equipment_Sword_Ice)
-ã€€ã€€- é›·å‰£	(Equipment_Sword_Thunder)
+@EŒ•
+@@- ’ÊíŒ•	(Equipment_Sword_Normal)
+@@- ‰ŠŒ•	(Equipment_Sword_Flame)
+@@- •XŒ•	(Equipment_Sword_Ice)
+@@- —‹Œ•	(Equipment_Sword_Thunder)
 
-ã€€ãƒ»ãã®ä»–
-ã€€ã€€- ç©ºæ¬„	(Equipment_None_None)
+@E‚»‚Ì‘¼
+@@- ‹ó—“	(Equipment_None_None)
 
-â—‹ã‚¹ã‚­ãƒ«
-ã€€åŸºæœ¬å‘½åæ³•å‰‡ - Skill_(ã‚¹ã‚­ãƒ«å)_(è¡Œå‹•)
-ã€€{ç¨®é¡ž,ãƒ¬ãƒ™ãƒ«,çµŒé¨“å€¤,CD}
+›ƒXƒLƒ‹
+@Šî–{–½–¼–@‘¥ - Skill_(ƒXƒLƒ‹–¼)_(s“®)
+@{Ží—Þ,ƒŒƒxƒ‹,ŒoŒ±’l,CD}
 
-ã€€ãƒ»åœ°ä¸Šå‰£
-ã€€ã€€- å‰æ–¹ã¸å‰£ã‚’æŒ¯ã‚Šä¸‹ã‚ã™	(Skill_Sword_Front)
-ã€€ã€€- å‰æ–¹ã¸å¹ãé£›ã°ã—æ”»æ’ƒ	(Skill_Sword_Smash)
-ã€€ã€€- å‰æ–¹ã¸è¡æ’ƒæ³¢		(Skill_Sword_Shockwave)
-ã€€ã€€- å‰æ–¹ã¸ã‚¹ãƒ†ãƒƒãƒ—->æ”»æ’ƒ	(Skill_Sword_Step)
-ã€€ã€€- æ‰“ã¡ä¸Šã’			(Skill_Sword_Knockup)
-ã€€ãƒ»ç©ºä¸­å‰£
-ã€€ã€€- å‰£ã‚’å›žè»¢ã•ã›ã‚‹
-ã€€ã€€- ä¸Šã‚’çªã
-ã€€ã€€- ä¸Šã‚’ãªãŽæ‰•ã†
-ã€€ã€€- ä¸‹ã‚’çªã
-ã€€ã€€- ä¸‹ã‚’ãªãŽæ‰•ã†
-ã€€ã€€- ä¸‹ã¸è½ã¡ã¤ã¤å©ãã¤ã‘ã‚‹
-ã€€ãƒ»éŠƒå™¨
-ã€€ã€€- è£…å‚™ã—ã¦ã„ã‚‹éŠƒå™¨ã‚’æ‰“ã¤
-ã€€ã€€ã€€ã€€ã‚«ãƒ¼ã‚½ãƒ«ã‚­ãƒ¼ã§æ’ƒã¡åˆ†ã‘å¯èƒ½
-ã€€ãƒ»å¿…æ®º
+@E’nãŒ•
+@@- ‘O•û‚ÖŒ•‚ðU‚è‰º‚ë‚·	(Skill_Sword_Front)
+@@- ‘O•û‚Ö‚«”ò‚Î‚µUŒ‚	(Skill_Sword_Smash)
+@@- ‘O•û‚ÖÕŒ‚”g		(Skill_Sword_Shockwave)
+@@- ‘O•û‚ÖƒXƒeƒbƒv->UŒ‚	(Skill_Sword_Step)
+@@- ‘Å‚¿ã‚°			(Skill_Sword_Knockup)
+@E‹ó’†Œ•
+@@- Œ•‚ð‰ñ“]‚³‚¹‚é
+@@- ã‚ð“Ë‚­
+@@- ã‚ð‚È‚¬•¥‚¤
+@@- ‰º‚ð“Ë‚­
+@@- ‰º‚ð‚È‚¬•¥‚¤
+@@- ‰º‚Ö—Ž‚¿‚Â‚Â’@‚«‚Â‚¯‚é
+@EeŠí
+@@- ‘•”õ‚µ‚Ä‚¢‚éeŠí‚ð‘Å‚Â
+@@@@ƒJ[ƒ\ƒ‹ƒL[‚ÅŒ‚‚¿•ª‚¯‰Â”\
+@E•KŽE
 
-ã€€ãƒ»è‡ªå·±å¼·åŒ–
+@EŽ©ŒÈ‹­‰»
 
-ã€€ãƒ»è¡Œå‹•
-ã€€ã€€- ãƒ•ãƒ­ãƒ³ãƒˆã‚¹ãƒ†ãƒƒãƒ—	(Skill_None_Frontstep)
-ã€€ã€€- ãƒãƒƒã‚¯ã‚¹ãƒ†ãƒƒãƒ—	(Skill_None_Backstep)
-ã€€ã€€- å½“èº«		(Skill_None_Counter)
+@Es“®
+@@- ƒtƒƒ“ƒgƒXƒeƒbƒv	(Skill_None_Frontstep)
+@@- ƒoƒbƒNƒXƒeƒbƒv	(Skill_None_Backstep)
+@@- “–g		(Skill_None_Counter)
 
-ã€€ãƒ»ãã®ä»–
-ã€€ã€€- ç©ºæ¬„(Skill_None_None)
+@E‚»‚Ì‘¼
+@@- ‹ó—“(Skill_None_None)
 
-ã€€â—‹ã‚¢ã‚¤ãƒ†ãƒ 
-	åŸºæœ¬å‘½ä»¤æ³•å‰‡ - Item_(ã‚¢ã‚¤ãƒ†ãƒ å)
-	ãƒ»HPç³»
-	ãƒ»è£œåŠ©åŠ¹æžœç³»
+@›ƒAƒCƒeƒ€
+	Šî–{–½—ß–@‘¥ - Item_(ƒAƒCƒeƒ€–¼)
+	EHPŒn
+	E•â•Œø‰ÊŒn
