@@ -98,10 +98,9 @@ void Player::Ctrl(void)
 		}
 	}
 
-	//スキル使用中は移動できない
-	if(State != Skill_None_None)return;
-
+	//スキル使用中、もしくは空中では移動できない
 	b2Vec2 Vect = GetBody()->GetLinearVelocity();
+	if(State != Skill_None_None || fabs(Vect.y) > 0.01f)return;
 
 	//移動関連
 	if(CheckHitKey(KEY_INPUT_LEFT))
@@ -114,7 +113,7 @@ void Player::Ctrl(void)
 		Vect.x = MoveSpeed;
 		Direction = 1;
 	}
-	if(CheckKeyDown(KEY_INPUT_SPACE))Vect.y = -MoveSpeed*2;
+	if(CheckKeyDown(KEY_INPUT_SPACE))Vect.y = -MoveSpeed*2.5;
 	GetBody()->SetLinearVelocity(Vect);
 }
 
