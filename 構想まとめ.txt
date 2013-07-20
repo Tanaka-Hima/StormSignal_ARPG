@@ -27,6 +27,8 @@
 　　- "02"	土床		(Mapchip_ClayFloor)
 　　- "03"	木箱		(Mapchip_Woodbox)
 	押したりすると動く
+　　- "04"	スイッチ1(off)	(Mapchip_Switch1)
+　　- "05"	スイッチ2(on)	(Mapchip_Switch2)
 　・敵 1
 　　- "10" サンドバッグ		(Mapchip_TrainingBag)
 	無敵、何もしない練習台
@@ -51,8 +53,10 @@
 
 　・トリガー
 　　対象に何が起きたら動作をするか指定
+　　- Hit
+	対象に触れた瞬間のみ起動
 　　- Touch
-	対象に触れると起動
+	対象に触れている間常に起動
 　　- Flag
 	他対象からフラグを立てられると起動
 　　- Repeat|Wait(ms)

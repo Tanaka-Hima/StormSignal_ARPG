@@ -55,10 +55,10 @@ void Map::CreateMap(b2World *World)
 			if(MapData[y][x] == Mapchip_TrainingBag)
 			{
 				Enemy EnemyTemp;
-				EnemyTemp.Load("Font/Big_Green/A.png");
-				EnemyTemp.Initialize(World,"Enemy",1,1,100);
-				EnemyTemp.GetBody()->SetTransform(b2Vec2((x*32+16)/Box_Rate,(y*32+16)/Box_Rate),0);
 				EnemyData.push_back(EnemyTemp);
+				EnemyData[EnemyData.size()-1].Load("Font/Big_Green/A.png");
+				EnemyData[EnemyData.size()-1].Initialize(World,"Mapchip_TrainingBag",1,1,100);
+				EnemyData[EnemyData.size()-1].GetBody()->SetTransform(b2Vec2((x*32+16)/Box_Rate,(y*32+16)/Box_Rate),0);
 				continue;
 			}
 			GroundBox.SetAsBox(16/Box_Rate,16/Box_Rate,b2Vec2((x*32+16)/Box_Rate,(y*32+16)/Box_Rate),0);
@@ -78,10 +78,46 @@ void Map::Step()
 	{
 		EnemyData[i].Step();
 	}
+
+	//マップのスクロール
+	b2Transform PlayerTrans = PlayerData.GetBody()->GetTransform();
+	b2Transform MapTrans = GroundBody->GetTransform();
+
+	if(PlayerTrans.p.x < Screen_Width*(3.0/7.0)/Box_Rate)
+	{
+		float ScrollDistance = Screen_Width*(3.0/7.0)/Box_Rate - PlayerTrans.p.x;
+		MapTrans.p.x += ScrollDistance;
+		PlayerTrans.p.x += ScrollDistance;
+
+		int Length = PlayerData.CharacterList.size();
+		for(int i=0;i<Length;i++)
+		{
+			b2Transform Trans = PlayerData.CharacterList[i]->GetBody()->GetTransform();
+			Trans.p.x += ScrollDistance;
+			PlayerData.CharacterList[i]->GetBody()->SetTransform(Trans.p,Trans.q.GetAngle());
+		}
+
+		GroundBody->SetTransform(MapTrans.p,MapTrans.q.GetAngle());
+	}else if(PlayerTrans.p.x > Screen_Width*(4.0/7.0)/Box_Rate)
+	{
+		float ScrollDistance = PlayerTrans.p.x - Screen_Width*(4.0/7.0)/Box_Rate;
+		MapTrans.p.x -= ScrollDistance;
+
+		int Length = PlayerData.CharacterList.size();
+		for(int i=0;i<Length;i++)
+		{
+			b2Transform Trans = PlayerData.CharacterList[i]->GetBody()->GetTransform();
+			Trans.p.x -= ScrollDistance;
+			PlayerData.CharacterList[i]->GetBody()->SetTransform(Trans.p,Trans.q.GetAngle());
+		}
+
+		GroundBody->SetTransform(MapTrans.p,MapTrans.q.GetAngle());
+	}
 }
 
 void Map::Draw()
 {
+	b2Transform MapTrans = GroundBody->GetTransform();
 	for(int y=0;y<14;y++)
 	{
 		for(int x=0;x<Width;x++)
@@ -90,7 +126,7 @@ void Map::Draw()
 			int Graph = -1;
 			if(MapData[y][x] == Mapchip_Clay)Graph = MapChips[1];
 			if(MapData[y][x] == Mapchip_ClayFloor)Graph = MapChips[2];
-			DrawGraph(x*32,y*32,Graph,true);
+			DrawGraph(MapTrans.p.x*Box_Rate+x*32,y*32,Graph,true);
 		}
 	}
 

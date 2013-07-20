@@ -2,13 +2,12 @@
 
 void Enemy::Initialize(b2World *World,void* UserData,float Density,float Friction,int MaxHP)
 {
-	Init(World,UserData,Density,Friction);
+	InitChara(World,UserData,Density,Friction,MaxHP);
 
-	HP = MaxHP;
-	GetBody()->SetSleepingAllowed(false);
+	State = -1;
 }
 
 void Enemy::Ctrl()
 {
-
+	GetBody()->GetUserData();
 }
