@@ -17,10 +17,10 @@ public:
 
 	virtual void Init(b2World *World,void* UserData,float Density,float Friction);
 	virtual bool Draw(bool Trans = true,bool AutoDirection = false);
-	b2Body* GetBody(void);
-	b2PolygonShape* GetShape(void);
-	b2FixtureDef* GetFixtureDef(void);
-	b2Fixture* GetFixture(void);
+	b2Body* GetBody();
+	b2PolygonShape* GetShape();
+	b2FixtureDef* GetFixtureDef();
+	b2Fixture* GetFixture();
 	/*
 	~Physics2DImage()
 	{

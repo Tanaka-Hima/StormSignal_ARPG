@@ -133,7 +133,7 @@ bool Character::UseSkill(int SkillNumber,int EquipmentNumber)
 	}
 }
 
-void Character::Step(void)
+void Character::Step()
 {
 	int NowTime = GetNowCount();
 	StateTime -= NowTime - Time;

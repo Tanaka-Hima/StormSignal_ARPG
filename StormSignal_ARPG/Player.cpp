@@ -76,7 +76,7 @@ void Player::Initialize(b2World *World,void* UserData,float Density,float Fricti
 	}
 }
 
-void Player::Ctrl(void)
+void Player::Ctrl()
 {
 	//スキルウィンドウトグル
 	if(CheckKeyDown(KEY_INPUT_LALT))SkillWindow.Visible = 1 - SkillWindow.Visible;
@@ -117,7 +117,7 @@ void Player::Ctrl(void)
 	GetBody()->SetLinearVelocity(Vect);
 }
 
-void Player::StepSkillWindow(void)
+void Player::StepSkillWindow()
 {
 	if(!SkillWindow.Visible)return;
 

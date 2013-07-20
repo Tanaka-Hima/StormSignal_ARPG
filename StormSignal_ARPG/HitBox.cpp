@@ -41,7 +41,7 @@ bool HitBox::HitTestShape(Character* Target,b2PolygonShape *TargetShape,b2Transf
 	}else return false;
 }
 
-bool HitBox::Step(void)
+bool HitBox::Step()
 {
 	if(Follow)
 	{
@@ -58,27 +58,27 @@ bool HitBox::Step(void)
 	return false;
 }
 
-Character* HitBox::GetCharacter(void)
+Character* HitBox::GetCharacter()
 {
 	return Attacker;
 }
 
-b2Vec2 HitBox::GetHitVect(void)
+b2Vec2 HitBox::GetHitVect()
 {
 	return HitVect;
 }
 
-int HitBox::GetDamage(void)
+int HitBox::GetDamage()
 {
 	return Damage;
 }
 
-int HitBox::GetStanTime(void)
+int HitBox::GetStanTime()
 {
 	return StanTime;
 }
 
-void HitBox::Draw(void)
+void HitBox::Draw()
 {
 	const b2Color& color = b2Color(1,0,0);
 

@@ -2,7 +2,7 @@
 #include "Functions.h"
 #include "ConstantValue.h"
 
-void ShowFPS(void)
+void ShowFPS()
 {//FPS値表示
 	static int Count = -1;
 	static double Show_Count = 0;

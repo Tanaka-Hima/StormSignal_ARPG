@@ -73,22 +73,22 @@ bool Physics2DImage::Draw(bool Trans,bool AutoDirection)
 
 }
 
-b2Body* Physics2DImage::GetBody(void)
+b2Body* Physics2DImage::GetBody()
 {
 	return Body;
 }
 
-b2PolygonShape* Physics2DImage::GetShape(void)
+b2PolygonShape* Physics2DImage::GetShape()
 {
 	return &DynamicBox;
 }
 
-b2FixtureDef* Physics2DImage::GetFixtureDef(void)
+b2FixtureDef* Physics2DImage::GetFixtureDef()
 {
 	return &FixtureDef;
 }
 
-b2Fixture* Physics2DImage::GetFixture(void)
+b2Fixture* Physics2DImage::GetFixture()
 {
 	return Fixture;
 }

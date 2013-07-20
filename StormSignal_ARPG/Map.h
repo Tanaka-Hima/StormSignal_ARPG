@@ -32,8 +32,8 @@ public:
 	void Initialize(b2World *World);
 	void LoadMapData(string Pass);
 	void CreateMap(b2World *World);
-	void Step(void);
-	void Draw(void);
+	void Step();
+	void Draw();
 };
 
 #endif

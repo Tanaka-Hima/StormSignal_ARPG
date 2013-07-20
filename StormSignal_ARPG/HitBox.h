@@ -27,12 +27,12 @@ public:
 	void Initialize(b2PolygonShape InputShape,b2Transform InputTransform,Character* InputAttacker,bool SuicideFlag,b2Vec2 InputHitVect,int InputDamage,int InputHitCount,int InputDuration,int InputStanTime,bool FollowFlag);
 	bool HitTestShape(Character* Target,b2PolygonShape* TargetShape,b2Transform TargetTrans);
 	bool Step();
-	Character* GetCharacter(void);
-	b2Vec2 GetHitVect(void);
-	int GetDamage(void);
-	int GetStanTime(void);
+	Character* GetCharacter();
+	b2Vec2 GetHitVect();
+	int GetDamage();
+	int GetStanTime();
 
-	void Draw(void);
+	void Draw();
 
 };
 

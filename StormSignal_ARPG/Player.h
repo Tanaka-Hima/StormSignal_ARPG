@@ -27,8 +27,8 @@ private:
 	int FontSmall,FontMiddle,FontBig;
 public:
 	void Initialize(b2World *World,void* UserData,float Density,float Friction,int MaxHP);
-	void Ctrl(void);//操作
-	void StepSkillWindow(void);
+	void Ctrl();//操作
+	void StepSkillWindow();
 };
 
 #endif

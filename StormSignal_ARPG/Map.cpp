@@ -68,7 +68,7 @@ void Map::CreateMap(b2World *World)
 	//GroundBody->CreateFixture(&GroundBox,0.f);
 }
 
-void Map::Step(void)
+void Map::Step()
 {
 	PlayerData.Ctrl();
 	PlayerData.Step();
@@ -80,7 +80,7 @@ void Map::Step(void)
 	}
 }
 
-void Map::Draw(void)
+void Map::Draw()
 {
 	for(int y=0;y<14;y++)
 	{

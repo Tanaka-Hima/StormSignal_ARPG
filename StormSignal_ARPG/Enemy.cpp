@@ -8,7 +8,7 @@ void Enemy::Initialize(b2World *World,void* UserData,float Density,float Frictio
 	GetBody()->SetSleepingAllowed(false);
 }
 
-void Enemy::Ctrl(void)
+void Enemy::Ctrl()
 {
 
 }

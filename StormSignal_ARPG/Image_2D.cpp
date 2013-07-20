@@ -13,7 +13,7 @@ void Image_2D::Load(string Pass)
 	SIHandle.push_back(LoadSoftImage(Pass.c_str()));
 }
 
-void Image_2D::Unload(void)
+void Image_2D::Unload()
 {
 	int Length = Graph.size();
 	for(int i=0;i<Length;i++)
@@ -25,7 +25,7 @@ void Image_2D::Unload(void)
 	SIHandle.clear();
 }
 
-void Image_2D::Initialize(void)
+void Image_2D::Initialize()
 {//初期化
 	int SizeW,SizeH;
 	//while(CheckHandleASyncLoad(Graph[0]) && ProcessMessage() == 0){}

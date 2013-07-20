@@ -22,8 +22,8 @@ public:
 	float Ext;
 	float Angle;
 	void Load(string Pass);
-	void Unload(void);
-	virtual void Initialize(void);
+	void Unload();
+	virtual void Initialize();
 	virtual bool Draw(bool Trans);
 	virtual int GetAlpha(int X,int Y);
 	virtual bool HitTestPoint(int Target_X,int Target_Y,bool Shape);

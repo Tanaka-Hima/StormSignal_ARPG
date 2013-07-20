@@ -3,7 +3,7 @@
 #include "ConstantValue.h"
 #include "Window.h"
 
-void Window::DeleteScreen(void)
+void Window::DeleteScreen()
 {
 	DeleteGraph(Screen);
 }
@@ -31,7 +31,7 @@ void Window::Initialize(double Input_x,double Input_y,int Input_Width,int Input_
 	SetDrawScreen(DX_SCREEN_BACK);
 }
 
-void Window::ReWindow(void)
+void Window::ReWindow()
 {
 	//SetDrawScreen(DX_SCREEN_BACK);
 	SetDrawScreen(Screen);
@@ -43,7 +43,7 @@ void Window::ReWindow(void)
 	SetDrawScreen(DX_SCREEN_BACK);
 }
 
-void Window::Draw(void)
+void Window::Draw()
 {
 	if(!Visible)return;
 	int Draw_x = (int)x;
@@ -86,17 +86,17 @@ void Window::DrawStringInWindow(int Input_x,int Input_y,int Input_Pos,string Inp
 	SetDrawScreen(DX_SCREEN_BACK);
 }
 
-void Window::SetDrawThisWindow(void)
+void Window::SetDrawThisWindow()
 {
 	SetDrawScreen(Screen);
 }
 
-int Window::GetWidth(void)
+int Window::GetWidth()
 {
 	return Width;
 }
 
-int Window::GetHeight(void)
+int Window::GetHeight()
 {
 	return Height;
 }
