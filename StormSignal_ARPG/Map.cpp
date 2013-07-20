@@ -52,6 +52,15 @@ void Map::CreateMap(b2World *World)
 				PlayerData.GetBody()->SetTransform(b2Vec2((x*32+16)/Box_Rate,(y*32+16)/Box_Rate),0);
 				continue;
 			}
+			if(MapData[y][x] == Mapchip_TrainingBag)
+			{
+				Enemy EnemyTemp;
+				EnemyTemp.Load("Font/Big_Green/A.png");
+				EnemyTemp.Initialize(World,"Enemy",1,1,100);
+				EnemyTemp.GetBody()->SetTransform(b2Vec2((x*32+16)/Box_Rate,(y*32+16)/Box_Rate),0);
+				EnemyData.push_back(EnemyTemp);
+				continue;
+			}
 			GroundBox.SetAsBox(16/Box_Rate,16/Box_Rate,b2Vec2((x*32+16)/Box_Rate,(y*32+16)/Box_Rate),0);
 			GroundBody->CreateFixture(&GroundBox,0.f);
 		}
@@ -90,7 +99,6 @@ void Map::Draw(void)
 	int Length = EnemyData.size();
 	for(int i=0;i<Length;i++)
 	{
-		EnemyData[i].Step();
 		EnemyData[i].Draw();
 	}
 

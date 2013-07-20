@@ -59,10 +59,6 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	DebugDraw.SetFlags(0xff);
 	World.SetDebugDraw(&DebugDraw);
 
-	Enemy PunchingBag;
-	PunchingBag.Load("Font/Big_Green/A.png");
-	PunchingBag.Initialize(&World,"Enemy",1,1,100);
-
 	Font Fonts;
 
 	int Scene = TrainingMode;
@@ -124,10 +120,6 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 				Fonts.DrawString(Screen_Width / 2,100,5,1,"TRAINING","Font/Big_Red",DrawString_Center);
 
 				Map.Step();
-
-				PunchingBag.Step();
-				PunchingBag.Draw(true);
-
 				Map.Draw();
 
 				World.Step(TimeStep, VelocityIterations, PositionIterations);

@@ -21,12 +21,14 @@ public:
 	b2PolygonShape* GetShape(void);
 	b2FixtureDef* GetFixtureDef(void);
 	b2Fixture* GetFixture(void);
+	/*
 	~Physics2DImage()
 	{
 		Unload();
 		b2World *World = Body->GetWorld();
 		World->DestroyBody(Body);
 	}
+	*/
 };
 
 #endif

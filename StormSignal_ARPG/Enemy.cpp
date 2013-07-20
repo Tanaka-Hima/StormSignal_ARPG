@@ -7,3 +7,8 @@ void Enemy::Initialize(b2World *World,void* UserData,float Density,float Frictio
 	HP = MaxHP;
 	GetBody()->SetSleepingAllowed(false);
 }
+
+void Enemy::Ctrl(void)
+{
+
+}

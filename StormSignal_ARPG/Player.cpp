@@ -100,7 +100,7 @@ void Player::Ctrl(void)
 
 	//スキル使用中、もしくは空中では移動できない
 	b2Vec2 Vect = GetBody()->GetLinearVelocity();
-	if(State != Skill_None_None || fabs(Vect.y) > 0.01f)return;
+	if(State != Skill_None_None || fabs(Vect.y) > 0.05f)return;
 
 	//移動関連
 	if(CheckHitKey(KEY_INPUT_LEFT))

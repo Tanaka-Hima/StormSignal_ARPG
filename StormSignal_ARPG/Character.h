@@ -56,6 +56,7 @@ public:
 	void InitChara(b2World *World,void* UserData,float Density,float Friction,int MaxHP);
 	virtual bool UseSkill(int SkillNumber,int EquipmentNumber);
 	virtual void Step(void);
+	virtual void Ctrl(void) = 0;
 };
 
 #endif
