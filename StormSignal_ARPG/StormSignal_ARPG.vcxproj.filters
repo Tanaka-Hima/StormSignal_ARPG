@@ -87,6 +87,9 @@
     <ClCompile Include="Map.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Functions.h">
@@ -123,6 +126,9 @@
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Map.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
@@ -502,12 +508,6 @@
     <Image Include="Font\Small_Red\A.png">
       <Filter>リソース ファイル\Font\Small_Red</Filter>
     </Image>
-    <Image Include="Image\Map\1.png">
-      <Filter>リソース ファイル\Image\Map</Filter>
-    </Image>
-    <Image Include="Image\Map\2.png">
-      <Filter>リソース ファイル\Image\Map</Filter>
-    </Image>
     <Image Include="Image\Skill\None.png">
       <Filter>リソース ファイル\Image\Skill</Filter>
     </Image>
@@ -525,6 +525,21 @@
     </Image>
     <Image Include="Image\Skill\Sword\None_Sword.png">
       <Filter>リソース ファイル\Image\Skill\Sword</Filter>
+    </Image>
+    <Image Include="Image\Map\Clay.png">
+      <Filter>リソース ファイル\Image\Map</Filter>
+    </Image>
+    <Image Include="Image\Map\ClayFloor.png">
+      <Filter>リソース ファイル\Image\Map</Filter>
+    </Image>
+    <Image Include="Image\Map\Switch1.png">
+      <Filter>リソース ファイル\Image\Map</Filter>
+    </Image>
+    <Image Include="Image\Map\Switch2.png">
+      <Filter>リソース ファイル\Image\Map</Filter>
+    </Image>
+    <Image Include="Image\Map\Woodbox.png">
+      <Filter>リソース ファイル\Image\Map</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>

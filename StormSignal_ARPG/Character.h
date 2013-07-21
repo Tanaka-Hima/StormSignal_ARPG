@@ -54,6 +54,7 @@ public:
 	static vector<vector<int>> EquipmentGraphs;
 
 	void InitChara(b2World *World,void* UserData,float Density,float Friction,int MaxHP);
+	virtual void Initialize(b2World *World,void* UserData,float Density,float Friction,int MaxHP) = 0;
 	virtual bool UseSkill(int SkillNumber,int EquipmentNumber);
 	virtual void Step();
 	virtual void Ctrl() = 0;

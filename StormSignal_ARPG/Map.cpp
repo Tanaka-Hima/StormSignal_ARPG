@@ -7,14 +7,25 @@
 
 void Map::Initialize(b2World *World)
 {
+	MapChips.clear();
 	//空欄 0
 	MapChips.push_back(-1);
 
 	//土 1
-	MapChips.push_back(LoadGraph("Image/Map/1.png"));
+	MapChips.push_back(LoadGraph("Image/Map/Clay.png"));
 
 	//土上 2
-	MapChips.push_back(LoadGraph("Image/Map/2.png"));
+	MapChips.push_back(LoadGraph("Image/Map/ClayFloor.png"));
+
+	//木箱 3
+	MapChips.push_back(LoadGraph("Image/Map/Woodbox.png"));
+
+	//スイッチ1(off) 4
+	MapChips.push_back(LoadGraph("Image/Map/Switch1.png"));
+
+	//スイッチ2(on) 5
+	MapChips.push_back(LoadGraph("Image/Map/Switch2.png"));
+
 
 	PlayerData.Load("Image/Chara/None.png");
 	PlayerData.Initialize(World,"Player",1,1,100);
@@ -47,12 +58,19 @@ void Map::CreateMap(b2World *World)
 		for(int x=0;x<Width;x++)
 		{
 			if(MapData[y][x] == Mapchip_Blank)continue;
-			if(MapData[y][x] == Mapchip_Player)
+			else if(MapData[y][x] == Mapchip_Player)
 			{
 				PlayerData.GetBody()->SetTransform(b2Vec2((x*32+16)/Box_Rate,(y*32+16)/Box_Rate),0);
 				continue;
-			}
-			if(MapData[y][x] == Mapchip_TrainingBag)
+			}else if(MapData[y][x] == Mapchip_Woodbox)
+			{
+				Object Body;
+				RigidBodies.push_back(Body);
+				RigidBodies[RigidBodies.size()-1].Graph.push_back(MapChips[3]);
+				RigidBodies[RigidBodies.size()-1].Initialize(World,"Mapchip_Woodbox",1,1,-1);
+				RigidBodies[RigidBodies.size()-1].GetBody()->SetTransform(b2Vec2((x*32+16)/Box_Rate,(y*32+16)/Box_Rate),0);
+				continue;
+			}else if(MapData[y][x] == Mapchip_TrainingBag)
 			{
 				Enemy EnemyTemp;
 				EnemyData.push_back(EnemyTemp);
@@ -126,6 +144,9 @@ void Map::Draw()
 			int Graph = -1;
 			if(MapData[y][x] == Mapchip_Clay)Graph = MapChips[1];
 			if(MapData[y][x] == Mapchip_ClayFloor)Graph = MapChips[2];
+			if(MapData[y][x] == Mapchip_Woodbox)continue;
+			if(MapData[y][x] == Mapchip_Switch1)Graph = MapChips[4];
+			if(MapData[y][x] == Mapchip_Switch2)Graph = MapChips[5];
 			DrawGraph(MapTrans.p.x*Box_Rate+x*32,y*32,Graph,true);
 		}
 	}
@@ -136,6 +157,12 @@ void Map::Draw()
 	for(int i=0;i<Length;i++)
 	{
 		EnemyData[i].Draw();
+	}
+
+	Length = RigidBodies.size();
+	for(int i=0;i<Length;i++)
+	{
+		RigidBodies[i].Draw();
 	}
 
 	PlayerData.StepSkillWindow();

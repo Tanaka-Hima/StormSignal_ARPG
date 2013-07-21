@@ -2,6 +2,7 @@
 #include <string>
 #include "Player.h"
 #include "Enemy.h"
+#include "Object.h"
 
 using namespace std;
 
@@ -12,6 +13,8 @@ const string Mapchip_Blank = "00";
 const string Mapchip_Clay = "01";
 const string Mapchip_ClayFloor = "02";
 const string Mapchip_Woodbox = "03";
+const string Mapchip_Switch1 = "04";
+const string Mapchip_Switch2 = "05";
 
 const string Mapchip_TrainingBag = "10";
 
@@ -24,6 +27,7 @@ private:
 	vector<int> MapChips;
 	Player PlayerData;
 	vector<Enemy> EnemyData;
+	vector<Object> RigidBodies;
 	b2BodyDef GroundBodyDef;
 	b2Body* GroundBody;
 	b2PolygonShape GroundBox;
