@@ -24,6 +24,7 @@ class Map
 {
 private:
 	vector<string> MapData[14];
+	vector<vector<string>> ScriptData;
 	vector<int> MapChips;
 	Player PlayerData;
 	vector<Enemy> EnemyData;
@@ -35,6 +36,7 @@ private:
 public:
 	void Initialize(b2World *World);
 	void LoadMapData(string Pass);
+	void LoadScriptData(string Pass);
 	void CreateMap(b2World *World);
 	void Step();
 	void Draw();

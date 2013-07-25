@@ -66,6 +66,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	Map Map;
 	Map.Initialize(&World);
 	Map.LoadMapData("Map/Training.txt");
+	Map.LoadScriptData("Map/TrainingScript.txt");
 	Map.CreateMap(&World);
 
 	//メインループ

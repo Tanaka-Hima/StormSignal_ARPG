@@ -1,4 +1,5 @@
 #include <string>
+#include <cwctype>
 #include <DxLib.h>
 #include <Box2D\Box2D.h>
 #include "Map.h"
@@ -41,11 +42,22 @@ void Map::LoadMapData(string Pass)
 		char *Data;
 		Data = (char*)malloc(Width);
 		FileRead_gets(Data,Width,LineData);
-
-		//改行コード、null文字の削除
 		MapData[i] = split(Data,",");
+		free(Data);
+
 	}
 	Width = MapData[0].size();
+}
+
+void Map::LoadScriptData(string Pass)
+{
+	int LineData = FileRead_open(Pass.c_str());
+	while(FileRead_eof(LineData) == 0)
+	{
+		char Data[256];
+		FileRead_gets(Data,256,LineData);
+		ScriptData.push_back(split(Data,","));
+	}
 }
 
 void Map::CreateMap(b2World *World)
@@ -79,6 +91,26 @@ void Map::CreateMap(b2World *World)
 				EnemyData[EnemyData.size()-1].GetBody()->SetTransform(b2Vec2((x*32+16)/Box_Rate,(y*32+16)/Box_Rate),0);
 				continue;
 			}
+
+			//特殊ブロック
+			if(isalpha(static_cast<unsigned char>(MapData[y][x][0])))
+			{
+				int Length = ScriptData.size();
+				bool Flag = false;
+				for(int i=0;i<Length;i++)
+				{
+					if(ScriptData[i][0] == MapData[y][x])
+					{
+						if(ScriptData[i][2] != "1")
+						{
+							Flag = true;
+							break;
+						}
+					}
+				}
+				if(Flag)continue;
+			}
+
 			GroundBox.SetAsBox(16/Box_Rate,16/Box_Rate,b2Vec2((x*32+16)/Box_Rate,(y*32+16)/Box_Rate),0);
 			GroundBody->CreateFixture(&GroundBox,0.f);
 		}
@@ -96,6 +128,9 @@ void Map::Step()
 	{
 		EnemyData[i].Step();
 	}
+
+	//特殊ブロックの処理
+	
 
 	//マップのスクロール
 	b2Transform PlayerTrans = PlayerData.GetBody()->GetTransform();
@@ -140,13 +175,30 @@ void Map::Draw()
 	{
 		for(int x=0;x<Width;x++)
 		{
-			if(MapData[y][x] == Mapchip_Blank)continue;
+			string GraphNum = MapData[y][x];
+
+			//特殊ブロック
+			if(isalpha(static_cast<unsigned char>(MapData[y][x][0])))
+			{
+				int Length = ScriptData.size();
+				for(int i=0;i<Length;i++)
+				{
+					if(ScriptData[i][0] == MapData[y][x])
+					{
+						GraphNum = ScriptData[i][1];
+						break;
+					}
+				}
+			}
+
+			if(GraphNum == Mapchip_Blank)continue;
 			int Graph = -1;
-			if(MapData[y][x] == Mapchip_Clay)Graph = MapChips[1];
-			if(MapData[y][x] == Mapchip_ClayFloor)Graph = MapChips[2];
-			if(MapData[y][x] == Mapchip_Woodbox)continue;
-			if(MapData[y][x] == Mapchip_Switch1)Graph = MapChips[4];
-			if(MapData[y][x] == Mapchip_Switch2)Graph = MapChips[5];
+			if(GraphNum == Mapchip_Clay)Graph = MapChips[1];
+			if(GraphNum == Mapchip_ClayFloor)Graph = MapChips[2];
+			if(GraphNum == Mapchip_Woodbox)continue;
+			if(GraphNum == Mapchip_Switch1)Graph = MapChips[4];
+			if(GraphNum == Mapchip_Switch2)Graph = MapChips[5];
+
 			DrawGraph(MapTrans.p.x*Box_Rate+x*32,y*32,Graph,true);
 		}
 	}

@@ -256,6 +256,7 @@
     <Text Include="..\妄想まとめ.txt" />
     <Text Include="..\構想まとめ.txt" />
     <Text Include="Map\Training.txt" />
+    <Text Include="Map\TrainingScript.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

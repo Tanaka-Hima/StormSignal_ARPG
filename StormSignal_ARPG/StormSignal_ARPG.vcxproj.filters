@@ -552,5 +552,8 @@
     <Text Include="Map\Training.txt">
       <Filter>リソース ファイル\Map</Filter>
     </Text>
+    <Text Include="Map\TrainingScript.txt">
+      <Filter>リソース ファイル\Map</Filter>
+    </Text>
   </ItemGroup>
 </Project>

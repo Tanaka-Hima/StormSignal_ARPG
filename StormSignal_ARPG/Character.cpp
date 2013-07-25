@@ -123,7 +123,7 @@ bool Character::UseSkill(int SkillNumber,int EquipmentNumber)
 			b2Vec2 Pos = GetBody()->GetPosition();
 			Pos.x += 2*Direction;
 			Trans.Set(Pos,0);
-			Box.Initialize(Shape,Trans,this,false,b2Vec2(0,-30),10,1,200,500,true);
+			Box.Initialize(Shape,Trans,this,false,b2Vec2(10*Direction,-5),10,1,200,500,true);
 			HitBoxList.push_back(Box);
 
 			return true;
