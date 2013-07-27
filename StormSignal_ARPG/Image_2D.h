@@ -28,7 +28,7 @@ public:
 	virtual int GetAlpha(int X,int Y);
 	virtual bool HitTestPoint(int Target_X,int Target_Y,bool Shape);
 	virtual int HitTestGraph(Image_2D *Target,bool Shape);
-	virtual bool HitTestRect(int X,int Y,int Width,int Height,bool Shape);
+	virtual bool HitTestRect(int RX,int RY,int RWidth,int RHeight,bool Shape);
 };
 
 #endif
