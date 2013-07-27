@@ -541,6 +541,9 @@
     <Image Include="Image\Map\Woodbox.png">
       <Filter>リソース ファイル\Image\Map</Filter>
     </Image>
+    <Image Include="Image\Chara\None.png">
+      <Filter>リソース ファイル\Image\Chara</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\構想まとめ.txt">

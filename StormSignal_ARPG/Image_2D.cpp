@@ -138,3 +138,48 @@ int Image_2D::HitTestGraph(Image_2D *Target,bool Shape)
 		return false;
 	}
 }
+
+bool Image_2D::HitTestRect(int RX,int RY,int RWidth,int RHeight,bool Shape)
+{
+	Vect A1,A2,B1,B2;
+	A1.x = x - Center_x;
+	A1.y = y - Center_y;
+	A2.x = x + Center_x;
+	A2.y = y + Center_y;
+	B1.x = RX - RWidth/2;
+	B1.y = RY - RHeight/2;
+	B2.x = RX + RWidth/2;
+	B2.y = RY + RHeight/2;
+
+	if(B1.x < A2.x && A2.y > B1.y && B2.x > A1.x && B2.y > A1.y)
+	{//大雑把な当たり判定
+		if(!Shape)
+		{
+			return true;
+		}else
+		{//見た目通りの当たり判定
+			int X,Y,Width,Height;
+			if(B1.x > A1.x)X = B1.x;
+			else X = A1.x;
+			if(B1.y > A1.y)Y = B1.y;
+			else Y = A1.y;
+			if(A2.x < B2.x)Width = A2.x;
+			else Width = B2.x;
+			if(B2.y > A2.y)Height = A2.y;
+			else Height = B2.y;
+
+			for(int i=X;i<Width;i++)
+			{
+				for(int i2=Y;i2<Height;i2++)
+				{
+					if(GetAlpha(i,i2) <= 127)continue;
+					return true;
+				}
+			}
+			return false;
+		}
+	}else
+	{//かすりもしない場合
+		return false;
+	}
+}

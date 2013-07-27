@@ -129,9 +129,6 @@ void Map::Step()
 		EnemyData[i].Step();
 	}
 
-	//特殊ブロックの処理
-	
-
 	//マップのスクロール
 	b2Transform PlayerTrans = PlayerData.GetBody()->GetTransform();
 	b2Transform MapTrans = GroundBody->GetTransform();
@@ -165,6 +162,43 @@ void Map::Step()
 		}
 
 		GroundBody->SetTransform(MapTrans.p,MapTrans.q.GetAngle());
+	}
+
+	//特殊ブロックの処理
+	for(int y=0;y<14;y++)
+	{
+		for(int x=0;x<Width;x++)
+		{
+			//特殊ブロック
+			if(isalpha(static_cast<unsigned char>(MapData[y][x][0])))
+			{
+				int Length = ScriptData.size();
+				for(int i=0;i<Length;i++)
+				{
+					if(ScriptData[i][0] == MapData[y][x])
+					{
+						int Flag = false;
+						//トリガー
+						if(ScriptData[i][3] == Trigger_Hit)
+						{
+							if(PlayerData.HitTestRect(MapTrans.p.x*Box_Rate+x*32,y*32,32,32,true))
+							{
+								Flag = true;
+							}
+						}
+
+						if(Flag)
+						{
+							if(ScriptData[i][4].find(Action_Redraw) != string::npos)
+							{
+								vector<string> Data = split(ScriptData[i][4],"|");
+								ScriptData[i][1] = Data[1];
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 }
 

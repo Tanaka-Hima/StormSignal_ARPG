@@ -1,1 +1,1 @@
-AA,04,1,Hit,Redraw|05,1,0
+AA,04,0,Hit,Redraw|05,1,0

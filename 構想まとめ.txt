@@ -67,7 +67,7 @@
 
 　・動作
 　　トリガーが引かれた時、何を行うか指定
-　　- Flag|Target(A~Z)
+　　- Flag|Target(AA~ZZ)
 	Targetのフラグを立てる
 　　- Move|x/ms|y/ms|msec
 	自分をmsec分移動させる

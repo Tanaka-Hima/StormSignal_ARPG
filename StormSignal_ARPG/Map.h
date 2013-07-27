@@ -20,6 +20,10 @@ const string Mapchip_TrainingBag = "10";
 
 const string Mapchip_Player = "99";
 
+const string Trigger_Hit = "Hit";
+
+const string Action_Redraw = "Redraw";
+
 class Map
 {
 private:
