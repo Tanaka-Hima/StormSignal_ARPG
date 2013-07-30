@@ -179,18 +179,48 @@ void Map::Step()
 					{
 						int Flag = false;
 						//ƒgƒŠƒK[
-						if(ScriptData[i][3] == Trigger_Hit)
-						{
+						if(ScriptData[i][3].find(Trigger_Hit) != string::npos)
+						{//‘ÎÛ‚ÉG‚ê‚½uŠÔ‚Ì‚Ý‹N“®
+							if(PlayerData.HitTestRect(MapTrans.p.x*Box_Rate+x*32,y*32,32,32,true))
+							{
+								if(ScriptData[i][3] != Trigger_Hitted)
+								{
+									Flag = true;
+									ScriptData[i][3] = Trigger_Hitted;
+								}
+							}else
+							{
+								ScriptData[i][3] = Trigger_Hit;
+							}
+						}else if(ScriptData[i][3] == Trigger_Touch)
+						{//‘ÎÛ‚ÉG‚ê‚Ä‚¢‚éŠÔí‚É‹N“®
 							if(PlayerData.HitTestRect(MapTrans.p.x*Box_Rate+x*32,y*32,32,32,true))
 							{
 								Flag = true;
 							}
+						}else if(ScriptData[i][3] == Trigger_Flagged)
+						{
+							Flag = true;
+							ScriptData[i][3] == Trigger_Flag;
 						}
 
-						if(Flag)
+						int Count = atoi(ScriptData[i][5].c_str());
+						if(Flag && (Count > 0 || Count < 0))
 						{
-							if(ScriptData[i][4].find(Action_Redraw) != string::npos)
-							{
+							Count--;
+							ScriptData[i][5] = ntos(Count);
+							if(ScriptData[i][4].find(Action_Flag) != string::npos)
+							{//Target‚Ìƒtƒ‰ƒO‚ð—§‚Ä‚é
+								vector<string> Data = split(ScriptData[i][4],"|");
+								for(int j=0;i<Length;i++)
+								{
+									if(ScriptData[j][0] == Data[1] && ScriptData[j][3] == Trigger_Flag)
+									{
+										ScriptData[j][3] = Trigger_Flagged;
+									}
+								}
+							}else if(ScriptData[i][4].find(Action_Redraw) != string::npos)
+							{//Ž©•ª‚ÌŒ©‚½–Ú‚ðNumber‚Ö•ÏX‚·‚é
 								vector<string> Data = split(ScriptData[i][4],"|");
 								ScriptData[i][1] = Data[1];
 							}

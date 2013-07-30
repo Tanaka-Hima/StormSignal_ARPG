@@ -21,8 +21,13 @@ const string Mapchip_TrainingBag = "10";
 const string Mapchip_Player = "99";
 
 const string Trigger_Hit = "Hit";
+const string Trigger_Hitted = "Hitted";
+const string Trigger_Touch = "Touch";
+const string Trigger_Flag = "Flag";
+const string Trigger_Flagged = "Flagged";
 
 const string Action_Redraw = "Redraw";
+const string Action_Flag = "Flag";
 
 class Map
 {

@@ -56,7 +56,7 @@
 
 　・トリガー
 　　対象に何が起きたら動作をするか指定
-　　- Hit
+　　- Hit(Hited -> 前フレームで触れている)
 	対象に触れた瞬間のみ起動
 　　- Touch
 	対象に触れている間常に起動
@@ -68,7 +68,7 @@
 　・動作
 　　トリガーが引かれた時、何を行うか指定
 　　- Flag|Target(AA~ZZ)
-	Targetのフラグを立てる
+	Targetのフラグを立てる(TargetのトリガーがFlagでない場合は無効)
 　　- Move|x/ms|y/ms|msec
 	自分をmsec分移動させる
 　　- Delete
