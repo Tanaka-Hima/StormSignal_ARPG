@@ -1,4 +1,4 @@
-#include <vector>
+ï»¿#include <vector>
 #include <string>
 #include "Player.h"
 #include "Enemy.h"
@@ -32,23 +32,23 @@ const string Action_Flag = "Flag";
 class Map
 {
 private:
-	vector<string> MapData[14];//ƒeƒLƒXƒg‚©‚ç“Ç‚İ‚ñ‚¾ƒ}ƒbƒvƒf[ƒ^‚ğŠi”[
-	vector<vector<string>> ScriptData;//“ÁêƒuƒƒbƒN—p‚ÌƒXƒNƒŠƒvƒg‚ğŠi”[
-	vector<int> MapChips;//ƒ}ƒbƒvƒ`ƒbƒv‚Ì‰æ‘œ
-	Player PlayerData;//ƒvƒŒƒCƒ„[
-	vector<Enemy> EnemyData;//“G”z—ñ
-	vector<Object> RigidBodies;//ƒ}ƒbƒvã‚Éİ’u‚³‚ê‚Ä‚¢‚éƒIƒuƒWƒFƒNƒgŒQ
-	b2BodyDef GroundBodyDef;//ƒ}ƒbƒv“–‚½‚è”»’è
-	b2Body* GroundBody;//ƒ}ƒbƒv“–‚½‚è”»’è
-	b2PolygonShape GroundBox;//ƒ}ƒbƒv“–‚½‚è”»’è
+	vector<string> MapData[14];//ãƒ†ã‚­ã‚¹ãƒˆã‹ã‚‰èª­ã¿è¾¼ã‚“ã ãƒãƒƒãƒ—ãƒ‡ãƒ¼ã‚¿ã‚’æ ¼ç´
+	vector<vector<string>> ScriptData;//ç‰¹æ®Šãƒ–ãƒ­ãƒƒã‚¯ç”¨ã®ã‚¹ã‚¯ãƒªãƒ—ãƒˆã‚’æ ¼ç´
+	vector<int> MapChips;//ãƒãƒƒãƒ—ãƒãƒƒãƒ—ã®ç”»åƒ
+	Player PlayerData;//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼
+	vector<Enemy> EnemyData;//æ•µé…åˆ—
+	vector<Object> RigidBodies;//ãƒãƒƒãƒ—ä¸Šã«è¨­ç½®ã•ã‚Œã¦ã„ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆç¾¤
+	b2BodyDef GroundBodyDef;//ãƒãƒƒãƒ—å½“ãŸã‚Šåˆ¤å®š
+	b2Body* GroundBody;//ãƒãƒƒãƒ—å½“ãŸã‚Šåˆ¤å®š
+	b2PolygonShape GroundBox;//ãƒãƒƒãƒ—å½“ãŸã‚Šåˆ¤å®š
 	int Width;
 public:
-	void Initialize(b2World *World);//‰Šú‰»
-	void LoadMapData(string Pass);//ƒ}ƒbƒvƒf[ƒ^‚ğw’èƒpƒX‚ÌƒeƒLƒXƒg‚©‚ç“Ç‚İ‚Ş
-	void LoadScriptData(string Pass);//ƒXƒNƒŠƒvƒgƒf[ƒ^‚ğw’èƒpƒX‚ÌƒeƒLƒXƒg‚©‚ç“Ç‚İ‚Ş
-	void CreateMap(b2World *World);//ƒ}ƒbƒvƒf[ƒ^‚©‚çƒ}ƒbƒv‚ğ¶¬‚·‚é
-	void Step();//–ˆƒtƒŒ[ƒ€s‚¤ˆ—ŒQ
-	void Draw();//ƒ}ƒbƒvAƒvƒŒƒCƒ„[“™‚Ì•`‰æ
+	void Initialize(b2World *World);//åˆæœŸåŒ–
+	void LoadMapData(string Pass);//ãƒãƒƒãƒ—ãƒ‡ãƒ¼ã‚¿ã‚’æŒ‡å®šãƒ‘ã‚¹ã®ãƒ†ã‚­ã‚¹ãƒˆã‹ã‚‰èª­ã¿è¾¼ã‚€
+	void LoadScriptData(string Pass);//ã‚¹ã‚¯ãƒªãƒ—ãƒˆãƒ‡ãƒ¼ã‚¿ã‚’æŒ‡å®šãƒ‘ã‚¹ã®ãƒ†ã‚­ã‚¹ãƒˆã‹ã‚‰èª­ã¿è¾¼ã‚€
+	void CreateMap(b2World *World);//ãƒãƒƒãƒ—ãƒ‡ãƒ¼ã‚¿ã‹ã‚‰ãƒãƒƒãƒ—ã‚’ç”Ÿæˆã™ã‚‹
+	void Step();//æ¯ãƒ•ãƒ¬ãƒ¼ãƒ è¡Œã†å‡¦ç†ç¾¤
+	void Draw();//ãƒãƒƒãƒ—ã€ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ç­‰ã®æç”»
 };
 
 #endif

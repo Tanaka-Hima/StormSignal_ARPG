@@ -1,4 +1,4 @@
-#include <string>
+ï»¿#include <string>
 #include <cwctype>
 #include <DxLib.h>
 #include <Box2D\Box2D.h>
@@ -9,22 +9,22 @@
 void Map::Initialize(b2World *World)
 {
 	MapChips.clear();
-	//‹ó—“ 0
+	//ç©ºæ¬„ 0
 	MapChips.push_back(-1);
 
-	//“y 1
+	//åœŸ 1
 	MapChips.push_back(LoadGraph("Image/Map/Clay.png"));
 
-	//“yã 2
+	//åœŸä¸Š 2
 	MapChips.push_back(LoadGraph("Image/Map/ClayFloor.png"));
 
-	//–Ø”  3
+	//æœ¨ç®± 3
 	MapChips.push_back(LoadGraph("Image/Map/Woodbox.png"));
 
-	//ƒXƒCƒbƒ`1(off) 4
+	//ã‚¹ã‚¤ãƒƒãƒ1(off) 4
 	MapChips.push_back(LoadGraph("Image/Map/Switch1.png"));
 
-	//ƒXƒCƒbƒ`2(on) 5
+	//ã‚¹ã‚¤ãƒƒãƒ2(on) 5
 	MapChips.push_back(LoadGraph("Image/Map/Switch2.png"));
 
 
@@ -36,7 +36,7 @@ void Map::Initialize(b2World *World)
 void Map::LoadMapData(string Pass)
 {
 	int LineData = FileRead_open(Pass.c_str());
-	//ƒ}ƒbƒv‚Ì‰¡•‚ğŒvZ‚·‚é
+	//ãƒãƒƒãƒ—ã®æ¨ªå¹…ã‚’è¨ˆç®—ã™ã‚‹
 	Width = FileRead_size(Pass.c_str())/14+2;
 	for(int i=0;i<14;i++)
 	{
@@ -63,7 +63,7 @@ void Map::LoadScriptData(string Pass)
 
 void Map::CreateMap(b2World *World)
 {
-	//“–‚½‚è”»’è¶¬€”õ
+	//å½“ãŸã‚Šåˆ¤å®šç”Ÿæˆæº–å‚™
 	GroundBodyDef.position.Set(0,0);
 	GroundBody = World->CreateBody(&GroundBodyDef);
 	GroundBody->SetUserData("Ground");
@@ -71,7 +71,7 @@ void Map::CreateMap(b2World *World)
 	{
 		for(int x=0;x<Width;x++)
 		{
-			//ƒ}ƒbƒvƒf[ƒ^‚Æƒ}ƒbƒvƒ`ƒbƒv‚ğÆ‚ç‚µ‡‚í‚¹Aˆê’v‚µ‚½‚à‚Ì‚ğİ’u‚µ‚Ä‚¢‚­
+			//ãƒãƒƒãƒ—ãƒ‡ãƒ¼ã‚¿ã¨ãƒãƒƒãƒ—ãƒãƒƒãƒ—ã‚’ç…§ã‚‰ã—åˆã‚ã›ã€ä¸€è‡´ã—ãŸã‚‚ã®ã‚’è¨­ç½®ã—ã¦ã„ã
 			if(MapData[y][x] == Mapchip_Blank)continue;
 			else if(MapData[y][x] == Mapchip_Player)
 			{
@@ -95,7 +95,7 @@ void Map::CreateMap(b2World *World)
 				continue;
 			}
 
-			//“ÁêƒuƒƒbƒN
+			//ç‰¹æ®Šãƒ–ãƒ­ãƒƒã‚¯
 			if(isalpha(static_cast<unsigned char>(MapData[y][x][0])))
 			{
 				int Length = ScriptData.size();
@@ -114,7 +114,7 @@ void Map::CreateMap(b2World *World)
 				if(Flag)continue;
 			}
 
-			//“–‚½‚è”»’è‚Ì¶¬
+			//å½“ãŸã‚Šåˆ¤å®šã®ç”Ÿæˆ
 			GroundBox.SetAsBox(16/Box_Rate,16/Box_Rate,b2Vec2((x*32+16)/Box_Rate,(y*32+16)/Box_Rate),0);
 			GroundBody->CreateFixture(&GroundBox,0.f);
 		}
@@ -124,11 +124,11 @@ void Map::CreateMap(b2World *World)
 
 void Map::Step()
 {
-	//ƒvƒŒƒCƒ„[‚Ìˆ—
+	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®å‡¦ç†
 	PlayerData.Ctrl();
 	PlayerData.Step();
 
-	//“G‚Ìˆ—
+	//æ•µã®å‡¦ç†
 	int Length = EnemyData.size();
 	for(int i=0;i<Length;i++)
 	{
@@ -136,8 +136,8 @@ void Map::Step()
 	}
 
 	/*
-		ƒ}ƒbƒv‚ÌƒXƒNƒ[ƒ‹
-		¶’[A‰E’[‚ÉƒvƒŒƒCƒ„[‚ªˆÊ’u‚µ‚Ä‚¢‚½ê‡Aƒ}ƒbƒv‚Ì•û‚ğˆÚ“®‚³‚¹‚é
+		ãƒãƒƒãƒ—ã®ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«
+		å·¦ç«¯ã€å³ç«¯ã«ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒä½ç½®ã—ã¦ã„ãŸå ´åˆã€ãƒãƒƒãƒ—ã®æ–¹ã‚’ç§»å‹•ã•ã›ã‚‹
 	*/
 	b2Transform PlayerTrans = PlayerData.GetBody()->GetTransform();
 	b2Transform MapTrans = GroundBody->GetTransform();
@@ -173,12 +173,12 @@ void Map::Step()
 		GroundBody->SetTransform(MapTrans.p,MapTrans.q.GetAngle());
 	}
 
-	//“ÁêƒuƒƒbƒN‚Ìˆ—
+	//ç‰¹æ®Šãƒ–ãƒ­ãƒƒã‚¯ã®å‡¦ç†
 	for(int y=0;y<14;y++)
 	{
 		for(int x=0;x<Width;x++)
 		{
-			//“ÁêƒuƒƒbƒN
+			//ç‰¹æ®Šãƒ–ãƒ­ãƒƒã‚¯
 			if(isalpha(static_cast<unsigned char>(MapData[y][x][0])))
 			{
 				int Length = ScriptData.size();
@@ -187,9 +187,9 @@ void Map::Step()
 					if(ScriptData[i][0] == MapData[y][x])
 					{
 						int Flag = false;
-						//ƒgƒŠƒK[
+						//ãƒˆãƒªã‚¬ãƒ¼
 						if(ScriptData[i][3].find(Trigger_Hit) != string::npos)
-						{//‘ÎÛ‚ÉG‚ê‚½uŠÔ‚Ì‚İ‹N“®
+						{//å¯¾è±¡ã«è§¦ã‚ŒãŸç¬é–“ã®ã¿èµ·å‹•
 							if(PlayerData.HitTestRect(MapTrans.p.x*Box_Rate+x*32,y*32,32,32,true))
 							{
 								if(ScriptData[i][3] != Trigger_Hitted)
@@ -202,7 +202,7 @@ void Map::Step()
 								ScriptData[i][3] = Trigger_Hit;
 							}
 						}else if(ScriptData[i][3] == Trigger_Touch)
-						{//‘ÎÛ‚ÉG‚ê‚Ä‚¢‚éŠÔí‚É‹N“®
+						{//å¯¾è±¡ã«è§¦ã‚Œã¦ã„ã‚‹é–“å¸¸ã«èµ·å‹•
 							if(PlayerData.HitTestRect(MapTrans.p.x*Box_Rate+x*32,y*32,32,32,true))
 							{
 								Flag = true;
@@ -219,7 +219,7 @@ void Map::Step()
 							Count--;
 							ScriptData[i][5] = ntos(Count);
 							if(ScriptData[i][4].find(Action_Flag) != string::npos)
-							{//Target‚Ìƒtƒ‰ƒO‚ğ—§‚Ä‚é
+							{//Targetã®ãƒ•ãƒ©ã‚°ã‚’ç«‹ã¦ã‚‹
 								vector<string> Data = split(ScriptData[i][4],"|");
 								for(int j=0;i<Length;i++)
 								{
@@ -229,7 +229,7 @@ void Map::Step()
 									}
 								}
 							}else if(ScriptData[i][4].find(Action_Redraw) != string::npos)
-							{//©•ª‚ÌŒ©‚½–Ú‚ğNumber‚Ö•ÏX‚·‚é
+							{//è‡ªåˆ†ã®è¦‹ãŸç›®ã‚’Numberã¸å¤‰æ›´ã™ã‚‹
 								vector<string> Data = split(ScriptData[i][4],"|");
 								ScriptData[i][1] = Data[1];
 							}
@@ -243,7 +243,7 @@ void Map::Step()
 
 void Map::Draw()
 {
-	//ƒ}ƒbƒv‚ÌƒXƒNƒ[ƒ‹•ª‚ğæ“¾
+	//ãƒãƒƒãƒ—ã®ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«åˆ†ã‚’å–å¾—
 	b2Transform MapTrans = GroundBody->GetTransform();
 	for(int y=0;y<14;y++)
 	{
@@ -251,7 +251,7 @@ void Map::Draw()
 		{
 			string GraphNum = MapData[y][x];
 
-			//“ÁêƒuƒƒbƒN
+			//ç‰¹æ®Šãƒ–ãƒ­ãƒƒã‚¯
 			if(isalpha(static_cast<unsigned char>(MapData[y][x][0])))
 			{
 				int Length = ScriptData.size();
@@ -277,23 +277,23 @@ void Map::Draw()
 		}
 	}
 
-	//ƒvƒŒƒCƒ„[‚Ì•`‰æ
+	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®æç”»
 	PlayerData.Draw(true);
 
-	//“G‚Ì•`‰æ
+	//æ•µã®æç”»
 	int Length = EnemyData.size();
 	for(int i=0;i<Length;i++)
 	{
 		EnemyData[i].Draw();
 	}
 
-	//ƒIƒuƒWƒFƒNƒg‚Ì•`‰æ
+	//ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®æç”»
 	Length = RigidBodies.size();
 	for(int i=0;i<Length;i++)
 	{
 		RigidBodies[i].Draw();
 	}
 
-	//ƒXƒLƒ‹İ’èƒEƒCƒ“ƒhƒE‚Ìˆ—
+	//ã‚¹ã‚­ãƒ«è¨­å®šã‚¦ã‚¤ãƒ³ãƒ‰ã‚¦ã®å‡¦ç†
 	PlayerData.StepSkillWindow();
 }
