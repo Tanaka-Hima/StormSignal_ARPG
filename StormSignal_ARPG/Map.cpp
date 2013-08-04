@@ -99,19 +99,27 @@ void Map::CreateMap(b2World *World)
 			if(isalpha(static_cast<unsigned char>(MapData[y][x][0])))
 			{
 				int Length = ScriptData.size();
-				bool Flag = false;
+				int Flag = -1;
 				for(int i=0;i<Length;i++)
 				{
 					if(ScriptData[i][0] == MapData[y][x])
 					{
-						if(ScriptData[i][2] != "1")
+						if(ScriptData[i][2] == "1")
 						{
-							Flag = true;
+							Flag = i;
 							break;
 						}
 					}
 				}
-				if(Flag)continue;
+				if(Flag >= 0)
+				{
+					//当たり判定の生成
+					GroundBox.SetAsBox(16/Box_Rate,16/Box_Rate,b2Vec2((x*32+16)/Box_Rate,(y*32+16)/Box_Rate),0);
+					MapChipFixtures.push_back(GroundBody->CreateFixture(&GroundBox,0.f));
+					string Str = ScriptData[Flag][0] + "," + ntos(MapChipFixtures.size()-1);
+					FixtureDataToMapChip.push_back(Str);
+				}
+				continue;
 			}
 
 			//当たり判定の生成
@@ -221,7 +229,7 @@ void Map::Step()
 							if(ScriptData[i][4].find(Action_Flag) != string::npos)
 							{//Targetのフラグを立てる
 								vector<string> Data = split(ScriptData[i][4],"|");
-								for(int j=0;i<Length;i++)
+								for(int j=0;j<Length;j++)
 								{
 									if(ScriptData[j][0] == Data[1] && ScriptData[j][3] == Trigger_Flag)
 									{
@@ -232,6 +240,18 @@ void Map::Step()
 							{//自分の見た目をNumberへ変更する
 								vector<string> Data = split(ScriptData[i][4],"|");
 								ScriptData[i][1] = Data[1];
+							}else if(ScriptData[i][4] == Action_Delete)
+							{//自分をマップから削除する
+								int FixLength = FixtureDataToMapChip.size();
+								for(int j=0;j<FixLength;j++)
+								{
+									vector<string> Data = split(FixtureDataToMapChip[j],",");
+									if(Data[0] == MapData[y][x])
+									{//当たり判定を削除
+										GroundBody->DestroyFixture(MapChipFixtures[atoi(Data[1].c_str())]);
+									}
+								}
+								MapData[y][x] = Mapchip_Blank;
 							}
 						}
 					}

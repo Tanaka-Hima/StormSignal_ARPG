@@ -28,12 +28,15 @@ const string Trigger_Flagged = "Flagged";
 
 const string Action_Redraw = "Redraw";
 const string Action_Flag = "Flag";
+const string Action_Delete = "Delete";
 
 class Map
 {
 private:
 	vector<string> MapData[14];//テキストから読み込んだマップデータを格納
 	vector<vector<string>> ScriptData;//特殊ブロック用のスクリプトを格納
+	vector<b2Fixture*> MapChipFixtures;//特殊ブロック一つ一つの当たり判定
+	vector<string> FixtureDataToMapChip;//特殊ブロックとb2Fixtureの紐付
 	vector<int> MapChips;//マップチップの画像
 	Player PlayerData;//プレイヤー
 	vector<Enemy> EnemyData;//敵配列
