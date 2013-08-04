@@ -11,7 +11,7 @@ using namespace std;
 #define _FUNCTIONS
 
 //処理初め(0)、処理終わり(1)
-void ScreenTimer(int Type,int FrameRate);
+void ScreenTimer(int Type,int FrameRate);//フレームレートの制御
 
 //キーが押されたかどうかを確かめる
 bool CheckKeyDown(int KeyCode);
@@ -32,11 +32,6 @@ template <class T> double inline GetDistance(T A_X,T A_Y,T B_X,T B_Y)
 	return hypot(A_X - B_X,A_Y - B_Y);
 }
 
-int SetScoreFile(int Score,string Name,string ScoreFileName);
-
-//スコアファイルの内容を返す
-vector<string> GetScoreFile(string ScoreFileName);
-
 //ファイルリストの取得
 vector<string> GetFolderList(string folder);
 
@@ -53,6 +48,7 @@ template
     typename TYPE,
     size_t SIZE
 >
+//配列のサイズを取得
 size_t GetArrayLength(const TYPE (&)[SIZE])
 {   
     return SIZE;

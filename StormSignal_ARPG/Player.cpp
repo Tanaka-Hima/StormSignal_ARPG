@@ -7,10 +7,12 @@ void Player::Initialize(b2World *World,void* UserData,float Density,float Fricti
 {
 	InitChara(World,UserData,Density,Friction,MaxHP);
 
+	//フォント読み込み
 	FontSmall = CreateFontToHandle( "メイリオ" , 15 , 3 ,-1,-1,2) ;
 	FontMiddle = CreateFontToHandle( "メイリオ" , 20 , 7 ,-1,-1,2) ;
 	FontBig = CreateFontToHandle( "メイリオ" , 40 , 10 ,-1,-1,3) ;
 
+	//スキルの初期化
 	for(int i=0;i<3;i++)
 	{
 		Equipments[i] = 1;
@@ -88,7 +90,6 @@ void Player::Ctrl()
 	int Key[9] = {KEY_INPUT_Q,KEY_INPUT_W,KEY_INPUT_E,
 					KEY_INPUT_A,KEY_INPUT_S,KEY_INPUT_D,
 					KEY_INPUT_Z,KEY_INPUT_X,KEY_INPUT_C};
-
 	for(int i=0;i<9;i++)
 	{
 		if(CheckKeyDown(Key[i]))
@@ -102,7 +103,7 @@ void Player::Ctrl()
 	b2Vec2 Vect = GetBody()->GetLinearVelocity();
 	if(State != Skill_None_None || fabs(Vect.y) > 0.2f)return;
 
-	//移動関連
+	//移動
 	if(CheckHitKey(KEY_INPUT_LEFT))
 	{
 		Vect.x = -MoveSpeed;
@@ -113,12 +114,15 @@ void Player::Ctrl()
 		Vect.x = MoveSpeed;
 		Direction = 1;
 	}
+	//ジャンプ
 	if(CheckKeyDown(KEY_INPUT_SPACE))Vect.y = -MoveSpeed*2.5;
+	//ベクトルを適用
 	GetBody()->SetLinearVelocity(Vect);
 }
 
 void Player::StepSkillWindow()
 {
+	//スキルウィンドウが有効であるかどうか確認
 	if(!SkillWindow.Visible)return;
 
 	for(int i=0;i<3;i++)
@@ -128,7 +132,7 @@ void Player::StepSkillWindow()
 
 	//操作
 	if(!SkillChangeFlag)
-	{
+	{//カーソルが左にあり、変更操作をおこなっていない状態
 		if(CheckKeyDown(KEY_INPUT_LEFT))SkillCursorPoint.x--;
 		if(CheckKeyDown(KEY_INPUT_RIGHT))SkillCursorPoint.x++;
 		if(CheckKeyDown(KEY_INPUT_UP))SkillCursorPoint.y--;
@@ -139,12 +143,12 @@ void Player::StepSkillWindow()
 		if(SkillCursorPoint.y < 0)SkillCursorPoint.y = 3;
 		else if(SkillCursorPoint.y > 3)SkillCursorPoint.y = 0;
 	}else
-	{
+	{//スキル変更を行おうとしている状態
 		if(CheckKeyDown(KEY_INPUT_LEFT))ChangeSkillPoint.x--;
 		if(CheckKeyDown(KEY_INPUT_RIGHT))ChangeSkillPoint.x++;
 
 		if(SkillCursorPoint.y != 0)
-		{
+		{//スキル変更
 			if(CheckKeyDown(KEY_INPUT_UP))ChangeSkillPoint.y--;
 			if(CheckKeyDown(KEY_INPUT_DOWN))ChangeSkillPoint.y++;
 
@@ -156,7 +160,7 @@ void Player::StepSkillWindow()
 			if(ChangeSkillPoint.y < 1)ChangeSkillPoint.y = 3;
 			else if(ChangeSkillPoint.y > 3)ChangeSkillPoint.y = 1;
 		}else
-		{
+		{//装備変更
 			int Length = GetArrayLength(EquipmentNames)-1;
 			if(ChangeSkillPoint.x < 0)ChangeSkillPoint.x = Length;
 			else if(ChangeSkillPoint.x > Length)ChangeSkillPoint.x = 0;
@@ -164,7 +168,7 @@ void Player::StepSkillWindow()
 	}
 
 	if(CheckKeyDown(KEY_INPUT_RETURN))
-	{
+	{//変更決定
 		if(!SkillChangeFlag)
 		{
 			ChangeSkillPoint.x = 0;
@@ -324,6 +328,7 @@ void Player::StepSkillWindow()
 	InfoPanel.ReWindow();
 	InfoPanel2.ReWindow();
 
+	//装備、スキル説明の描画
 	string StrInfo;
 	if(SkillCursorPoint.y != 0)StrInfo = SkillInfo[SkillSet[SkillCursorPoint.x][SkillCursorPoint.y-1][0]];
 	else StrInfo = EquipmentInfo[Equipments[SkillCursorPoint.x]];

@@ -63,6 +63,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
 	int Scene = TrainingMode;
 
+	//マップの生成
 	Map Map;
 	Map.Initialize(&World);
 	Map.LoadMapData("Map/Training.txt");

@@ -111,26 +111,27 @@ bool Character::UseSkill(int SkillNumber,int EquipmentNumber)
 
 		#pragma region 地上剣
 		case Skill_Sword_Front:
-		{
+		{//前方へ剣を振り下ろす
 			if(StateTime > 100)return false;
 
 			State = Skill_Sword_Front;
 			StateTime = 500;
-			HitBox Box;
 			b2PolygonShape Shape;
 			Shape.SetAsBox(2.7/2,3.7/2);
 			b2Transform Trans;
 			b2Vec2 Pos = GetBody()->GetPosition();
 			Pos.x += 2*Direction;
 			Trans.Set(Pos,0);
-			Box.Initialize(Shape,Trans,this,false,b2Vec2(10*Direction,-5),10,1,200,500,true);
+			HitBox Box;
 			HitBoxList.push_back(Box);
+			HitBoxList[HitBoxList.size()-1].Initialize(Shape,Trans,this,false,b2Vec2(10*Direction,-5),10,1,200,500,true);
 
 			return true;
 			break;
 		}
 		#pragma endregion
 	}
+	return false;
 }
 
 void Character::Step()
@@ -150,7 +151,7 @@ void Character::Step()
 
 		#pragma region 地上剣
 		case Skill_Sword_Front:
-		{
+		{//前方へ剣を振り下ろす
 			if(StateTime > 450)Graph[0] = AnimeGraphs[State][0];
 			else if(StateTime > 350)Graph[0] = AnimeGraphs[State][1];
 			else if(StateTime > 300)Graph[0] = AnimeGraphs[State][2];

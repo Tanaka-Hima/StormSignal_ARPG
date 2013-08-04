@@ -8,27 +8,27 @@ using namespace std;
 class Image_2D
 {//2D画像クラス
 public:
-	vector<int> Graph;
-	int Anime_Speed;
+	vector<int> Graph;//画像
+	int Anime_Speed;//アニメーションのスピード
 	int Anime_ShowNum;
 	int Anime_Time;
 	int Time;
 	vector<int> SIHandle;
-	bool Visible;
+	bool Visible;//画像を描画するかどうか
 	int x;
 	int y;
 	int Center_x;
 	int Center_y;
 	float Ext;
 	float Angle;
-	void Load(string Pass);
-	void Unload();
-	virtual void Initialize();
-	virtual bool Draw(bool Trans);
-	virtual int GetAlpha(int X,int Y);
-	virtual bool HitTestPoint(int Target_X,int Target_Y,bool Shape);
-	virtual int HitTestGraph(Image_2D *Target,bool Shape);
-	virtual bool HitTestRect(int RX,int RY,int RWidth,int RHeight,bool Shape);
+	void Load(string Pass);//指定パスから画像を取得
+	void Unload();//画像のアンロード
+	virtual void Initialize();//初期化
+	virtual bool Draw(bool Trans);//描画
+	virtual int GetAlpha(int X,int Y);//指定座標のアルファ値を取得
+	virtual bool HitTestPoint(int Target_X,int Target_Y,bool Shape);//点との当たり判定
+	virtual int HitTestGraph(Image_2D *Target,bool Shape);//画像との当たり判定
+	virtual bool HitTestRect(int RX,int RY,int RWidth,int RHeight,bool Shape);//矩形との当たり判定
 };
 
 #endif

@@ -13,14 +13,14 @@ private:
 	b2FixtureDef FixtureDef;
 	b2Fixture* Fixture;
 public:
-	int Direction;
+	int Direction;//進行方向
 
-	virtual void Init(b2World *World,void* UserData,float Density,float Friction);
-	virtual bool Draw(bool Trans = true,bool AutoDirection = false);
-	b2Body* GetBody();
-	b2PolygonShape* GetShape();
-	b2FixtureDef* GetFixtureDef();
-	b2Fixture* GetFixture();
+	virtual void Init(b2World *World,void* UserData,float Density,float Friction);//初期化
+	virtual bool Draw(bool Trans = true,bool AutoDirection = false);//描画
+	b2Body* GetBody();//b2Bodyを取得
+	b2PolygonShape* GetShape();//b2PolygonShapeを取得
+	b2FixtureDef* GetFixtureDef();//b2FixtureDefを取得
+	b2Fixture* GetFixture();//b2Fixtureを取得
 	/*
 	~Physics2DImage()
 	{

@@ -24,15 +24,25 @@ private:
 	vector<b2PolygonShape*> HittedChara;
 
 public:
-	void Initialize(b2PolygonShape InputShape,b2Transform InputTransform,Character* InputAttacker,bool SuicideFlag,b2Vec2 InputHitVect,int InputDamage,int InputHitCount,int InputDuration,int InputStanTime,bool FollowFlag);
-	bool HitTestShape(Character* Target,b2PolygonShape* TargetShape,b2Transform TargetTrans);
-	bool Step();
-	Character* GetCharacter();
-	b2Vec2 GetHitVect();
-	int GetDamage();
-	int GetStanTime();
+	void Initialize(b2PolygonShape InputShape,//ヒットボックスの形状
+					b2Transform InputTransform,//ヒットボックスの位置、向き
+					Character* InputAttacker,//ヒットボックスを生成したCharacter
+					bool SuicideFlag,//生成したCharacterに攻撃がヒットするかどうか
+					b2Vec2 InputHitVect,//ヒット時に対象へ与えるベクトル
+					int InputDamage,//対象へ与えるダメージ
+					int InputHitCount,//1対象へヒットできる回数
+					int InputDuration,//ヒットボックスが持続する時間
+					int InputStanTime,//対象が行動不能になる時間
+					bool FollowFlag//ヒットボックスを生成したCharacterを追いかけるかどうか
+					);
+	bool HitTestShape(Character* Target,b2PolygonShape* TargetShape,b2Transform TargetTrans);//Characterとの当たり判定
+	bool Step();//毎フレームの処理
+	Character* GetCharacter();//ヒットボックスを生成したCharacterを取得
+	b2Vec2 GetHitVect();//ヒット時に対象へ与えるベクトルを取得
+	int GetDamage();//対象へ与えるダメージを取得
+	int GetStanTime();//対象が行動不能になる時間を取得
 
-	void Draw();
+	void Draw();//描画
 
 };
 

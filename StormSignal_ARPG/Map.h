@@ -32,23 +32,23 @@ const string Action_Flag = "Flag";
 class Map
 {
 private:
-	vector<string> MapData[14];
-	vector<vector<string>> ScriptData;
-	vector<int> MapChips;
-	Player PlayerData;
-	vector<Enemy> EnemyData;
-	vector<Object> RigidBodies;
-	b2BodyDef GroundBodyDef;
-	b2Body* GroundBody;
-	b2PolygonShape GroundBox;
+	vector<string> MapData[14];//テキストから読み込んだマップデータを格納
+	vector<vector<string>> ScriptData;//特殊ブロック用のスクリプトを格納
+	vector<int> MapChips;//マップチップの画像
+	Player PlayerData;//プレイヤー
+	vector<Enemy> EnemyData;//敵配列
+	vector<Object> RigidBodies;//マップ上に設置されているオブジェクト群
+	b2BodyDef GroundBodyDef;//マップ当たり判定
+	b2Body* GroundBody;//マップ当たり判定
+	b2PolygonShape GroundBox;//マップ当たり判定
 	int Width;
 public:
-	void Initialize(b2World *World);
-	void LoadMapData(string Pass);
-	void LoadScriptData(string Pass);
-	void CreateMap(b2World *World);
-	void Step();
-	void Draw();
+	void Initialize(b2World *World);//初期化
+	void LoadMapData(string Pass);//マップデータを指定パスのテキストから読み込む
+	void LoadScriptData(string Pass);//スクリプトデータを指定パスのテキストから読み込む
+	void CreateMap(b2World *World);//マップデータからマップを生成する
+	void Step();//毎フレーム行う処理群
+	void Draw();//マップ、プレイヤー等の描画
 };
 
 #endif

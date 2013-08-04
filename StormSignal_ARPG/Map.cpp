@@ -36,6 +36,7 @@ void Map::Initialize(b2World *World)
 void Map::LoadMapData(string Pass)
 {
 	int LineData = FileRead_open(Pass.c_str());
+	//マップの横幅を計算する
 	Width = FileRead_size(Pass.c_str())/14+2;
 	for(int i=0;i<14;i++)
 	{
@@ -62,6 +63,7 @@ void Map::LoadScriptData(string Pass)
 
 void Map::CreateMap(b2World *World)
 {
+	//当たり判定生成準備
 	GroundBodyDef.position.Set(0,0);
 	GroundBody = World->CreateBody(&GroundBodyDef);
 	GroundBody->SetUserData("Ground");
@@ -69,6 +71,7 @@ void Map::CreateMap(b2World *World)
 	{
 		for(int x=0;x<Width;x++)
 		{
+			//マップデータとマップチップを照らし合わせ、一致したものを設置していく
 			if(MapData[y][x] == Mapchip_Blank)continue;
 			else if(MapData[y][x] == Mapchip_Player)
 			{
@@ -111,6 +114,7 @@ void Map::CreateMap(b2World *World)
 				if(Flag)continue;
 			}
 
+			//当たり判定の生成
 			GroundBox.SetAsBox(16/Box_Rate,16/Box_Rate,b2Vec2((x*32+16)/Box_Rate,(y*32+16)/Box_Rate),0);
 			GroundBody->CreateFixture(&GroundBox,0.f);
 		}
@@ -120,16 +124,21 @@ void Map::CreateMap(b2World *World)
 
 void Map::Step()
 {
+	//プレイヤーの処理
 	PlayerData.Ctrl();
 	PlayerData.Step();
 
+	//敵の処理
 	int Length = EnemyData.size();
 	for(int i=0;i<Length;i++)
 	{
 		EnemyData[i].Step();
 	}
 
-	//マップのスクロール
+	/*
+		マップのスクロール
+		左端、右端にプレイヤーが位置していた場合、マップの方を移動させる
+	*/
 	b2Transform PlayerTrans = PlayerData.GetBody()->GetTransform();
 	b2Transform MapTrans = GroundBody->GetTransform();
 
@@ -234,6 +243,7 @@ void Map::Step()
 
 void Map::Draw()
 {
+	//マップのスクロール分を取得
 	b2Transform MapTrans = GroundBody->GetTransform();
 	for(int y=0;y<14;y++)
 	{
@@ -267,19 +277,23 @@ void Map::Draw()
 		}
 	}
 
+	//プレイヤーの描画
 	PlayerData.Draw(true);
 
+	//敵の描画
 	int Length = EnemyData.size();
 	for(int i=0;i<Length;i++)
 	{
 		EnemyData[i].Draw();
 	}
 
+	//オブジェクトの描画
 	Length = RigidBodies.size();
 	for(int i=0;i<Length;i++)
 	{
 		RigidBodies[i].Draw();
 	}
 
+	//スキル設定ウインドウの処理
 	PlayerData.StepSkillWindow();
 }
