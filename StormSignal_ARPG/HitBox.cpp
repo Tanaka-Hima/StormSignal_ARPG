@@ -8,6 +8,8 @@ void HitBox::Initialize(b2PolygonShape InputShape,b2Transform InputTransform,Cha
 	Transform = InputTransform;
 	Attacker = InputAttacker;
 	AttackerBeforeTrans = Attacker->GetBody()->GetTransform();
+	MoveFlag = false;
+	DrawFlag = false;
 	Suicide = SuicideFlag;
 	HitVect = InputHitVect;
 	Damage = InputDamage;
@@ -15,8 +17,20 @@ void HitBox::Initialize(b2PolygonShape InputShape,b2Transform InputTransform,Cha
 	Duration = InputDuration;
 	Follow = FollowFlag;
 
-	Time = GetNowCount();
+	BeforeTime = Time = GetNowCount();
 	StanTime = InputStanTime;
+}
+
+void HitBox::SetMoveFlag(b2Vec2 InputMoveVect)
+{
+	MoveFlag = true;
+	MoveVect = InputMoveVect;
+}
+
+void HitBox::SetGraph(Image_2D InputImage)
+{
+	DrawFlag = true;
+	Image = InputImage;
 }
 
 bool HitBox::HitTestShape(Character* Target,b2PolygonShape *TargetShape,b2Transform TargetTrans)
@@ -43,12 +57,22 @@ bool HitBox::HitTestShape(Character* Target,b2PolygonShape *TargetShape,b2Transf
 
 bool HitBox::Step()
 {
+	//Characterを追尾する
 	if(Follow)
 	{
 		b2Transform Trans = Attacker->GetBody()->GetTransform();
 		b2Vec2 Vect = Trans.p - AttackerBeforeTrans.p;
 		Transform.p += Vect;
 		AttackerBeforeTrans = Trans;
+	}
+
+	//HitBoxの移動
+	if(MoveFlag)
+	{
+		int Now = GetNowCount();
+		Transform.p.x += MoveVect.x * ((Now - BeforeTime) / 1000.0);
+		Transform.p.y += MoveVect.y * ((Now - BeforeTime) / 1000.0);
+		BeforeTime = Now;
 	}
 
 	if(GetNowCount() - Time > Duration)
@@ -80,6 +104,13 @@ int HitBox::GetStanTime()
 
 void HitBox::Draw()
 {
+	if(DrawFlag)
+	{
+		Image.x = Transform.p.x * Box_Rate;
+		Image.y = Transform.p.y * Box_Rate;
+		Image.Draw(true);
+	}
+
 	const b2Color& color = b2Color(1,0,0);
 
 	int mode;//一時BLEND記録領域

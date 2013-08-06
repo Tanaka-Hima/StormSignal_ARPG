@@ -22,6 +22,7 @@ public:
 	float Ext;
 	float Angle;
 	void Load(string Pass);//指定パスから画像を取得
+	void Load(vector<int> Graphs);//配列から画像を取得
 	void Unload();//画像のアンロード
 	virtual void Initialize();//初期化
 	virtual bool Draw(bool Trans);//描画

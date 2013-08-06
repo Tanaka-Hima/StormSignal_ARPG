@@ -6,8 +6,8 @@
 
 vector<Character*> Character::CharacterList;
 vector<HitBox> Character::HitBoxList;
-vector<vector<int>> Character::AnimeGraphs;
-vector<vector<int>> Character::EquipmentGraphs;
+vector<Image_2D> Character::AnimeGraphs;
+vector<Image_2D> Character::EquipmentGraphs;
 
 vector<int> GetSkillList(string EquipmentName)
 {
@@ -55,41 +55,45 @@ void Character::InitChara(b2World *World,void* UserData,float Density,float Fric
 
 	if(AnimeGraphs.size() != 0)return;
 
-	vector<int> TempGraphs;
+	Image_2D TempGraphs;
 
 	#pragma region 装備画像読み込み
 
 	//Equipment_None_None 0
-	TempGraphs.push_back(LoadGraph("Image/Equipment/None.png"));
 	EquipmentGraphs.push_back(TempGraphs);
-	TempGraphs.clear();
+	EquipmentGraphs[EquipmentGraphs.size()-1].Load("Image/Equipment/None.png");
 
 	//Equipment_Sword_Normal 1
-	TempGraphs.push_back(LoadGraph("Image/Equipment/Sword/Normal_0.png"));
 	EquipmentGraphs.push_back(TempGraphs);
-	TempGraphs.clear();
+	EquipmentGraphs[EquipmentGraphs.size()-1].Load("Image/Equipment/Sword/Normal_0.png");
 
 	//Equipment_Sword_Flame 2
-	TempGraphs.push_back(LoadGraph("Image/Equipment/Sword/Flame_0.png"));
 	EquipmentGraphs.push_back(TempGraphs);
-	TempGraphs.clear();
+	EquipmentGraphs[EquipmentGraphs.size()-1].Load("Image/Equipment/Sword/Flame_0.png");
 
 	#pragma endregion
 
 	#pragma region スキル画像読み込み
 
 	//Skill_None_None 0
-	TempGraphs.push_back(LoadGraph("Image/Skill/None.png"));
 	AnimeGraphs.push_back(TempGraphs);
-	TempGraphs.clear();
+	AnimeGraphs[AnimeGraphs.size()-1].Load("Image/Skill/None.png");
 
 	//Skill_Sword_Front 1
-	TempGraphs.push_back(LoadGraph("Image/Skill/Sword/Front_0.png"));
-	TempGraphs.push_back(LoadGraph("Image/Skill/Sword/Front_1.png"));
-	TempGraphs.push_back(LoadGraph("Image/Skill/Sword/Front_2.png"));
-	TempGraphs.push_back(LoadGraph("Image/Skill/Sword/Front_3.png"));
 	AnimeGraphs.push_back(TempGraphs);
-	TempGraphs.clear();
+	AnimeGraphs[AnimeGraphs.size()-1].Load("Image/Skill/Sword/Front_0.png");
+	AnimeGraphs[AnimeGraphs.size()-1].Load("Image/Skill/Sword/Front_1.png");
+	AnimeGraphs[AnimeGraphs.size()-1].Load("Image/Skill/Sword/Front_2.png");
+	AnimeGraphs[AnimeGraphs.size()-1].Load("Image/Skill/Sword/Front_3.png");
+
+	//Skill_Sword_Shockwave 2
+	AnimeGraphs.push_back(TempGraphs);
+	AnimeGraphs[AnimeGraphs.size()-1].Load("Image/Skill/Sword/Shockwave_0.png");
+	AnimeGraphs[AnimeGraphs.size()-1].Load("Image/Skill/Sword/Shockwave_1.png");
+	AnimeGraphs[AnimeGraphs.size()-1].Load("Image/Skill/Sword/Shockwave_2.png");
+	AnimeGraphs[AnimeGraphs.size()-1].Load("Image/Skill/Sword/Shockwave_3.png");
+	AnimeGraphs[AnimeGraphs.size()-1].Load("Image/Skill/Sword/Shockwave_4.png");
+	AnimeGraphs[AnimeGraphs.size()-1].Load("Image/Skill/Sword/Shockwave_5.png");
 
 	#pragma endregion
 
@@ -129,6 +133,16 @@ bool Character::UseSkill(int SkillNumber,int EquipmentNumber)
 			return true;
 			break;
 		}
+		case Skill_Sword_Shockwave:
+		{//前方へ衝撃波
+			if(StateTime > 100)return false;
+
+			State = Skill_Sword_Shockwave;
+			StateTime = 700;
+
+			return true;
+			break;
+		}
 		#pragma endregion
 	}
 	return false;
@@ -145,21 +159,36 @@ void Character::Step()
 	{
 		case Skill_None_None:
 		{
-			Graph[0] = AnimeGraphs[State][0];
+			Graph[0] = AnimeGraphs[State].Graph[0];
 			break;
 		}
 
 		#pragma region 地上剣
 		case Skill_Sword_Front:
 		{//前方へ剣を振り下ろす
-			if(StateTime > 450)Graph[0] = AnimeGraphs[State][0];
-			else if(StateTime > 350)Graph[0] = AnimeGraphs[State][1];
-			else if(StateTime > 300)Graph[0] = AnimeGraphs[State][2];
-			else if(StateTime > 0)Graph[0] = AnimeGraphs[State][3];
+			if(StateTime > 450)Graph[0] = AnimeGraphs[State].Graph[0];
+			else if(StateTime > 350)Graph[0] = AnimeGraphs[State].Graph[1];
+			else if(StateTime > 300)Graph[0] = AnimeGraphs[State].Graph[2];
+			else if(StateTime > 0)Graph[0] = AnimeGraphs[State].Graph[3];
 			else
 			{
 				State = Skill_None_None;
-				Graph[0] = AnimeGraphs[State][0];
+				Graph[0] = AnimeGraphs[State].Graph[0];
+			};
+			break;
+		}
+		case Skill_Sword_Shockwave:
+		{//前方へ衝撃波
+			if(StateTime > 600)Graph[0] = AnimeGraphs[State].Graph[0];
+			else if(StateTime > 400)Graph[0] = AnimeGraphs[State].Graph[1];
+			else if(StateTime > 300)Graph[0] = AnimeGraphs[State].Graph[2];
+			else if(StateTime > 200)Graph[0] = AnimeGraphs[State].Graph[3];
+			else if(StateTime > 150)Graph[0] = AnimeGraphs[State].Graph[4];
+			else if(StateTime > 100)Graph[0] = AnimeGraphs[State].Graph[5];
+			else
+			{
+				State = Skill_None_None;
+				Graph[0] = AnimeGraphs[State].Graph[0];
 			};
 			break;
 		}

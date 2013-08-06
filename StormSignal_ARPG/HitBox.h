@@ -1,4 +1,5 @@
 ﻿#include <Box2D\Box2D.h>
+#include "Image_2D.h"
 
 #ifndef _HITBOX
 #define _HITBOX
@@ -12,12 +13,17 @@ private:
 	b2Transform Transform;
 	Character* Attacker;
 	b2Transform AttackerBeforeTrans;
+	b2Vec2 MoveVect;
+	bool MoveFlag;
+	Image_2D Image;
+	bool DrawFlag;
 	bool Suicide;//攻撃した本人にダメージは入るか？
 	b2Vec2 HitVect;//ヒット時に相手へ与えるベクトル
 	int Damage;//ダメージ
 	int HitCount;//同じ相手へ何回ヒットするか(-1で∞)
 	int Duration;//持続時間
 	int Time;
+	int BeforeTime;
 	int StanTime;//ヒット時行動不能時間
 	bool Follow;//キャラが移動した時にヒットポックスも移動させるか？
 
@@ -35,6 +41,8 @@ public:
 					int InputStanTime,//対象が行動不能になる時間
 					bool FollowFlag//ヒットボックスを生成したCharacterを追いかけるかどうか
 					);
+	void SetMoveFlag(b2Vec2 InputMoveVect);//この関数を呼び出した場合、1秒に指定分だけHitBoxが移動する
+	void SetGraph(Image_2D Image);//この関数を呼び出した場合、ヒットボックスが存在する位置に画像が描画される
 	bool HitTestShape(Character* Target,b2PolygonShape* TargetShape,b2Transform TargetTrans);//Characterとの当たり判定
 	bool Step();//毎フレームの処理
 	Character* GetCharacter();//ヒットボックスを生成したCharacterを取得

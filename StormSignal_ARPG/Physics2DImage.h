@@ -21,14 +21,15 @@ public:
 	b2PolygonShape* GetShape();//b2PolygonShapeを取得
 	b2FixtureDef* GetFixtureDef();//b2FixtureDefを取得
 	b2Fixture* GetFixture();//b2Fixtureを取得
-	/*
 	~Physics2DImage()
 	{
-		Unload();
-		b2World *World = Body->GetWorld();
-		World->DestroyBody(Body);
+		if(Graph.size() > 0)
+		{
+			Unload();
+			b2World *World = Body->GetWorld();
+			World->DestroyBody(Body);
+		}
 	}
-	*/
 };
 
 #endif

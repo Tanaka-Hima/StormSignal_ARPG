@@ -37,7 +37,7 @@ private:
 	vector<vector<string>> ScriptData;//特殊ブロック用のスクリプトを格納
 	vector<b2Fixture*> MapChipFixtures;//特殊ブロック一つ一つの当たり判定
 	vector<string> FixtureDataToMapChip;//特殊ブロックとb2Fixtureの紐付
-	vector<int> MapChips;//マップチップの画像
+	vector<Image_2D> MapChips;//マップチップの画像
 	Player PlayerData;//プレイヤー
 	vector<Enemy> EnemyData;//敵配列
 	vector<Object> RigidBodies;//マップ上に設置されているオブジェクト群

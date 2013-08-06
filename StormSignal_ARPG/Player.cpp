@@ -50,31 +50,26 @@ void Player::Initialize(b2World *World,void* UserData,float Density,float Fricti
 	int Length = AnimeGraphs.size();
 	for(int i=0;i<Length;i++)
 	{
-		Image_2D Image;
-		Image.Graph.reserve(AnimeGraphs[i].size());
-		copy(AnimeGraphs[i].begin(),AnimeGraphs[i].end(),back_inserter(Image.Graph));
-		Image.Initialize();
-		Image.Anime_Speed = 500;
-		SkillImages.push_back(Image);
+		SkillImages.push_back(AnimeGraphs[i]);
+		SkillImages[SkillImages.size()-1].Initialize();
+		SkillImages[SkillImages.size()-1].Anime_Speed = 500;
 		
 		Window Panel;
-		Panel.Initialize(0,0,64,64,Black,LightBlack);
 		SkillPanels.push_back(Panel);
+		SkillPanels[SkillPanels.size()-1].Initialize(0,0,64,64,Black,LightBlack);
 	}
 
 	Length = EquipmentGraphs.size();
 	for(int i=0;i<Length;i++)
 	{
 		Image_2D Image;
-		Image.Graph.reserve(EquipmentGraphs[i].size());
-		copy(EquipmentGraphs[i].begin(),EquipmentGraphs[i].end(),back_inserter(Image.Graph));
-		Image.Initialize();
-		Image.Anime_Speed = 500;
-		EquipmentImages.push_back(Image);
+		EquipmentImages.push_back(EquipmentGraphs[i]);
+		EquipmentImages[EquipmentImages.size()-1].Initialize();
+		EquipmentImages[EquipmentImages.size()-1].Anime_Speed = 500;
 		
 		Window Panel;
-		Panel.Initialize(0,0,64,64,Black,LightBlack);
 		EquipmentPanels.push_back(Panel);
+		EquipmentPanels[EquipmentPanels.size()-1].Initialize(0,0,64,64,Black,LightBlack);
 	}
 }
 

@@ -9,23 +9,31 @@
 void Map::Initialize(b2World *World)
 {
 	MapChips.clear();
+
+	Image_2D TempGraph;
+
 	//空欄 0
-	MapChips.push_back(-1);
+	MapChips.push_back(TempGraph);
 
 	//土 1
-	MapChips.push_back(LoadGraph("Image/Map/Clay.png"));
+	MapChips.push_back(TempGraph);
+	MapChips[MapChips.size()-1].Load("Image/Map/Clay.png");
 
 	//土上 2
-	MapChips.push_back(LoadGraph("Image/Map/ClayFloor.png"));
+	MapChips.push_back(TempGraph);
+	MapChips[MapChips.size()-1].Load("Image/Map/ClayFloor.png");
 
 	//木箱 3
-	MapChips.push_back(LoadGraph("Image/Map/Woodbox.png"));
+	MapChips.push_back(TempGraph);
+	MapChips[MapChips.size()-1].Load("Image/Map/Woodbox.png");
 
 	//スイッチ1(off) 4
-	MapChips.push_back(LoadGraph("Image/Map/Switch1.png"));
+	MapChips.push_back(TempGraph);
+	MapChips[MapChips.size()-1].Load("Image/Map/Switch1.png");
 
 	//スイッチ2(on) 5
-	MapChips.push_back(LoadGraph("Image/Map/Switch2.png"));
+	MapChips.push_back(TempGraph);
+	MapChips[MapChips.size()-1].Load("Image/Map/Switch2.png");
 
 
 	PlayerData.Load("Image/Chara/None.png");
@@ -81,7 +89,8 @@ void Map::CreateMap(b2World *World)
 			{
 				Object Body;
 				RigidBodies.push_back(Body);
-				RigidBodies[RigidBodies.size()-1].Graph.push_back(MapChips[3]);
+				RigidBodies[RigidBodies.size()-1].Graph = MapChips[3].Graph;
+				RigidBodies[RigidBodies.size()-1].SIHandle = MapChips[3].SIHandle;
 				RigidBodies[RigidBodies.size()-1].Initialize(World,"Mapchip_Woodbox",1,1,-1);
 				RigidBodies[RigidBodies.size()-1].GetBody()->SetTransform(b2Vec2((x*32+16)/Box_Rate,(y*32+16)/Box_Rate),0);
 				continue;
@@ -287,11 +296,11 @@ void Map::Draw()
 
 			if(GraphNum == Mapchip_Blank)continue;
 			int Graph = -1;
-			if(GraphNum == Mapchip_Clay)Graph = MapChips[1];
-			if(GraphNum == Mapchip_ClayFloor)Graph = MapChips[2];
+			if(GraphNum == Mapchip_Clay)Graph = MapChips[1].Graph[0];
+			if(GraphNum == Mapchip_ClayFloor)Graph = MapChips[2].Graph[0];
 			if(GraphNum == Mapchip_Woodbox)continue;
-			if(GraphNum == Mapchip_Switch1)Graph = MapChips[4];
-			if(GraphNum == Mapchip_Switch2)Graph = MapChips[5];
+			if(GraphNum == Mapchip_Switch1)Graph = MapChips[4].Graph[0];
+			if(GraphNum == Mapchip_Switch2)Graph = MapChips[5].Graph[0];
 
 			DrawGraph(MapTrans.p.x*Box_Rate+x*32,y*32,Graph,true);
 		}
