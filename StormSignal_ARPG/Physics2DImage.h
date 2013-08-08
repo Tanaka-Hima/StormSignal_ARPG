@@ -13,8 +13,6 @@ private:
 	b2FixtureDef FixtureDef;
 	b2Fixture* Fixture;
 public:
-	int Direction;//進行方向
-
 	virtual void Init(b2World *World,void* UserData,float Density,float Friction);//初期化
 	virtual bool Draw(bool Trans = true,bool AutoDirection = false);//描画
 	b2Body* GetBody();//b2Bodyを取得

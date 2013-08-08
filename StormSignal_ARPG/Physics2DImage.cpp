@@ -24,7 +24,7 @@ void Physics2DImage::Init(b2World *World,void* UserData,float Density,float Fric
 	BodyDef.position.Set(x/Box_Rate, y/Box_Rate);
 	Body = World->CreateBody(&BodyDef);
 	Body->SetUserData(UserData);
-	Direction = 1;
+	Direction = ImageDirection_Right;
 
 	DynamicBox.SetAsBox((float)Center_x/(float)Box_Rate, (float)Center_y/(float)Box_Rate);
 

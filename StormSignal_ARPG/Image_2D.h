@@ -5,6 +5,12 @@ using namespace std;
 #ifndef _IMAGE_2D
 #define _IMAGE_2D
 
+enum ImageDirection
+{
+	ImageDirection_Left = -1,
+	ImageDirection_Right = 1,
+};
+
 class Image_2D
 {//2D画像クラス
 public:
@@ -19,6 +25,7 @@ public:
 	int y;
 	int Center_x;
 	int Center_y;
+	ImageDirection Direction;
 	float Ext;
 	float Angle;
 	void Load(string Pass);//指定パスから画像を取得

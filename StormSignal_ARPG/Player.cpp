@@ -102,12 +102,12 @@ void Player::Ctrl()
 	if(CheckHitKey(KEY_INPUT_LEFT))
 	{
 		Vect.x = -MoveSpeed;
-		Direction = -1;
+		Direction = ImageDirection_Left;
 	}
 	if(CheckHitKey(KEY_INPUT_RIGHT))
 	{
 		Vect.x = MoveSpeed;
-		Direction = 1;
+		Direction = ImageDirection_Right;
 	}
 	//ジャンプ
 	if(CheckKeyDown(KEY_INPUT_SPACE))Vect.y = -MoveSpeed*2.5;

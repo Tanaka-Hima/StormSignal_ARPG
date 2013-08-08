@@ -38,6 +38,8 @@ const string EquipmentInfo[] = {"装備を使用しません。\n装備種類 : 
 							"通常剣を用いて攻撃を行います。\n装備種類 : 剣",
 							"炎剣を用いて攻撃を行います。\n装備種類 : 剣"};
 
+const int Effect_Sword_Shockwave = 0;
+
 vector<int> GetSkillList(string EquipmentName);//装備に対応したスキルを取得
 string GetEquipmentNameforSkill(int Skill);//スキル名から装備種類を取り出す
 string GetEquipmentNameforEquipment(int Equipment);//装備名から装備種類を取り出す
@@ -51,6 +53,7 @@ public:
 	int HP;//HP
 	int State;//現在の状態
 	int StateTime;//現在の状態が続く時間
+	int BeforeStateTime;//前フレームでのStateTime
 	int Time;//時間
 	static vector<Character*> CharacterList;//このプログラム上で生成されたすべてのCharacterクラス
 	static vector<HitBox> HitBoxList;//Characterによって生成されたすべてのヒットボックス

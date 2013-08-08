@@ -8,6 +8,7 @@ vector<Character*> Character::CharacterList;
 vector<HitBox> Character::HitBoxList;
 vector<Image_2D> Character::AnimeGraphs;
 vector<Image_2D> Character::EquipmentGraphs;
+vector<Image_2D> Character::EffectGraphs;
 
 vector<int> GetSkillList(string EquipmentName)
 {
@@ -51,6 +52,7 @@ void Character::InitChara(b2World *World,void* UserData,float Density,float Fric
 
 	State = Skill_None_None;
 	StateTime = 0;
+	BeforeStateTime = 0;
 	Time = GetNowCount();
 
 	if(AnimeGraphs.size() != 0)return;
@@ -97,6 +99,19 @@ void Character::InitChara(b2World *World,void* UserData,float Density,float Fric
 
 	#pragma endregion
 
+	#pragma region エフェクト画像読み込み
+
+	//Effect_Sword_Shockwave 0
+	EffectGraphs.push_back(TempGraphs);
+	int ShockwaveArray[6];
+	LoadDivGraph("Image/Effect/Sword/Shockwave.dds",6,3,2,240,240,ShockwaveArray);
+	for(int i=0;i<6;i++)EffectGraphs[EffectGraphs.size()-1].Graph.push_back(ShockwaveArray[i]);
+	EffectGraphs[EffectGraphs.size()-1].Initialize();
+	EffectGraphs[EffectGraphs.size()-1].Ext = 0.2f;
+	EffectGraphs[EffectGraphs.size()-1].Anime_Speed = 50;
+
+	#pragma endregion
+
 }
 
 bool Character::UseSkill(int SkillNumber,int EquipmentNumber)
@@ -120,15 +135,6 @@ bool Character::UseSkill(int SkillNumber,int EquipmentNumber)
 
 			State = Skill_Sword_Front;
 			StateTime = 500;
-			b2PolygonShape Shape;
-			Shape.SetAsBox(2.7/2,3.7/2);
-			b2Transform Trans;
-			b2Vec2 Pos = GetBody()->GetPosition();
-			Pos.x += 2*Direction;
-			Trans.Set(Pos,0);
-			HitBox Box;
-			HitBoxList.push_back(Box);
-			HitBoxList[HitBoxList.size()-1].Initialize(Shape,Trans,this,false,b2Vec2(10*Direction,-5),10,1,200,500,true);
 
 			return true;
 			break;
@@ -167,8 +173,22 @@ void Character::Step()
 		case Skill_Sword_Front:
 		{//前方へ剣を振り下ろす
 			if(StateTime > 450)Graph[0] = AnimeGraphs[State].Graph[0];
-			else if(StateTime > 350)Graph[0] = AnimeGraphs[State].Graph[1];
-			else if(StateTime > 300)Graph[0] = AnimeGraphs[State].Graph[2];
+			else if(StateTime > 350)
+			{
+				if(BeforeStateTime > 450)
+				{//ヒットボックスを発生させる
+					b2PolygonShape Shape;
+					Shape.SetAsBox(2.7/2,3.7/2);
+					b2Transform Trans;
+					b2Vec2 Pos = GetBody()->GetPosition();
+					Pos.x += 2*Direction;
+					Trans.Set(Pos,0);
+					HitBox Box;
+					HitBoxList.push_back(Box);
+					HitBoxList[HitBoxList.size()-1].Initialize(Shape,Trans,this,false,b2Vec2(10*Direction,-5),10,1,50,500,true);
+				}
+				Graph[0] = AnimeGraphs[State].Graph[1];
+			}else if(StateTime > 300)Graph[0] = AnimeGraphs[State].Graph[2];
 			else if(StateTime > 0)Graph[0] = AnimeGraphs[State].Graph[3];
 			else
 			{
@@ -181,8 +201,25 @@ void Character::Step()
 		{//前方へ衝撃波
 			if(StateTime > 600)Graph[0] = AnimeGraphs[State].Graph[0];
 			else if(StateTime > 400)Graph[0] = AnimeGraphs[State].Graph[1];
-			else if(StateTime > 300)Graph[0] = AnimeGraphs[State].Graph[2];
-			else if(StateTime > 200)Graph[0] = AnimeGraphs[State].Graph[3];
+			else if(StateTime > 300)
+			{
+				if(BeforeStateTime > 400)
+				{
+					b2PolygonShape Shape;
+					Shape.SetAsBox(2.7/2,3.7/2);
+					b2Transform Trans;
+					b2Vec2 Pos = GetBody()->GetPosition();
+					Pos.x += 2*Direction;
+					Trans.Set(Pos,0);
+					HitBox Box;
+					HitBoxList.push_back(Box);
+					HitBoxList[HitBoxList.size()-1].Initialize(Shape,Trans,this,false,b2Vec2(10*Direction,-5),10,1,1000,500,false);
+					EffectGraphs[Effect_Sword_Shockwave].Direction = Direction;
+					HitBoxList[HitBoxList.size()-1].SetGraph(EffectGraphs[Effect_Sword_Shockwave]);
+					HitBoxList[HitBoxList.size()-1].SetMoveFlag(b2Vec2(Direction*10,0));
+				}
+				Graph[0] = AnimeGraphs[State].Graph[2];
+			}else if(StateTime > 200)Graph[0] = AnimeGraphs[State].Graph[3];
 			else if(StateTime > 150)Graph[0] = AnimeGraphs[State].Graph[4];
 			else if(StateTime > 100)Graph[0] = AnimeGraphs[State].Graph[5];
 			else
@@ -218,4 +255,7 @@ void Character::Step()
 
 	//キャラが倒れないようにする
 	GetBody()->SetTransform(GetBody()->GetPosition(),0);
+
+	//BeforeStateTimeの更新
+	BeforeStateTime = StateTime;
 }
