@@ -150,7 +150,7 @@
 　・行動
 　　- フロントステップ	(Skill_None_Frontstep)
 　　- バックステップ	(Skill_None_Backstep)
-　　- 当身		(Skill_None_Counter)
+　　- カウンター		(Skill_None_Counter)
 
 　・その他
 　　- 空欄(Skill_None_None)
