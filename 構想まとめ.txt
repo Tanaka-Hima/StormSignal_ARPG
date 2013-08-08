@@ -1,161 +1,162 @@
-›ƒ‚[ƒh
-@EStory
-@EArcade
-@ETraining
-@EOption
+ï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½h
+ï¿½@ï¿½EStory
+ï¿½@ï¿½EArcade
+ï¿½@ï¿½ETraining
+ï¿½@ï¿½EOption
 
-›‘€ì•û–@
-@ƒJ[ƒ\ƒ‹ƒL[ - ˆÚ“®AƒAƒNƒVƒ‡ƒ“
-@Enter - Œˆ’è
-@Space - ƒWƒƒƒ“ƒv
-@QWEASDZXC - ƒXƒLƒ‹
-@Alt - ƒƒjƒ…[
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½@
+ï¿½@ï¿½Jï¿½[ï¿½\ï¿½ï¿½ï¿½Lï¿½[ - ï¿½Ú“ï¿½ï¿½Aï¿½Aï¿½Nï¿½Vï¿½ï¿½ï¿½ï¿½
+ï¿½@Enter - ï¿½ï¿½ï¿½ï¿½
+ï¿½@Space - ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½v
+ï¿½@QWEASDZXC - ï¿½Xï¿½Lï¿½ï¿½
+ï¿½@Alt - ï¿½ï¿½ï¿½jï¿½ï¿½ï¿½[
 
-›Option
-@EBGM
-@ESE
-@EKeyConfig
+ï¿½ï¿½Option
+ï¿½@ï¿½EBGM
+ï¿½@ï¿½ESE
+ï¿½@ï¿½EKeyConfig
 
-›ƒ}ƒbƒv
-@32*32‚Ìƒ}ƒbƒvƒ`ƒbƒv‚ðŽg—p(c‚É14–‡ 2ƒhƒbƒg—]‚é)
-@‚Ü‚³‚¨ƒRƒ“ƒXƒgƒ‰ƒNƒVƒ‡ƒ“‚Ì‚æ‚¤‚ÉAƒeƒLƒXƒgƒGƒfƒBƒ^‚Åƒ}ƒbƒv§ì‚ðs‚¦‚é‚æ‚¤‚É‚·‚é
-@
-@Šî–{–½–¼–@‘¥ - Mapchip_(Ží—Þ)
-@E’nŒ` 0
-@@- "00"	‹ó—“		(Mapchip_Blank)
-@@- "01"	“y		(Mapchip_Clay)
-@@- "02"	“y°		(Mapchip_ClayFloor)
-@@- "03"	–Ø” 		(Mapchip_Woodbox)
-	‰Ÿ‚µ‚½‚è‚·‚é‚Æ“®‚­
-@@- "04"	ƒXƒCƒbƒ`1(off)	(Mapchip_Switch1)
-@@- "05"	ƒXƒCƒbƒ`2(on)	(Mapchip_Switch2)
-@E“G 1
-@@- "10" ƒTƒ“ƒhƒoƒbƒO		(Mapchip_TrainingBag)
-	–³“GA‰½‚à‚µ‚È‚¢—ûK‘ä
+ï¿½ï¿½ï¿½}ï¿½bï¿½v
+ï¿½@32*32ï¿½Ìƒ}ï¿½bï¿½vï¿½`ï¿½bï¿½vï¿½ï¿½ï¿½gï¿½p(ï¿½cï¿½ï¿½14ï¿½ï¿½ 2ï¿½hï¿½bï¿½gï¿½]ï¿½ï¿½)
+ï¿½@ï¿½Ü‚ï¿½ï¿½ï¿½ï¿½Rï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½Ì‚æ‚¤ï¿½ÉAï¿½eï¿½Lï¿½Xï¿½gï¿½Gï¿½fï¿½Bï¿½^ï¿½Åƒ}ï¿½bï¿½vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½ï¿½ï¿½ï¿½æ‚¤ï¿½É‚ï¿½ï¿½ï¿½
+ï¿½@
+ï¿½@ï¿½ï¿½ï¿½{ï¿½ï¿½ï¿½ï¿½ï¿½@ï¿½ï¿½ - Mapchip_(ï¿½ï¿½ï¿½ï¿½)
+ï¿½@ï¿½Eï¿½nï¿½` 0
+ï¿½@ï¿½@- "00"	ï¿½ï¿½ï¿½ï¿½		(Mapchip_Blank)
+ï¿½@ï¿½@- "01"	ï¿½y		(Mapchip_Clay)
+ï¿½@ï¿½@- "02"	ï¿½yï¿½ï¿½		(Mapchip_ClayFloor)
+ï¿½@ï¿½@- "03"	ï¿½Ø”ï¿½		(Mapchip_Woodbox)
+	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½è‚·ï¿½ï¿½ï¿½Æ“ï¿½ï¿½ï¿½
+ï¿½@ï¿½@- "04"	ï¿½Xï¿½Cï¿½bï¿½`1(off)	(Mapchip_Switch1)
+ï¿½@ï¿½@- "05"	ï¿½Xï¿½Cï¿½bï¿½`2(on)	(Mapchip_Switch2)
+ï¿½@ï¿½Eï¿½G 1
+ï¿½@ï¿½@- "10" ï¿½Tï¿½ï¿½ï¿½hï¿½oï¿½bï¿½O		(Mapchip_TrainingBag)
+	ï¿½ï¿½ï¿½Gï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È‚ï¿½ï¿½ï¿½ï¿½Kï¿½ï¿½
 
-@E‚»‚Ì‘¼
-@@- "99"	ƒvƒŒƒCƒ„[	(Mapchip_Player)
-	ƒvƒŒƒCƒ„[‚Ì‰Šú’n“_
-@@- "AA~ZZ"	“ÁŽêƒuƒƒbƒN
-	ˆÚ“®°,ƒXƒCƒbƒ`,ƒQ[ƒg“™
-	“­‚«‚É‚Â‚¢‚Ä‚Í•Ê‚É’è‹`‚·‚é
+ï¿½@ï¿½Eï¿½ï¿½ï¿½Ì‘ï¿½
+ï¿½@ï¿½@- "99"	ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[	(Mapchip_Player)
+	ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½Ìï¿½ï¿½ï¿½ï¿½nï¿½_
+ï¿½@ï¿½@- "AA~ZZ"	ï¿½ï¿½ï¿½ï¿½ï¿½uï¿½ï¿½ï¿½bï¿½N
+	ï¿½Ú“ï¿½ï¿½ï¿½,ï¿½Xï¿½Cï¿½bï¿½`,ï¿½Qï¿½[ï¿½gï¿½ï¿½
+	ï¿½ï¿½ï¿½ï¿½ï¿½É‚Â‚ï¿½ï¿½Ä‚Í•Ê‚É’ï¿½ï¿½`ï¿½ï¿½ï¿½ï¿½
 
 
-›“ÁŽêƒuƒƒbƒN
-@Šùq–@‘¥ - ‘ÎÛƒAƒ‹ƒtƒ@ƒxƒbƒg,ŠOŒ©,’Ê‚è”²‚¯”»’è,ƒgƒŠƒK[,ƒAƒNƒVƒ‡ƒ“,“®ì‰ñ”,ƒCƒ“ƒ^[ƒoƒ‹
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½uï¿½ï¿½ï¿½bï¿½N
+ï¿½@ï¿½ï¿½ï¿½qï¿½@ï¿½ï¿½ - ï¿½ÎÛƒAï¿½ï¿½ï¿½tï¿½@ï¿½xï¿½bï¿½g,ï¿½Oï¿½ï¿½,ï¿½Ê‚è”²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½gï¿½ï¿½ï¿½Kï¿½[,ï¿½Aï¿½Nï¿½Vï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½Cï¿½ï¿½ï¿½^ï¿½[ï¿½oï¿½ï¿½
 
-@E‘ÎÛƒAƒ‹ƒtƒ@ƒxƒbƒg
-@@AA~ZZ‚Ì‚Ç‚ê‚É“K‰ž‚·‚é‚©‚ðŽw’è
+ï¿½@ï¿½Eï¿½ÎÛƒAï¿½ï¿½ï¿½tï¿½@ï¿½xï¿½bï¿½g
+ï¿½@ï¿½@AA~ZZï¿½Ì‚Ç‚ï¿½ï¿½É“Kï¿½ï¿½ï¿½ï¿½ï¿½é‚©ï¿½ï¿½ï¿½wï¿½ï¿½
 
-@EŠOŒ©
-@@‚Ç‚ÌŒ©‚½–Ú‚É‚·‚é‚©‚ðŽw’è
-@@—á‚¦‚ÎA1‚ðŽw’è‚·‚ê‚Î“y‚ÌŒ©‚½–Ú‚Æ‚È‚é
+ï¿½@ï¿½Eï¿½Oï¿½ï¿½
+ï¿½@ï¿½@ï¿½Ç‚ÌŒï¿½ï¿½ï¿½ï¿½Ú‚É‚ï¿½ï¿½é‚©ï¿½ï¿½ï¿½wï¿½ï¿½
+ï¿½@ï¿½@ï¿½á‚¦ï¿½ÎA1ï¿½ï¿½ï¿½wï¿½è‚·ï¿½ï¿½ï¿½Î“yï¿½ÌŒï¿½ï¿½ï¿½ï¿½Ú‚Æ‚È‚ï¿½
 
-@E’Ê‚è”²‚¯”»’è
-@@1‚ðŽw’è‚·‚é‚±‚Æ‚ÅƒvƒŒƒCƒ„[‚ª’Ê‚è”²‚¯‚ç‚ê‚È‚¢‚æ‚¤‚É‚·‚é
+ï¿½@ï¿½Eï¿½Ê‚è”²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ï¿½@ï¿½@1ï¿½ï¿½ï¿½wï¿½è‚·ï¿½é‚±ï¿½Æ‚Åƒvï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Ê‚è”²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È‚ï¿½ï¿½æ‚¤ï¿½É‚ï¿½ï¿½ï¿½
 
-@EƒgƒŠƒK[
-@@‘ÎÛ‚É‰½‚ª‹N‚«‚½‚ç“®ì‚ð‚·‚é‚©Žw’è
-@@- Hit(Hited -> ‘OƒtƒŒ[ƒ€‚ÅG‚ê‚Ä‚¢‚é)
-	‘ÎÛ‚ÉG‚ê‚½uŠÔ‚Ì‚Ý‹N“®
-@@- Touch
-	‘ÎÛ‚ÉG‚ê‚Ä‚¢‚éŠÔí‚É‹N“®
-@@- Flag -> Flagged
-	‘¼‘ÎÛ‚©‚çƒtƒ‰ƒO‚ð—§‚Ä‚ç‚ê‚é‚Æ‹N“®
-@@- Repeat -> Repeated -> Repeat......
-	Å‰‚©‚ç‹N“®‚µ‚Ä‚¨‚èA“®ì‚ªI‚í‚é‚Æ”½‘Î‚Ì“®ì‚ðŽn‚ß‚é
+ï¿½@ï¿½Eï¿½gï¿½ï¿½ï¿½Kï¿½[
+ï¿½@ï¿½@ï¿½ÎÛ‚É‰ï¿½ï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½ï¿½ï¿½ç“®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½é‚©ï¿½wï¿½ï¿½
+ï¿½@ï¿½@- Hit(Hited -> ï¿½Oï¿½tï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ÅGï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½)
+	ï¿½ÎÛ‚ÉGï¿½ê‚½ï¿½uï¿½Ô‚Ì‚Ý‹Nï¿½ï¿½
+ï¿½@ï¿½@- Touch
+	ï¿½ÎÛ‚ÉGï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½ï¿½Ôï¿½ï¿½É‹Nï¿½ï¿½
+ï¿½@ï¿½@- Flag -> Flagged
+	ï¿½ï¿½ï¿½ÎÛ‚ï¿½ï¿½ï¿½ï¿½tï¿½ï¿½ï¿½Oï¿½ð—§‚Ä‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ‹Nï¿½ï¿½
+ï¿½@ï¿½@- Repeat -> Repeated -> Repeat......
+	ï¿½Åï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ì‚ªï¿½Iï¿½ï¿½ï¿½ï¿½ï¿½Æ”ï¿½ï¿½Î‚Ì“ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½nï¿½ß‚ï¿½
 
-@EƒAƒNƒVƒ‡ƒ“
-@@ƒgƒŠƒK[‚ªˆø‚©‚ê‚½ŽžA‰½‚ðs‚¤‚©Žw’è
-@@- Flag|Target(AA~ZZ)
-	Target‚Ìƒtƒ‰ƒO‚ð—§‚Ä‚é(Target‚ÌƒgƒŠƒK[‚ªFlag‚Å‚È‚¢ê‡‚Í–³Œø)
-@@- Move|x/ms|y/ms|msec
-	Ž©•ª‚ðmsec•ªˆÚ“®‚³‚¹‚é
-@@- Delete
-	Ž©•ª‚ðƒ}ƒbƒv‚©‚çíœ‚·‚é
-@@- Redraw|Number
-	Ž©•ª‚ÌŒ©‚½–Ú‚ðNumber‚Ö•ÏX‚·‚é
-@@- Sound|FileName
-	Žw’èƒTƒEƒ“ƒh‚ð–Â‚ç‚·
+ï¿½@ï¿½Eï¿½Aï¿½Nï¿½Vï¿½ï¿½ï¿½ï¿½
+ï¿½@ï¿½@ï¿½gï¿½ï¿½ï¿½Kï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê‚½ï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½ï¿½ï¿½ï¿½wï¿½ï¿½
+ï¿½@ï¿½@- Flag|Target(AA~ZZ)
+	Targetï¿½Ìƒtï¿½ï¿½ï¿½Oï¿½ð—§‚Ä‚ï¿½(Targetï¿½Ìƒgï¿½ï¿½ï¿½Kï¿½[ï¿½ï¿½Flagï¿½Å‚È‚ï¿½ï¿½ê‡ï¿½Í–ï¿½ï¿½ï¿½)
+ï¿½@ï¿½@- Move|x/ms|y/ms|msec
+	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½msecï¿½ï¿½ï¿½Ú“ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ï¿½@ï¿½@- Delete
+	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½}ï¿½bï¿½vï¿½ï¿½ï¿½ï¿½ï¿½íœï¿½ï¿½ï¿½ï¿½
+ï¿½@ï¿½@- Redraw|Number
+	ï¿½ï¿½ï¿½ï¿½ï¿½ÌŒï¿½ï¿½ï¿½ï¿½Ú‚ï¿½Numberï¿½Ö•ÏXï¿½ï¿½ï¿½ï¿½
+ï¿½@ï¿½@- Sound|FileName
+	ï¿½wï¿½ï¿½ï¿½Tï¿½Eï¿½ï¿½ï¿½hï¿½ï¿½ï¿½Â‚ç‚·
 
-@E“®ì‰ñ”
-@@‚±‚Ì“®ì‚ð‰½‰ñs‚¤‚©‚ðŽw’è
-@@-1‚Å–³ŒÀ‘å
+ï¿½@ï¿½Eï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ï¿½@ï¿½@ï¿½ï¿½ï¿½Ì“ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½wï¿½ï¿½
+ï¿½@ï¿½@-1ï¿½Å–ï¿½ï¿½ï¿½ï¿½ï¿½
 
-@EƒCƒ“ƒ^[ƒoƒ‹
-@@ŽŸ‚Ì“®ì‚Ü‚Å‚ÌƒCƒ“ƒ^[ƒoƒ‹‚ðŽw’è
+ï¿½@ï¿½Eï¿½Cï¿½ï¿½ï¿½^ï¿½[ï¿½oï¿½ï¿½
+ï¿½@ï¿½@ï¿½ï¿½ï¿½Ì“ï¿½ï¿½ï¿½ï¿½Ü‚Å‚ÌƒCï¿½ï¿½ï¿½^ï¿½[ï¿½oï¿½ï¿½ï¿½ï¿½ï¿½wï¿½ï¿½
 
-@E—á
-@@AA,04,Hit,Redraw|05,1,0
-@@Ý’u‚µ‚½AAƒuƒƒbƒN‚ÌŒ©‚½–Ú‚ðƒXƒCƒbƒ`(off)‚Æ‚·‚é
-@@G‚é‚ÆƒXƒCƒbƒ`(on)‚Ö•Ï‰»‚·‚é
+ï¿½@ï¿½Eï¿½ï¿½
+ï¿½@ï¿½@AA,04,Hit,Redraw|05,1,0
+ï¿½@ï¿½@ï¿½Ý’uï¿½ï¿½ï¿½ï¿½AAï¿½uï¿½ï¿½ï¿½bï¿½Nï¿½ÌŒï¿½ï¿½ï¿½ï¿½Ú‚ï¿½ï¿½Xï¿½Cï¿½bï¿½`(off)ï¿½Æ‚ï¿½ï¿½ï¿½
+ï¿½@ï¿½@ï¿½Gï¿½ï¿½ï¿½ÆƒXï¿½Cï¿½bï¿½`(on)ï¿½Ö•Ï‰ï¿½ï¿½ï¿½ï¿½ï¿½
 
-›‘•”õ
-@‘•”õ—“‚ð3‚Â—pˆÓ‚µA‚»‚±‚Ö‚Í‚ß‚é
-@ƒXƒLƒ‹‚Í‘•”õ‚µ‚½•Ší‚ÉŠÖ˜A‚·‚é‚à‚Ì‚µ‚©Žg—p‚Å‚«‚È‚¢
-@‘•”õ‚ª"Œ•Aƒnƒ“ƒhƒKƒ“A‚"‚¾‚Æ‚·‚é‚ÆA‘„‚â•€‚È‚Ç‚ðŽg—p‚·‚éƒXƒLƒ‹‚ÍŽg—p•s”\
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ï¿½@ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½3ï¿½Â—pï¿½Ó‚ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½Ö‚Í‚ß‚ï¿½
+ï¿½@ï¿½Xï¿½Lï¿½ï¿½ï¿½Í‘ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÉŠÖ˜Aï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì‚ï¿½ï¿½ï¿½ï¿½gï¿½pï¿½Å‚ï¿½ï¿½È‚ï¿½
+ï¿½@ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"ï¿½ï¿½ï¿½Aï¿½nï¿½ï¿½ï¿½hï¿½Kï¿½ï¿½ï¿½Aï¿½ï¿½"ï¿½ï¿½ï¿½Æ‚ï¿½ï¿½ï¿½ï¿½ÆAï¿½ï¿½ï¿½â•€ï¿½È‚Ç‚ï¿½ï¿½gï¿½pï¿½ï¿½ï¿½ï¿½ï¿½Xï¿½Lï¿½ï¿½ï¿½ÍŽgï¿½pï¿½sï¿½\
 
-›ƒXƒLƒ‹ƒEƒBƒ“ƒhƒE(750,400)
+ï¿½ï¿½ï¿½Xï¿½Lï¿½ï¿½ï¿½Eï¿½Bï¿½ï¿½ï¿½hï¿½E(750,400)
 --------------------------------------
-@ƒXƒLƒ‹A‘•”õƒ^ƒu(3*1)	
+ï¿½@ï¿½Xï¿½Lï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½^ï¿½u(3*1)	
 
-@‘•”õ‘‹(3*1)		©‘•”õˆê——¨
+ï¿½@ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(3*1)		ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê——ï¿½ï¿½
 
-@ƒXƒLƒ‹‘‹(3*3)		©‡@ƒXƒLƒ‹ˆê——(5*3)¨
-@ƒXƒLƒ‹‘‹		©‡AƒXƒLƒ‹ˆê——¨
-@ƒXƒLƒ‹‘‹		©‡BƒXƒLƒ‹ˆê——¨
+ï¿½@ï¿½Xï¿½Lï¿½ï¿½ï¿½ï¿½(3*3)		ï¿½ï¿½ï¿½@ï¿½Xï¿½Lï¿½ï¿½ï¿½ê——(5*3)ï¿½ï¿½
+ï¿½@ï¿½Xï¿½Lï¿½ï¿½ï¿½ï¿½		ï¿½ï¿½ï¿½Aï¿½Xï¿½Lï¿½ï¿½ï¿½ê——ï¿½ï¿½
+ï¿½@ï¿½Xï¿½Lï¿½ï¿½ï¿½ï¿½		ï¿½ï¿½ï¿½Bï¿½Xï¿½Lï¿½ï¿½ï¿½ê——ï¿½ï¿½
 
-	‘I‘ðƒXƒLƒ‹A@‘•”õà–¾(2*2)
-	‘I‘ðƒXƒLƒ‹A@‘•”õà–¾
+	ï¿½Iï¿½ï¿½ï¿½Xï¿½Lï¿½ï¿½ï¿½Aï¿½@ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(2*2)
+	ï¿½Iï¿½ï¿½ï¿½Xï¿½Lï¿½ï¿½ï¿½Aï¿½@ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 ---------------------------------------
-@‘•”õ‘‹‚É‘•”õ‚µ‚½‚à‚Ì‚É‘Î‰ž‚·‚éƒXƒLƒ‹‚ðˆê——‚Ö•\Ž¦
-@ˆê“xÝ’è‚µ‚½‘•”õ‚Í•Û‘¶‚³‚êAƒ^ƒuØ‚è‘Ö‚¦‚ÅŒÄ‚Ño‚µ‚ª‰Â”\
+ï¿½@ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É‘ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì‚É‘Î‰ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Xï¿½Lï¿½ï¿½ï¿½ï¿½ï¿½ê——ï¿½Ö•\ï¿½ï¿½
+ï¿½@ï¿½ï¿½ï¿½xï¿½Ý’è‚µï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í•Û‘ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Aï¿½^ï¿½uï¿½Ø‚ï¿½ï¿½Ö‚ï¿½ï¿½ÅŒÄ‚Ñoï¿½ï¿½ï¿½ï¿½ï¿½Â”\
 
-›‘•”õ
-@Šî–{–½–¼–@‘¥ - Equipment_(‘•”õ–¼)_(Ží—Þ)
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ï¿½@ï¿½ï¿½ï¿½{ï¿½ï¿½ï¿½ï¿½ï¿½@ï¿½ï¿½ - Equipment_(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)_(ï¿½ï¿½ï¿½ï¿½)
 
-@EŒ•
-@@- ’ÊíŒ•	(Equipment_Sword_Normal)
-@@- ‰ŠŒ•	(Equipment_Sword_Flame)
-@@- •XŒ•	(Equipment_Sword_Ice)
-@@- —‹Œ•	(Equipment_Sword_Thunder)
+ï¿½@ï¿½Eï¿½ï¿½
+ï¿½@ï¿½@- ï¿½ÊíŒ•	(Equipment_Sword_Normal)
+ï¿½@ï¿½@- ï¿½ï¿½ï¿½ï¿½	(Equipment_Sword_Flame)
+ï¿½@ï¿½@- ï¿½Xï¿½ï¿½	(Equipment_Sword_Ice)
+ï¿½@ï¿½@- ï¿½ï¿½ï¿½ï¿½	(Equipment_Sword_Thunder)
 
-@E‚»‚Ì‘¼
-@@- ‹ó—“	(Equipment_None_None)
+ï¿½@ï¿½Eï¿½ï¿½ï¿½Ì‘ï¿½
+ï¿½@ï¿½@- ï¿½ï¿½ï¿½ï¿½	(Equipment_None_None)
 
-›ƒXƒLƒ‹
-@Šî–{–½–¼–@‘¥ - Skill_(ƒXƒLƒ‹–¼)_(s“®)
-@{Ží—Þ,ƒŒƒxƒ‹,ŒoŒ±’l,CD}
+ï¿½ï¿½ï¿½Xï¿½Lï¿½ï¿½
+ï¿½@ï¿½ï¿½ï¿½{ï¿½ï¿½ï¿½ï¿½ï¿½@ï¿½ï¿½ - Skill_(ï¿½Xï¿½Lï¿½ï¿½ï¿½ï¿½)_(ï¿½sï¿½ï¿½)
+ï¿½@{ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½xï¿½ï¿½,ï¿½oï¿½ï¿½ï¿½l,CD}
 
-@E’nãŒ•
-@@- ‘O•û‚ÖŒ•‚ðU‚è‰º‚ë‚·	(Skill_Sword_Front)
-@@- ‘O•û‚ÖÕŒ‚”g		(Skill_Sword_Shockwave)
-@@- ‘O•û‚Ö‚«”ò‚Î‚µUŒ‚	(Skill_Sword_Smash)
-@@- ‘O•û‚ÖƒXƒeƒbƒv->UŒ‚	(Skill_Sword_Step)
-@@- ‘Å‚¿ã‚°			(Skill_Sword_Knockup)
-@E‹ó’†Œ•
-@@- Œ•‚ð‰ñ“]‚³‚¹‚é
-@@- ã‚ð“Ë‚­
-@@- ã‚ð‚È‚¬•¥‚¤
-@@- ‰º‚ð“Ë‚­
-@@- ‰º‚ð‚È‚¬•¥‚¤
-@@- ‰º‚Ö—Ž‚¿‚Â‚Â’@‚«‚Â‚¯‚é
-@EeŠí
-@@- ‘•”õ‚µ‚Ä‚¢‚éeŠí‚ð‘Å‚Â
-@@@@ƒJ[ƒ\ƒ‹ƒL[‚ÅŒ‚‚¿•ª‚¯‰Â”\
-@E•KŽE
+ï¿½@ï¿½Eï¿½nï¿½ãŒ•
+ï¿½@ï¿½@- ï¿½Oï¿½ï¿½ï¿½ÖŒï¿½ï¿½ï¿½ï¿½Uï¿½è‰ºï¿½ë‚·	(Skill_Sword_Front)
+ï¿½@ï¿½@- ï¿½Oï¿½ï¿½ï¿½ÖÕŒï¿½ï¿½g		(Skill_Sword_Shockwave)
+ï¿½@ï¿½@- ï¿½Oï¿½ï¿½ï¿½Öï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î‚ï¿½ï¿½Uï¿½ï¿½	(Skill_Sword_Smash)
+ï¿½@ï¿½@- ï¿½Oï¿½ï¿½ï¿½ÖƒXï¿½eï¿½bï¿½v->ï¿½Uï¿½ï¿½	(Skill_Sword_Step)
+ï¿½@ï¿½@- ï¿½Å‚ï¿½ï¿½ã‚°			(Skill_Sword_Knockup)
+ï¿½@ï¿½Eï¿½ó’†Œï¿½
+ï¿½@ï¿½@- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½]ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ï¿½@ï¿½@- ï¿½ï¿½ï¿½ï¿½ï¿½Ë‚ï¿½
+ï¿½@ï¿½@- ï¿½ï¿½ï¿½ï¿½ï¿½È‚ï¿½ï¿½ï¿½ï¿½ï¿½
+ï¿½@ï¿½@- ï¿½ï¿½ï¿½ï¿½ï¿½Ë‚ï¿½
+ï¿½@ï¿½@- ï¿½ï¿½ï¿½ï¿½ï¿½È‚ï¿½ï¿½ï¿½ï¿½ï¿½
+ï¿½@ï¿½@- ï¿½ï¿½ï¿½Ö—ï¿½ï¿½ï¿½ï¿½Â‚Â’@ï¿½ï¿½ï¿½Â‚ï¿½ï¿½ï¿½
+ï¿½@ï¿½Eï¿½eï¿½ï¿½
+ï¿½@ï¿½@- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½ï¿½eï¿½ï¿½ï¿½ï¿½ï¿½Å‚ï¿½
+ï¿½@ï¿½@ï¿½@ï¿½@ï¿½Jï¿½[ï¿½\ï¿½ï¿½ï¿½Lï¿½[ï¿½ÅŒï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â”\
+ï¿½@ï¿½Eï¿½Kï¿½E
 
-@EŽ©ŒÈ‹­‰»
+ï¿½@ï¿½Eï¿½ï¿½ï¿½È‹ï¿½ï¿½ï¿½
 
-@Es“®
-@@- ƒtƒƒ“ƒgƒXƒeƒbƒv	(Skill_None_Frontstep)
-@@- ƒoƒbƒNƒXƒeƒbƒv	(Skill_None_Backstep)
-@@- “–g		(Skill_None_Counter)
+ï¿½@ï¿½Eï¿½sï¿½ï¿½
+ï¿½@ï¿½@- ï¿½tï¿½ï¿½ï¿½ï¿½ï¿½gï¿½Xï¿½eï¿½bï¿½v	(Skill_None_Frontstep)
+ï¿½@ï¿½@- ï¿½oï¿½bï¿½Nï¿½Xï¿½eï¿½bï¿½v	(Skill_None_Backstep)
+ï¿½@ï¿½@- ï¿½ï¿½ï¿½g		(Skill_None_Counter)
 
-@E‚»‚Ì‘¼
-@@- ‹ó—“(Skill_None_None)
+ï¿½@ï¿½Eï¿½ï¿½ï¿½Ì‘ï¿½
+ï¿½@ï¿½@- ï¿½ï¿½ï¿½ï¿½(Skill_None_None)
 
-@›ƒAƒCƒeƒ€
-	Šî–{–½—ß–@‘¥ - Item_(ƒAƒCƒeƒ€–¼)
-	EHPŒn
-	E•â•Œø‰ÊŒn
+ï¿½@ï¿½ï¿½ï¿½Aï¿½Cï¿½eï¿½ï¿½
+	ï¿½ï¿½ï¿½{ï¿½ï¿½ï¿½ß–@ï¿½ï¿½ - Item_(ï¿½Aï¿½Cï¿½eï¿½ï¿½ï¿½ï¿½)
+	ï¿½EHPï¿½n
+	ï¿½Eï¿½â•ï¿½ï¿½ï¿½ÊŒn
+ã‚
