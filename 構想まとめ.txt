@@ -127,6 +127,8 @@
 　　- アサルトライフル
 　　	フルオート	(Equipment_Assaultrifle_Fullauto)
 	3点バースト	(Equipment_Assaultrifle_3PBurst)
+　・火器
+　　- RPG		(Equipment_RPG_Normal)
 　・盾
 
 　・その他
