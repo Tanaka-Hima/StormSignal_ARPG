@@ -64,6 +64,7 @@ public:
 	void InitChara(b2World *World,void* UserData,float Density,float Friction,int MaxHP);//Characterクラスの初期化
 	virtual void Initialize(b2World *World,void* UserData,float Density,float Friction,int MaxHP) = 0;//初期化
 	virtual bool UseSkill(int SkillNumber,int EquipmentNumber);//スキルの使用
+	virtual bool JudgeSkillCancel();//現在使用しているスキルがギャンセルできるかを判定
 	virtual void Step();//毎フレームの処理
 	virtual void Ctrl() = 0;//操作
 };

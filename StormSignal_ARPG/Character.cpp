@@ -131,7 +131,7 @@ bool Character::UseSkill(int SkillNumber,int EquipmentNumber)
 		#pragma region 地上剣
 		case Skill_Sword_Front:
 		{//前方へ剣を振り下ろす
-			if(StateTime > 100)return false;
+			if(!JudgeSkillCancel())return false;
 
 			State = Skill_Sword_Front;
 			StateTime = 500;
@@ -141,7 +141,7 @@ bool Character::UseSkill(int SkillNumber,int EquipmentNumber)
 		}
 		case Skill_Sword_Shockwave:
 		{//前方へ衝撃波
-			if(StateTime > 100)return false;
+			if(!JudgeSkillCancel())return false;
 
 			State = Skill_Sword_Shockwave;
 			StateTime = 700;
@@ -152,6 +152,21 @@ bool Character::UseSkill(int SkillNumber,int EquipmentNumber)
 		#pragma endregion
 	}
 	return false;
+}
+
+bool Character::JudgeSkillCancel()
+{
+	switch(State)
+	{
+		case Skill_None_None:
+			return true;
+		case Skill_Sword_Front:
+			if(StateTime < 450)return true;
+			else return false;
+		case Skill_Sword_Shockwave:
+			if(StateTime < 400)return true;
+			else return false;
+	}
 }
 
 void Character::Step()
