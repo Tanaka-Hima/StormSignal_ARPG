@@ -241,6 +241,8 @@
     <Image Include="Font\Small_Red\Z.png" />
     <Image Include="Font\Small_Red\^.png" />
     <Image Include="Image\Chara\None.png" />
+    <Image Include="Image\Effect\Sword\Shockwave.bmp" />
+    <Image Include="Image\Effect\Sword\Shockwave.dds" />
     <Image Include="Image\Map\Clay.png" />
     <Image Include="Image\Map\ClayFloor.png" />
     <Image Include="Image\Map\Switch1.png" />

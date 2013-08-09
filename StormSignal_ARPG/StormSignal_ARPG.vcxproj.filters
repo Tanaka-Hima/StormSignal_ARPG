@@ -52,6 +52,12 @@
     <Filter Include="リソース ファイル\Image\Skill\Sword">
       <UniqueIdentifier>{6499028d-b092-48f4-8367-f40d824687e0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="リソース ファイル\Image\Effect">
+      <UniqueIdentifier>{d1d2996a-7e51-4053-b169-9dc763275330}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\Image\Effect\Sword">
+      <UniqueIdentifier>{121001a5-27bc-4236-b992-10a3e4aba75a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -543,6 +549,12 @@
     </Image>
     <Image Include="Image\Chara\None.png">
       <Filter>リソース ファイル\Image\Chara</Filter>
+    </Image>
+    <Image Include="Image\Effect\Sword\Shockwave.dds">
+      <Filter>リソース ファイル\Image\Effect\Sword</Filter>
+    </Image>
+    <Image Include="Image\Effect\Sword\Shockwave.bmp">
+      <Filter>リソース ファイル\Image\Effect\Sword</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>
