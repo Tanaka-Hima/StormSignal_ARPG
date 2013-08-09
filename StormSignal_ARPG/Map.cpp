@@ -151,6 +151,13 @@ void Map::Step()
 	{
 		EnemyData[i].Ctrl();
 		EnemyData[i].Step();
+
+		if(EnemyData[i].HP < 0)
+		{
+			EnemyData.erase(EnemyData.begin()+i);
+			i--;
+			Length--;
+		}
 	}
 
 	/*

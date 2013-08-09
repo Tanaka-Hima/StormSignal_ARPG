@@ -48,7 +48,7 @@ string GetEquipmentNameforEquipment(int Equipment);//装備名から装備種類
 class Character : public Physics2DImage
 {
 private:
-	string CharacterType;//このCharacterの種類	
+	string CharacterType;//このCharacterの種類
 public:
 	int MaxHP;//最大HP
 	int HP;//HP
@@ -70,6 +70,23 @@ public:
 	virtual void Ctrl() = 0;//操作
 	virtual Character* GetPlayer();//プレイヤーのポインターを取得
 	string GetCharaType();//このCharacterの種類を取得
+	~Character()
+	{
+		int Length = CharacterList.size();
+		for(int i=0;i<Length;i++)
+		{
+			if(CharacterList[i] == this)
+			{
+				CharacterList.erase(CharacterList.begin()+i);
+				break;
+			}
+		}
+		if(Graph.size() > 0)
+		{
+			b2World *World = GetBody()->GetWorld();
+			World->DestroyBody(GetBody());
+		}
+	}
 };
 
 #endif

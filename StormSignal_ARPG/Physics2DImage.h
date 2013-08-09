@@ -21,12 +21,14 @@ public:
 	b2Fixture* GetFixture();//b2Fixtureを取得
 	~Physics2DImage()
 	{
+		/*
 		if(Graph.size() > 0)
 		{
 			Unload();
 			b2World *World = Body->GetWorld();
 			World->DestroyBody(Body);
 		}
+		*/
 	}
 };
 

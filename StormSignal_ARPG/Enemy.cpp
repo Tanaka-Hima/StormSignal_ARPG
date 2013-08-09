@@ -31,7 +31,7 @@ void Enemy::Initialize(b2World *World,string CharaType,float Density,float Frict
 
 void Enemy::Ctrl()
 {
-	if(StateTime > 0)return;
+	if(StateTime > 0 || fabs(GetBody()->GetLinearVelocity().y) > 0.2f)return;
 	Character* Player = GetPlayer();
 	if(GetCharaType() == Mapchip_CommonEnemy1)
 	{
