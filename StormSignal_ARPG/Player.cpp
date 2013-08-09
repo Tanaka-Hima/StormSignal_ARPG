@@ -3,9 +3,9 @@
 #include "ConstantValue.h"
 #include <DxLib.h>
 
-void Player::Initialize(b2World *World,void* UserData,float Density,float Friction,int MaxHP)
+void Player::Initialize(b2World *World,string CharaType,float Density,float Friction,int MaxHP)
 {
-	InitChara(World,UserData,Density,Friction,MaxHP);
+	InitChara(World,CharaType,Density,Friction,MaxHP);
 
 	//フォント読み込み
 	FontSmall = CreateFontToHandle( "メイリオ" , 15 , 3 ,-1,-1,2) ;
@@ -75,6 +75,9 @@ void Player::Initialize(b2World *World,void* UserData,float Density,float Fricti
 
 void Player::Ctrl()
 {
+	//スタン中は行動できない
+	if(State == Skill_None_Stan && StateTime > 0)return;
+
 	//スキルウィンドウトグル
 	if(CheckKeyDown(KEY_INPUT_LALT))SkillWindow.Visible = 1 - SkillWindow.Visible;
 
@@ -96,7 +99,7 @@ void Player::Ctrl()
 
 	//スキル使用中、もしくは空中では移動できない
 	b2Vec2 Vect = GetBody()->GetLinearVelocity();
-	if(State != Skill_None_None || fabs(Vect.y) > 0.2f)return;
+	if(!JudgeSkillCancel() || fabs(Vect.y) > 0.2f)return;
 
 	//移動
 	if(CheckHitKey(KEY_INPUT_LEFT))

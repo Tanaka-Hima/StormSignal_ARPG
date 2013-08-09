@@ -8,6 +8,7 @@ class HitBox;
 const int Skill_None_None = 0;
 const int Skill_Sword_Front = 1;
 const int Skill_Sword_Shockwave = 2;
+const int Skill_None_Stan = 3;
 
 const string SkillValueNames[] = {"Skill_None_None",
 								"Skill_Sword_Front",
@@ -47,7 +48,7 @@ string GetEquipmentNameforEquipment(int Equipment);//装備名から装備種類
 class Character : public Physics2DImage
 {
 private:
-	
+	string CharacterType;//このCharacterの種類	
 public:
 	int MaxHP;//最大HP
 	int HP;//HP
@@ -61,12 +62,14 @@ public:
 	static vector<Image_2D> EquipmentGraphs;//装備画像
 	static vector<Image_2D> EffectGraphs;//エフェクト用画像
 
-	void InitChara(b2World *World,void* UserData,float Density,float Friction,int MaxHP);//Characterクラスの初期化
-	virtual void Initialize(b2World *World,void* UserData,float Density,float Friction,int MaxHP) = 0;//初期化
+	void InitChara(b2World *World,string CharaType,float Density,float Friction,int MaxHP);//Characterクラスの初期化
+	virtual void Initialize(b2World *World,string CharaType,float Density,float Friction,int MaxHP) = 0;//初期化
 	virtual bool UseSkill(int SkillNumber,int EquipmentNumber);//スキルの使用
 	virtual bool JudgeSkillCancel();//現在使用しているスキルがギャンセルできるかを判定
-	virtual void Step();//毎フレームの処理
+	void Step();//毎フレームの処理
 	virtual void Ctrl() = 0;//操作
+	virtual Character* GetPlayer();//プレイヤーのポインターを取得
+	string GetCharaType();//このCharacterの種類を取得
 };
 
 #endif

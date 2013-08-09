@@ -8,7 +8,7 @@ class Object : public Character
 private:
 
 public:
-	void Initialize(b2World *World,void* UserData,float Density,float Friction,int MaxHP);
+	void Initialize(b2World *World,string CharaType,float Density,float Friction,int MaxHP);
 	void Ctrl();
 };
 

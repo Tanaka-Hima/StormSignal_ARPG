@@ -37,7 +37,7 @@ void Map::Initialize(b2World *World)
 
 
 	PlayerData.Load("Image/Chara/None.png");
-	PlayerData.Initialize(World,"Player",1,1,100);
+	PlayerData.Initialize(World,Mapchip_Player,1,1,100);
 
 }
 
@@ -99,7 +99,7 @@ void Map::CreateMap(b2World *World)
 			{
 				Enemy EnemyTemp;
 				EnemyData.push_back(EnemyTemp);
-				EnemyData[EnemyData.size()-1].Initialize(World,&MapData[y][x],1,1,100);
+				EnemyData[EnemyData.size()-1].Initialize(World,MapData[y][x],1,1,100);
 				EnemyData[EnemyData.size()-1].GetBody()->SetTransform(b2Vec2((x*32+16)/Box_Rate,(y*32+16)/Box_Rate),0);
 				continue;
 			}
@@ -149,6 +149,7 @@ void Map::Step()
 	int Length = EnemyData.size();
 	for(int i=0;i<Length;i++)
 	{
+		EnemyData[i].Ctrl();
 		EnemyData[i].Step();
 	}
 

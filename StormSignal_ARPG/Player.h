@@ -26,7 +26,7 @@ private:
 
 	int FontSmall,FontMiddle,FontBig;//フォント
 public:
-	void Initialize(b2World *World,void* UserData,float Density,float Friction,int MaxHP);//初期化
+	void Initialize(b2World *World,string CharaType,float Density,float Friction,int MaxHP);//初期化
 	void Ctrl();//操作
 	void StepSkillWindow();//スキルウィンドウの処理、描画
 };

@@ -249,6 +249,7 @@
     <Image Include="Image\Map\Switch2.png" />
     <Image Include="Image\Map\Woodbox.png" />
     <Image Include="Image\Skill\None.png" />
+    <Image Include="Image\Skill\None\Damage_0.png" />
     <Image Include="Image\Skill\Sword\Front_0.png" />
     <Image Include="Image\Skill\Sword\Front_1.png" />
     <Image Include="Image\Skill\Sword\Front_2.png" />

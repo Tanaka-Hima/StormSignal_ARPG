@@ -2,6 +2,7 @@
 #include "HitBox.h"
 #include "ConstantValue.h"
 #include "Functions.h"
+#include "Map.h"
 #include <DxLib.h>
 
 vector<Character*> Character::CharacterList;
@@ -41,9 +42,10 @@ string GetEquipmentNameforEquipment(int Equipment)
 	return EquipmentValueNames[Equipment].substr(Pos1,Pos2-Pos1);
 }
 
-void Character::InitChara(b2World *World,void* UserData,float Density,float Friction,int MaxHP)
+void Character::InitChara(b2World *World,string CharaType,float Density,float Friction,int MaxHP)
 {
-	Init(World,UserData,Density,Friction);
+	CharacterType = CharaType;
+	Init(World,&CharacterType,Density,Friction);
 
 	HP = MaxHP;
 	GetBody()->SetSleepingAllowed(false);
@@ -96,6 +98,10 @@ void Character::InitChara(b2World *World,void* UserData,float Density,float Fric
 	AnimeGraphs[AnimeGraphs.size()-1].Load("Image/Skill/Sword/Shockwave_3.png");
 	AnimeGraphs[AnimeGraphs.size()-1].Load("Image/Skill/Sword/Shockwave_4.png");
 	AnimeGraphs[AnimeGraphs.size()-1].Load("Image/Skill/Sword/Shockwave_5.png");
+
+	//Skill_None_Damage 3
+	AnimeGraphs.push_back(TempGraphs);
+	AnimeGraphs[AnimeGraphs.size()-1].Load("Image/Skill/None/Damage_0.png");
 
 	#pragma endregion
 
@@ -173,12 +179,19 @@ void Character::Step()
 {
 	int NowTime = GetNowCount();
 	StateTime -= NowTime - Time;
+	if(StateTime < 0)State = Skill_None_None;
 	Time = NowTime;
 
 	//アニメーション処理
 	switch(State)
 	{
 		case Skill_None_None:
+		{
+			Graph[0] = AnimeGraphs[State].Graph[0];
+			break;
+		}
+
+		case Skill_None_Stan:
 		{
 			Graph[0] = AnimeGraphs[State].Graph[0];
 			break;
@@ -255,6 +268,8 @@ void Character::Step()
 		{//当たっていた場合
 			GetBody()->ApplyLinearImpulse(HitBoxList[i].GetHitVect(),GetBody()->GetPosition());
 			HP -= HitBoxList[i].GetDamage();
+			State = Skill_None_Stan;
+			StateTime = HitBoxList[i].GetStanTime();
 		}
 
 		if(HitBoxList[i].Step())
@@ -273,4 +288,18 @@ void Character::Step()
 
 	//BeforeStateTimeの更新
 	BeforeStateTime = StateTime;
+}
+
+Character* Character::GetPlayer()
+{
+	int Length = CharacterList.size();
+	for(int i=0;i<Length;i++)
+	{
+		if(CharacterList[i]->CharacterType == Mapchip_Player)return CharacterList[i];
+	}
+}
+
+string Character::GetCharaType()
+{
+	return CharacterType;
 }
