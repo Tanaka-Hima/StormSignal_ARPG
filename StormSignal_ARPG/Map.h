@@ -17,6 +17,7 @@ const string Mapchip_Switch1 = "04";
 const string Mapchip_Switch2 = "05";
 
 const string Mapchip_TrainingBag = "10";
+const string Mapchip_CommonEnemy1 = "11";
 
 const string Mapchip_Player = "99";
 

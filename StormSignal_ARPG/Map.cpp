@@ -94,12 +94,12 @@ void Map::CreateMap(b2World *World)
 				RigidBodies[RigidBodies.size()-1].Initialize(World,"Mapchip_Woodbox",1,1,-1);
 				RigidBodies[RigidBodies.size()-1].GetBody()->SetTransform(b2Vec2((x*32+16)/Box_Rate,(y*32+16)/Box_Rate),0);
 				continue;
-			}else if(MapData[y][x] == Mapchip_TrainingBag)
+			}else if(MapData[y][x] == Mapchip_TrainingBag
+				||	MapData[y][x] == Mapchip_CommonEnemy1)
 			{
 				Enemy EnemyTemp;
 				EnemyData.push_back(EnemyTemp);
-				EnemyData[EnemyData.size()-1].Load("Font/Big_Green/A.png");
-				EnemyData[EnemyData.size()-1].Initialize(World,"Mapchip_TrainingBag",1,1,100);
+				EnemyData[EnemyData.size()-1].Initialize(World,&MapData[y][x],1,1,100);
 				EnemyData[EnemyData.size()-1].GetBody()->SetTransform(b2Vec2((x*32+16)/Box_Rate,(y*32+16)/Box_Rate),0);
 				continue;
 			}
