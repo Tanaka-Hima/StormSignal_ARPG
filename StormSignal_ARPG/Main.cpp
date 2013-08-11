@@ -124,7 +124,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 				Map.Step();
 				Map.Draw();
 
-				World.Step(TimeStep, VelocityIterations, PositionIterations);
+				if(!Map.GetPauseFlag())World.Step(TimeStep, VelocityIterations, PositionIterations);
 				World.DrawDebugData();
 
 				break;

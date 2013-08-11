@@ -8,6 +8,7 @@
 
 void Map::Initialize(b2World *World)
 {
+	PauseFlag = false;
 	MapChips.clear();
 
 	Image_2D TempGraph;
@@ -143,8 +144,16 @@ void Map::CreateMap(b2World *World)
 	//GroundBody->CreateFixture(&GroundBox,0.f);
 }
 
+bool Map::GetPauseFlag()
+{
+	return PauseFlag;
+}
+
 void Map::Step()
 {
+	if(CheckKeyDown(KEY_INPUT_P))PauseFlag = 1 - PauseFlag;
+	if(PauseFlag)return;
+
 	//プレイヤーの処理
 	PlayerData.Ctrl();
 	PlayerData.Step();
@@ -321,6 +330,7 @@ void Map::Draw()
 			if(GraphNum == Mapchip_Woodbox)continue;
 			if(GraphNum == Mapchip_Switch1)Graph = MapChips[4].Graph[0];
 			if(GraphNum == Mapchip_Switch2)Graph = MapChips[5].Graph[0];
+			if(GraphNum == Mapchip_Board)Graph = MapChips[6].Graph[0];
 
 			DrawGraph(MapTrans.p.x*Box_Rate+x*32,y*32,Graph,true);
 		}

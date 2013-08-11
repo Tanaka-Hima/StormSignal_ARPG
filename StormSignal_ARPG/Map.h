@@ -15,6 +15,7 @@ const string Mapchip_ClayFloor = "02";
 const string Mapchip_Woodbox = "03";
 const string Mapchip_Switch1 = "04";
 const string Mapchip_Switch2 = "05";
+const string Mapchip_Board = "06";
 
 const string Mapchip_TrainingBag = "10";
 const string Mapchip_CommonEnemy1 = "11";
@@ -47,11 +48,13 @@ private:
 	b2Body* GroundBody;//マップ当たり判定
 	b2PolygonShape GroundBox;//マップ当たり判定
 	int Width;
+	bool PauseFlag;//ゲームの進行を止めるか否か
 public:
 	void Initialize(b2World *World);//初期化
 	void LoadMapData(string Pass);//マップデータを指定パスのテキストから読み込む
 	void LoadScriptData(string Pass);//スクリプトデータを指定パスのテキストから読み込む
 	void CreateMap(b2World *World);//マップデータからマップを生成する
+	bool GetPauseFlag();//ポーズ状態にあるか否か
 	void Step();//毎フレーム行う処理群
 	void Draw();//マップ、プレイヤー等の描画
 };
