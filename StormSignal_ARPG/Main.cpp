@@ -61,7 +61,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
 	Font Fonts;
 
-	int Scene = TrainingMode;
+	int Scene = Title;
 
 	//マップの生成
 	Map Map;
@@ -83,7 +83,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
 				Fonts.DrawString(Screen_Width / 2,Screen_Height/5,5,1,"STORMSIGNAL ARPG","Font/Big_Red",DrawString_Center);
 
-				Fonts.DrawString(Screen_Width / 2,Screen_Height*0.6,5,1,"PRESS ENTER KEY","Font/Big_Red",DrawString_Center);
+				Fonts.DrawString(Screen_Width / 2,Screen_Height*0.6,5,1,"PRESS ENTER KEY","Font/Small_Red",DrawString_Center);
 
 				if(CheckKeyDown(KEY_INPUT_RETURN))Scene = ModeSelect;
 
@@ -94,7 +94,14 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 			{
 				#pragma region モードセレクト
 
-				Fonts.DrawString(Screen_Width / 2,100,5,1,"STORMSIGNAL ARPG","Font/Big_Red",DrawString_Center);
+				Fonts.DrawString(Screen_Width / 2,Screen_Height/5,5,1,"STORMSIGNAL ARPG","Font/Big_Red",DrawString_Center);
+
+				Fonts.DrawString(Screen_Width / 2,Screen_Height*0.5,5,1,"STORY MODE","Font/Big_Green",DrawString_Center);
+				Fonts.DrawString(Screen_Width / 2,Screen_Height*0.6,5,1,"ARCADE MODE","Font/Big_Green",DrawString_Center);
+				Fonts.DrawString(Screen_Width / 2,Screen_Height*0.7,5,1,"TRAINING MODE","Font/Big_Green",DrawString_Center);
+				Fonts.DrawString(Screen_Width / 2,Screen_Height*0.8,5,1,"OPTION MODE","Font/Big_Green",DrawString_Center);
+
+				if(CheckKeyDown(KEY_INPUT_RETURN))Scene = ArcadeMode;
 
 				break;
 				#pragma endregion
@@ -112,7 +119,11 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 			{
 				#pragma region アーケードモード
 
-				Fonts.DrawString(Screen_Width / 2,100,5,1,"STORMSIGNAL ARPG","Font/Big_Red",DrawString_Center);
+				Map.Step();
+				Map.Draw();
+
+				if(!Map.GetPauseFlag() && !Map.GetMessageFlag())World.Step(TimeStep, VelocityIterations, PositionIterations);
+				World.DrawDebugData();
 
 				break;
 				#pragma endregion
@@ -122,12 +133,6 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 				#pragma region トレーニングモード
 
 				Fonts.DrawString(Screen_Width / 2,100,5,1,"TRAINING","Font/Big_Red",DrawString_Center);
-
-				Map.Step();
-				Map.Draw();
-
-				if(!Map.GetPauseFlag() && !Map.GetMessageFlag())World.Step(TimeStep, VelocityIterations, PositionIterations);
-				World.DrawDebugData();
 
 				break;
 				#pragma endregion
