@@ -315,9 +315,6 @@ void Character::Step()
 			HitBoxList.erase(HitBoxList.begin()+i);
 			i--;
 			Length--;
-		}else
-		{
-			HitBoxList[i].Draw();
 		}
 	}
 

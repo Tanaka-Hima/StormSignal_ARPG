@@ -53,7 +53,7 @@ void Window::Draw()
 
 void Window::DrawStringInWindow(int Input_x,int Input_y,int Input_Pos,string Input_String,int FontData,int Color)
 {
-	vector<string> Strs = split(Input_String,"\n");
+	vector<string> Strs = split(Input_String,"\\n");
 	int Height;
 	GetFontStateToHandle(NULL,&Height,NULL,FontData);
 	Height *= 1.4;

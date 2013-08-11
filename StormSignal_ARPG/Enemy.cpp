@@ -35,7 +35,7 @@ void Enemy::Ctrl()
 	Character* Player = GetPlayer();
 	if(GetCharaType() == Mapchip_CommonEnemy1)
 	{
-		double Dis = GetDistance(x+Center_x,y+Center_y,Player->x,Player->y);
+		double Dis = GetDistance(x,y,Player->x,Player->y);
 		if(Dis < 150 && Dis > 30)
 		{
 			if(Player->x-x < 0)Direction = ImageDirection_Left;

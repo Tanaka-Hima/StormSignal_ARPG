@@ -5,11 +5,19 @@
 #include "Map.h"
 #include "Functions.h"
 #include "ConstantValue.h"
+#include "HitBox.h"
 
 void Map::Initialize(b2World *World)
 {
 	PauseFlag = false;
+	MessageFlag = false;
 	MapChips.clear();
+	MessageWindow.Initialize(Screen_Width/2-150,Screen_Height/2-100,300,200,Black,LightBlack);
+
+	//フォント読み込み
+	FontSmall = CreateFontToHandle( "メイリオ" , 15 , 3 ,-1,-1,2) ;
+	FontMiddle = CreateFontToHandle( "メイリオ" , 20 , 7 ,-1,-1,2) ;
+	FontBig = CreateFontToHandle( "メイリオ" , 40 , 10 ,-1,-1,3) ;
 
 	Image_2D TempGraph;
 
@@ -151,7 +159,29 @@ bool Map::GetPauseFlag()
 
 void Map::Step()
 {
-	if(CheckKeyDown(KEY_INPUT_P))PauseFlag = 1 - PauseFlag;
+	//ポーズ処理,メッセージ表示
+	if(MessageFlag)
+	{
+		if(!PauseFlag)
+		{
+			MessageWindow.Draw();
+			MessageWindow.Ext -= 0.02f;
+			if(MessageWindow.Ext < 0)
+			{
+				MessageFlag = false;
+			}
+			return;
+		}else
+		{
+			MessageWindow.Draw();
+			if(MessageWindow.Ext < 1.f)MessageWindow.Ext += 0.02f;
+			else if(CheckKeyDown(KEY_INPUT_UP))
+			{
+				PauseFlag = false;
+				return;
+			}
+		}
+	}else if(CheckKeyDown(KEY_INPUT_P))PauseFlag = 1 - PauseFlag;
 	if(PauseFlag)return;
 
 	//プレイヤーの処理
@@ -290,6 +320,15 @@ void Map::Step()
 									}
 								}
 								MapData[y][x] = Mapchip_Blank;
+							}else if(ScriptData[i][4].find(Action_Message) != string::npos)
+							{//ゲームの進行を止め、ShowMessageを表示する
+								vector<string> Data = split(ScriptData[i][4],"|");
+								MessageFlag = true;
+								PauseFlag = true;
+
+								MessageWindow.ReWindow();
+								MessageWindow.DrawStringInWindow(5,5,DrawString_Left,Data[1],FontSmall,White);
+								MessageWindow.Ext = 0.01f;
 							}
 						}
 					}
@@ -339,8 +378,15 @@ void Map::Draw()
 	//プレイヤーの描画
 	PlayerData.Draw(true);
 
+	//ヒットボックスの描画
+	int Length = PlayerData.HitBoxList.size();
+	for(int i=0;i<Length;i++)
+	{
+		PlayerData.HitBoxList[i].Draw();
+	}
+
 	//敵の描画
-	int Length = EnemyData.size();
+	Length = EnemyData.size();
 	for(int i=0;i<Length;i++)
 	{
 		EnemyData[i].Draw();

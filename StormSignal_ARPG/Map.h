@@ -32,6 +32,7 @@ const string Trigger_Flagged = "Flagged";
 const string Action_Redraw = "Redraw";
 const string Action_Flag = "Flag";
 const string Action_Delete = "Delete";
+const string Action_Message = "Message";
 
 class Map
 {
@@ -49,6 +50,9 @@ private:
 	b2PolygonShape GroundBox;//マップ当たり判定
 	int Width;
 	bool PauseFlag;//ゲームの進行を止めるか否か
+	bool MessageFlag;//メッセージ表示用
+	Window MessageWindow;
+	int FontSmall,FontMiddle,FontBig;//フォント
 public:
 	void Initialize(b2World *World);//初期化
 	void LoadMapData(string Pass);//マップデータを指定パスのテキストから読み込む
