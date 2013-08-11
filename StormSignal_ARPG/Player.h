@@ -29,6 +29,8 @@ public:
 	void Initialize(b2World *World,string CharaType,float Density,float Friction,int MaxHP);//初期化
 	void Ctrl();//操作
 	void StepSkillWindow();//スキルウィンドウの処理、描画
+	bool GetSkillWindowVisible();//スキルウィンドウが有効かどうかを取得する
+	void SetSkillWindowVisible(bool Visible);//スキルウィンドウの表示設定を変更する
 };
 
 #endif

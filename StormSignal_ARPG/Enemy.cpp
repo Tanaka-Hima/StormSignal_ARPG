@@ -6,12 +6,13 @@
 void Enemy::Initialize(b2World *World,string CharaType,float Density,float Friction,int MaxHP)
 {
 	//画像指定
-	if(CharaType == Mapchip_TrainingBag)Load("Font/Big_Green/A.png");
+	if(CharaType == Mapchip_TrainingBag)Load("Image/Chara/None.png");
 	else if(CharaType == Mapchip_CommonEnemy1)Load("Image/Chara/None.png");
 
 	InitChara(World,CharaType,Density,Friction,MaxHP);
 
-	if(CharaType == Mapchip_CommonEnemy1)
+	if(CharaType == Mapchip_CommonEnemy1
+		|| CharaType == Mapchip_TrainingBag)
 	{
 		GetShape()->SetAsBox(12.f/2.f/Box_Rate,24.f/2.f/Box_Rate);
 

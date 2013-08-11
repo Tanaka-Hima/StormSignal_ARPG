@@ -85,6 +85,8 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
 				Fonts.DrawString(Screen_Width / 2,Screen_Height*0.6,5,1,"PRESS ENTER KEY","Font/Big_Red",DrawString_Center);
 
+				if(CheckKeyDown(KEY_INPUT_RETURN))Scene = ModeSelect;
+
 				break;
 				#pragma endregion
 			}
@@ -124,7 +126,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 				Map.Step();
 				Map.Draw();
 
-				if(!Map.GetPauseFlag())World.Step(TimeStep, VelocityIterations, PositionIterations);
+				if(!Map.GetPauseFlag() && !Map.GetMessageFlag())World.Step(TimeStep, VelocityIterations, PositionIterations);
 				World.DrawDebugData();
 
 				break;

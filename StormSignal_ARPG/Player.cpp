@@ -78,9 +78,6 @@ void Player::Ctrl()
 	//スタン中は行動できない
 	if(State == Skill_None_Stan && StateTime > 0)return;
 
-	//スキルウィンドウトグル
-	if(CheckKeyDown(KEY_INPUT_LALT))SkillWindow.Visible = 1 - SkillWindow.Visible;
-
 	//スキルウィンドウ表示中は行動できない
 	if(SkillWindow.Visible)return;
 
@@ -120,6 +117,9 @@ void Player::Ctrl()
 
 void Player::StepSkillWindow()
 {
+	//スキルウィンドウトグル
+	if(CheckKeyDown(KEY_INPUT_LALT))SkillWindow.Visible = 1 - SkillWindow.Visible;
+
 	//スキルウィンドウが有効であるかどうか確認
 	if(!SkillWindow.Visible)return;
 
@@ -346,4 +346,14 @@ void Player::StepSkillWindow()
 
 	SetDrawScreen(DX_SCREEN_BACK);
 	SkillWindow.Draw();
+}
+
+bool Player::GetSkillWindowVisible()
+{
+	return SkillWindow.Visible;
+}
+
+void Player::SetSkillWindowVisible(bool Visible)
+{
+	SkillWindow.Visible = Visible;
 }

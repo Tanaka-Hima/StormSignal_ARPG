@@ -58,6 +58,7 @@ public:
 	void LoadMapData(string Pass);//マップデータを指定パスのテキストから読み込む
 	void LoadScriptData(string Pass);//スクリプトデータを指定パスのテキストから読み込む
 	void CreateMap(b2World *World);//マップデータからマップを生成する
+	bool GetMessageFlag();//メッセージウィンドウを表示中か否か
 	bool GetPauseFlag();//ポーズ状態にあるか否か
 	void Step();//毎フレーム行う処理群
 	void Draw();//マップ、プレイヤー等の描画

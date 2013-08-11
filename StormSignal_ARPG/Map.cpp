@@ -157,6 +157,11 @@ bool Map::GetPauseFlag()
 	return PauseFlag;
 }
 
+bool Map::GetMessageFlag()
+{
+	return MessageFlag;
+}
+
 void Map::Step()
 {
 	//ポーズ処理,メッセージ表示
@@ -181,7 +186,10 @@ void Map::Step()
 				return;
 			}
 		}
-	}else if(CheckKeyDown(KEY_INPUT_P))PauseFlag = 1 - PauseFlag;
+	}else
+	{
+		PauseFlag = PlayerData.GetSkillWindowVisible();
+	}
 	if(PauseFlag)return;
 
 	//プレイヤーの処理
@@ -400,5 +408,11 @@ void Map::Draw()
 	}
 
 	//スキル設定ウインドウの処理
-	PlayerData.StepSkillWindow();
+	if(!MessageFlag)
+	{
+		PlayerData.StepSkillWindow();
+	}
+
+	//メッセージウィンドウ
+	if(MessageFlag)MessageWindow.Draw();
 }
