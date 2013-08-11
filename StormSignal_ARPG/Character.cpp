@@ -103,6 +103,14 @@ void Character::InitChara(b2World *World,string CharaType,float Density,float Fr
 	AnimeGraphs.push_back(TempGraphs);
 	AnimeGraphs[AnimeGraphs.size()-1].Load("Image/Skill/None/Damage_0.png");
 
+	//Skill_None_Frontstep 4
+	AnimeGraphs.push_back(TempGraphs);
+	AnimeGraphs[AnimeGraphs.size()-1].Load("Image/Skill/None.png");
+
+	//Skill_None_Backstep 5
+	AnimeGraphs.push_back(TempGraphs);
+	AnimeGraphs[AnimeGraphs.size()-1].Load("Image/Skill/None.png");
+
 	#pragma endregion
 
 	#pragma region エフェクト画像読み込み
@@ -156,6 +164,29 @@ bool Character::UseSkill(int SkillNumber,int EquipmentNumber)
 			break;
 		}
 		#pragma endregion
+
+		#pragma region 行動
+
+		case Skill_None_Frontstep:
+		{
+			State = Skill_None_Frontstep;
+			StateTime = 1000;
+
+			GetBody()->ApplyForceToCenter(b2Vec2((int)Direction*1000,-100));
+			break;
+		}
+
+		case Skill_None_Backstep:
+		{
+			State = Skill_None_Backstep;
+			StateTime = 1000;
+
+			GetBody()->ApplyForceToCenter(b2Vec2(-(int)Direction*1000,-100));
+			break;
+		}
+
+		#pragma endregion
+
 	}
 	return false;
 }
@@ -171,6 +202,12 @@ bool Character::JudgeSkillCancel()
 			else return false;
 		case Skill_Sword_Shockwave:
 			if(StateTime < 400)return true;
+			else return false;
+		case Skill_None_Frontstep:
+			if(StateTime < 950)return true;
+			else return false;
+		case Skill_None_Backstep:
+			if(StateTime < 950)return true;
 			else return false;
 	}
 }
@@ -258,6 +295,7 @@ void Character::Step()
 			break;
 		}
 		#pragma endregion
+
 	}
 
 	//ヒットボックスとの当たり判定

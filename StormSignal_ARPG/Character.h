@@ -9,18 +9,29 @@ const int Skill_None_None = 0;
 const int Skill_Sword_Front = 1;
 const int Skill_Sword_Shockwave = 2;
 const int Skill_None_Stan = 3;
+const int Skill_None_Frontstep = 4;
+const int Skill_None_Backstep = 5;
 
 const string SkillValueNames[] = {"Skill_None_None",
 								"Skill_Sword_Front",
-								"Skill_Sword_Shockwave"};
+								"Skill_Sword_Shockwave",
+								"Skill_None_Damage",
+								"Skill_None_Frontstep",
+								"Skill_None_Backstep"};
 
 const string SkillNames[] = {"無し",
 							"前方へ剣を振り下ろす(仮)",
-							"前方へ衝撃波(仮)"};
+							"前方へ衝撃波(仮)",
+							"ダメージ",
+							"フロントステップ",
+							"バックステップ"};
 
 const string SkillInfo[] = {"スキルを設定しません。\n必要装備 : 無し CD : 無し",
 							"前方へ剣を振り下ろします。\n必要装備 : 剣 CD : 無し",
-							"前方へ衝撃波を発生させます。\n必要装備 : 剣 CD : 無し"};
+							"前方へ衝撃波を発生させます。\n必要装備 : 剣 CD : 無し",
+							"ダメージを受けます。\n必要装備 : 無し CD : 無し",
+							"前方へ踏み込みを行ないます。\n必要装備 : 無し CD : 無し",
+							"後方へ飛び退きます。\n必要装備 : 無し CD : 無し"};
 
 
 const int Equipment_None_None = 0;

@@ -35,6 +35,10 @@ void Map::Initialize(b2World *World)
 	MapChips.push_back(TempGraph);
 	MapChips[MapChips.size()-1].Load("Image/Map/Switch2.png");
 
+	//看板 6
+	MapChips.push_back(TempGraph);
+	MapChips[MapChips.size()-1].Load("Image/Map/Board.png");
+
 
 	PlayerData.Load("Image/Chara/None.png");
 	PlayerData.Initialize(World,Mapchip_Player,1,1,100);
@@ -229,6 +233,14 @@ void Map::Step()
 						}else if(ScriptData[i][3] == Trigger_Touch)
 						{//対象に触れている間常に起動
 							if(PlayerData.HitTestRect(MapTrans.p.x*Box_Rate+x*32,y*32,32,32,true))
+							{
+								Flag = true;
+							}
+						}else if(ScriptData[i][3] == Trigger_Use)
+						{//対象の近くで↑キーを押すと起動
+							int Dis = GetDistance(PlayerData.x,PlayerData.y,(int)(MapTrans.p.x*Box_Rate+x*32+16),y*32+16);
+							if(GetDistance(PlayerData.x,PlayerData.y,(int)(MapTrans.p.x*Box_Rate+x*32+16),y*32+16) < 50
+								&&  CheckHitKey(KEY_INPUT_UP))
 							{
 								Flag = true;
 							}
