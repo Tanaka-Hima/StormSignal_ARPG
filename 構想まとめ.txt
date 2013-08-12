@@ -86,8 +86,9 @@
 	指定サウンドを鳴らす
 　　- Message|ShowMessage
 	ゲームの進行を止め、ShowMessageを表示する
-　　- Clear
+　　- Clear|NextStageName
 	現在プレイしているステージを完了し、次のステージへ移動する
+	(例:Clear|AC_Stage2 -> AC_Stage2.txt,AC_Stage2_Script.txtを読み込む)
 
 　・動作回数
 　　この動作を何回行うかを指定

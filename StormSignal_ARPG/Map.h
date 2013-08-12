@@ -33,6 +33,7 @@ const string Action_Redraw = "Redraw";
 const string Action_Flag = "Flag";
 const string Action_Delete = "Delete";
 const string Action_Message = "Message";
+const string Action_Clear = "Clear";
 
 class Map
 {
@@ -52,15 +53,18 @@ private:
 	bool PauseFlag;//ゲームの進行を止めるか否か
 	bool MessageFlag;//メッセージ表示用
 	Window MessageWindow;
+	string NextStageName;//次のステージ
 	int FontSmall,FontMiddle,FontBig;//フォント
 public:
-	void Initialize(b2World *World);//初期化
+	void Initialize(b2World *World,bool InitPlayerFlag = true);//初期化(InitPlayerFlag = プレイヤーを初期化するかどうか)
 	void LoadMapData(string Pass);//マップデータを指定パスのテキストから読み込む
 	void LoadScriptData(string Pass);//スクリプトデータを指定パスのテキストから読み込む
 	void CreateMap(b2World *World);//マップデータからマップを生成する
+	void DestroyAll(b2World *World);//マップとプレイヤーを消去する
 	void DestroyMap(b2World *World);//マップを消去する
 	bool GetMessageFlag();//メッセージウィンドウを表示中か否か
 	bool GetPauseFlag();//ポーズ状態にあるか否か
+	string GetNextStageName();//次のステージを取得
 	void Step();//毎フレーム行う処理群
 	void Draw();//マップ、プレイヤー等の描画
 };

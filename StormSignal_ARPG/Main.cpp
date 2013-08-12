@@ -148,6 +148,17 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 			{
 				#pragma region アーケードモード
 
+				string Name = Map.GetNextStageName();
+				if(Name != "")
+				{
+					Map.DestroyMap(&World);
+					Map.Initialize(&World,false);
+					Map.LoadMapData("Map/"+Name+".txt");
+					Map.LoadScriptData("Map/"+Name+"_Script.txt");
+					Map.CreateMap(&World);
+
+				}
+
 				Map.Step();
 				Map.Draw();
 

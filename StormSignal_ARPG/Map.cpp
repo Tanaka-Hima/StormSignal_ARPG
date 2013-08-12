@@ -7,10 +7,11 @@
 #include "ConstantValue.h"
 #include "HitBox.h"
 
-void Map::Initialize(b2World *World)
+void Map::Initialize(b2World *World,bool InitPlayerFlag)
 {
 	PauseFlag = false;
 	MessageFlag = false;
+	NextStageName = "";
 	for(int i=0;i<14;i++)MapData[i].clear();
 	ScriptData.clear();
 	MapChipFixtures.clear();
@@ -57,8 +58,11 @@ void Map::Initialize(b2World *World)
 	MapChips.push_back(TempGraph);
 	MapChips[MapChips.size()-1].Load("Image/Map/Board.png");
 
-	PlayerData.Load("Image/Chara/None.png");
-	PlayerData.Initialize(World,Mapchip_Player,1,1,100);
+	if(InitPlayerFlag)
+	{
+		PlayerData.Load("Image/Chara/None.png");
+		PlayerData.Initialize(World,Mapchip_Player,1,1,100);
+	}
 
 }
 
@@ -122,7 +126,10 @@ void Map::CreateMap(b2World *World)
 			{
 				Enemy EnemyTemp;
 				EnemyData.push_back(EnemyTemp);
-				EnemyData[EnemyData.size()-1].Initialize(World,MapData[y][x],1,1,100);
+				int HP;
+				if(MapData[y][x] == Mapchip_TrainingBag)HP = INT_MAX;
+				else if(MapData[y][x] == Mapchip_CommonEnemy1)HP = 100;
+				EnemyData[EnemyData.size()-1].Initialize(World,MapData[y][x],1,1,HP);
 				EnemyData[EnemyData.size()-1].GetBody()->SetTransform(b2Vec2((x*32+16)/Box_Rate,(y*32+16)/Box_Rate),0);
 				continue;
 			}
@@ -162,12 +169,17 @@ void Map::CreateMap(b2World *World)
 	//GroundBody->CreateFixture(&GroundBox,0.f);
 }
 
-void Map::DestroyMap(b2World *World)
+void Map::DestroyAll(b2World *World)
 {
 	World->DestroyBody(GroundBody);
 	World->DestroyBody(PlayerData.GetBody());
 	PlayerData.DeleteCharacterList();
 	PlayerData.Unload();
+}
+
+void Map::DestroyMap(b2World *World)
+{
+	World->DestroyBody(GroundBody);
 }
 
 bool Map::GetPauseFlag()
@@ -178,6 +190,12 @@ bool Map::GetPauseFlag()
 bool Map::GetMessageFlag()
 {
 	return MessageFlag;
+}
+
+string Map::GetNextStageName()
+{
+	return NextStageName;
+	
 }
 
 void Map::Step()
@@ -284,7 +302,7 @@ void Map::Step()
 						//トリガー
 						if(ScriptData[i][3].find(Trigger_Hit) != string::npos)
 						{//対象に触れた瞬間のみ起動
-							if(PlayerData.HitTestRect(MapTrans.p.x*Box_Rate+x*32,y*32,32,32,true))
+							if(PlayerData.HitTestRect(MapTrans.p.x*Box_Rate+x*32,y*32,32,32,false))
 							{
 								if(ScriptData[i][3] != Trigger_Hitted)
 								{
@@ -297,7 +315,7 @@ void Map::Step()
 							}
 						}else if(ScriptData[i][3] == Trigger_Touch)
 						{//対象に触れている間常に起動
-							if(PlayerData.HitTestRect(MapTrans.p.x*Box_Rate+x*32,y*32,32,32,true))
+							if(PlayerData.HitTestRect(MapTrans.p.x*Box_Rate+x*32,y*32,32,32,false))
 							{
 								Flag = true;
 							}
@@ -355,6 +373,11 @@ void Map::Step()
 								MessageWindow.ReWindow();
 								MessageWindow.DrawStringInWindow(5,5,DrawString_Left,Data[1],FontSmall,White);
 								MessageWindow.Ext = 0.01f;
+							}else if(ScriptData[i][4].find(Action_Clear) != string::npos)
+							{//現在プレイしているステージを完了し、次のステージへ移動する
+								vector<string> Data = split(ScriptData[i][4],"|");
+								MessageFlag = true;
+								NextStageName = Data[1];
 							}
 						}
 					}
