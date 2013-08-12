@@ -11,12 +11,21 @@ void Map::Initialize(b2World *World)
 {
 	PauseFlag = false;
 	MessageFlag = false;
+	for(int i=0;i<14;i++)MapData[i].clear();
+	ScriptData.clear();
+	MapChipFixtures.clear();
+	FixtureDataToMapChip.clear();
 	MapChips.clear();
+	EnemyData.clear();
+	RigidBodies.clear();
 	MessageWindow.Initialize(Screen_Width/2-150,Screen_Height/2-100,300,200,Black,LightBlack);
 
 	//フォント読み込み
+	DeleteFontToHandle(FontSmall);
 	FontSmall = CreateFontToHandle( "メイリオ" , 15 , 3 ,-1,-1,2) ;
+	DeleteFontToHandle(FontMiddle);
 	FontMiddle = CreateFontToHandle( "メイリオ" , 20 , 7 ,-1,-1,2) ;
+	DeleteFontToHandle(FontBig);
 	FontBig = CreateFontToHandle( "メイリオ" , 40 , 10 ,-1,-1,3) ;
 
 	Image_2D TempGraph;
@@ -48,7 +57,6 @@ void Map::Initialize(b2World *World)
 	MapChips.push_back(TempGraph);
 	MapChips[MapChips.size()-1].Load("Image/Map/Board.png");
 
-
 	PlayerData.Load("Image/Chara/None.png");
 	PlayerData.Initialize(World,Mapchip_Player,1,1,100);
 
@@ -68,6 +76,7 @@ void Map::LoadMapData(string Pass)
 		free(Data);
 
 	}
+	FileRead_close(LineData);
 	Width = MapData[0].size();
 }
 
@@ -80,6 +89,7 @@ void Map::LoadScriptData(string Pass)
 		FileRead_gets(Data,256,LineData);
 		ScriptData.push_back(split(Data,","));
 	}
+	FileRead_close(LineData);
 }
 
 void Map::CreateMap(b2World *World)
@@ -150,6 +160,14 @@ void Map::CreateMap(b2World *World)
 		}
 	}
 	//GroundBody->CreateFixture(&GroundBox,0.f);
+}
+
+void Map::DestroyMap(b2World *World)
+{
+	World->DestroyBody(GroundBody);
+	World->DestroyBody(PlayerData.GetBody());
+	PlayerData.DeleteCharacterList();
+	PlayerData.Unload();
 }
 
 bool Map::GetPauseFlag()

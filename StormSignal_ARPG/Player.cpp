@@ -8,8 +8,11 @@ void Player::Initialize(b2World *World,string CharaType,float Density,float Fric
 	InitChara(World,CharaType,Density,Friction,MaxHP);
 
 	//フォント読み込み
+	DeleteFontToHandle(FontSmall);
 	FontSmall = CreateFontToHandle( "メイリオ" , 15 , 3 ,-1,-1,2) ;
+	DeleteFontToHandle(FontMiddle);
 	FontMiddle = CreateFontToHandle( "メイリオ" , 20 , 7 ,-1,-1,2) ;
+	DeleteFontToHandle(FontBig);
 	FontBig = CreateFontToHandle( "メイリオ" , 40 , 10 ,-1,-1,3) ;
 
 	//スキルの初期化
@@ -47,6 +50,7 @@ void Player::Initialize(b2World *World,string CharaType,float Density,float Fric
 	InfoPanel.Initialize(15,330,300,60,Black,LightBlack);
 	InfoPanel2.Initialize(SkillWindow.GetWidth()/2,330,300,60,Black,LightBlack);
 
+	SkillImages.clear();
 	int Length = AnimeGraphs.size();
 	for(int i=0;i<Length;i++)
 	{
@@ -59,6 +63,7 @@ void Player::Initialize(b2World *World,string CharaType,float Density,float Fric
 		SkillPanels[SkillPanels.size()-1].Initialize(0,0,64,64,Black,LightBlack);
 	}
 
+	EquipmentImages.clear();
 	Length = EquipmentGraphs.size();
 	for(int i=0;i<Length;i++)
 	{

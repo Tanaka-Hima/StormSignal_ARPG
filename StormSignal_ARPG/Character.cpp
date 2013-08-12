@@ -223,6 +223,8 @@ void Character::Step()
 	switch(State)
 	{
 		case Skill_None_None:
+		case Skill_None_Frontstep:
+		case Skill_None_Backstep:
 		{
 			Graph[0] = AnimeGraphs[State].Graph[0];
 			break;
@@ -337,4 +339,17 @@ Character* Character::GetPlayer()
 string Character::GetCharaType()
 {
 	return CharacterType;
+}
+
+void Character::DeleteCharacterList()
+{
+	int Length = CharacterList.size();
+	for(int i=0;i<Length;i++)
+	{
+		if(CharacterList[i] == this)
+		{
+			CharacterList.erase(CharacterList.begin()+i);
+			break;
+		}
+	}
 }

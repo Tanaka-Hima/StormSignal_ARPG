@@ -570,10 +570,10 @@
     <Text Include="..\妄想まとめ.txt">
       <Filter>リソース ファイル</Filter>
     </Text>
-    <Text Include="Map\Training.txt">
+    <Text Include="Map\AC_Stage1.txt">
       <Filter>リソース ファイル\Map</Filter>
     </Text>
-    <Text Include="Map\TrainingScript.txt">
+    <Text Include="Map\AC_Stage1_Script.txt">
       <Filter>リソース ファイル\Map</Filter>
     </Text>
   </ItemGroup>

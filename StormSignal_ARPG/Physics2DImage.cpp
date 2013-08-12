@@ -27,7 +27,7 @@ void Physics2DImage::Init(b2World *World,void* UserData,float Density,float Fric
 	Direction = ImageDirection_Right;
 
 	DynamicBox.SetAsBox((float)Center_x/(float)Box_Rate, (float)Center_y/(float)Box_Rate);
-
+	
 	FixtureDef.shape = &DynamicBox;
 	FixtureDef.density = Density;
 	FixtureDef.friction = Friction;

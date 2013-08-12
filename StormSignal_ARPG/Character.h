@@ -81,17 +81,10 @@ public:
 	virtual void Ctrl() = 0;//操作
 	virtual Character* GetPlayer();//プレイヤーのポインターを取得
 	string GetCharaType();//このCharacterの種類を取得
-	~Character()
+	void DeleteCharacterList();//自信をCharacterListから削除
+	virtual ~Character()
 	{
-		int Length = CharacterList.size();
-		for(int i=0;i<Length;i++)
-		{
-			if(CharacterList[i] == this)
-			{
-				CharacterList.erase(CharacterList.begin()+i);
-				break;
-			}
-		}
+		DeleteCharacterList();
 		if(Graph.size() > 0)
 		{
 			b2World *World = GetBody()->GetWorld();

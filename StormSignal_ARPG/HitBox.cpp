@@ -111,6 +111,7 @@ void HitBox::Draw()
 		Image.Draw(true);
 	}
 
+	#ifdef _DEBUG
 	const b2Color& color = b2Color(1,0,0);
 
 	int mode;//一時BLEND記録領域
@@ -135,4 +136,5 @@ void HitBox::Draw()
 	GetColor(255*color.r,255*color.g,255*color.b));
 
 	SetDrawBlendMode(mode,parm);
+	#endif
 }

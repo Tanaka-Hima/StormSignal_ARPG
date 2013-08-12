@@ -62,12 +62,14 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	Font Fonts;
 
 	int Scene = Title;
+	int Cursor = 0;
+	int CursorAlpha = GetNowCount();
 
 	//マップの生成
 	Map Map;
 	Map.Initialize(&World);
-	Map.LoadMapData("Map/Training.txt");
-	Map.LoadScriptData("Map/TrainingScript.txt");
+	Map.LoadMapData("Map/AC_Stage1.txt");
+	Map.LoadScriptData("Map/AC_Stage1_Script.txt");
 	Map.CreateMap(&World);
 
 	//メインループ
@@ -83,9 +85,15 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
 				Fonts.DrawString(Screen_Width / 2,Screen_Height/5,5,1,"STORMSIGNAL ARPG","Font/Big_Red",DrawString_Center);
 
+				SetDrawBlendMode( DX_BLENDMODE_ALPHA, fabs(sin((GetNowCount()-CursorAlpha)/300.f))*256);
 				Fonts.DrawString(Screen_Width / 2,Screen_Height*0.6,5,1,"PRESS ENTER KEY","Font/Small_Red",DrawString_Center);
+				SetDrawBlendMode(DX_BLENDMODE_NOBLEND,0);
 
-				if(CheckKeyDown(KEY_INPUT_RETURN))Scene = ModeSelect;
+				if(CheckKeyDown(KEY_INPUT_RETURN))
+				{
+					Scene = ModeSelect;
+					Cursor = 0;
+				}
 
 				break;
 				#pragma endregion
@@ -96,12 +104,33 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
 				Fonts.DrawString(Screen_Width / 2,Screen_Height/5,5,1,"STORMSIGNAL ARPG","Font/Big_Red",DrawString_Center);
 
+				if(Cursor == 0)SetDrawBlendMode( DX_BLENDMODE_ALPHA, fabs(sin((GetNowCount()-CursorAlpha)/300.f))*256);
 				Fonts.DrawString(Screen_Width / 2,Screen_Height*0.5,5,1,"STORY MODE","Font/Big_Green",DrawString_Center);
-				Fonts.DrawString(Screen_Width / 2,Screen_Height*0.6,5,1,"ARCADE MODE","Font/Big_Green",DrawString_Center);
-				Fonts.DrawString(Screen_Width / 2,Screen_Height*0.7,5,1,"TRAINING MODE","Font/Big_Green",DrawString_Center);
-				Fonts.DrawString(Screen_Width / 2,Screen_Height*0.8,5,1,"OPTION MODE","Font/Big_Green",DrawString_Center);
+				SetDrawBlendMode(DX_BLENDMODE_NOBLEND,0);
 
-				if(CheckKeyDown(KEY_INPUT_RETURN))Scene = ArcadeMode;
+				if(Cursor == 1)SetDrawBlendMode( DX_BLENDMODE_ALPHA, fabs(sin((GetNowCount()-CursorAlpha)/300.f))*256);
+				Fonts.DrawString(Screen_Width / 2,Screen_Height*0.6,5,1,"ARCADE MODE","Font/Big_Green",DrawString_Center);
+				SetDrawBlendMode(DX_BLENDMODE_NOBLEND,0);
+
+				if(Cursor == 2)SetDrawBlendMode( DX_BLENDMODE_ALPHA, fabs(sin((GetNowCount()-CursorAlpha)/300.f))*256);
+				Fonts.DrawString(Screen_Width / 2,Screen_Height*0.7,5,1,"TRAINING MODE","Font/Big_Green",DrawString_Center);
+				SetDrawBlendMode(DX_BLENDMODE_NOBLEND,0);
+
+				if(Cursor == 3)SetDrawBlendMode( DX_BLENDMODE_ALPHA, fabs(sin((GetNowCount()-CursorAlpha)/300.f))*256);
+				Fonts.DrawString(Screen_Width / 2,Screen_Height*0.8,5,1,"OPTION MODE","Font/Big_Green",DrawString_Center);
+				SetDrawBlendMode(DX_BLENDMODE_NOBLEND,0);
+
+				if(CheckKeyDown(KEY_INPUT_UP))Cursor--;
+				if(CheckKeyDown(KEY_INPUT_DOWN))Cursor++;
+
+				if(Cursor < 0)Cursor = 3;
+				else if(Cursor > 3)Cursor = 0;
+
+				if(CheckKeyDown(KEY_INPUT_RETURN))
+				{
+					Scene = Cursor + 2;
+					Cursor = 0;
+				}
 
 				break;
 				#pragma endregion
@@ -110,7 +139,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 			{
 				#pragma region ストーリーモード
 
-				Fonts.DrawString(Screen_Width / 2,100,5,1,"STORMSIGNAL ARPG","Font/Big_Red",DrawString_Center);
+				Fonts.DrawString(Screen_Width / 2,100,5,1,"STORY","Font/Big_Red",DrawString_Center);
 
 				break;
 				#pragma endregion
@@ -123,7 +152,10 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 				Map.Draw();
 
 				if(!Map.GetPauseFlag() && !Map.GetMessageFlag())World.Step(TimeStep, VelocityIterations, PositionIterations);
+				
+				#ifdef _DEBUG
 				World.DrawDebugData();
+				#endif
 
 				break;
 				#pragma endregion
@@ -141,7 +173,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 			{
 				#pragma region オプション
 
-				Fonts.DrawString(Screen_Width / 2,100,5,1,"STORMSIGNAL ARPG","Font/Big_Red",DrawString_Center);
+				Fonts.DrawString(Screen_Width / 2,100,5,1,"OPTION","Font/Big_Red",DrawString_Center);
 
 				break;
 				#pragma endregion
