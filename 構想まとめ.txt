@@ -31,6 +31,7 @@
 　　- "04"	スイッチ1(off)	(Mapchip_Switch1)
 　　- "05"	スイッチ2(on)	(Mapchip_Switch2)
 　　- "06"	看板		(Mapchip_Board)
+　　- "07"	旗		(Mapchip_Flag)
 　・敵
 　　- "10" サンドバッグ		(Mapchip_TrainingBag)
 	無敵、何もしない練習台

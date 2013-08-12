@@ -16,6 +16,7 @@ const string Mapchip_Woodbox = "03";
 const string Mapchip_Switch1 = "04";
 const string Mapchip_Switch2 = "05";
 const string Mapchip_Board = "06";
+const string Mapchip_Flag = "07";
 
 const string Mapchip_TrainingBag = "10";
 const string Mapchip_CommonEnemy1 = "11";

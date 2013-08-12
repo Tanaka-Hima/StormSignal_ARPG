@@ -58,6 +58,10 @@ void Map::Initialize(b2World *World,bool InitPlayerFlag)
 	MapChips.push_back(TempGraph);
 	MapChips[MapChips.size()-1].Load("Image/Map/Board.png");
 
+	//旗 7
+	MapChips.push_back(TempGraph);
+	MapChips[MapChips.size()-1].Load("Image/Map/Flag.png");
+
 	if(InitPlayerFlag)
 	{
 		PlayerData.Load("Image/Chara/None.png");
@@ -302,7 +306,7 @@ void Map::Step()
 						//トリガー
 						if(ScriptData[i][3].find(Trigger_Hit) != string::npos)
 						{//対象に触れた瞬間のみ起動
-							if(PlayerData.HitTestRect(MapTrans.p.x*Box_Rate+x*32,y*32,32,32,false))
+							if(PlayerData.HitTestRect(MapTrans.p.x*Box_Rate+x*32,y*32,32,32,true))
 							{
 								if(ScriptData[i][3] != Trigger_Hitted)
 								{
@@ -315,7 +319,7 @@ void Map::Step()
 							}
 						}else if(ScriptData[i][3] == Trigger_Touch)
 						{//対象に触れている間常に起動
-							if(PlayerData.HitTestRect(MapTrans.p.x*Box_Rate+x*32,y*32,32,32,false))
+							if(PlayerData.HitTestRect(MapTrans.p.x*Box_Rate+x*32,y*32,32,32,true))
 							{
 								Flag = true;
 							}
@@ -419,6 +423,7 @@ void Map::Draw()
 			if(GraphNum == Mapchip_Switch1)Graph = MapChips[4].Graph[0];
 			if(GraphNum == Mapchip_Switch2)Graph = MapChips[5].Graph[0];
 			if(GraphNum == Mapchip_Board)Graph = MapChips[6].Graph[0];
+			if(GraphNum == Mapchip_Flag)Graph = MapChips[7].Graph[0];
 
 			DrawGraph(MapTrans.p.x*Box_Rate+x*32,y*32,Graph,true);
 		}
