@@ -151,9 +151,9 @@
 　・地上剣
 　　- 前方へ剣を振り下ろす	(Skill_Sword_Front)
 　　- 前方へ衝撃波		(Skill_Sword_Shockwave)
+　　- 打ち上げ			(Skill_Sword_Knockup)
 　　- 前方へ吹き飛ばし攻撃	(Skill_Sword_Smash)
 　　- 前方へステップ->攻撃	(Skill_Sword_Step)
-　　- 打ち上げ			(Skill_Sword_Knockup)
 　・空中剣
 　　- 剣を回転させる
 　　- 上を突く

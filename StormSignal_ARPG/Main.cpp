@@ -68,9 +68,6 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	//マップの生成
 	Map Map;
 	Map.Initialize(&World);
-	Map.LoadMapData("Map/AC_Stage1.txt");
-	Map.LoadScriptData("Map/AC_Stage1_Script.txt");
-	Map.CreateMap(&World);
 
 	//メインループ
 	while( ProcessMessage() == 0)
@@ -130,6 +127,17 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 				{
 					Scene = Cursor + 2;
 					Cursor = 0;
+					if(Scene == ArcadeMode)
+					{
+						Map.LoadMapData("Map/AC_Stage1.txt");
+						Map.LoadScriptData("Map/AC_Stage1_Script.txt");
+						Map.CreateMap(&World);
+					}else if(Scene == TrainingMode)
+					{
+						Map.LoadMapData("Map/Training.txt");
+						Map.LoadScriptData("Map/Training_Script.txt");
+						Map.CreateMap(&World);
+					}
 				}
 
 				break;
@@ -175,7 +183,14 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 			{
 				#pragma region トレーニングモード
 
-				Fonts.DrawString(Screen_Width / 2,100,5,1,"TRAINING","Font/Big_Red",DrawString_Center);
+				Map.Step();
+				Map.Draw();
+
+				if(!Map.GetPauseFlag() && !Map.GetMessageFlag())World.Step(TimeStep, VelocityIterations, PositionIterations);
+				
+				#ifdef _DEBUG
+				World.DrawDebugData();
+				#endif
 
 				break;
 				#pragma endregion

@@ -111,6 +111,12 @@ void Character::InitChara(b2World *World,string CharaType,float Density,float Fr
 	AnimeGraphs.push_back(TempGraphs);
 	AnimeGraphs[AnimeGraphs.size()-1].Load("Image/Skill/None.png");
 
+	//Skill_Sword_Knockup 6
+	AnimeGraphs.push_back(TempGraphs);
+	AnimeGraphs[AnimeGraphs.size()-1].Load("Image/Skill/Sword/Knockup_0.png");
+	AnimeGraphs[AnimeGraphs.size()-1].Load("Image/Skill/Sword/Knockup_1.png");
+	AnimeGraphs[AnimeGraphs.size()-1].Load("Image/Skill/Sword/Knockup_2.png");
+
 	#pragma endregion
 
 	#pragma region エフェクト画像読み込み
@@ -163,6 +169,15 @@ bool Character::UseSkill(int SkillNumber,int EquipmentNumber)
 			return true;
 			break;
 		}
+		case Skill_Sword_Knockup:
+		{//打ち上げ
+			if(!JudgeSkillCancel())return false;
+
+			State = Skill_Sword_Knockup;
+			StateTime = 700;
+
+			break;
+		}
 		#pragma endregion
 
 		#pragma region 行動
@@ -198,10 +213,13 @@ bool Character::JudgeSkillCancel()
 		case Skill_None_None:
 			return true;
 		case Skill_Sword_Front:
-			if(StateTime < 450)return true;
+			if(StateTime < 350)return true;
 			else return false;
 		case Skill_Sword_Shockwave:
-			if(StateTime < 400)return true;
+			if(StateTime < 300)return true;
+			else return false;
+		case Skill_Sword_Knockup:
+			if(StateTime < 450)return true;
 			else return false;
 		case Skill_None_Frontstep:
 			if(StateTime < 950)return true;
@@ -289,6 +307,32 @@ void Character::Step()
 			}else if(StateTime > 200)Graph[0] = AnimeGraphs[State].Graph[3];
 			else if(StateTime > 150)Graph[0] = AnimeGraphs[State].Graph[4];
 			else if(StateTime > 100)Graph[0] = AnimeGraphs[State].Graph[5];
+			else
+			{
+				State = Skill_None_None;
+				Graph[0] = AnimeGraphs[State].Graph[0];
+			};
+			break;
+		}
+		case Skill_Sword_Knockup:
+		{//打ち上げ
+			if(StateTime > 550)Graph[0] = AnimeGraphs[State].Graph[0];
+			else if(StateTime > 450)
+			{
+				if(BeforeStateTime > 550)
+				{
+					b2PolygonShape Shape;
+					Shape.SetAsBox(2.7/2,3.7/2);
+					b2Transform Trans;
+					b2Vec2 Pos = GetBody()->GetPosition();
+					Pos.x += 2*Direction;
+					Trans.Set(Pos,0);
+					HitBox Box;
+					HitBoxList.push_back(Box);
+					HitBoxList[HitBoxList.size()-1].Initialize(Shape,Trans,this,false,b2Vec2(0,-30),10,1,50,1000,false);
+				}
+				Graph[0] = AnimeGraphs[State].Graph[1];
+			}else if(StateTime > 100)Graph[0] = AnimeGraphs[State].Graph[2];
 			else
 			{
 				State = Skill_None_None;
