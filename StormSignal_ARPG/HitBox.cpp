@@ -19,12 +19,15 @@ void HitBox::Initialize(b2PolygonShape InputShape,b2Transform InputTransform,Cha
 
 	BeforeTime = Time = GetNowCount();
 	StanTime = InputStanTime;
+
+	AutoAngle = false;
 }
 
-void HitBox::SetMoveFlag(b2Vec2 InputMoveVect)
+void HitBox::SetMoveFlag(b2Vec2 InputMoveVect,bool InputAutoAngle)
 {
 	MoveFlag = true;
 	MoveVect = InputMoveVect;
+	AutoAngle = InputAutoAngle;
 }
 
 void HitBox::SetGraph(Image_2D InputImage)
@@ -108,6 +111,10 @@ void HitBox::Draw()
 	{
 		Image.x = Transform.p.x * Box_Rate;
 		Image.y = Transform.p.y * Box_Rate;
+		if(AutoAngle)
+		{
+			Image.Angle = atan2(MoveVect.y,MoveVect.x);
+		}
 		Image.Draw(true);
 	}
 

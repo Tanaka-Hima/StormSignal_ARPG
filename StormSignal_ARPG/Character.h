@@ -12,6 +12,7 @@ const int Skill_None_Stan = 3;
 const int Skill_None_Frontstep = 4;
 const int Skill_None_Backstep = 5;
 const int Skill_Sword_Knockup = 6;
+const int Skill_Handgun_Fire = 7;
 
 const string SkillValueNames[] = {"Skill_None_None",
 								"Skill_Sword_Front",
@@ -19,7 +20,8 @@ const string SkillValueNames[] = {"Skill_None_None",
 								"Skill_None_Damage",
 								"Skill_None_Frontstep",
 								"Skill_None_Backstep",
-								"Skill_Sword_Knockup"};
+								"Skill_Sword_Knockup",
+								"Skill_Handgun_Fire"};
 
 const string SkillNames[] = {"無し",
 							"前方へ剣を振り下ろす(仮)",
@@ -27,7 +29,8 @@ const string SkillNames[] = {"無し",
 							"ダメージ",
 							"フロントステップ",
 							"バックステップ",
-							"打ち上げ"};
+							"打ち上げ",
+							"発砲"};
 
 const string SkillInfo[] = {"スキルを設定しません。<>必要装備 : 無し CD : 無し",
 							"前方へ剣を振り下ろします。<>必要装備 : 剣 CD : 無し",
@@ -35,26 +38,32 @@ const string SkillInfo[] = {"スキルを設定しません。<>必要装備 : �
 							"ダメージを受けます。<>必要装備 : 無し CD : 無し",
 							"前方へ踏み込みを行ないます。<>必要装備 : 無し CD : 無し",
 							"後方へ飛び退きます。<>必要装備 : 無し CD : 無し",
-							"敵を空中へ打ち上げます。<>必要装備 : 剣 CD : 無し"};
+							"敵を空中へ打ち上げます。<>必要装備 : 剣 CD : 無し",
+							"指定方向へ弾丸を発射します。<>必要装備 : HG CD : 無し"};
 
 
 const int Equipment_None_None = 0;
 const int Equipment_Sword_Normal = 1;
 const int Equipment_Sword_Flame = 2;
+const int Equipment_Handgun_Normal = 3;
 
 const string EquipmentValueNames[] = {"Equipment_None_None",
 							"Equipment_Sword_Normal",
-							"Equipment_Sword_Flame"};
+							"Equipment_Sword_Flame",
+							"Equipment_Handgun_Normal"};
 
 const string EquipmentNames[] = {"無し",
 							"通常剣",
-							"炎剣"};
+							"炎剣",
+							"ハンドガン"};
 
 const string EquipmentInfo[] = {"装備を使用しません。<>装備種類 : 無し",
 							"通常剣を用いて攻撃を行います。<>装備種類 : 剣",
-							"炎剣を用いて攻撃を行います。<>装備種類 : 剣"};
+							"炎剣を用いて攻撃を行います。<>装備種類 : 剣",
+							"ハンドガンを用いて攻撃を行います。<>装備種類 : HG"};
 
 const int Effect_Sword_Shockwave = 0;
+const int Effect_Handgun_Bullet = 1;
 
 vector<int> GetSkillList(string EquipmentName);//装備に対応したスキルを取得
 string GetEquipmentNameforSkill(int Skill);//スキル名から装備種類を取り出す

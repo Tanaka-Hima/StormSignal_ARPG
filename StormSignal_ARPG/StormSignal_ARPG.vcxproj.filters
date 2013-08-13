@@ -61,6 +61,18 @@
     <Filter Include="リソース ファイル\Image\Skill\None">
       <UniqueIdentifier>{076bc0b3-0afb-4265-b48d-a16cd014b5ec}</UniqueIdentifier>
     </Filter>
+    <Filter Include="リソース ファイル\Image\Effect\Handgun">
+      <UniqueIdentifier>{8bcb00b4-0e02-4e24-a89a-a3a86c643a3e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\Image\Skill\Handgun">
+      <UniqueIdentifier>{b95f46a6-debc-41c6-9121-ff169261b4c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\Image\Equipment\Sword">
+      <UniqueIdentifier>{cd5c8b0f-d422-48d1-9e68-ec7da4e56638}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\Image\Equipment\Handgun">
+      <UniqueIdentifier>{85383985-5afb-4188-a28f-01656df0331b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -588,6 +600,30 @@
     </Image>
     <Image Include="Image\Skill\Sword\Shockwave_3.png">
       <Filter>リソース ファイル\Image\Skill\Sword</Filter>
+    </Image>
+    <Image Include="Image\Effect\Handgun\Bullet.png">
+      <Filter>リソース ファイル\Image\Effect\Handgun</Filter>
+    </Image>
+    <Image Include="Image\Skill\Handgun\Fire_0.png">
+      <Filter>リソース ファイル\Image\Skill\Handgun</Filter>
+    </Image>
+    <Image Include="Image\Skill\Handgun\Fire_1.png">
+      <Filter>リソース ファイル\Image\Skill\Handgun</Filter>
+    </Image>
+    <Image Include="Image\Equipment\Sword\Flame_0.png">
+      <Filter>リソース ファイル\Image\Equipment\Sword</Filter>
+    </Image>
+    <Image Include="Image\Equipment\Sword\Normal_0.png">
+      <Filter>リソース ファイル\Image\Equipment\Sword</Filter>
+    </Image>
+    <Image Include="Image\Equipment\None.png">
+      <Filter>リソース ファイル\Image\Equipment</Filter>
+    </Image>
+    <Image Include="Image\Equipment\Handgun\Normal_0.png">
+      <Filter>リソース ファイル\Image\Equipment\Handgun</Filter>
+    </Image>
+    <Image Include="Image\Equipment\Handgun\Normal_1.png">
+      <Filter>リソース ファイル\Image\Equipment\Handgun</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>

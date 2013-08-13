@@ -26,6 +26,7 @@ private:
 	int BeforeTime;
 	int StanTime;//ヒット時行動不能時間
 	bool Follow;//キャラが移動した時にヒットポックスも移動させるか？
+	bool AutoAngle;//移動方向にあわせて方向を変化させるか否か
 
 	vector<b2PolygonShape*> HittedChara;
 
@@ -41,7 +42,7 @@ public:
 					int InputStanTime,//対象が行動不能になる時間
 					bool FollowFlag//ヒットボックスを生成したCharacterを追いかけるかどうか
 					);
-	void SetMoveFlag(b2Vec2 InputMoveVect);//この関数を呼び出した場合、1秒に指定分だけHitBoxが移動する
+	void SetMoveFlag(b2Vec2 InputMoveVect,bool InputAutoAngle = false);//この関数を呼び出した場合、1秒に指定分だけHitBoxが移動する
 	void SetGraph(Image_2D Image);//この関数を呼び出した場合、ヒットボックスが存在する位置に画像が描画される
 	bool HitTestShape(Character* Target,b2PolygonShape* TargetShape,b2Transform TargetTrans);//Characterとの当たり判定
 	bool Step();//毎フレームの処理
