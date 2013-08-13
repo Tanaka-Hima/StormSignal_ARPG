@@ -152,8 +152,16 @@ void Player::StepSkillWindow()
 
 		if(SkillCursorPoint.y != 0)
 		{//スキル変更
-			if(CheckKeyDown(KEY_INPUT_UP))ChangeSkillPoint.y--;
-			if(CheckKeyDown(KEY_INPUT_DOWN))ChangeSkillPoint.y++;
+			if(CheckKeyDown(KEY_INPUT_UP))
+			{
+				ChangeSkillPoint.x = 0;
+				ChangeSkillPoint.y--;
+			}
+			if(CheckKeyDown(KEY_INPUT_DOWN))
+			{
+				ChangeSkillPoint.x = 0;
+				ChangeSkillPoint.y++;
+			}
 
 			int Length = EnableSkillList[ChangeSkillPoint.y-1].size()-1;
 
@@ -304,23 +312,26 @@ void Player::StepSkillWindow()
 	{
 		for(int j=0;j<5;j++)
 		{
-			int Select1 = 0,Select2 = 0;
-			if(SkillCursorPoint.x == j && SkillCursorPoint.y == i)Select1 = 10;
-			if(ChangeSkillPoint.x == j && ChangeSkillPoint.y == i && SkillChangeFlag)Select2 = 10;
+			int Select2 = 0;
 			if(i>0)
 			{//スキル窓の描画
-				//DrawRotaGraph2(15+j*70+32,50+i*70+32,64,40,1,0,AnimeGraphs[SkillSet[j][i-1][0]][0],true);
+				int ShowSkill = j;
+				if(ChangeSkillPoint.x >= 5 && ChangeSkillPoint.y == i)ShowSkill += ChangeSkillPoint.x - 4;
+				if(ChangeSkillPoint.x == ShowSkill && ChangeSkillPoint.y == i && SkillChangeFlag)Select2 = 10;
 				if(EnableSkillList[i-1].size() <= j)continue;
-				SkillPanels[EnableSkillList[i-1][j]].x = 15+j*70 + SkillWindow.GetWidth()/2;
-				SkillPanels[EnableSkillList[i-1][j]].y = 50+i*70-Select2;
-				SkillPanels[EnableSkillList[i-1][j]].Draw();
+				SkillPanels[EnableSkillList[i-1][ShowSkill]].x = 15+j*70 + SkillWindow.GetWidth()/2;
+				SkillPanels[EnableSkillList[i-1][ShowSkill]].y = 50+i*70-Select2;
+				SkillPanels[EnableSkillList[i-1][ShowSkill]].Draw();
 			}else
 			{//装備窓の描画
-				if(GetArrayLength(EquipmentValueNames) > j)
+				int ShowEquip = j;
+				if(ChangeSkillPoint.x >= 5 && ChangeSkillPoint.y == i)ShowEquip += ChangeSkillPoint.x - 4;
+				if(ChangeSkillPoint.x == ShowEquip && ChangeSkillPoint.y == i && SkillChangeFlag)Select2 = 10;
+				if(GetArrayLength(EquipmentValueNames) > ShowEquip)
 				{
-					EquipmentPanels[j].x = 15+j*70 + SkillWindow.GetWidth()/2;
-					EquipmentPanels[j].y = 50+i*70-Select2;
-					EquipmentPanels[j].Draw();
+					EquipmentPanels[ShowEquip].x = 15+j*70 + SkillWindow.GetWidth()/2;
+					EquipmentPanels[ShowEquip].y = 50+i*70-Select2;
+					EquipmentPanels[ShowEquip].Draw();
 				}
 			}
 		}

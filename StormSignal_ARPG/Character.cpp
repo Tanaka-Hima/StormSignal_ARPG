@@ -134,6 +134,14 @@ void Character::InitChara(b2World *World,string CharaType,float Density,float Fr
 	AnimeGraphs[AnimeGraphs.size()-1].Load("Image/Skill/Sword/Smash_2.png");
 	AnimeGraphs[AnimeGraphs.size()-1].Load("Image/Skill/Sword/Smash_3.png");
 
+	//Skill_Sword_Spin 9
+	AnimeGraphs.push_back(TempGraphs);
+	AnimeGraphs[AnimeGraphs.size()-1].Load("Image/Skill/Sword/Spin_0.png");
+	AnimeGraphs[AnimeGraphs.size()-1].Load("Image/Skill/Sword/Spin_1.png");
+	AnimeGraphs[AnimeGraphs.size()-1].Load("Image/Skill/Sword/Spin_2.png");
+	AnimeGraphs[AnimeGraphs.size()-1].Load("Image/Skill/Sword/Spin_3.png");
+	AnimeGraphs[AnimeGraphs.size()-1].Load("Image/Skill/Sword/Spin_4.png");
+
 	#pragma endregion
 
 	#pragma region エフェクト画像読み込み
@@ -209,6 +217,15 @@ bool Character::UseSkill(int SkillNumber,int EquipmentNumber)
 
 			break;
 		}
+		case Skill_Sword_Spin:
+		{//剣を回転させる
+			if(!JudgeSkillCancel())return false;
+
+			State = Skill_Sword_Spin;
+			StateTime = 600;
+
+			break;
+		}
 		#pragma endregion
 
 		#pragma region ハンドガン
@@ -266,6 +283,12 @@ bool Character::JudgeSkillCancel()
 			else return false;
 		case Skill_Sword_Knockup:
 			if(StateTime < 450)return true;
+			else return false;
+		case Skill_Sword_Smash:
+			if(StateTime < 300)return true;
+			else return false;
+		case Skill_Sword_Spin:
+			if(StateTime < 150)return true;
 			else return false;
 		case Skill_Handgun_Fire:
 			if(StateTime < 50)return true;
@@ -409,6 +432,24 @@ void Character::Step()
 				}
 				Graph[0] = AnimeGraphs[State].Graph[2];
 			}else if(StateTime > 100)Graph[0] = AnimeGraphs[State].Graph[3];
+			else
+			{
+				State = Skill_None_None;
+				Graph[0] = AnimeGraphs[State].Graph[0];
+			};
+			break;
+		}
+		case Skill_Sword_Spin:
+		{//剣を回転させる
+			if(StateTime > 550)Graph[0] = AnimeGraphs[State].Graph[0];
+			else if(StateTime > 500)Graph[0] = AnimeGraphs[State].Graph[1];
+			else if(StateTime > 450)Graph[0] = AnimeGraphs[State].Graph[2];
+			else if(StateTime > 400)Graph[0] = AnimeGraphs[State].Graph[3];
+			else if(StateTime > 350)Graph[0] = AnimeGraphs[State].Graph[4];
+			else if(StateTime > 300)Graph[0] = AnimeGraphs[State].Graph[1];
+			else if(StateTime > 250)Graph[0] = AnimeGraphs[State].Graph[2];
+			else if(StateTime > 200)Graph[0] = AnimeGraphs[State].Graph[3];
+			else if(StateTime > 150)Graph[0] = AnimeGraphs[State].Graph[4];
 			else
 			{
 				State = Skill_None_None;

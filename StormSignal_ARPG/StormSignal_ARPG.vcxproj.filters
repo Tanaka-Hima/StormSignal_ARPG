@@ -634,6 +634,18 @@
     <Image Include="Image\Skill\Sword\Smash_3.png">
       <Filter>リソース ファイル\Image\Skill\Sword</Filter>
     </Image>
+    <Image Include="Image\Skill\Sword\Spin_3.png">
+      <Filter>リソース ファイル\Image\Skill\Sword</Filter>
+    </Image>
+    <Image Include="Image\Skill\Sword\Spin_0.png">
+      <Filter>リソース ファイル\Image\Skill\Sword</Filter>
+    </Image>
+    <Image Include="Image\Skill\Sword\Spin_1.png">
+      <Filter>リソース ファイル\Image\Skill\Sword</Filter>
+    </Image>
+    <Image Include="Image\Skill\Sword\Spin_2.png">
+      <Filter>リソース ファイル\Image\Skill\Sword</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\構想まとめ.txt">
