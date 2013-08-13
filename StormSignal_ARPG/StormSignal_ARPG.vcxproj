@@ -272,6 +272,9 @@
     <Image Include="Image\Skill\Sword\Shockwave_3.png" />
     <Image Include="Image\Skill\Sword\Shockwave_4.png" />
     <Image Include="Image\Skill\Sword\Shockwave_5.png" />
+    <Image Include="Image\Skill\Sword\Smash_1.png" />
+    <Image Include="Image\Skill\Sword\Smash_2.png" />
+    <Image Include="Image\Skill\Sword\Smash_3.png" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\妄想まとめ.txt" />

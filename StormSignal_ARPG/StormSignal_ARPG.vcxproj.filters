@@ -625,6 +625,15 @@
     <Image Include="Image\Equipment\Handgun\Normal_1.png">
       <Filter>リソース ファイル\Image\Equipment\Handgun</Filter>
     </Image>
+    <Image Include="Image\Skill\Sword\Smash_1.png">
+      <Filter>リソース ファイル\Image\Skill\Sword</Filter>
+    </Image>
+    <Image Include="Image\Skill\Sword\Smash_2.png">
+      <Filter>リソース ファイル\Image\Skill\Sword</Filter>
+    </Image>
+    <Image Include="Image\Skill\Sword\Smash_3.png">
+      <Filter>リソース ファイル\Image\Skill\Sword</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\構想まとめ.txt">

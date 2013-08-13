@@ -127,6 +127,13 @@ void Character::InitChara(b2World *World,string CharaType,float Density,float Fr
 	AnimeGraphs[AnimeGraphs.size()-1].Load("Image/Skill/Handgun/Fire_0.png");
 	AnimeGraphs[AnimeGraphs.size()-1].Load("Image/Skill/Handgun/Fire_1.png");
 
+	//Skill_Sword_Smash 8
+	AnimeGraphs.push_back(TempGraphs);
+	AnimeGraphs[AnimeGraphs.size()-1].Load("Image/Skill/Sword/Smash_0.png");
+	AnimeGraphs[AnimeGraphs.size()-1].Load("Image/Skill/Sword/Smash_1.png");
+	AnimeGraphs[AnimeGraphs.size()-1].Load("Image/Skill/Sword/Smash_2.png");
+	AnimeGraphs[AnimeGraphs.size()-1].Load("Image/Skill/Sword/Smash_3.png");
+
 	#pragma endregion
 
 	#pragma region エフェクト画像読み込み
@@ -193,11 +200,22 @@ bool Character::UseSkill(int SkillNumber,int EquipmentNumber)
 
 			break;
 		}
+		case Skill_Sword_Smash:
+		{//前方へ吹き飛ばし攻撃
+			if(!JudgeSkillCancel())return false;
+
+			State = Skill_Sword_Smash;
+			StateTime = 700;
+
+			break;
+		}
 		#pragma endregion
 
 		#pragma region ハンドガン
 		case Skill_Handgun_Fire:
 		{
+			if(!JudgeSkillCancel())return false;
+
 			State = Skill_Handgun_Fire;
 			StateTime = 200;
 			break;
@@ -208,6 +226,8 @@ bool Character::UseSkill(int SkillNumber,int EquipmentNumber)
 
 		case Skill_None_Frontstep:
 		{
+			if(!JudgeSkillCancel())return false;
+
 			State = Skill_None_Frontstep;
 			StateTime = 1000;
 
@@ -217,6 +237,8 @@ bool Character::UseSkill(int SkillNumber,int EquipmentNumber)
 
 		case Skill_None_Backstep:
 		{
+			if(!JudgeSkillCancel())return false;
+
 			State = Skill_None_Backstep;
 			StateTime = 1000;
 
@@ -367,6 +389,33 @@ void Character::Step()
 			};
 			break;
 		}
+		case Skill_Sword_Smash:
+		{//前方へ吹き飛ばし攻撃
+			if(StateTime > 600)Graph[0] = AnimeGraphs[State].Graph[0];
+			else if(StateTime > 400)Graph[0] = AnimeGraphs[State].Graph[1];
+			else if(StateTime > 300)
+			{
+				if(BeforeStateTime > 400)
+				{//ヒットボックスを発生させる
+					b2PolygonShape Shape;
+					Shape.SetAsBox(6.8/2,2.0/2);
+					b2Transform Trans;
+					b2Vec2 Pos = GetBody()->GetPosition();
+					Pos.x += Direction;
+					Trans.Set(Pos,0);
+					HitBox Box;
+					HitBoxList.push_back(Box);
+					HitBoxList[HitBoxList.size()-1].Initialize(Shape,Trans,this,false,b2Vec2(30*Direction,-5),30,1,100,1000,true);
+				}
+				Graph[0] = AnimeGraphs[State].Graph[2];
+			}else if(StateTime > 100)Graph[0] = AnimeGraphs[State].Graph[3];
+			else
+			{
+				State = Skill_None_None;
+				Graph[0] = AnimeGraphs[State].Graph[0];
+			};
+			break;
+		}
 		#pragma endregion
 
 		#pragma region ハンドガン
@@ -385,7 +434,7 @@ void Character::Step()
 					Trans.Set(Pos,0);
 					HitBox Box;
 					HitBoxList.push_back(Box);
-					HitBoxList[HitBoxList.size()-1].Initialize(Shape,Trans,this,false,b2Vec2(2*Direction,0),2,1,1000,200,false);
+					HitBoxList[HitBoxList.size()-1].Initialize(Shape,Trans,this,false,b2Vec2(2*Direction,0),2,1,1000,100,false);
 					EffectGraphs[Effect_Sword_Shockwave].Direction = Direction;
 					HitBoxList[HitBoxList.size()-1].SetGraph(EffectGraphs[Effect_Handgun_Bullet]);
 
