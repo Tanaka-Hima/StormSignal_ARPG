@@ -254,7 +254,16 @@
     <Image Include="Image\Skill\Sword\Front_1.png" />
     <Image Include="Image\Skill\Sword\Front_2.png" />
     <Image Include="Image\Skill\Sword\Front_3.png" />
+    <Image Include="Image\Skill\Sword\Knockup_0.png" />
+    <Image Include="Image\Skill\Sword\Knockup_1.png" />
+    <Image Include="Image\Skill\Sword\Knockup_2.png" />
     <Image Include="Image\Skill\Sword\None_Sword.png" />
+    <Image Include="Image\Skill\Sword\Shockwave_0.png" />
+    <Image Include="Image\Skill\Sword\Shockwave_1.png" />
+    <Image Include="Image\Skill\Sword\Shockwave_2.png" />
+    <Image Include="Image\Skill\Sword\Shockwave_3.png" />
+    <Image Include="Image\Skill\Sword\Shockwave_4.png" />
+    <Image Include="Image\Skill\Sword\Shockwave_5.png" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\妄想まとめ.txt" />

@@ -562,6 +562,33 @@
     <Image Include="Image\Skill\None\Damage_0.png">
       <Filter>リソース ファイル\Image\Skill\None</Filter>
     </Image>
+    <Image Include="Image\Skill\Sword\Knockup_0.png">
+      <Filter>リソース ファイル\Image\Skill\Sword</Filter>
+    </Image>
+    <Image Include="Image\Skill\Sword\Knockup_1.png">
+      <Filter>リソース ファイル\Image\Skill\Sword</Filter>
+    </Image>
+    <Image Include="Image\Skill\Sword\Knockup_2.png">
+      <Filter>リソース ファイル\Image\Skill\Sword</Filter>
+    </Image>
+    <Image Include="Image\Skill\Sword\Shockwave_4.png">
+      <Filter>リソース ファイル\Image\Skill\Sword</Filter>
+    </Image>
+    <Image Include="Image\Skill\Sword\Shockwave_5.png">
+      <Filter>リソース ファイル\Image\Skill\Sword</Filter>
+    </Image>
+    <Image Include="Image\Skill\Sword\Shockwave_0.png">
+      <Filter>リソース ファイル\Image\Skill\Sword</Filter>
+    </Image>
+    <Image Include="Image\Skill\Sword\Shockwave_1.png">
+      <Filter>リソース ファイル\Image\Skill\Sword</Filter>
+    </Image>
+    <Image Include="Image\Skill\Sword\Shockwave_2.png">
+      <Filter>リソース ファイル\Image\Skill\Sword</Filter>
+    </Image>
+    <Image Include="Image\Skill\Sword\Shockwave_3.png">
+      <Filter>リソース ファイル\Image\Skill\Sword</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\構想まとめ.txt">
