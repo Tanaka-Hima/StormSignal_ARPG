@@ -72,6 +72,7 @@ void Map::Initialize(b2World *World,bool InitPlayerFlag)
 
 void Map::LoadMapData(string Pass)
 {
+	StagePass = Pass;
 	int LineData = FileRead_open(Pass.c_str());
 	//マップの横幅を計算する
 	Width = FileRead_size(Pass.c_str())/14+2;
@@ -90,6 +91,7 @@ void Map::LoadMapData(string Pass)
 
 void Map::LoadScriptData(string Pass)
 {
+	ScriptPass = Pass;
 	int LineData = FileRead_open(Pass.c_str());
 	while(FileRead_eof(LineData) == 0)
 	{
@@ -177,6 +179,7 @@ void Map::DestroyAll(b2World *World)
 {
 	World->DestroyBody(GroundBody);
 	World->DestroyBody(PlayerData.GetBody());
+	PlayerData.GetBody()->SetLinearVelocity(b2Vec2(0,0));
 	PlayerData.DeleteCharacterList();
 	PlayerData.Unload();
 }
@@ -184,6 +187,7 @@ void Map::DestroyAll(b2World *World)
 void Map::DestroyMap(b2World *World)
 {
 	World->DestroyBody(GroundBody);
+	PlayerData.GetBody()->SetLinearVelocity(b2Vec2(0,0));
 }
 
 bool Map::GetPauseFlag()
@@ -200,6 +204,26 @@ string Map::GetNextStageName()
 {
 	return NextStageName;
 	
+}
+
+int Map::GetPlayerHP()
+{
+	return PlayerData.HP;
+}
+
+void Map::InitPlayerHP()
+{
+	PlayerData.HP = PlayerData.MaxHP;
+}
+
+string Map::GetStagePass()
+{
+	return StagePass;
+}
+
+string Map::GetScriptPass()
+{
+	return ScriptPass;
 }
 
 void Map::Step()
@@ -235,6 +259,7 @@ void Map::Step()
 	//プレイヤーの処理
 	PlayerData.Ctrl();
 	PlayerData.Step();
+
 
 	//敵の処理
 	int Length = EnemyData.size();

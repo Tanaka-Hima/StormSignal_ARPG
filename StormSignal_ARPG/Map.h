@@ -54,6 +54,8 @@ private:
 	bool PauseFlag;//ゲームの進行を止めるか否か
 	bool MessageFlag;//メッセージ表示用
 	Window MessageWindow;
+	string StagePass;//現在のステージパス
+	string ScriptPass;
 	string NextStageName;//次のステージ
 	int FontSmall,FontMiddle,FontBig;//フォント
 public:
@@ -66,6 +68,10 @@ public:
 	bool GetMessageFlag();//メッセージウィンドウを表示中か否か
 	bool GetPauseFlag();//ポーズ状態にあるか否か
 	string GetNextStageName();//次のステージを取得
+	int GetPlayerHP();
+	void InitPlayerHP();
+	string GetStagePass();
+	string GetScriptPass();
 	void Step();//毎フレーム行う処理群
 	void Draw();//マップ、プレイヤー等の描画
 };

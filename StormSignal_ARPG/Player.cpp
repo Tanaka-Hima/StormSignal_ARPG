@@ -80,6 +80,9 @@ void Player::Initialize(b2World *World,string CharaType,float Density,float Fric
 
 void Player::Ctrl()
 {
+	//プレイヤーがマップから落ちた場合はHPを0にする
+	if(y > Screen_Height + 30)HP = 0;
+
 	//スタン中は行動できない
 	if(State == Skill_None_Stan && StateTime > 0)return;
 

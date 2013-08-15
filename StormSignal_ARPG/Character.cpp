@@ -42,11 +42,12 @@ string GetEquipmentNameforEquipment(int Equipment)
 	return EquipmentValueNames[Equipment].substr(Pos1,Pos2-Pos1);
 }
 
-void Character::InitChara(b2World *World,string CharaType,float Density,float Friction,int MaxHP)
+void Character::InitChara(b2World *World,string CharaType,float Density,float Friction,int InputMaxHP)
 {
 	CharacterType = CharaType;
 	Init(World,&CharacterType,Density,Friction);
 
+	MaxHP = InputMaxHP;
 	HP = MaxHP;
 	GetBody()->SetSleepingAllowed(false);
 

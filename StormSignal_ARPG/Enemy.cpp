@@ -45,6 +45,7 @@ void Enemy::Ctrl()
 		}else if(Dis <= 30)
 		{
 			UseSkill(Skill_Sword_Front,Equipment_Sword_Normal);
+			StateTime += 300;
 		}
 	}
 }

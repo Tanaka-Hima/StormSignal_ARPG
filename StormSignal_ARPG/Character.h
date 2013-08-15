@@ -94,7 +94,7 @@ public:
 	static vector<Image_2D> EquipmentGraphs;//装備画像
 	static vector<Image_2D> EffectGraphs;//エフェクト用画像
 
-	void InitChara(b2World *World,string CharaType,float Density,float Friction,int MaxHP);//Characterクラスの初期化
+	void InitChara(b2World *World,string CharaType,float Density,float Friction,int InputMaxHP);//Characterクラスの初期化
 	virtual void Initialize(b2World *World,string CharaType,float Density,float Friction,int MaxHP) = 0;//初期化
 	virtual bool UseSkill(int SkillNumber,int EquipmentNumber);//スキルの使用
 	virtual bool JudgeSkillCancel();//現在使用しているスキルがギャンセルできるかを判定

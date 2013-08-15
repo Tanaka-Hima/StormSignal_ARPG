@@ -157,6 +157,18 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 				#pragma region アーケードモード
 
 				string Name = Map.GetNextStageName();
+
+				//プレイヤーのHPが0以下の場合、ステージをリスタートする
+				if(Map.GetPlayerHP() <= 0)
+				{
+					Map.DestroyMap(&World);
+					Map.Initialize(&World,false);
+					Map.LoadMapData(Map.GetStagePass());
+					Map.LoadScriptData(Map.GetScriptPass());
+					Map.CreateMap(&World);
+					Map.InitPlayerHP();
+				}
+
 				if(Name != "")
 				{
 					Map.DestroyMap(&World);
