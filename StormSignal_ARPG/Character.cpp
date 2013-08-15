@@ -442,15 +442,131 @@ void Character::Step()
 		case Skill_Sword_Spin:
 		{//剣を回転させる
 			if(StateTime > 550)Graph[0] = AnimeGraphs[State].Graph[0];
-			else if(StateTime > 500)Graph[0] = AnimeGraphs[State].Graph[1];
-			else if(StateTime > 450)Graph[0] = AnimeGraphs[State].Graph[2];
-			else if(StateTime > 400)Graph[0] = AnimeGraphs[State].Graph[3];
-			else if(StateTime > 350)Graph[0] = AnimeGraphs[State].Graph[4];
-			else if(StateTime > 300)Graph[0] = AnimeGraphs[State].Graph[1];
-			else if(StateTime > 250)Graph[0] = AnimeGraphs[State].Graph[2];
-			else if(StateTime > 200)Graph[0] = AnimeGraphs[State].Graph[3];
-			else if(StateTime > 150)Graph[0] = AnimeGraphs[State].Graph[4];
-			else
+			else if(StateTime > 500)
+			{
+				if(BeforeStateTime > 550)
+				{//ヒットボックスを発生させる
+					b2PolygonShape Shape;
+					Shape.SetAsBox(2.7/2,3.7/2);
+					b2Transform Trans;
+					b2Vec2 Pos = GetBody()->GetPosition();
+					Pos.x += 2*Direction;
+					Trans.Set(Pos,0);
+					HitBox Box;
+					HitBoxList.push_back(Box);
+					HitBoxList[HitBoxList.size()-1].Initialize(Shape,Trans,this,false,b2Vec2(-5*Direction,-5),10,1,50,500,true);
+				}
+				Graph[0] = AnimeGraphs[State].Graph[1];
+			}else if(StateTime > 450)
+			{
+				if(BeforeStateTime > 500)
+				{//ヒットボックスを発生させる
+					b2PolygonShape Shape;
+					Shape.SetAsBox(5.3/2,2.4/2);
+					b2Transform Trans;
+					b2Vec2 Pos = GetBody()->GetPosition();
+					Pos.x += 0.1*Direction;
+					Pos.y += -2;
+					Trans.Set(Pos,0);
+					HitBox Box;
+					HitBoxList.push_back(Box);
+					HitBoxList[HitBoxList.size()-1].Initialize(Shape,Trans,this,false,b2Vec2(-5*Direction,5),10,1,50,500,true);
+				}
+				Graph[0] = AnimeGraphs[State].Graph[2];
+			}else if(StateTime > 400)
+			{
+				if(BeforeStateTime > 450)
+				{//ヒットボックスを発生させる
+					b2PolygonShape Shape;
+					Shape.SetAsBox(2.7/2,3.7/2);
+					b2Transform Trans;
+					b2Vec2 Pos = GetBody()->GetPosition();
+					Pos.x += -2*Direction;
+					Trans.Set(Pos,0);
+					HitBox Box;
+					HitBoxList.push_back(Box);
+					HitBoxList[HitBoxList.size()-1].Initialize(Shape,Trans,this,false,b2Vec2(5*Direction,5),10,1,50,500,true);
+				}
+				Graph[0] = AnimeGraphs[State].Graph[3];
+			}else if(StateTime > 350)
+			{
+				if(BeforeStateTime > 400)
+				{//ヒットボックスを発生させる
+					b2PolygonShape Shape;
+					Shape.SetAsBox(5.3/2,2.4/2);
+					b2Transform Trans;
+					b2Vec2 Pos = GetBody()->GetPosition();
+					Pos.x += 0.1*Direction;
+					Pos.y += 2;
+					Trans.Set(Pos,0);
+					HitBox Box;
+					HitBoxList.push_back(Box);
+					HitBoxList[HitBoxList.size()-1].Initialize(Shape,Trans,this,false,b2Vec2(5*Direction,-5),10,1,50,500,true);
+				}
+				Graph[0] = AnimeGraphs[State].Graph[4];
+			}else if(StateTime > 300)
+			{
+				if(BeforeStateTime > 350)
+				{//ヒットボックスを発生させる
+					b2PolygonShape Shape;
+					Shape.SetAsBox(2.7/2,3.7/2);
+					b2Transform Trans;
+					b2Vec2 Pos = GetBody()->GetPosition();
+					Pos.x += 2*Direction;
+					Trans.Set(Pos,0);
+					HitBox Box;
+					HitBoxList.push_back(Box);
+					HitBoxList[HitBoxList.size()-1].Initialize(Shape,Trans,this,false,b2Vec2(-5*Direction,-5),10,1,50,500,true);
+				}
+				Graph[0] = AnimeGraphs[State].Graph[1];
+			}else if(StateTime > 250)
+			{
+				if(BeforeStateTime > 300)
+				{//ヒットボックスを発生させる
+					b2PolygonShape Shape;
+					Shape.SetAsBox(5.3/2,2.4/2);
+					b2Transform Trans;
+					b2Vec2 Pos = GetBody()->GetPosition();
+					Pos.x += 0.1*Direction;
+					Pos.y += -2;
+					Trans.Set(Pos,0);
+					HitBox Box;
+					HitBoxList.push_back(Box);
+					HitBoxList[HitBoxList.size()-1].Initialize(Shape,Trans,this,false,b2Vec2(-5*Direction,5),10,1,50,500,true);
+				}
+				Graph[0] = AnimeGraphs[State].Graph[2];
+			}else if(StateTime > 200)
+			{
+				if(BeforeStateTime > 250)
+				{//ヒットボックスを発生させる
+					b2PolygonShape Shape;
+					Shape.SetAsBox(2.7/2,3.7/2);
+					b2Transform Trans;
+					b2Vec2 Pos = GetBody()->GetPosition();
+					Pos.x += -2*Direction;
+					Trans.Set(Pos,0);
+					HitBox Box;
+					HitBoxList.push_back(Box);
+					HitBoxList[HitBoxList.size()-1].Initialize(Shape,Trans,this,false,b2Vec2(5*Direction,5),10,1,50,500,true);
+				}
+				Graph[0] = AnimeGraphs[State].Graph[3];
+			}else if(StateTime > 150)
+			{
+				if(BeforeStateTime > 200)
+				{//ヒットボックスを発生させる
+					b2PolygonShape Shape;
+					Shape.SetAsBox(5.3/2,2.4/2);
+					b2Transform Trans;
+					b2Vec2 Pos = GetBody()->GetPosition();
+					Pos.x += 0.1*Direction;
+					Pos.y += 2;
+					Trans.Set(Pos,0);
+					HitBox Box;
+					HitBoxList.push_back(Box);
+					HitBoxList[HitBoxList.size()-1].Initialize(Shape,Trans,this,false,b2Vec2(5*Direction,-5),10,1,50,500,true);
+				}
+				Graph[0] = AnimeGraphs[State].Graph[4];
+			}else
 			{
 				State = Skill_None_None;
 				Graph[0] = AnimeGraphs[State].Graph[0];
