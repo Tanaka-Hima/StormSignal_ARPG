@@ -143,6 +143,13 @@ void Character::InitChara(b2World *World,string CharaType,float Density,float Fr
 	AnimeGraphs[AnimeGraphs.size()-1].Load("Image/Skill/Sword/Spin_3.png");
 	AnimeGraphs[AnimeGraphs.size()-1].Load("Image/Skill/Sword/Spin_4.png");
 
+	//Skill_Sword_StrikeTop 10
+	AnimeGraphs.push_back(TempGraphs);
+	AnimeGraphs[AnimeGraphs.size()-1].Load("Image/Skill/Sword/StrikeTop_0.png");
+	AnimeGraphs[AnimeGraphs.size()-1].Load("Image/Skill/Sword/StrikeTop_1.png");
+	AnimeGraphs[AnimeGraphs.size()-1].Load("Image/Skill/Sword/StrikeTop_2.png");
+	AnimeGraphs[AnimeGraphs.size()-1].Load("Image/Skill/Sword/StrikeTop_3.png");
+
 	#pragma endregion
 
 	#pragma region エフェクト画像読み込み
@@ -227,6 +234,15 @@ bool Character::UseSkill(int SkillNumber,int EquipmentNumber)
 
 			break;
 		}
+		case Skill_Sword_StrikeTop:
+		{//上昇しつつ打ち上げる
+			if(!JudgeSkillCancel())return false;
+
+			State = Skill_Sword_StrikeTop;
+			StateTime = 700;
+
+			break;
+		}
 		#pragma endregion
 
 		#pragma region ハンドガン
@@ -290,6 +306,9 @@ bool Character::JudgeSkillCancel()
 			else return false;
 		case Skill_Sword_Spin:
 			if(StateTime < 150)return true;
+			else return false;
+		case Skill_Sword_StrikeTop:
+			if(StateTime < 300)return true;
 			else return false;
 		case Skill_Handgun_Fire:
 			if(StateTime < 50)return true;
@@ -573,6 +592,37 @@ void Character::Step()
 				Graph[0] = AnimeGraphs[State].Graph[0];
 			};
 			break;
+		case Skill_Sword_StrikeTop:
+		{//上昇しつつ打ち上げる
+			if(StateTime > 450)Graph[0] = AnimeGraphs[State].Graph[0];
+			else if(StateTime > 400)Graph[0] = AnimeGraphs[State].Graph[1];
+			else if(StateTime > 350)
+			{
+				if(BeforeStateTime > 400)
+				{
+					b2PolygonShape Shape;
+					Shape.SetAsBox(2.7/2,3.7/2);
+					b2Transform Trans;
+					b2Vec2 Pos = GetBody()->GetPosition();
+					Pos.x += 2*Direction;
+					Trans.Set(Pos,0);
+					HitBox Box;
+					HitBoxList.push_back(Box);
+					HitBoxList[HitBoxList.size()-1].Initialize(Shape,Trans,this,false,b2Vec2(0,-30),10,1,100,1000,true);
+
+					b2Vec2 Vect = GetBody()->GetLinearVelocity();
+					Vect.y = -MoveSpeed*2.5;
+					GetBody()->SetLinearVelocity(Vect);
+				}
+				Graph[0] = AnimeGraphs[State].Graph[2];
+			}else if(StateTime > 300)Graph[0] = AnimeGraphs[State].Graph[3];
+			else
+			{
+				State = Skill_None_None;
+				Graph[0] = AnimeGraphs[State].Graph[0];
+			};
+			break;
+		}
 		}
 		#pragma endregion
 

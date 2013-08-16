@@ -15,6 +15,7 @@ const int Skill_Sword_Knockup = 6;
 const int Skill_Handgun_Fire = 7;
 const int Skill_Sword_Smash = 8;
 const int Skill_Sword_Spin = 9;
+const int Skill_Sword_StrikeTop = 10;
 
 const string SkillValueNames[] = {"Skill_None_None",
 								"Skill_Sword_Front",
@@ -25,7 +26,8 @@ const string SkillValueNames[] = {"Skill_None_None",
 								"Skill_Sword_Knockup",
 								"Skill_Handgun_Fire",
 								"Skill_Sword_Smash",
-								"Skill_Sword_Spin"};
+								"Skill_Sword_Spin",
+								"Skill_Sword_StrikeTop"};
 
 const string SkillNames[] = {"無し",
 							"前方へ剣を振り下ろす(仮)",
@@ -36,7 +38,8 @@ const string SkillNames[] = {"無し",
 							"打ち上げ",
 							"発砲",
 							"前方へ吹き飛ばし攻撃(仮)",
-							"剣を回転させる(仮)"};
+							"剣を回転させる(仮)",
+							"上昇しつつ打ち上げる(仮)"};
 
 const string SkillInfo[] = {"スキルを設定しません。<>必要装備 : 無し CD : 無し",
 							"前方へ剣を振り下ろします。<>必要装備 : 剣 CD : 無し",
@@ -47,7 +50,8 @@ const string SkillInfo[] = {"スキルを設定しません。<>必要装備 : �
 							"敵を空中へ打ち上げます。<>必要装備 : 剣 CD : 無し",
 							"指定方向へ弾丸を発射します。<>必要装備 : HG CD : 無し",
 							"前方へ強力な攻撃を行ないます。<>必要装備 : 剣 CD : 無し",
-							"自分の周りへ攻撃を行います。<>必要装備 : 剣 CD : 無し"};
+							"自分の周りへ攻撃を行います。<>必要装備 : 剣 CD : 無し",
+							"空中に飛び上がりつつ敵を打ち上げます。<>必要装備 : 剣 CD : 無し"};
 
 
 const int Equipment_None_None = 0;
