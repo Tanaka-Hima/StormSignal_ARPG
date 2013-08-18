@@ -242,6 +242,12 @@
     <Image Include="Font\Small_Red\^.png" />
     <Image Include="Image\Chara\None.png" />
     <Image Include="Image\Effect\Handgun\Bullet.png" />
+    <Image Include="Image\Effect\Other\Hit0.bmp" />
+    <Image Include="Image\Effect\Other\Hit0.dds" />
+    <Image Include="Image\Effect\Other\Hit1.dds" />
+    <Image Include="Image\Effect\Other\Hit1.png" />
+    <Image Include="Image\Effect\Other\StrikeGround.dds" />
+    <Image Include="Image\Effect\Other\StrikeGround.png" />
     <Image Include="Image\Effect\Sword\Shockwave.bmp" />
     <Image Include="Image\Effect\Sword\Shockwave.dds" />
     <Image Include="Image\Equipment\Handgun\Normal_0.png" />

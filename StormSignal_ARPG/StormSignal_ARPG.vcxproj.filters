@@ -73,6 +73,9 @@
     <Filter Include="リソース ファイル\Image\Equipment\Handgun">
       <UniqueIdentifier>{85383985-5afb-4188-a28f-01656df0331b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="リソース ファイル\Image\Effect\Other">
+      <UniqueIdentifier>{348654ff-ec65-41b2-bfe0-fdf478ffc36b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -645,6 +648,24 @@
     </Image>
     <Image Include="Image\Skill\Sword\Spin_2.png">
       <Filter>リソース ファイル\Image\Skill\Sword</Filter>
+    </Image>
+    <Image Include="Image\Effect\Other\Hit1.dds">
+      <Filter>リソース ファイル\Image\Effect\Other</Filter>
+    </Image>
+    <Image Include="Image\Effect\Other\Hit1.png">
+      <Filter>リソース ファイル\Image\Effect\Other</Filter>
+    </Image>
+    <Image Include="Image\Effect\Other\StrikeGround.dds">
+      <Filter>リソース ファイル\Image\Effect\Other</Filter>
+    </Image>
+    <Image Include="Image\Effect\Other\StrikeGround.png">
+      <Filter>リソース ファイル\Image\Effect\Other</Filter>
+    </Image>
+    <Image Include="Image\Effect\Other\Hit0.bmp">
+      <Filter>リソース ファイル\Image\Effect\Other</Filter>
+    </Image>
+    <Image Include="Image\Effect\Other\Hit0.dds">
+      <Filter>リソース ファイル\Image\Effect\Other</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>

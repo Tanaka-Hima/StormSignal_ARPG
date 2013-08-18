@@ -65,7 +65,7 @@ void Map::Initialize(b2World *World,bool InitPlayerFlag)
 	if(InitPlayerFlag)
 	{
 		PlayerData.Load("Image/Chara/None.png");
-		PlayerData.Initialize(World,Mapchip_Player,1,1,100);
+		PlayerData.Initialize(World,Mapchip_Player,1,0,100);
 	}
 
 }
@@ -108,6 +108,9 @@ void Map::CreateMap(b2World *World)
 	GroundBodyDef.position.Set(0,0);
 	GroundBody = World->CreateBody(&GroundBodyDef);
 	GroundBody->SetUserData("Ground");
+
+	vector<b2Vec2> VectList;
+
 	for(int y=0;y<14;y++)
 	{
 		for(int x=0;x<Width;x++)
@@ -168,7 +171,7 @@ void Map::CreateMap(b2World *World)
 			}
 
 			//当たり判定の生成
-			GroundBox.SetAsBox(16/Box_Rate,16/Box_Rate,b2Vec2((x*32+16)/Box_Rate,(y*32+16)/Box_Rate),0);
+			GroundBox.SetAsBox(16.f/Box_Rate,16.f/Box_Rate,b2Vec2((x*32.f+16.f)/Box_Rate,(y*32.f+16.f)/Box_Rate),0);
 			GroundBody->CreateFixture(&GroundBox,0.f);
 		}
 	}
@@ -260,7 +263,6 @@ void Map::Step()
 	PlayerData.Ctrl();
 	PlayerData.Step();
 
-
 	//敵の処理
 	int Length = EnemyData.size();
 	for(int i=0;i<Length;i++)
@@ -313,6 +315,7 @@ void Map::Step()
 
 		GroundBody->SetTransform(MapTrans.p,MapTrans.q.GetAngle());
 	}
+	PlayerData.SetScrollDistance(MapTrans.p.x);
 
 	//特殊ブロックの処理
 	for(int y=0;y<14;y++)

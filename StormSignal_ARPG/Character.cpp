@@ -168,6 +168,33 @@ void Character::InitChara(b2World *World,string CharaType,float Density,float Fr
 	EffectGraphs[EffectGraphs.size()-1].Load("Image/Effect/Handgun/Bullet.png");
 	EffectGraphs[EffectGraphs.size()-1].Initialize();
 
+	//Effect_Other_Hit0 2
+	EffectGraphs.push_back(TempGraphs);
+	int Hit0Array[5];
+	LoadDivGraph("Image/Effect/Other/Hit0.dds",5,5,1,240,240,Hit0Array);
+	for(int i=0;i<5;i++)EffectGraphs[EffectGraphs.size()-1].Graph.push_back(Hit0Array[i]);
+	EffectGraphs[EffectGraphs.size()-1].Initialize();
+	EffectGraphs[EffectGraphs.size()-1].Ext = 0.2f;
+	EffectGraphs[EffectGraphs.size()-1].Anime_Speed = 50;
+
+	//Effect_Other_Hit1 3
+	EffectGraphs.push_back(TempGraphs);
+	int Hit1Array[5];
+	LoadDivGraph("Image/Effect/Other/Hit1.dds",5,5,1,240,240,Hit1Array);
+	for(int i=0;i<5;i++)EffectGraphs[EffectGraphs.size()-1].Graph.push_back(Hit1Array[i]);
+	EffectGraphs[EffectGraphs.size()-1].Initialize();
+	EffectGraphs[EffectGraphs.size()-1].Ext = 0.2f;
+	EffectGraphs[EffectGraphs.size()-1].Anime_Speed = 50;
+
+	//Effect_Other_StrikeGround 4
+	EffectGraphs.push_back(TempGraphs);
+	int StrikeGroundArray[6];
+	LoadDivGraph("Image/Effect/Other/StrikeGround.dds",6,6,1,240,240,StrikeGroundArray);
+	for(int i=0;i<6;i++)EffectGraphs[EffectGraphs.size()-1].Graph.push_back(StrikeGroundArray[i]);
+	EffectGraphs[EffectGraphs.size()-1].Initialize();
+	EffectGraphs[EffectGraphs.size()-1].Ext = 0.2f;
+	EffectGraphs[EffectGraphs.size()-1].Anime_Speed = 50;
+
 	#pragma endregion
 
 }
@@ -608,7 +635,7 @@ void Character::Step()
 					Trans.Set(Pos,0);
 					HitBox Box;
 					HitBoxList.push_back(Box);
-					HitBoxList[HitBoxList.size()-1].Initialize(Shape,Trans,this,false,b2Vec2(0,-30),10,1,100,1000,true);
+					HitBoxList[HitBoxList.size()-1].Initialize(Shape,Trans,this,false,b2Vec2(0,-35),10,1,100,1000,true);
 
 					b2Vec2 Vect = GetBody()->GetLinearVelocity();
 					Vect.y = -MoveSpeed*2.5;

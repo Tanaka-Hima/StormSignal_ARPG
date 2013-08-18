@@ -76,6 +76,9 @@ const string EquipmentInfo[] = {"装備を使用しません。<>装備種類 : 
 
 const int Effect_Sword_Shockwave = 0;
 const int Effect_Handgun_Bullet = 1;
+const int Effect_Other_Hit0 = 2;
+const int Effect_Other_Hit1 = 3;
+const int Effect_Other_StrikeGround = 4;
 
 vector<int> GetSkillList(string EquipmentName);//装備に対応したスキルを取得
 string GetEquipmentNameforSkill(int Skill);//スキル名から装備種類を取り出す

@@ -102,9 +102,22 @@ void Player::Ctrl()
 		}
 	}
 
-	//スキル使用中、もしくは空中では移動できない
+	//スキル使用中には移動、ジャンプができない
+	if(!JudgeSkillCancel())return;
 	b2Vec2 Vect = GetBody()->GetLinearVelocity();
-	if(!JudgeSkillCancel() || fabs(Vect.y) > 0.2f)return;
+
+	//プレイヤーが地面に接触しているかを確認
+	bool Flag = false;
+	for(b2ContactEdge *i = GetBody()->GetContactList();i;i = i->next)
+	{
+		if(i->contact->GetManifold()->localNormal.y == 1)
+		{
+			Flag = true;
+		}
+		
+	}
+	//空中ではジャンプ、移動ができない
+	if(!Flag)return;
 
 	//移動
 	if(CheckHitKey(KEY_INPUT_LEFT))
@@ -117,8 +130,15 @@ void Player::Ctrl()
 		Vect.x = MoveSpeed;
 		Direction = ImageDirection_Right;
 	}
-	//ジャンプ
-	if(CheckKeyDown(KEY_INPUT_SPACE))Vect.y = -MoveSpeed*2.5;
+
+	if(CheckKeyDown(KEY_INPUT_SPACE))
+	{//ジャンプ
+		Vect.y = -MoveSpeed*2.5;
+	}
+
+	//地面との摩擦
+	Vect.x -= (float32)(Vect.x / fabs(Vect.x) * 0.05);
+
 	//ベクトルを適用
 	GetBody()->SetLinearVelocity(Vect);
 }
@@ -373,4 +393,9 @@ bool Player::GetSkillWindowVisible()
 void Player::SetSkillWindowVisible(bool Visible)
 {
 	SkillWindow.Visible = Visible;
+}
+
+void Player::SetScrollDistance(float Distance)
+{
+	ScrollDistance = Distance;
 }
