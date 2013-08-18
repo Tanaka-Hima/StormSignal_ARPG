@@ -681,5 +681,17 @@
     <Text Include="Map\AC_Stage1_Script.txt">
       <Filter>リソース ファイル\Map</Filter>
     </Text>
+    <Text Include="Map\Training.txt">
+      <Filter>リソース ファイル\Map</Filter>
+    </Text>
+    <Text Include="Map\Training_Script.txt">
+      <Filter>リソース ファイル\Map</Filter>
+    </Text>
+    <Text Include="Map\AC_Stage2.txt">
+      <Filter>リソース ファイル\Map</Filter>
+    </Text>
+    <Text Include="Map\AC_Stage2_Script.txt">
+      <Filter>リソース ファイル\Map</Filter>
+    </Text>
   </ItemGroup>
 </Project>

@@ -460,15 +460,8 @@ void Map::Draw()
 	//プレイヤーの描画
 	PlayerData.Draw(true);
 
-	//ヒットボックスの描画
-	int Length = PlayerData.HitBoxList.size();
-	for(int i=0;i<Length;i++)
-	{
-		PlayerData.HitBoxList[i].Draw();
-	}
-
 	//敵の描画
-	Length = EnemyData.size();
+	int Length = EnemyData.size();
 	for(int i=0;i<Length;i++)
 	{
 		EnemyData[i].Draw();
@@ -480,6 +473,27 @@ void Map::Draw()
 	{
 		RigidBodies[i].Draw();
 	}
+
+	//ヒットボックスの描画
+	Length = PlayerData.HitBoxList.size();
+	for(int i=0;i<Length;i++)
+	{
+		PlayerData.HitBoxList[i].Draw();
+	}
+
+	//エフェクトの描画
+	HitBox TempBox;
+	Length = TempBox.Effects.size();
+	for(int i=0;i<Length;i++)
+	{
+		if(TempBox.Effects[i].Draw(true))
+		{
+			TempBox.Effects.erase(TempBox.Effects.begin()+i);
+			i--;
+			Length--;
+		}
+	}
+
 
 	//スキル設定ウインドウの処理
 	if(!MessageFlag)

@@ -291,6 +291,10 @@
     <Text Include="..\構想まとめ.txt" />
     <Text Include="Map\AC_Stage1.txt" />
     <Text Include="Map\AC_Stage1_Script.txt" />
+    <Text Include="Map\AC_Stage2.txt" />
+    <Text Include="Map\AC_Stage2_Script.txt" />
+    <Text Include="Map\Training.txt" />
+    <Text Include="Map\Training_Script.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

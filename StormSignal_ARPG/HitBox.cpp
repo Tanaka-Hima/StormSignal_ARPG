@@ -2,6 +2,8 @@
 #include "ConstantValue.h"
 #include <DxLib.h>
 
+vector<Image_2D> HitBox::Effects;
+
 void HitBox::Initialize(b2PolygonShape InputShape,b2Transform InputTransform,Character* InputAttacker,bool SuicideFlag,b2Vec2 InputHitVect,int InputDamage,int InputHitCount,int InputDuration,int InputStanTime,bool FollowFlag)
 {
 	Shape = InputShape;
@@ -10,6 +12,7 @@ void HitBox::Initialize(b2PolygonShape InputShape,b2Transform InputTransform,Cha
 	AttackerBeforeTrans = Attacker->GetBody()->GetTransform();
 	MoveFlag = false;
 	DrawFlag = false;
+	EffectFlag = false;
 	Suicide = SuicideFlag;
 	HitVect = InputHitVect;
 	Damage = InputDamage;
@@ -36,6 +39,12 @@ void HitBox::SetGraph(Image_2D InputImage)
 	Image = InputImage;
 }
 
+void HitBox::SetEffect(Image_2D InputImage)
+{
+	EffectFlag = true;
+	Effect = InputImage;
+}
+
 bool HitBox::HitTestShape(Character* Target,b2PolygonShape *TargetShape,b2Transform TargetTrans)
 {
 	if(Target == Attacker && !Suicide)return false;
@@ -53,6 +62,12 @@ bool HitBox::HitTestShape(Character* Target,b2PolygonShape *TargetShape,b2Transf
 	b2CollidePolygons(&Manifold,&Shape,Transform,TargetShape,TargetTrans);
 	if(Manifold.pointCount > 0)
 	{
+		if(EffectFlag)
+		{
+			Effect.x = ((Manifold.points[0].localPoint.x + Manifold.points[1].localPoint.x)/2.f + TargetTrans.p.x) * Box_Rate;
+			Effect.y = ((Manifold.points[0].localPoint.y + Manifold.points[1].localPoint.y)/2.f + TargetTrans.p.y) * Box_Rate;
+			Effects.push_back(Effect);
+		}
 		HittedChara.push_back(TargetShape);
 		return true;
 	}else return false;
