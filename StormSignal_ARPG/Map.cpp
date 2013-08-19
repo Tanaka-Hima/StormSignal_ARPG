@@ -315,7 +315,6 @@ void Map::Step()
 
 		GroundBody->SetTransform(MapTrans.p,MapTrans.q.GetAngle());
 	}
-	PlayerData.SetScrollDistance(MapTrans.p.x);
 
 	//特殊ブロックの処理
 	for(int y=0;y<14;y++)
@@ -459,12 +458,14 @@ void Map::Draw()
 
 	//プレイヤーの描画
 	PlayerData.Draw(true);
+	PlayerData.SetScrollDistance(MapTrans.p.x);
 
 	//敵の描画
 	int Length = EnemyData.size();
 	for(int i=0;i<Length;i++)
 	{
 		EnemyData[i].Draw();
+		EnemyData[i].SetScrollDistance(MapTrans.p.x);
 	}
 
 	//オブジェクトの描画
@@ -472,6 +473,7 @@ void Map::Draw()
 	for(int i=0;i<Length;i++)
 	{
 		RigidBodies[i].Draw();
+		RigidBodies[i].SetScrollDistance(MapTrans.p.x);
 	}
 
 	//ヒットボックスの描画
@@ -494,6 +496,16 @@ void Map::Draw()
 		}
 	}
 
+	Length = PlayerData.Effects.size();
+	for(int i=0;i<Length;i++)
+	{
+		if(PlayerData.Effects[i].Draw(true))
+		{
+			PlayerData.Effects.erase(PlayerData.Effects.begin()+i);
+			i--;
+			Length--;
+		}
+	}
 
 	//スキル設定ウインドウの処理
 	if(!MessageFlag)

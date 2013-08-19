@@ -23,7 +23,6 @@ private:
 	POINT ChangeSkillPoint;//スキル変更時のカーソル座標
 	bool SkillChangeFlag;//スキルを変更しているか否か
 	vector<int> EnableSkillList[3];//使用可能なスキルリスト
-	float ScrollDistance;//マップがどれだけスクロールしているか
 
 	int FontSmall,FontMiddle,FontBig;//フォント
 public:
@@ -32,7 +31,6 @@ public:
 	void StepSkillWindow();//スキルウィンドウの処理、描画
 	bool GetSkillWindowVisible();//スキルウィンドウが有効かどうかを取得する
 	void SetSkillWindowVisible(bool Visible);//スキルウィンドウの表示設定を変更する
-	void SetScrollDistance(float Distance);
 };
 
 #endif

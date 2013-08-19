@@ -88,6 +88,7 @@ class Character : public Physics2DImage
 {
 private:
 	string CharacterType;//このCharacterの種類
+	float ScrollDistance;//マップがどれだけスクロールしているか
 public:
 	int MaxHP;//最大HP
 	int HP;//HP
@@ -95,11 +96,14 @@ public:
 	int StateTime;//現在の状態が続く時間
 	int BeforeStateTime;//前フレームでのStateTime
 	int Time;//時間
+	b2Vec2 BeforeVect;//前フレームでの速度
 	static vector<Character*> CharacterList;//このプログラム上で生成されたすべてのCharacterクラス
 	static vector<HitBox> HitBoxList;//Characterによって生成されたすべてのヒットボックス
 	static vector<Image_2D> AnimeGraphs;//アニメーション用の画像
 	static vector<Image_2D> EquipmentGraphs;//装備画像
 	static vector<Image_2D> EffectGraphs;//エフェクト用画像
+
+	static vector<Image_2D> Effects;//描画するエフェクト
 
 	void InitChara(b2World *World,string CharaType,float Density,float Friction,int InputMaxHP);//Characterクラスの初期化
 	virtual void Initialize(b2World *World,string CharaType,float Density,float Friction,int MaxHP) = 0;//初期化
@@ -108,6 +112,7 @@ public:
 	void Step();//毎フレームの処理
 	virtual void Ctrl() = 0;//操作
 	virtual Character* GetPlayer();//プレイヤーのポインターを取得
+	void SetScrollDistance(float Distance);
 	string GetCharaType();//このCharacterの種類を取得
 	void DeleteCharacterList();//自信をCharacterListから削除
 	virtual ~Character()

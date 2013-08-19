@@ -22,6 +22,7 @@ const int Pink = GetColor(255,0,255);
 const int LightPink = GetColor(255,128,255);
 const int Yellow = GetColor(255,217,0);
 const int LightYellow = GetColor(255,217,128);
+const int SaddleBrown = GetColor(139,69,19);
 
 //Font関連
 const int DrawString_Left = 0;//文字を描画する位置
@@ -39,5 +40,8 @@ const int OptionMode = 5;
 //BOX2D関連
 const bool doSleep = true;//スリープを有効にするか否か
 const float Box_Rate = 10;//Box2Dの1 = DxlibのBox_Rate Pixel
+
+//PI
+const double PI = 3.14159265359;
 
 #endif

@@ -10,6 +10,7 @@ vector<HitBox> Character::HitBoxList;
 vector<Image_2D> Character::AnimeGraphs;
 vector<Image_2D> Character::EquipmentGraphs;
 vector<Image_2D> Character::EffectGraphs;
+vector<Image_2D> Character::Effects;
 
 vector<int> GetSkillList(string EquipmentName)
 {
@@ -56,6 +57,8 @@ void Character::InitChara(b2World *World,string CharaType,float Density,float Fr
 	State = Skill_None_None;
 	StateTime = 0;
 	BeforeStateTime = 0;
+	BeforeVect = b2Vec2(0,0);
+	ScrollDistance = 0;
 	Time = GetNowCount();
 
 	if(AnimeGraphs.size() != 0)return;
@@ -213,13 +216,26 @@ void Character::InitChara(b2World *World,string CharaType,float Density,float Fr
 
 	//Effect_Other_StrikeGround 4
 	EffectGraphs.push_back(TempGraphs);
+
 	int StrikeGroundArray[6];
-	LoadDivGraph("Image/Effect/Other/StrikeGround.dds",6,6,1,240,240,StrikeGroundArray);
+	SIHandle = LoadSoftImage("Image/Effect/Other/StrikeGround.dds");
+	GetSoftImageSize(SIHandle,&Width,&Height);
+	for(int x=0;x<Width;x++)
+	{
+		for(int y=0;y<Height;y++)
+		{
+			int r,g,b,a;
+			GetColor2(SaddleBrown,&r,&g,&b);
+			GetPixelSoftImage(SIHandle,x,y,0,0,0,&a);
+			if(a != 0)a *= 2;
+			DrawPixelSoftImage(SIHandle,x,y,r,g,b,a);
+		}
+	}
+	CreateDivGraphFromSoftImage(SIHandle,6,6,1,240,240,StrikeGroundArray);
 	for(int i=0;i<6;i++)EffectGraphs[EffectGraphs.size()-1].Graph.push_back(StrikeGroundArray[i]);
 	EffectGraphs[EffectGraphs.size()-1].Initialize();
 	EffectGraphs[EffectGraphs.size()-1].Ext = 0.2f;
 	EffectGraphs[EffectGraphs.size()-1].Anime_Speed = 50;
-
 	#pragma endregion
 
 }
@@ -732,6 +748,34 @@ void Character::Step()
 
 	}
 
+	//叩きつけエフェクトの処理
+	for(b2ContactEdge *i = GetBody()->GetContactList();i;i = i->next)
+	{
+		if(i->contact->GetManifold()->pointCount <= 0)continue;
+
+		double Angle;
+		int Center_x = EffectGraphs[Effect_Other_StrikeGround].Center_x;
+		int Center_y = EffectGraphs[Effect_Other_StrikeGround].Center_y;
+		
+		if(i->contact->GetManifold()->localNormal.x == 0 && i->contact->GetManifold()->localNormal.y == 1
+			&& fabs(BeforeVect.y) > MoveSpeed){Angle = 0;Center_y *= 1.5;}
+		else if(i->contact->GetManifold()->localNormal.x == 0 && i->contact->GetManifold()->localNormal.y == -1
+			&& fabs(BeforeVect.y) > MoveSpeed){Angle = PI;Center_y *= 1.5;}
+		else if(i->contact->GetManifold()->localNormal.x == 1 && i->contact->GetManifold()->localNormal.y == 0
+			&& fabs(BeforeVect.x) > MoveSpeed){Angle = -PI/2;Center_y *= 1.5;}
+		else if(i->contact->GetManifold()->localNormal.x == -1 && i->contact->GetManifold()->localNormal.y == 0
+			&& fabs(BeforeVect.x) > MoveSpeed){Angle = PI/2;Center_y *= 1.5;}
+		else continue;
+
+		Effects.push_back(EffectGraphs[Effect_Other_StrikeGround]);
+		Effects[Effects.size()-1].x = ((i->contact->GetManifold()->points[0].localPoint.x + i->contact->GetManifold()->points[1].localPoint.x)/2+ScrollDistance)*Box_Rate;
+		Effects[Effects.size()-1].y = (i->contact->GetManifold()->points[0].localPoint.y + i->contact->GetManifold()->points[1].localPoint.y)/2*Box_Rate;
+		Effects[Effects.size()-1].Angle = Angle;
+		Effects[Effects.size()-1].Center_x = Center_x;
+		Effects[Effects.size()-1].Center_y = Center_y;
+		break;
+	}
+
 	//ヒットボックスとの当たり判定
 	int Length = HitBoxList.size();
 	for(int i=0;i<Length;i++)
@@ -757,6 +801,9 @@ void Character::Step()
 
 	//BeforeStateTimeの更新
 	BeforeStateTime = StateTime;
+
+	//BeforeSpeedの更新
+	BeforeVect = GetBody()->GetLinearVelocity();
 }
 
 Character* Character::GetPlayer()
@@ -784,4 +831,9 @@ void Character::DeleteCharacterList()
 			break;
 		}
 	}
+}
+
+void Character::SetScrollDistance(float Distance)
+{
+	ScrollDistance = Distance;
 }

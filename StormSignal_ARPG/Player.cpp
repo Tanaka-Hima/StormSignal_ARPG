@@ -137,7 +137,7 @@ void Player::Ctrl()
 	}
 
 	//地面との摩擦
-	Vect.x -= (float32)(Vect.x / fabs(Vect.x) * 0.05);
+	if(Vect.x != 0)Vect.x -= (float32)(Vect.x / fabs(Vect.x) * 0.05);
 
 	//ベクトルを適用
 	GetBody()->SetLinearVelocity(Vect);
@@ -395,7 +395,3 @@ void Player::SetSkillWindowVisible(bool Visible)
 	SkillWindow.Visible = Visible;
 }
 
-void Player::SetScrollDistance(float Distance)
-{
-	ScrollDistance = Distance;
-}
