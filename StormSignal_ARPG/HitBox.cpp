@@ -69,6 +69,10 @@ bool HitBox::HitTestShape(Character* Target,b2PolygonShape *TargetShape,b2Transf
 			Effects.push_back(Effect);
 		}
 		HittedChara.push_back(TargetShape);
+
+		Attacker->AffectStanTime = StanTime;
+		Attacker->ComboCount++;
+
 		return true;
 	}else return false;
 }

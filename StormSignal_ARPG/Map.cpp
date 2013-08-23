@@ -135,7 +135,7 @@ void Map::CreateMap(b2World *World)
 			{
 				Enemy EnemyTemp;
 				EnemyData.push_back(EnemyTemp);
-				int HP;
+				int HP = 0;
 				if(MapData[y][x] == Mapchip_TrainingBag)HP = INT_MAX;
 				else if(MapData[y][x] == Mapchip_CommonEnemy1)HP = 100;
 				EnemyData[EnemyData.size()-1].Initialize(World,MapData[y][x],1,1,HP);

@@ -29,6 +29,8 @@ const string SkillValueNames[] = {"Skill_None_None",
 								"Skill_Sword_Spin",
 								"Skill_Sword_StrikeTop"};
 
+const int SkillAvailableCount[] = {0,1,1,0,1,1,1,8,1,1,1};
+
 const string SkillNames[] = {"無し",
 							"前方へ剣を振り下ろす(仮)",
 							"前方へ衝撃波(仮)",
@@ -41,17 +43,17 @@ const string SkillNames[] = {"無し",
 							"剣を回転させる(仮)",
 							"上昇しつつ打ち上げる(仮)"};
 
-const string SkillInfo[] = {"スキルを設定しません。<>必要装備 : 無し CD : 無し",
-							"前方へ剣を振り下ろします。<>必要装備 : 剣 CD : 無し",
-							"前方へ衝撃波を発生させます。<>必要装備 : 剣 CD : 無し",
-							"ダメージを受けます。<>必要装備 : 無し CD : 無し",
-							"前方へ踏み込みを行ないます。<>必要装備 : 無し CD : 無し",
-							"後方へ飛び退きます。<>必要装備 : 無し CD : 無し",
-							"敵を空中へ打ち上げます。<>必要装備 : 剣 CD : 無し",
-							"指定方向へ弾丸を発射します。<>必要装備 : HG CD : 無し",
-							"前方へ強力な攻撃を行ないます。<>必要装備 : 剣 CD : 無し",
-							"自分の周りへ攻撃を行います。<>必要装備 : 剣 CD : 無し",
-							"空中に飛び上がりつつ敵を打ち上げます。<>必要装備 : 剣 CD : 無し"};
+const string SkillInfo[] = {"スキルを設定しません。<>必要装備 : 無し AD : 無し",
+							"前方へ剣を振り下ろします。<>必要装備 : 剣 AD : 1",
+							"前方へ衝撃波を発生させます。<>必要装備 : 剣 AD : 1",
+							"ダメージを受けます。<>必要装備 : 無し AD : 1",
+							"前方へ踏み込みを行ないます。<>必要装備 : AD : 1",
+							"後方へ飛び退きます。<>必要装備 : 無し AD : 1",
+							"敵を空中へ打ち上げます。<>必要装備 : 剣 AD : 1",
+							"指定方向へ弾丸を発射します。<>必要装備 : HG AD : 8",
+							"前方へ強力な攻撃を行ないます。<>必要装備 : 剣 AD : 1",
+							"自分の周りへ攻撃を行います。<>必要装備 : 剣 AD : 1",
+							"空中に飛び上がりつつ敵を打ち上げます。<>必要装備 : 剣 AD : 1"};
 
 
 const int Equipment_None_None = 0;
@@ -97,12 +99,13 @@ public:
 	int BeforeStateTime;//前フレームでのStateTime
 	int Time;//時間
 	b2Vec2 BeforeVect;//前フレームでの速度
+	int AffectStanTime;//自分の攻撃で敵に与えたStanTime
+	int ComboCount;//コンボ数
 	static vector<Character*> CharacterList;//このプログラム上で生成されたすべてのCharacterクラス
 	static vector<HitBox> HitBoxList;//Characterによって生成されたすべてのヒットボックス
 	static vector<Image_2D> AnimeGraphs;//アニメーション用の画像
 	static vector<Image_2D> EquipmentGraphs;//装備画像
 	static vector<Image_2D> EffectGraphs;//エフェクト用画像
-
 	static vector<Image_2D> Effects;//描画するエフェクト
 
 	void InitChara(b2World *World,string CharaType,float Density,float Friction,int InputMaxHP);//Characterクラスの初期化

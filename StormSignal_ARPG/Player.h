@@ -31,6 +31,7 @@ public:
 	void StepSkillWindow();//スキルウィンドウの処理、描画
 	bool GetSkillWindowVisible();//スキルウィンドウが有効かどうかを取得する
 	void SetSkillWindowVisible(bool Visible);//スキルウィンドウの表示設定を変更する
+	void InitAllSkillAvailableCount();//スキルのADをすべて初期化する
 };
 
 #endif

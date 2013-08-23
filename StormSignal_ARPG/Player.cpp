@@ -24,7 +24,7 @@ void Player::Initialize(b2World *World,string CharaType,float Density,float Fric
 			SkillSet[i][j][0] = Skill_Sword_Front;
 			SkillSet[i][j][1] = 0;
 			SkillSet[i][j][2] = 0;
-			SkillSet[i][j][3] = 0;
+			SkillSet[i][j][3] = SkillAvailableCount[Skill_Sword_Front];
 		}
 	}
 
@@ -83,6 +83,20 @@ void Player::Ctrl()
 	//プレイヤーがマップから落ちた場合はHPを0にする
 	if(y > Screen_Height + 30)HP = 0;
 
+	//プレイヤーが地面に接触しているかを確認
+	bool Flag = false;
+	for(b2ContactEdge *i = GetBody()->GetContactList();i;i = i->next)
+	{
+		if(i->contact->GetManifold()->localNormal.y == 1)
+		{
+			Flag = true;
+		}
+		
+	}
+
+	//プレイヤーのコンボが途切れていて、かつ地面にいる場合はADを初期化する
+	if(ComboCount == 0 && Flag && JudgeSkillCancel())InitAllSkillAvailableCount();
+
 	//スタン中は行動できない
 	if(State == Skill_None_Stan && StateTime > 0)return;
 
@@ -95,10 +109,12 @@ void Player::Ctrl()
 					KEY_INPUT_Z,KEY_INPUT_X,KEY_INPUT_C};
 	for(int i=0;i<9;i++)
 	{
-		if(CheckKeyDown(Key[i]))
+		if(CheckKeyDown(Key[i]) && (SkillSet[i%3][(int)(i/3)][3] > 0 || SkillSet[i%3][(int)(i/3)][3] == -1))
 		{
-			UseSkill(SkillSet[i%3][(int)(i/3)][0],Equipments[0]);
-			SkillSet[i%3][(int)(i/3)][3] = GetNowCount();
+			if(UseSkill(SkillSet[i%3][(int)(i/3)][0],Equipments[0]))
+			{//スキル使用成功時にはADを減らす
+				SkillSet[i%3][(int)(i/3)][3]--;
+			}
 		}
 	}
 
@@ -106,16 +122,6 @@ void Player::Ctrl()
 	if(!JudgeSkillCancel())return;
 	b2Vec2 Vect = GetBody()->GetLinearVelocity();
 
-	//プレイヤーが地面に接触しているかを確認
-	bool Flag = false;
-	for(b2ContactEdge *i = GetBody()->GetContactList();i;i = i->next)
-	{
-		if(i->contact->GetManifold()->localNormal.y == 1)
-		{
-			Flag = true;
-		}
-		
-	}
 	//空中ではジャンプ、移動ができない
 	if(!Flag)return;
 
@@ -393,5 +399,16 @@ bool Player::GetSkillWindowVisible()
 void Player::SetSkillWindowVisible(bool Visible)
 {
 	SkillWindow.Visible = Visible;
+}
+
+void Player::InitAllSkillAvailableCount()
+{
+	for(int i=0;i<3;i++)
+	{
+		for(int j=0;j<3;j++)
+		{
+			SkillSet[i][j][3] = SkillAvailableCount[SkillSet[i][j][0]];
+		}
+	}
 }
 

@@ -56,6 +56,8 @@ void Character::InitChara(b2World *World,string CharaType,float Density,float Fr
 
 	State = Skill_None_None;
 	StateTime = 0;
+	AffectStanTime = 0;
+	ComboCount = 0;
 	BeforeStateTime = 0;
 	BeforeVect = b2Vec2(0,0);
 	ScrollDistance = 0;
@@ -251,7 +253,6 @@ bool Character::UseSkill(int SkillNumber,int EquipmentNumber)
 		case Skill_None_None:
 		{
 			return true;
-			break;
 		}
 
 		#pragma region 地上剣
@@ -263,7 +264,6 @@ bool Character::UseSkill(int SkillNumber,int EquipmentNumber)
 			StateTime = 500;
 
 			return true;
-			break;
 		}
 		case Skill_Sword_Shockwave:
 		{//前方へ衝撃波
@@ -273,7 +273,6 @@ bool Character::UseSkill(int SkillNumber,int EquipmentNumber)
 			StateTime = 700;
 
 			return true;
-			break;
 		}
 		case Skill_Sword_Knockup:
 		{//打ち上げ
@@ -282,7 +281,7 @@ bool Character::UseSkill(int SkillNumber,int EquipmentNumber)
 			State = Skill_Sword_Knockup;
 			StateTime = 700;
 
-			break;
+			return true;
 		}
 		case Skill_Sword_Smash:
 		{//前方へ吹き飛ばし攻撃
@@ -291,7 +290,7 @@ bool Character::UseSkill(int SkillNumber,int EquipmentNumber)
 			State = Skill_Sword_Smash;
 			StateTime = 700;
 
-			break;
+			return true;
 		}
 		case Skill_Sword_Spin:
 		{//剣を回転させる
@@ -300,7 +299,7 @@ bool Character::UseSkill(int SkillNumber,int EquipmentNumber)
 			State = Skill_Sword_Spin;
 			StateTime = 600;
 
-			break;
+			return true;
 		}
 		case Skill_Sword_StrikeTop:
 		{//上昇しつつ打ち上げる
@@ -309,7 +308,7 @@ bool Character::UseSkill(int SkillNumber,int EquipmentNumber)
 			State = Skill_Sword_StrikeTop;
 			StateTime = 700;
 
-			break;
+			return true;
 		}
 		#pragma endregion
 
@@ -320,7 +319,7 @@ bool Character::UseSkill(int SkillNumber,int EquipmentNumber)
 
 			State = Skill_Handgun_Fire;
 			StateTime = 200;
-			break;
+			return true;
 		}
 		#pragma endregion
 
@@ -334,7 +333,7 @@ bool Character::UseSkill(int SkillNumber,int EquipmentNumber)
 			StateTime = 1000;
 
 			GetBody()->ApplyForceToCenter(b2Vec2((int)Direction*1000,-100));
-			break;
+			return true;
 		}
 
 		case Skill_None_Backstep:
@@ -345,7 +344,7 @@ bool Character::UseSkill(int SkillNumber,int EquipmentNumber)
 			StateTime = 1000;
 
 			GetBody()->ApplyForceToCenter(b2Vec2(-(int)Direction*1000,-100));
-			break;
+			return true;
 		}
 
 		#pragma endregion
@@ -379,7 +378,7 @@ bool Character::JudgeSkillCancel()
 			if(StateTime < 300)return true;
 			else return false;
 		case Skill_Handgun_Fire:
-			if(StateTime < 50)return true;
+			if(StateTime < 80)return true;
 			else return false;
 		case Skill_None_Frontstep:
 			if(StateTime < 950)return true;
@@ -394,6 +393,7 @@ void Character::Step()
 {
 	int NowTime = GetNowCount();
 	StateTime -= NowTime - Time;
+	AffectStanTime -= NowTime - Time;
 	if(StateTime < 0)State = Skill_None_None;
 	Time = NowTime;
 
@@ -723,7 +723,7 @@ void Character::Step()
 					Trans.Set(Pos,0);
 					HitBox Box;
 					HitBoxList.push_back(Box);
-					HitBoxList[HitBoxList.size()-1].Initialize(Shape,Trans,this,false,b2Vec2(2*Direction,0),2,1,1000,100,false);
+					HitBoxList[HitBoxList.size()-1].Initialize(Shape,Trans,this,false,b2Vec2(2*Direction,0),2,1,1000,500,false);
 					EffectGraphs[Effect_Sword_Shockwave].Direction = Direction;
 					HitBoxList[HitBoxList.size()-1].SetGraph(EffectGraphs[Effect_Handgun_Bullet]);
 					HitBoxList[HitBoxList.size()-1].SetEffect(EffectGraphs[Effect_Other_Hit1]);
@@ -748,13 +748,12 @@ void Character::Step()
 
 	}
 
-	//叩きつけエフェクトの処理
 	for(b2ContactEdge *i = GetBody()->GetContactList();i;i = i->next)
 	{
 		if(i->contact->GetManifold()->pointCount <= 0)continue;
 
+		//叩きつけエフェクトの処理
 		double Angle;
-		int Center_x = EffectGraphs[Effect_Other_StrikeGround].Center_x;
 		int Center_y = EffectGraphs[Effect_Other_StrikeGround].Center_y;
 		
 		if(i->contact->GetManifold()->localNormal.x == 0 && i->contact->GetManifold()->localNormal.y == 1
@@ -771,7 +770,6 @@ void Character::Step()
 		Effects[Effects.size()-1].x = ((i->contact->GetManifold()->points[0].localPoint.x + i->contact->GetManifold()->points[1].localPoint.x)/2+ScrollDistance)*Box_Rate;
 		Effects[Effects.size()-1].y = (i->contact->GetManifold()->points[0].localPoint.y + i->contact->GetManifold()->points[1].localPoint.y)/2*Box_Rate;
 		Effects[Effects.size()-1].Angle = Angle;
-		Effects[Effects.size()-1].Center_x = Center_x;
 		Effects[Effects.size()-1].Center_y = Center_y;
 		break;
 	}
@@ -798,6 +796,12 @@ void Character::Step()
 
 	//キャラが倒れないようにする
 	GetBody()->SetTransform(GetBody()->GetPosition(),0);
+
+	//コンボが途切れているかどうかの処理
+	if(AffectStanTime < 0)
+	{
+		ComboCount = 0;
+	}
 
 	//BeforeStateTimeの更新
 	BeforeStateTime = StateTime;
