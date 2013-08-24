@@ -215,8 +215,11 @@ void Player::StepSkillWindow()
 			ChangeSkillPoint.y = SkillCursorPoint.y;
 		}else
 		{
-			if(SkillCursorPoint.y != 0)SkillSet[SkillCursorPoint.x][SkillCursorPoint.y-1][0] = EnableSkillList[ChangeSkillPoint.y-1][ChangeSkillPoint.x];
-			else Equipments[SkillCursorPoint.x] = ChangeSkillPoint.x;
+			if(SkillCursorPoint.y != 0)
+			{
+				SkillSet[SkillCursorPoint.x][SkillCursorPoint.y-1][0] = EnableSkillList[ChangeSkillPoint.y-1][ChangeSkillPoint.x];
+				SkillSet[SkillCursorPoint.x][SkillCursorPoint.y-1][3] = 0;
+			}else Equipments[SkillCursorPoint.x] = ChangeSkillPoint.x;
 
 			for(int i=0;i<3;i++)
 			{//装備中武器に合わせたスキルセットを取得

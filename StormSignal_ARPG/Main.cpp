@@ -41,6 +41,9 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 		 return -1;	// エラーが起きたら直ちに終了
 	}
 
+	//マスク画面の作成
+	CreateMaskScreen();
+
 	//Alt、F10等のポーズを無効化
 	SetSysCommandOffFlag(true);
 
@@ -194,6 +197,17 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 			case TrainingMode:
 			{
 				#pragma region トレーニングモード
+
+				//プレイヤーのHPが0以下の場合、ステージをリスタートする
+				if(Map.GetPlayerHP() <= 0)
+				{
+					Map.DestroyMap(&World);
+					Map.Initialize(&World,false);
+					Map.LoadMapData(Map.GetStagePass());
+					Map.LoadScriptData(Map.GetScriptPass());
+					Map.CreateMap(&World);
+					Map.InitPlayerHP();
+				}
 
 				Map.Step();
 				Map.Draw();

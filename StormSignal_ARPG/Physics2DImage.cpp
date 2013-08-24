@@ -13,6 +13,8 @@ void Physics2DImage::Init(b2World *World,void* UserData,float Density,float Fric
 	Center_x = SizeW / 2;
 	Center_y = SizeH / 2;
 	Ext = 1.0f;
+	Ext_x = 1.0f;
+	Ext_y = 1.0f;
 	Angle = 0.0f;
 	
 	Anime_Speed = 1;
@@ -55,8 +57,8 @@ bool Physics2DImage::Draw(bool Trans,bool AutoDirection)
 		x = Pos.x;
 		y = Pos.y;
 
-		if((Vect.x < 0 && AutoDirection) || Direction > 0)DrawRotaGraph2(Pos.x,Pos.y,Center_x,Center_y,Ext,Body->GetAngle(),Graph[Anime_ShowNum],Trans,false);
-		else DrawRotaGraph2(Pos.x,Pos.y,Center_x,Center_y,Ext,Body->GetAngle(),Graph[Anime_ShowNum],Trans,true);
+		if((Vect.x < 0 && AutoDirection) || Direction > 0)DrawRotaGraph3(Pos.x,Pos.y,Center_x,Center_y,Ext_x*Ext,Ext_y*Ext,Body->GetAngle(),Graph[Anime_ShowNum],Trans,false);
+		else DrawRotaGraph3(Pos.x,Pos.y,Center_x,Center_y,Ext_x*Ext,Ext_y*Ext,Body->GetAngle(),Graph[Anime_ShowNum],Trans,true);
 	}
 
 	if(Anime_Time >= Anime_Speed)

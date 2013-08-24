@@ -36,6 +36,12 @@ const string Action_Delete = "Delete";
 const string Action_Message = "Message";
 const string Action_Clear = "Clear";
 
+enum InterfaceNumber
+{
+	Interface_HPFrame = 0,
+	Interface_HPBar = 1
+};
+
 class Map
 {
 private:
@@ -44,6 +50,7 @@ private:
 	vector<b2Fixture*> MapChipFixtures;//特殊ブロック一つ一つの当たり判定
 	vector<string> FixtureDataToMapChip;//特殊ブロックとb2Fixtureの紐付
 	vector<Image_2D> MapChips;//マップチップの画像
+	vector<Image_2D> Interfaces;//GUI用の画像
 	Player PlayerData;//プレイヤー
 	vector<Enemy> EnemyData;//敵配列
 	vector<Object> RigidBodies;//マップ上に設置されているオブジェクト群

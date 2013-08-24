@@ -27,6 +27,8 @@ public:
 	int Center_y;
 	ImageDirection Direction;
 	float Ext;
+	float Ext_x;
+	float Ext_y;
 	float Angle;
 	void Load(string Pass);//指定パスから画像を取得
 	void Load(vector<int> Graphs);//配列から画像を取得

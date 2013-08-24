@@ -62,6 +62,15 @@ void Map::Initialize(b2World *World,bool InitPlayerFlag)
 	MapChips.push_back(TempGraph);
 	MapChips[MapChips.size()-1].Load("Image/Map/Flag.png");
 
+	//Interface
+	Interfaces.push_back(TempGraph);
+	Interfaces[Interfaces.size()-1].Load("Image/Interface/HPFrame.png");
+	Interfaces[Interfaces.size()-1].Initialize();
+
+	Interfaces.push_back(TempGraph);
+	Interfaces[Interfaces.size()-1].Load("Image/Interface/HPBar.png");
+	Interfaces[Interfaces.size()-1].Initialize();
+
 	if(InitPlayerFlag)
 	{
 		PlayerData.Load("Image/Chara/None.png");
@@ -506,6 +515,41 @@ void Map::Draw()
 			Length--;
 		}
 	}
+
+	//プレイヤーHPの描画
+	Interfaces[Interface_HPFrame].x = Interfaces[Interface_HPBar].x = 165;
+	Interfaces[Interface_HPFrame].y = Interfaces[Interface_HPBar].y = 20;
+	Interfaces[Interface_HPFrame].Ext_x = Interfaces[Interface_HPBar].Ext_x = 4.f;
+	Interfaces[Interface_HPFrame].Ext_y = Interfaces[Interface_HPBar].Ext_y = 1.5f;
+	Interfaces[Interface_HPFrame].Draw(true);
+	SetUseMaskScreenFlag(true);
+	#pragma region マスクの作成
+	int Width = Interfaces[Interface_HPFrame].Center_x*2*4;
+	int Height = Interfaces[Interface_HPFrame].Center_y*2*1.5;
+	int Mask = MakeMask(Width,Height);
+	double Per = (double)PlayerData.HP / (double)PlayerData.MaxHP;
+	unsigned char Data[27][312];
+	for(int i=0;i<Height;i++)
+	{
+		for(int j=0;j<Width;j++)
+		{
+			if(j<=Width*Per)Data[i][j] = 0x00;
+			else Data[i][j] = 0xff;
+		}
+	}
+	SetDataToMask(Width,Height,Data,Mask);
+	#pragma endregion
+	DrawMask(5,5,Mask,DX_MASKTRANS_BLACK);
+	Interfaces[Interface_HPBar].Draw(true);
+	DeleteMask(Mask);
+	FillMaskScreen(0);
+	SetUseMaskScreenFlag(false);
+	if(PlayerData.ComboCount > 0)
+	{//コンボ数の描画
+		string Str = ntos(PlayerData.ComboCount) + " Combo!";
+		DrawStringToHandle(5,50,Str.c_str(),White,FontMiddle);
+	}
+
 
 	//スキル設定ウインドウの処理
 	if(!MessageFlag)

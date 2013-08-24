@@ -42,7 +42,9 @@ void ScreenTimer(int Type,int FrameRate)
 		ClearDrawScreen();
 	}else
 	{
+		#ifdef _DEBUG
 		ShowFPS();
+		#endif
 		FrameSkip = 0;
 		if(!FrameSkip)ScreenFlip() ;
 		Wait += (1000.0 / FrameRate - (GetNowCount() - Timer));

@@ -37,6 +37,8 @@ void Image_2D::Initialize()
 	Center_x = SizeW / 2;
 	Center_y = SizeH / 2;
 	Ext = 1.0f;
+	Ext_x = 1.0f;
+	Ext_y = 1.0f;
 	Angle = 0.0f;
 	
 	Anime_Speed = 16;
@@ -58,8 +60,8 @@ bool Image_2D::Draw(bool Trans)
 
 	if(Visible)
 	{
-		if(Direction == ImageDirection_Left)DrawRotaGraph2(x,y,Center_x,Center_y,Ext,Angle,Graph[Anime_ShowNum],Trans,true);
-		else DrawRotaGraph2(x,y,Center_x,Center_y,Ext,Angle,Graph[Anime_ShowNum],Trans,false);
+		if(Direction == ImageDirection_Left)DrawRotaGraph3(x,y,Center_x,Center_y,Ext_x*Ext,Ext_y*Ext,Angle,Graph[Anime_ShowNum],Trans,true);
+		else DrawRotaGraph3(x,y,Center_x,Center_y,Ext_x*Ext,Ext_y*Ext,Angle,Graph[Anime_ShowNum],Trans,false);
 	}
 
 	if(Anime_Time >= Anime_Speed)
