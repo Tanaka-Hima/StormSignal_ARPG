@@ -3,6 +3,7 @@
 #include "ConstantValue.h"
 #include "Functions.h"
 #include "Map.h"
+#include "SE.h"
 #include <DxLib.h>
 
 vector<Character*> Character::CharacterList;
@@ -240,6 +241,12 @@ void Character::InitChara(b2World *World,string CharaType,float Density,float Fr
 	EffectGraphs[EffectGraphs.size()-1].Anime_Speed = 50;
 	#pragma endregion
 
+	#pragma region 効果音読み込み
+
+	SE_Slash = SEManager.Register("SE/Slash.wav");
+	SE_Splash = SEManager.Register("SE/Splash.wav");
+
+	#pragma endregion
 }
 
 bool Character::UseSkill(int SkillNumber,int EquipmentNumber)
@@ -432,6 +439,7 @@ void Character::Step()
 					HitBoxList.push_back(Box);
 					HitBoxList[HitBoxList.size()-1].Initialize(Shape,Trans,this,false,b2Vec2(10*Direction,-5),10,1,50,500,true);
 					HitBoxList[HitBoxList.size()-1].SetEffect(EffectGraphs[Effect_Other_Hit0]);
+					HitBoxList[HitBoxList.size()-1].SetSE(SE_Slash);
 				}
 				Graph[0] = AnimeGraphs[State].Graph[1];
 			}else if(StateTime > 300)Graph[0] = AnimeGraphs[State].Graph[2];
@@ -464,6 +472,7 @@ void Character::Step()
 					HitBoxList[HitBoxList.size()-1].SetGraph(EffectGraphs[Effect_Sword_Shockwave]);
 					HitBoxList[HitBoxList.size()-1].SetMoveFlag(b2Vec2(Direction*10,0));
 					HitBoxList[HitBoxList.size()-1].SetEffect(EffectGraphs[Effect_Other_Hit1]);
+					HitBoxList[HitBoxList.size()-1].SetSE(SE_Splash);
 				}
 				Graph[0] = AnimeGraphs[State].Graph[2];
 			}else if(StateTime > 200)Graph[0] = AnimeGraphs[State].Graph[3];
@@ -493,6 +502,7 @@ void Character::Step()
 					HitBoxList.push_back(Box);
 					HitBoxList[HitBoxList.size()-1].Initialize(Shape,Trans,this,false,b2Vec2(0,-30),10,1,50,1000,false);
 					HitBoxList[HitBoxList.size()-1].SetEffect(EffectGraphs[Effect_Other_Hit0]);
+					HitBoxList[HitBoxList.size()-1].SetSE(SE_Slash);
 				}
 				Graph[0] = AnimeGraphs[State].Graph[1];
 			}else if(StateTime > 100)Graph[0] = AnimeGraphs[State].Graph[2];
@@ -521,6 +531,7 @@ void Character::Step()
 					HitBoxList.push_back(Box);
 					HitBoxList[HitBoxList.size()-1].Initialize(Shape,Trans,this,false,b2Vec2(30*Direction,-5),30,1,100,1000,true);
 					HitBoxList[HitBoxList.size()-1].SetEffect(EffectGraphs[Effect_Other_Hit0]);
+					HitBoxList[HitBoxList.size()-1].SetSE(SE_Slash);
 				}
 				Graph[0] = AnimeGraphs[State].Graph[2];
 			}else if(StateTime > 100)Graph[0] = AnimeGraphs[State].Graph[3];
@@ -548,6 +559,7 @@ void Character::Step()
 					HitBoxList.push_back(Box);
 					HitBoxList[HitBoxList.size()-1].Initialize(Shape,Trans,this,false,b2Vec2(-5*Direction,-5),10,1,50,500,true);
 					HitBoxList[HitBoxList.size()-1].SetEffect(EffectGraphs[Effect_Other_Hit0]);
+					HitBoxList[HitBoxList.size()-1].SetSE(SE_Slash);
 				}
 				Graph[0] = AnimeGraphs[State].Graph[1];
 			}else if(StateTime > 450)
@@ -565,6 +577,7 @@ void Character::Step()
 					HitBoxList.push_back(Box);
 					HitBoxList[HitBoxList.size()-1].Initialize(Shape,Trans,this,false,b2Vec2(-5*Direction,5),10,1,50,500,true);
 					HitBoxList[HitBoxList.size()-1].SetEffect(EffectGraphs[Effect_Other_Hit0]);
+					HitBoxList[HitBoxList.size()-1].SetSE(SE_Slash);
 				}
 				Graph[0] = AnimeGraphs[State].Graph[2];
 			}else if(StateTime > 400)
@@ -581,6 +594,7 @@ void Character::Step()
 					HitBoxList.push_back(Box);
 					HitBoxList[HitBoxList.size()-1].Initialize(Shape,Trans,this,false,b2Vec2(5*Direction,5),10,1,50,500,true);
 					HitBoxList[HitBoxList.size()-1].SetEffect(EffectGraphs[Effect_Other_Hit0]);
+					HitBoxList[HitBoxList.size()-1].SetSE(SE_Slash);
 				}
 				Graph[0] = AnimeGraphs[State].Graph[3];
 			}else if(StateTime > 350)
@@ -598,6 +612,7 @@ void Character::Step()
 					HitBoxList.push_back(Box);
 					HitBoxList[HitBoxList.size()-1].Initialize(Shape,Trans,this,false,b2Vec2(5*Direction,-5),10,1,50,500,true);
 					HitBoxList[HitBoxList.size()-1].SetEffect(EffectGraphs[Effect_Other_Hit0]);
+					HitBoxList[HitBoxList.size()-1].SetSE(SE_Slash);
 				}
 				Graph[0] = AnimeGraphs[State].Graph[4];
 			}else if(StateTime > 300)
@@ -614,6 +629,7 @@ void Character::Step()
 					HitBoxList.push_back(Box);
 					HitBoxList[HitBoxList.size()-1].Initialize(Shape,Trans,this,false,b2Vec2(-5*Direction,-5),10,1,50,500,true);
 					HitBoxList[HitBoxList.size()-1].SetEffect(EffectGraphs[Effect_Other_Hit0]);
+					HitBoxList[HitBoxList.size()-1].SetSE(SE_Slash);
 				}
 				Graph[0] = AnimeGraphs[State].Graph[1];
 			}else if(StateTime > 250)
@@ -631,6 +647,7 @@ void Character::Step()
 					HitBoxList.push_back(Box);
 					HitBoxList[HitBoxList.size()-1].Initialize(Shape,Trans,this,false,b2Vec2(-5*Direction,5),10,1,50,500,true);
 					HitBoxList[HitBoxList.size()-1].SetEffect(EffectGraphs[Effect_Other_Hit0]);
+					HitBoxList[HitBoxList.size()-1].SetSE(SE_Slash);
 				}
 				Graph[0] = AnimeGraphs[State].Graph[2];
 			}else if(StateTime > 200)
@@ -647,6 +664,7 @@ void Character::Step()
 					HitBoxList.push_back(Box);
 					HitBoxList[HitBoxList.size()-1].Initialize(Shape,Trans,this,false,b2Vec2(5*Direction,5),10,1,50,500,true);
 					HitBoxList[HitBoxList.size()-1].SetEffect(EffectGraphs[Effect_Other_Hit0]);
+					HitBoxList[HitBoxList.size()-1].SetSE(SE_Slash);
 				}
 				Graph[0] = AnimeGraphs[State].Graph[3];
 			}else if(StateTime > 150)
@@ -664,6 +682,7 @@ void Character::Step()
 					HitBoxList.push_back(Box);
 					HitBoxList[HitBoxList.size()-1].Initialize(Shape,Trans,this,false,b2Vec2(5*Direction,-5),10,1,50,500,true);
 					HitBoxList[HitBoxList.size()-1].SetEffect(EffectGraphs[Effect_Other_Hit0]);
+					HitBoxList[HitBoxList.size()-1].SetSE(SE_Slash);
 				}
 				Graph[0] = AnimeGraphs[State].Graph[4];
 			}else
@@ -690,6 +709,7 @@ void Character::Step()
 					HitBoxList.push_back(Box);
 					HitBoxList[HitBoxList.size()-1].Initialize(Shape,Trans,this,false,b2Vec2(0,-35),10,1,100,1000,true);
 					HitBoxList[HitBoxList.size()-1].SetEffect(EffectGraphs[Effect_Other_Hit0]);
+					HitBoxList[HitBoxList.size()-1].SetSE(SE_Slash);
 
 					b2Vec2 Vect = GetBody()->GetLinearVelocity();
 					Vect.y = -MoveSpeed*2.5;
@@ -727,6 +747,7 @@ void Character::Step()
 					EffectGraphs[Effect_Sword_Shockwave].Direction = Direction;
 					HitBoxList[HitBoxList.size()-1].SetGraph(EffectGraphs[Effect_Handgun_Bullet]);
 					HitBoxList[HitBoxList.size()-1].SetEffect(EffectGraphs[Effect_Other_Hit1]);
+					HitBoxList[HitBoxList.size()-1].SetSE(SE_Splash);
 
 					//方向指定
 					float Y = 0.f;

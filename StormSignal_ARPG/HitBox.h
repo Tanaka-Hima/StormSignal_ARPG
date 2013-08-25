@@ -19,6 +19,7 @@ private:
 	bool DrawFlag;
 	Image_2D Effect;
 	bool EffectFlag;
+	int SEHandle;
 	bool Suicide;//攻撃した本人にダメージは入るか？
 	b2Vec2 HitVect;//ヒット時に相手へ与えるベクトル
 	int Damage;//ダメージ
@@ -49,6 +50,7 @@ public:
 	void SetMoveFlag(b2Vec2 InputMoveVect,bool InputAutoAngle = false);//この関数を呼び出した場合、1秒に指定分だけHitBoxが移動する
 	void SetGraph(Image_2D Image);//この関数を呼び出した場合、ヒットボックスが存在する位置に画像が描画される
 	void SetEffect(Image_2D Image);//この関数を呼び出した場合、ヒット時にエフェクトが描画される
+	void SetSE(int Handle);//この関数を呼び出した場合、
 	bool HitTestShape(Character* Target,b2PolygonShape* TargetShape,b2Transform TargetTrans);//Characterとの当たり判定
 	bool Step();//毎フレームの処理
 	Character* GetCharacter();//ヒットボックスを生成したCharacterを取得

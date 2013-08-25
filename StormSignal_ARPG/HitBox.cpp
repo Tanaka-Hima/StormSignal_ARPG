@@ -1,5 +1,6 @@
 ﻿#include "HitBox.h"
 #include "ConstantValue.h"
+#include "SE.h"
 #include <DxLib.h>
 
 vector<Image_2D> HitBox::Effects;
@@ -13,6 +14,7 @@ void HitBox::Initialize(b2PolygonShape InputShape,b2Transform InputTransform,Cha
 	MoveFlag = false;
 	DrawFlag = false;
 	EffectFlag = false;
+	SEHandle = -1;
 	Suicide = SuicideFlag;
 	HitVect = InputHitVect;
 	Damage = InputDamage;
@@ -45,6 +47,11 @@ void HitBox::SetEffect(Image_2D InputImage)
 	Effect = InputImage;
 }
 
+void HitBox::SetSE(int Handle)
+{
+	SEHandle = Handle;
+}
+
 bool HitBox::HitTestShape(Character* Target,b2PolygonShape *TargetShape,b2Transform TargetTrans)
 {
 	if(Target == Attacker && !Suicide)return false;
@@ -72,6 +79,8 @@ bool HitBox::HitTestShape(Character* Target,b2PolygonShape *TargetShape,b2Transf
 
 		Attacker->AffectStanTime = StanTime;
 		Attacker->ComboCount++;
+
+		SEManager.Play(SEHandle);
 
 		return true;
 	}else return false;

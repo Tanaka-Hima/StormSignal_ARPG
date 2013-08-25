@@ -91,6 +91,10 @@ class Character : public Physics2DImage
 private:
 	string CharacterType;//このCharacterの種類
 	float ScrollDistance;//マップがどれだけスクロールしているか
+
+	//効果音
+	int SE_Slash;
+	int SE_Splash;
 public:
 	int MaxHP;//最大HP
 	int HP;//HP
