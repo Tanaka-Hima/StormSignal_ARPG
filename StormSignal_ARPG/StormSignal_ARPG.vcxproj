@@ -298,6 +298,12 @@
     <Text Include="Map\Training.txt" />
     <Text Include="Map\Training_Script.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <Media Include="SE\Slash.wav" />
+    <Media Include="SE\Splash.wav" />
+    <Media Include="SE\SwingHeavy.wav" />
+    <Media Include="SE\SwingLight.wav" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

@@ -76,6 +76,9 @@
     <Filter Include="リソース ファイル\Image\Effect\Other">
       <UniqueIdentifier>{348654ff-ec65-41b2-bfe0-fdf478ffc36b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="リソース ファイル\SE">
+      <UniqueIdentifier>{96e736f4-dc1c-4537-9203-73799ef95c1d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -699,5 +702,19 @@
     <Text Include="Map\AC_Stage2_Script.txt">
       <Filter>リソース ファイル\Map</Filter>
     </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="SE\SwingHeavy.wav">
+      <Filter>リソース ファイル\SE</Filter>
+    </Media>
+    <Media Include="SE\SwingLight.wav">
+      <Filter>リソース ファイル\SE</Filter>
+    </Media>
+    <Media Include="SE\Slash.wav">
+      <Filter>リソース ファイル\SE</Filter>
+    </Media>
+    <Media Include="SE\Splash.wav">
+      <Filter>リソース ファイル\SE</Filter>
+    </Media>
   </ItemGroup>
 </Project>
