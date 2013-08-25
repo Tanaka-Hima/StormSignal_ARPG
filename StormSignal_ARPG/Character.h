@@ -95,6 +95,9 @@ private:
 	//効果音
 	int SE_Slash;
 	int SE_Splash;
+	int SE_SwingLight;
+	int SE_SwingHeavy;
+	int SE_Bomb;
 public:
 	int MaxHP;//最大HP
 	int HP;//HP
