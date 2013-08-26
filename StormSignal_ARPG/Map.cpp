@@ -471,12 +471,52 @@ void Map::Draw()
 
 	//敵の描画
 	int Length = EnemyData.size();
+	SetUseMaskScreenFlag(true);
 	for(int i=0;i<Length;i++)
 	{
 		EnemyData[i].Draw();
 		EnemyData[i].SetScrollDistance(MapTrans.p.x);
+
+		Interfaces[Interface_HPFrame].x = Interfaces[Interface_HPBar].x = EnemyData[i].x;
+		Interfaces[Interface_HPFrame].y = Interfaces[Interface_HPBar].y = EnemyData[i].y+EnemyData[i].Height/2;
+		Interfaces[Interface_HPFrame].Ext_x = Interfaces[Interface_HPBar].Ext_x = EnemyData[i].Width/79.0*2;
+		Interfaces[Interface_HPFrame].Ext_y = Interfaces[Interface_HPBar].Ext_y = 0.6f;
+		Interfaces[Interface_HPFrame].Draw(true);
+
+		#pragma region マスクの作成
+		int Width = Interfaces[Interface_HPFrame].Center_x*2*(EnemyData[i].Width/79.0*2);
+		int Height = Interfaces[Interface_HPFrame].Center_y*2*0.6;
+		int Mask = MakeMask(Width,Height);
+		double Per = (double)EnemyData[i].HP / (double)EnemyData[i].MaxHP;
+
+		//2次元配列を動的に、連続したメモリ領域に作成する
+		unsigned char **Data = new unsigned char*[Height];
+		Data[0] = new unsigned char[Width*Height];
+		for(int j=1;j<Height;j++)
+		{
+			Data[j] = Data[0] + j * Width;
+		}
+
+		for(int j=0;j<Height;j++)
+		{
+			for(int k=0;k<Width;k++)
+			{
+				if(k<=Width*Per)Data[j][k] = 0x00;
+				else Data[j][k] = 0xff;
+			}
+		}
+		SetDataToMask(Width,Height,*Data,Mask);
+		#pragma endregion
+		DrawMask(EnemyData[i].x-Width/2,EnemyData[i].y+EnemyData[i].Height/2-Height/2,Mask,DX_MASKTRANS_BLACK);
+		Interfaces[Interface_HPBar].Draw(true);
+		DeleteMask(Mask);
+		FillMaskScreen(0);
+
+		delete[] Data[0];
+		delete[] Data;
 	}
 
+	SetUseMaskScreenFlag(false);
 	//オブジェクトの描画
 	Length = RigidBodies.size();
 	for(int i=0;i<Length;i++)
@@ -528,7 +568,15 @@ void Map::Draw()
 	int Height = Interfaces[Interface_HPFrame].Center_y*2*1.5;
 	int Mask = MakeMask(Width,Height);
 	double Per = (double)PlayerData.HP / (double)PlayerData.MaxHP;
-	unsigned char Data[27][312];
+
+	//2次元配列を動的に、連続したメモリ領域に作成する
+	unsigned char **Data = new unsigned char*[Height];
+	Data[0] = new unsigned char[Width*Height];
+	for(int j=1;j<Height;j++)
+	{
+		Data[j] = Data[0] + j * Width;
+	}
+
 	for(int i=0;i<Height;i++)
 	{
 		for(int j=0;j<Width;j++)
@@ -537,7 +585,9 @@ void Map::Draw()
 			else Data[i][j] = 0xff;
 		}
 	}
-	SetDataToMask(Width,Height,Data,Mask);
+	SetDataToMask(Width,Height,*Data,Mask);
+	delete[] Data[0];
+	delete[] Data;
 	#pragma endregion
 	DrawMask(5,5,Mask,DX_MASKTRANS_BLACK);
 	Interfaces[Interface_HPBar].Draw(true);

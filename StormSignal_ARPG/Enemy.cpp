@@ -25,6 +25,9 @@ void Enemy::Initialize(b2World *World,string CharaType,float Density,float Frict
 
 		Center_x = 64;
 		Center_y = 52;
+
+		Width = 9;
+		Height = 24;
 	}
 
 	State = -1;

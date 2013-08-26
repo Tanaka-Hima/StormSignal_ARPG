@@ -93,11 +93,11 @@ private:
 	float ScrollDistance;//マップがどれだけスクロールしているか
 
 	//効果音
-	int SE_Slash;
-	int SE_Splash;
-	int SE_SwingLight;
-	int SE_SwingHeavy;
-	int SE_Bomb;
+	static int SE_Slash,
+				SE_Splash,
+				SE_SwingLight,
+				SE_SwingHeavy,
+				SE_Bomb;
 public:
 	int MaxHP;//最大HP
 	int HP;//HP
@@ -105,6 +105,7 @@ public:
 	int StateTime;//現在の状態が続く時間
 	int BeforeStateTime;//前フレームでのStateTime
 	int Time;//時間
+	int Width,Height;
 	b2Vec2 BeforeVect;//前フレームでの速度
 	int AffectStanTime;//自分の攻撃で敵に与えたStanTime
 	int ComboCount;//コンボ数

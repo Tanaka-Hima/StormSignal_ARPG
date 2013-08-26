@@ -44,6 +44,9 @@ void Player::Initialize(b2World *World,string CharaType,float Density,float Fric
 	Center_x = 64;
 	Center_y = 52;
 
+	Width = 9;
+	Height = 24;
+
 	//スキル設定ウィンドウ作成
 	SkillWindow.Initialize(25,25,Screen_Width-50,Screen_Height-50,Black,LightBlack);
 	SkillWindow.Visible = false;

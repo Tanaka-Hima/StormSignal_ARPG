@@ -13,6 +13,12 @@ vector<Image_2D> Character::EquipmentGraphs;
 vector<Image_2D> Character::EffectGraphs;
 vector<Image_2D> Character::Effects;
 
+int Character::SE_Slash,
+	Character::SE_Splash,
+	Character::SE_SwingLight,
+	Character::SE_SwingHeavy,
+	Character::SE_Bomb;
+
 vector<int> GetSkillList(string EquipmentName)
 {
 	vector<int> Skills;
@@ -479,7 +485,7 @@ void Character::Step()
 					HitBoxList[HitBoxList.size()-1].SetEffect(EffectGraphs[Effect_Other_Hit1]);
 					HitBoxList[HitBoxList.size()-1].SetSE(SE_Splash);
 
-					SEManager.Play(SE_SwingLight);
+					SEManager.Play(SE_SwingHeavy);
 				}
 				Graph[0] = AnimeGraphs[State].Graph[2];
 			}else if(StateTime > 200)Graph[0] = AnimeGraphs[State].Graph[3];
@@ -591,8 +597,6 @@ void Character::Step()
 					HitBoxList[HitBoxList.size()-1].Initialize(Shape,Trans,this,false,b2Vec2(-5*Direction,5),10,1,50,500,true);
 					HitBoxList[HitBoxList.size()-1].SetEffect(EffectGraphs[Effect_Other_Hit0]);
 					HitBoxList[HitBoxList.size()-1].SetSE(SE_Slash);
-
-					SEManager.Play(SE_SwingLight);
 				}
 				Graph[0] = AnimeGraphs[State].Graph[2];
 			}else if(StateTime > 400)
@@ -610,8 +614,6 @@ void Character::Step()
 					HitBoxList[HitBoxList.size()-1].Initialize(Shape,Trans,this,false,b2Vec2(5*Direction,5),10,1,50,500,true);
 					HitBoxList[HitBoxList.size()-1].SetEffect(EffectGraphs[Effect_Other_Hit0]);
 					HitBoxList[HitBoxList.size()-1].SetSE(SE_Slash);
-
-					SEManager.Play(SE_SwingLight);
 				}
 				Graph[0] = AnimeGraphs[State].Graph[3];
 			}else if(StateTime > 350)
@@ -630,8 +632,6 @@ void Character::Step()
 					HitBoxList[HitBoxList.size()-1].Initialize(Shape,Trans,this,false,b2Vec2(5*Direction,-5),10,1,50,500,true);
 					HitBoxList[HitBoxList.size()-1].SetEffect(EffectGraphs[Effect_Other_Hit0]);
 					HitBoxList[HitBoxList.size()-1].SetSE(SE_Slash);
-
-					SEManager.Play(SE_SwingLight);
 				}
 				Graph[0] = AnimeGraphs[State].Graph[4];
 			}else if(StateTime > 300)
@@ -669,8 +669,6 @@ void Character::Step()
 					HitBoxList[HitBoxList.size()-1].Initialize(Shape,Trans,this,false,b2Vec2(-5*Direction,5),10,1,50,500,true);
 					HitBoxList[HitBoxList.size()-1].SetEffect(EffectGraphs[Effect_Other_Hit0]);
 					HitBoxList[HitBoxList.size()-1].SetSE(SE_Slash);
-
-					SEManager.Play(SE_SwingLight);
 				}
 				Graph[0] = AnimeGraphs[State].Graph[2];
 			}else if(StateTime > 200)
@@ -688,8 +686,6 @@ void Character::Step()
 					HitBoxList[HitBoxList.size()-1].Initialize(Shape,Trans,this,false,b2Vec2(5*Direction,5),10,1,50,500,true);
 					HitBoxList[HitBoxList.size()-1].SetEffect(EffectGraphs[Effect_Other_Hit0]);
 					HitBoxList[HitBoxList.size()-1].SetSE(SE_Slash);
-
-					SEManager.Play(SE_SwingLight);
 				}
 				Graph[0] = AnimeGraphs[State].Graph[3];
 			}else if(StateTime > 150)
@@ -708,8 +704,6 @@ void Character::Step()
 					HitBoxList[HitBoxList.size()-1].Initialize(Shape,Trans,this,false,b2Vec2(5*Direction,-5),10,1,50,500,true);
 					HitBoxList[HitBoxList.size()-1].SetEffect(EffectGraphs[Effect_Other_Hit0]);
 					HitBoxList[HitBoxList.size()-1].SetSE(SE_Slash);
-
-					SEManager.Play(SE_SwingLight);
 				}
 				Graph[0] = AnimeGraphs[State].Graph[4];
 			}else
