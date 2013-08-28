@@ -65,6 +65,7 @@ void Character::InitChara(b2World *World,string CharaType,float Density,float Fr
 	StateTime = 0;
 	AffectStanTime = 0;
 	ComboCount = 0;
+	BeforeComboCount = 0;
 	BeforeStateTime = 0;
 	BeforeVect = b2Vec2(0,0);
 	ScrollDistance = 0;
@@ -839,6 +840,8 @@ void Character::Step()
 			Length--;
 		}
 	}
+
+	BeforeComboCount = ComboCount;
 
 	//キャラが倒れないようにする
 	GetBody()->SetTransform(GetBody()->GetPosition(),0);

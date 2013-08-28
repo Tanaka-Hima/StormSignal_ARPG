@@ -71,6 +71,14 @@ void Map::Initialize(b2World *World,bool InitPlayerFlag)
 	Interfaces[Interfaces.size()-1].Load("Image/Interface/HPBar.png");
 	Interfaces[Interfaces.size()-1].Initialize();
 
+	Interfaces.push_back(TempGraph);
+	Interfaces[Interfaces.size()-1].Load("Image/Interface/EXFrame.png");
+	Interfaces[Interfaces.size()-1].Initialize();
+
+	Interfaces.push_back(TempGraph);
+	Interfaces[Interfaces.size()-1].Load("Image/Interface/EXBar.png");
+	Interfaces[Interfaces.size()-1].Initialize();
+
 	if(InitPlayerFlag)
 	{
 		PlayerData.Load("Image/Chara/None.png");
@@ -594,10 +602,56 @@ void Map::Draw()
 	DeleteMask(Mask);
 	FillMaskScreen(0);
 	SetUseMaskScreenFlag(false);
+
+	//プレイヤーEXゲージの描画
+	Interfaces[Interface_EXFrame].Ext_x = Interfaces[Interface_EXBar].Ext_x = 1.f;
+	Interfaces[Interface_EXFrame].Ext_y = Interfaces[Interface_EXBar].Ext_y = 1.f;
+	int Count = (int)((double)PlayerData.GetEXGauge() / 100.0+0.99);
+	for(int i=0;i<4;i++)
+	{
+		Interfaces[Interface_EXFrame].x = Interfaces[Interface_EXBar].x = 45 + i*80;
+		Interfaces[Interface_EXFrame].y = Interfaces[Interface_EXBar].y = 50;
+		Interfaces[Interface_EXFrame].Draw(true);
+		if(i < Count)
+		{
+			SetUseMaskScreenFlag(true);
+			#pragma region マスクの作成
+			int Width = Interfaces[Interface_EXFrame].Center_x*2;
+			int Height = Interfaces[Interface_EXFrame].Center_y*2;
+			int Mask = MakeMask(Width,Height);
+			double Per = PlayerData.GetEXGauge()%100 / 100.0;
+			if(i < Count-1 || PlayerData.GetEXGauge() - (Count-1)*100 == 100)Per = 1;
+			//2次元配列を動的に、連続したメモリ領域に作成する
+			unsigned char **Data = new unsigned char*[Height];
+			Data[0] = new unsigned char[Width*Height];
+			for(int j=1;j<Height;j++)
+			{
+				Data[j] = Data[0] + j * Width;
+			}
+
+			for(int i=0;i<Height;i++)
+			{
+				for(int j=0;j<Width;j++)
+				{
+					if(j<=Width*Per)Data[i][j] = 0x00;
+					else Data[i][j] = 0xff;
+				}
+			}
+			SetDataToMask(Width,Height,*Data,Mask);
+			delete[] Data[0];
+			delete[] Data;
+			#pragma endregion
+			DrawMask(5 + i*80,43,Mask,DX_MASKTRANS_BLACK);
+			Interfaces[Interface_EXBar].Draw(true);
+			DeleteMask(Mask);
+			FillMaskScreen(0);
+			SetUseMaskScreenFlag(false);
+		}
+	}
 	if(PlayerData.ComboCount > 0)
 	{//コンボ数の描画
 		string Str = ntos(PlayerData.ComboCount) + " Combo!";
-		DrawStringToHandle(5,50,Str.c_str(),White,FontMiddle);
+		DrawStringToHandle(5,80,Str.c_str(),White,FontMiddle);
 	}
 
 

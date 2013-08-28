@@ -47,6 +47,9 @@ void Player::Initialize(b2World *World,string CharaType,float Density,float Fric
 	Width = 9;
 	Height = 24;
 
+	EX = 200;
+	MaxEX = 400;
+
 	//スキル設定ウィンドウ作成
 	SkillWindow.Initialize(25,25,Screen_Width-50,Screen_Height-50,Black,LightBlack);
 	SkillWindow.Visible = false;
@@ -100,6 +103,10 @@ void Player::Ctrl()
 	//プレイヤーのコンボが途切れていて、かつ地面にいる場合はADを初期化する
 	if(ComboCount == 0 && Flag && JudgeSkillCancel())InitAllSkillAvailableCount();
 
+	//コンボが繋がった場合、EXゲージを増やす
+	if(ComboCount > BeforeComboCount)EX += ComboCount;
+	if(EX > MaxEX)EX = MaxEX;
+
 	//スタン中は行動できない
 	if(State == Skill_None_Stan && StateTime > 0)return;
 
@@ -114,9 +121,13 @@ void Player::Ctrl()
 	{
 		if(CheckKeyDown(Key[i]) && (SkillSet[i%3][(int)(i/3)][3] > 0 || SkillSet[i%3][(int)(i/3)][3] == -1))
 		{
-			if(UseSkill(SkillSet[i%3][(int)(i/3)][0],Equipments[0]))
-			{//スキル使用成功時にはADを減らす
-				SkillSet[i%3][(int)(i/3)][3]--;
+			if(SkillConsumeEX[SkillSet[i%3][(int)(i/3)][0]] <= EX)
+			{
+				if(UseSkill(SkillSet[i%3][(int)(i/3)][0],Equipments[0]))
+				{//スキル使用成功時にはAD,EXを減らす
+					EX -= SkillConsumeEX[SkillSet[i%3][(int)(i/3)][0]];
+					SkillSet[i%3][(int)(i/3)][3]--;
+				}
 			}
 		}
 	}
@@ -124,9 +135,6 @@ void Player::Ctrl()
 	//スキル使用中には移動、ジャンプができない
 	if(!JudgeSkillCancel())return;
 	b2Vec2 Vect = GetBody()->GetLinearVelocity();
-
-	//空中ではジャンプ、移動ができない
-	if(!Flag)return;
 
 	//移動
 	if(CheckHitKey(KEY_INPUT_LEFT))
@@ -140,13 +148,13 @@ void Player::Ctrl()
 		Direction = ImageDirection_Right;
 	}
 
-	if(CheckKeyDown(KEY_INPUT_SPACE))
-	{//ジャンプ
+	if(Flag && CheckKeyDown(KEY_INPUT_SPACE))
+	{//ジャンプ(空中不可)
 		Vect.y = -MoveSpeed*2.5;
 	}
 
 	//地面との摩擦
-	if(Vect.x != 0)Vect.x -= (float32)(Vect.x / fabs(Vect.x) * 0.05);
+	if(Flag && Vect.x != 0)Vect.x -= (float32)(Vect.x / fabs(Vect.x) * 0.05);
 
 	//ベクトルを適用
 	GetBody()->SetLinearVelocity(Vect);
@@ -407,6 +415,11 @@ void Player::SetSkillWindowVisible(bool Visible)
 	SkillWindow.Visible = Visible;
 }
 
+int Player::GetEXGauge()
+{
+	return EX;
+}
+
 void Player::InitAllSkillAvailableCount()
 {
 	for(int i=0;i<3;i++)
@@ -417,4 +430,3 @@ void Player::InitAllSkillAvailableCount()
 		}
 	}
 }
-

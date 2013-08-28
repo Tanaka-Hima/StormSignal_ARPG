@@ -39,7 +39,9 @@ const string Action_Clear = "Clear";
 enum InterfaceNumber
 {
 	Interface_HPFrame = 0,
-	Interface_HPBar = 1
+	Interface_HPBar = 1,
+	Interface_EXFrame = 2,
+	Interface_EXBar = 3
 };
 
 class Map

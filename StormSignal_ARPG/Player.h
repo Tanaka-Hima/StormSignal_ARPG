@@ -10,6 +10,8 @@ const float MoveSpeed = 5.0f;
 class Player : public Character
 {
 private:
+	int MaxEX;//最大EXゲージ
+	int EX;//EXゲージ
 	int SkillSet[3][3][4];//x,y,{種類,レベル,経験値,CD}
 	//vector<int*> SkillList;
 	Window SkillWindow;//スキル表示用ウィンドウ
@@ -31,6 +33,7 @@ public:
 	void StepSkillWindow();//スキルウィンドウの処理、描画
 	bool GetSkillWindowVisible();//スキルウィンドウが有効かどうかを取得する
 	void SetSkillWindowVisible(bool Visible);//スキルウィンドウの表示設定を変更する
+	int GetEXGauge();//EXゲージの取得
 	void InitAllSkillAvailableCount();//スキルのADをすべて初期化する
 };
 

@@ -30,6 +30,7 @@ const string SkillValueNames[] = {"Skill_None_None",
 								"Skill_Sword_StrikeTop"};
 
 const int SkillAvailableCount[] = {0,1,1,0,1,1,1,8,1,1,1};
+const int SkillConsumeEX[] = {0,0,0,0,0,0,0,0,50,0,0};
 
 const string SkillNames[] = {"無し",
 							"前方へ剣を振り下ろす(仮)",
@@ -109,6 +110,7 @@ public:
 	b2Vec2 BeforeVect;//前フレームでの速度
 	int AffectStanTime;//自分の攻撃で敵に与えたStanTime
 	int ComboCount;//コンボ数
+	int BeforeComboCount;//前フレームでのコンボ数
 	static vector<Character*> CharacterList;//このプログラム上で生成されたすべてのCharacterクラス
 	static vector<HitBox> HitBoxList;//Characterによって生成されたすべてのヒットボックス
 	static vector<Image_2D> AnimeGraphs;//アニメーション用の画像
