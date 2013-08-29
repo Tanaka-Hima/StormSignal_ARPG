@@ -30,7 +30,7 @@ const string SkillValueNames[] = {"Skill_None_None",
 								"Skill_Sword_StrikeTop"};
 
 const int SkillAvailableCount[] = {0,1,1,0,1,1,1,8,1,1,1};
-const int SkillConsumeEX[] = {0,0,0,0,0,0,0,0,50,0,0};
+const int SkillConsumeEX[] = {0,0,0,0,0,0,0,0,0,0,0};
 
 const string SkillNames[] = {"無し",
 							"前方へ剣を振り下ろす(仮)",

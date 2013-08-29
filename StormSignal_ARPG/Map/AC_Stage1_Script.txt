@@ -1,5 +1,6 @@
 AA,04,0,Use,Redraw|05,1,0
 AA,04,0,Use,Flag|AB,1,0
+AA,04,0,Use,Sound|SE/Switch.wav,1,0
 AB,02,1,Flag,Delete,1,0
 AC,00,0,Touch,Message|←キー、→キー - 移動<>↑キー - オブジェクトの使用<>　　　　 メッセージを閉じる,1,1000
 AD,06,0,Use,Message|木箱は押すことができる,-1,1000

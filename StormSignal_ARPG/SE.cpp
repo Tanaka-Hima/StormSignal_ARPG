@@ -39,3 +39,8 @@ void SE::Volume_Change(int InputVolume)
 		ChangeVolumeSoundMem(2.55 * Volume,SE_Files[i]);
 	}
 }
+
+int SE::GetVolume()
+{
+	return Volume;
+}

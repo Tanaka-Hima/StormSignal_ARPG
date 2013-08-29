@@ -13,4 +13,5 @@ public:
 	void Play(int Index);
 	void Stop(int Index,bool StopAllSE = false);
 	void Volume_Change(int InputVolume);
+	int GetVolume();
 }SEManager;

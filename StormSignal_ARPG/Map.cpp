@@ -6,6 +6,7 @@
 #include "Functions.h"
 #include "ConstantValue.h"
 #include "HitBox.h"
+#include "SE.h"
 
 void Map::Initialize(b2World *World,bool InitPlayerFlag)
 {
@@ -412,6 +413,16 @@ void Map::Step()
 									}
 								}
 								MapData[y][x] = Mapchip_Blank;
+							}else if(ScriptData[i][4].find(Action_Clear) != string::npos)
+							{//現在プレイしているステージを完了し、次のステージへ移動する
+								vector<string> Data = split(ScriptData[i][4],"|");
+								MessageFlag = true;
+								NextStageName = Data[1];
+							}else if(ScriptData[i][4].find(Action_Sound) != string::npos)
+							{//指定サウンドを鳴らす
+								vector<string> Data = split(ScriptData[i][4],"|");
+								SetVolumeSound(SEManager.GetVolume()*2.55);
+								PlaySound(Data[1].c_str(),DX_PLAYTYPE_BACK);
 							}else if(ScriptData[i][4].find(Action_Message) != string::npos)
 							{//ゲームの進行を止め、ShowMessageを表示する
 								vector<string> Data = split(ScriptData[i][4],"|");
