@@ -16,6 +16,7 @@ const int Skill_Handgun_Fire = 7;
 const int Skill_Sword_Smash = 8;
 const int Skill_Sword_Spin = 9;
 const int Skill_Sword_StrikeTop = 10;
+const int Skill_Sword_Spec0Dash = 11;
 
 const string SkillValueNames[] = {"Skill_None_None",
 								"Skill_Sword_Front",
@@ -27,10 +28,11 @@ const string SkillValueNames[] = {"Skill_None_None",
 								"Skill_Handgun_Fire",
 								"Skill_Sword_Smash",
 								"Skill_Sword_Spin",
-								"Skill_Sword_StrikeTop"};
+								"Skill_Sword_StrikeTop",
+								"Skill_Sword_Spec0Dash"};
 
-const int SkillAvailableCount[] = {0,1,1,0,1,1,1,8,1,1,1};
-const int SkillConsumeEX[] = {0,0,0,0,0,0,0,0,0,0,0};
+const int SkillAvailableCount[] = {0,1,1,0,1,1,1,8,1,1,1,1};
+const int SkillConsumeEX[] = {0,0,0,0,0,0,0,0,0,0,0,2};
 
 const string SkillNames[] = {"無し",
 							"前方へ剣を振り下ろす(仮)",
@@ -42,7 +44,8 @@ const string SkillNames[] = {"無し",
 							"発砲",
 							"前方へ吹き飛ばし攻撃(仮)",
 							"剣を回転させる(仮)",
-							"上昇しつつ打ち上げる(仮)"};
+							"上昇しつつ打ち上げる(仮)",
+							"疾走居合(仮)"};
 
 const string SkillInfo[] = {"スキルを設定しません。<>必要装備 : 無し AD : 無し",
 							"前方へ剣を振り下ろします。<>必要装備 : 剣 AD : 1",
@@ -54,7 +57,8 @@ const string SkillInfo[] = {"スキルを設定しません。<>必要装備 : �
 							"指定方向へ弾丸を発射します。<>必要装備 : HG AD : 8",
 							"前方へ強力な攻撃を行ないます。<>必要装備 : 剣 AD : 1",
 							"自分の周りへ攻撃を行います。<>必要装備 : 剣 AD : 1",
-							"空中に飛び上がりつつ敵を打ち上げます。<>必要装備 : 剣 AD : 1"};
+							"空中に飛び上がりつつ敵を打ち上げます。<>必要装備 : 剣 AD : 1",
+							"EXゲージを200消費し、<>前方の敵に致命的なダメージを与えます。<>必要装備 : 剣 AD : 1"};
 
 
 const int Equipment_None_None = 0;

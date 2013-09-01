@@ -180,7 +180,7 @@ void Map::CreateMap(b2World *World)
 				if(Flag >= 0)
 				{
 					//当たり判定の生成
-					GroundBox.SetAsBox(16/Box_Rate,16/Box_Rate,b2Vec2((x*32+16)/Box_Rate,(y*32+16)/Box_Rate),0);
+					GroundBox.SetAsBox(16/Box_Rate-0.1,16/Box_Rate-0.1,b2Vec2((x*32+16)/Box_Rate,(y*32+16)/Box_Rate),0);
 					MapChipFixtures.push_back(GroundBody->CreateFixture(&GroundBox,0.f));
 					string Str = ScriptData[Flag][0] + "," + ntos(MapChipFixtures.size()-1);
 					FixtureDataToMapChip.push_back(Str);
@@ -189,7 +189,7 @@ void Map::CreateMap(b2World *World)
 			}
 
 			//当たり判定の生成
-			GroundBox.SetAsBox(16.f/Box_Rate,16.f/Box_Rate,b2Vec2((x*32.f+16.f)/Box_Rate,(y*32.f+16.f)/Box_Rate),0);
+			GroundBox.SetAsBox(16.f/Box_Rate-0.1,16.f/Box_Rate-0.1,b2Vec2((x*32.f+16.f)/Box_Rate,(y*32.f+16.f)/Box_Rate),0);
 			GroundBody->CreateFixture(&GroundBox,0.f);
 		}
 	}

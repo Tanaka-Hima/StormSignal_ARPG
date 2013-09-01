@@ -285,6 +285,9 @@
     <Image Include="Image\Skill\Sword\Smash_1.png" />
     <Image Include="Image\Skill\Sword\Smash_2.png" />
     <Image Include="Image\Skill\Sword\Smash_3.png" />
+    <Image Include="Image\Skill\Sword\Spec0Dash_0.png" />
+    <Image Include="Image\Skill\Sword\Spec0Dash_1.png" />
+    <Image Include="Image\Skill\Sword\Spec0Dash_2.png" />
     <Image Include="Image\Skill\Sword\Spin_0.png" />
     <Image Include="Image\Skill\Sword\Spin_1.png" />
     <Image Include="Image\Skill\Sword\Spin_2.png" />

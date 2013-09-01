@@ -163,6 +163,12 @@ void Character::InitChara(b2World *World,string CharaType,float Density,float Fr
 	AnimeGraphs[AnimeGraphs.size()-1].Load("Image/Skill/Sword/StrikeTop_2.png");
 	AnimeGraphs[AnimeGraphs.size()-1].Load("Image/Skill/Sword/StrikeTop_3.png");
 
+	//Skill_Sword_Spec0Dash 11
+	AnimeGraphs.push_back(TempGraphs);
+	AnimeGraphs[AnimeGraphs.size()-1].Load("Image/Skill/Sword/Spec0Dash_0.png");
+	AnimeGraphs[AnimeGraphs.size()-1].Load("Image/Skill/Sword/Spec0Dash_1.png");
+	AnimeGraphs[AnimeGraphs.size()-1].Load("Image/Skill/Sword/Spec0Dash_2.png");
+
 	#pragma endregion
 
 	#pragma region エフェクト画像読み込み
@@ -327,6 +333,15 @@ bool Character::UseSkill(int SkillNumber,int EquipmentNumber)
 
 			return true;
 		}
+		case Skill_Sword_Spec0Dash:
+		{//前方へ一定距離移動 -> 時間差で間に居た敵へ大ダメージ
+			if(!JudgeSkillCancel())return false;
+
+			State = Skill_Sword_Spec0Dash;
+			StateTime = 2500;
+
+			return true;
+		}
 		#pragma endregion
 
 		#pragma region ハンドガン
@@ -394,6 +409,9 @@ bool Character::JudgeSkillCancel()
 		case Skill_Sword_StrikeTop:
 			if(StateTime < 300)return true;
 			else return false;
+		case Skill_Sword_Spec0Dash:
+			if(StateTime < 500)return true;
+			else return false;
 		case Skill_Handgun_Fire:
 			if(StateTime < 80)return true;
 			else return false;
@@ -460,7 +478,7 @@ void Character::Step()
 			{
 				State = Skill_None_None;
 				Graph[0] = AnimeGraphs[State].Graph[0];
-			};
+			}
 			break;
 		}
 		case Skill_Sword_Shockwave:
@@ -496,7 +514,7 @@ void Character::Step()
 			{
 				State = Skill_None_None;
 				Graph[0] = AnimeGraphs[State].Graph[0];
-			};
+			}
 			break;
 		}
 		case Skill_Sword_Knockup:
@@ -526,7 +544,7 @@ void Character::Step()
 			{
 				State = Skill_None_None;
 				Graph[0] = AnimeGraphs[State].Graph[0];
-			};
+			}
 			break;
 		}
 		case Skill_Sword_Smash:
@@ -557,7 +575,7 @@ void Character::Step()
 			{
 				State = Skill_None_None;
 				Graph[0] = AnimeGraphs[State].Graph[0];
-			};
+			}
 			break;
 		}
 		case Skill_Sword_Spin:
@@ -711,7 +729,7 @@ void Character::Step()
 			{
 				State = Skill_None_None;
 				Graph[0] = AnimeGraphs[State].Graph[0];
-			};
+			}
 			break;
 		case Skill_Sword_StrikeTop:
 		{//上昇しつつ打ち上げる
@@ -745,7 +763,87 @@ void Character::Step()
 			{
 				State = Skill_None_None;
 				Graph[0] = AnimeGraphs[State].Graph[0];
-			};
+			}
+			break;
+		}
+		case Skill_Sword_Spec0Dash:
+		{//前方へ一定距離移動 -> 時間差で間に居た敵へ大ダメージ
+			static int MoveDistance = 0;
+			if(StateTime > 2000)
+			{
+				Graph[0] = AnimeGraphs[State].Graph[0];
+				MoveDistance = 0;
+			}else if(StateTime > 1500)
+			{
+				if(BeforeStateTime > 2000)
+				{//前方へ一定距離移動
+					b2Transform Trans = GetBody()->GetTransform();
+					//速度を0に
+					GetBody()->SetLinearVelocity(b2Vec2(0,0));
+					//移動前に少し地面から浮かせる
+					Trans.p.y -= 16.f/Box_Rate;
+					GetBody()->SetTransform(Trans.p,0);
+
+					SEManager.Play(SE_SwingHeavy);
+					bool Flag = true;
+					while(Flag && MoveDistance < Screen_Width/4+16)
+					{
+						int Count = 0;
+						for(b2ContactEdge *i = GetBody()->GetContactList();i;i = i->next)
+						{
+							string Str = (char*)i->contact->GetFixtureB()->GetBody()->GetUserData();
+							if(fabs(i->contact->GetManifold()->localNormal.x) > 0.1 && Str == "Ground")
+							{
+								Flag = false;
+							}
+						}
+						MoveDistance += 16;
+						Trans.p.x += 16.f/Box_Rate*Direction;
+						GetBody()->SetTransform(Trans.p,0);
+					}
+					Trans.p.x -= 16.f/Box_Rate*Direction;
+					GetBody()->SetTransform(Trans.p,0);
+
+					//地面に戻す
+					Trans.p.y += 16.f/Box_Rate;
+					GetBody()->SetTransform(Trans.p,0);
+
+					//ヒットボックスを発生させる
+					b2PolygonShape Shape;
+					Shape.SetAsBox(MoveDistance/Box_Rate/2.f,3.7/2);
+					//b2Transform Trans;
+					b2Vec2 Pos = GetBody()->GetPosition();
+					Pos.x -= MoveDistance/Box_Rate/2.f*Direction;
+					Trans.Set(Pos,0);
+					HitBox Box;
+					HitBoxList.push_back(Box);
+					HitBoxList[HitBoxList.size()-1].Initialize(Shape,Trans,this,false,b2Vec2(0,0),1,1,200,1000,false);
+					HitBoxList[HitBoxList.size()-1].SetEffect(EffectGraphs[Effect_Other_Hit0]);
+					HitBoxList[HitBoxList.size()-1].SetSE(SE_Slash);
+				}
+				Graph[0] = AnimeGraphs[State].Graph[1];
+			}else if(StateTime > 500)
+			{
+				if(BeforeStateTime > 1500)
+				{//ヒットボックスを発生させる
+					b2PolygonShape Shape;
+					Shape.SetAsBox(MoveDistance/Box_Rate/2.f,3.7/2);
+					b2Transform Trans;
+					b2Vec2 Pos = GetBody()->GetPosition();
+					Pos.x -= MoveDistance/Box_Rate/2.f*Direction;
+					Trans.Set(Pos,0);
+					HitBox Box;
+					HitBoxList.push_back(Box);
+					HitBoxList[HitBoxList.size()-1].Initialize(Shape,Trans,this,false,b2Vec2(0,0),1,-1,1000,500,false);
+					HitBoxList[HitBoxList.size()-1].SetEffect(EffectGraphs[Effect_Other_Hit0]);
+					HitBoxList[HitBoxList.size()-1].SetSE(SE_Slash);
+				}
+				Graph[0] = AnimeGraphs[State].Graph[2];
+			}else
+			{
+				State = Skill_None_None;
+				Graph[0] = AnimeGraphs[State].Graph[0];
+			}
 			break;
 		}
 		}

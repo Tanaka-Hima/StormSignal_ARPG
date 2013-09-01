@@ -93,7 +93,8 @@ void Player::Ctrl()
 	bool Flag = false;
 	for(b2ContactEdge *i = GetBody()->GetContactList();i;i = i->next)
 	{
-		if(i->contact->GetManifold()->localNormal.y == 1)
+		string Str = (char*)i->contact->GetFixtureB()->GetBody()->GetUserData();
+		if(i->contact->GetManifold()->localNormal.y == 1 && Str == "Ground")
 		{
 			Flag = true;
 		}

@@ -676,6 +676,15 @@
     <Image Include="Image\Effect\Other\Hit0.dds">
       <Filter>リソース ファイル\Image\Effect\Other</Filter>
     </Image>
+    <Image Include="Image\Skill\Sword\Spec0Dash_0.png">
+      <Filter>リソース ファイル\Image\Skill\Sword</Filter>
+    </Image>
+    <Image Include="Image\Skill\Sword\Spec0Dash_1.png">
+      <Filter>リソース ファイル\Image\Skill\Sword</Filter>
+    </Image>
+    <Image Include="Image\Skill\Sword\Spec0Dash_2.png">
+      <Filter>リソース ファイル\Image\Skill\Sword</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\構想まとめ.txt">

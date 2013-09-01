@@ -62,7 +62,7 @@ bool HitBox::HitTestShape(Character* Target,b2PolygonShape *TargetShape,b2Transf
 	{
 		if(HittedChara[i] == TargetShape)Count++;
 	}
-	if(Count >= HitCount)return false;
+	if(Count >= HitCount && HitCount > 0)return false;
 
 	b2Manifold Manifold;
 

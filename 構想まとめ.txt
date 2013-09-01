@@ -167,7 +167,10 @@
 　　- 下を突く				(Skill_Sword_ThrustBottom)
 　　- 下をなぎ払う			(Skill_Sword_SweepBottom)
 　　- 下降しつつ叩きつける		(Skill_Sword_StrikeBottom)
-　　　◎必殺
+　　◎必殺
+　　- 前方へ一定距離移動 -> 時間差で間に居た敵へ大ダメージ
+		(Skill_Sword_Spec0Dash),EX消費 = 200
+
 　・銃器
 　　- 装備している銃器を打つ	(Skill_銃器名_Fire)
 　　　　カーソルキーで撃ち分け可能
