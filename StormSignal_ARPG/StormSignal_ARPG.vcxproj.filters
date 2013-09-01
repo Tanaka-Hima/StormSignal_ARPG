@@ -716,5 +716,11 @@
     <Media Include="SE\Splash.wav">
       <Filter>リソース ファイル\SE</Filter>
     </Media>
+    <Media Include="SE\Bomb.wav">
+      <Filter>リソース ファイル\SE</Filter>
+    </Media>
+    <Media Include="SE\Switch.wav">
+      <Filter>リソース ファイル\SE</Filter>
+    </Media>
   </ItemGroup>
 </Project>
