@@ -214,6 +214,12 @@ void Map::DestroyAll(b2World *World)
 		EnemyData[i].DestroyBody();
 	}
 	EnemyData.clear();
+	Length = RigidBodies.size();
+	for(int i=0;i<Length;i++)
+	{
+		RigidBodies[i].DestroyBody();
+	}
+	RigidBodies.clear();
 }
 
 void Map::DestroyMap(b2World *World)
@@ -226,6 +232,12 @@ void Map::DestroyMap(b2World *World)
 		EnemyData[i].DestroyBody();
 	}
 	EnemyData.clear();
+	Length = RigidBodies.size();
+	for(int i=0;i<Length;i++)
+	{
+		RigidBodies[i].DestroyBody();
+	}
+	RigidBodies.clear();
 }
 
 bool Map::GetPauseFlag()
