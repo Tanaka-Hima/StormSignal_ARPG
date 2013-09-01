@@ -86,6 +86,8 @@
 	指定サウンドを鳴らす
 　　- Message|ShowMessage
 	ゲームの進行を止め、ShowMessageを表示する
+　　- Collision|Flag(0 or 1)
+	自分の当たり判定を変更する
 　　- Clear|NextStageName
 	現在プレイしているステージを完了し、次のステージへ移動する
 	(例:Clear|AC_Stage2 -> AC_Stage2.txt,AC_Stage2_Script.txtを読み込む)

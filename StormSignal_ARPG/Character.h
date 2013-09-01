@@ -32,7 +32,7 @@ const string SkillValueNames[] = {"Skill_None_None",
 								"Skill_Sword_Spec0Dash"};
 
 const int SkillAvailableCount[] = {0,1,1,0,1,1,1,8,1,1,1,1};
-const int SkillConsumeEX[] = {0,0,0,0,0,0,0,0,0,0,0,2};
+const int SkillConsumeEX[] = {0,0,0,0,0,0,0,0,0,0,0,200};
 
 const string SkillNames[] = {"無し",
 							"前方へ剣を振り下ろす(仮)",
@@ -58,7 +58,7 @@ const string SkillInfo[] = {"スキルを設定しません。<>必要装備 : �
 							"前方へ強力な攻撃を行ないます。<>必要装備 : 剣 AD : 1",
 							"自分の周りへ攻撃を行います。<>必要装備 : 剣 AD : 1",
 							"空中に飛び上がりつつ敵を打ち上げます。<>必要装備 : 剣 AD : 1",
-							"EXゲージを200消費し、<>前方の敵に致命的なダメージを与えます。<>必要装備 : 剣 AD : 1"};
+							"前方に移動し、敵に致命的なダメージを与えます。<>必要装備 : 剣 AD : 1 EX : 2"};
 
 
 const int Equipment_None_None = 0;

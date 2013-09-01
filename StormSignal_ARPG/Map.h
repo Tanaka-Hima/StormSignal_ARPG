@@ -35,6 +35,7 @@ const string Action_Flag = "Flag";
 const string Action_Delete = "Delete";
 const string Action_Sound = "Sound";
 const string Action_Message = "Message";
+const string Action_Collision = "Collision";
 const string Action_Clear = "Clear";
 
 enum InterfaceNumber

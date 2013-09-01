@@ -448,6 +448,27 @@ void Map::Step()
 								MessageWindow.ReWindow();
 								MessageWindow.DrawStringInWindow(5,5,DrawString_Left,Data[1],FontSmall,White);
 								MessageWindow.Ext = 0.01f;
+							}else if(ScriptData[i][4].find(Action_Collision) != string::npos)
+							{//自分の当たり判定を変更する
+								vector<string> Data = split(ScriptData[i][4],"|");
+								if(Data[1] == "0")
+								{//当たり判定を消す
+									int FixLength = FixtureDataToMapChip.size();
+									for(int j=0;j<FixLength;j++)
+									{
+										vector<string> Data = split(FixtureDataToMapChip[j],",");
+										if(Data[0] == MapData[y][x])
+										{//当たり判定を削除
+											GroundBody->DestroyFixture(MapChipFixtures[atoi(Data[1].c_str())]);
+										}
+									}
+								}else if(Data[1] == "1")
+								{//当たり判定を追加する
+									GroundBox.SetAsBox(16/Box_Rate-0.1,16/Box_Rate-0.1,b2Vec2((x*32+16)/Box_Rate,(y*32+16)/Box_Rate),0);
+									MapChipFixtures.push_back(GroundBody->CreateFixture(&GroundBox,0.f));
+									string Str = ScriptData[i][0] + "," + ntos(MapChipFixtures.size()-1);
+									FixtureDataToMapChip.push_back(Str);
+								}
 							}else if(ScriptData[i][4].find(Action_Clear) != string::npos)
 							{//現在プレイしているステージを完了し、次のステージへ移動する
 								vector<string> Data = split(ScriptData[i][4],"|");

@@ -773,7 +773,7 @@ void Character::Step()
 			{
 				Graph[0] = AnimeGraphs[State].Graph[0];
 				MoveDistance = 0;
-			}else if(StateTime > 1500)
+			}else if(StateTime > 1900)
 			{
 				if(BeforeStateTime > 2000)
 				{//前方へ一定距離移動
@@ -792,7 +792,7 @@ void Character::Step()
 						for(b2ContactEdge *i = GetBody()->GetContactList();i;i = i->next)
 						{
 							string Str = (char*)i->contact->GetFixtureB()->GetBody()->GetUserData();
-							if(fabs(i->contact->GetManifold()->localNormal.x) > 0.1 && Str == "Ground")
+							if(fabs(i->contact->GetManifold()->localNormal.x) != 0 && Str == "Ground")
 							{
 								Flag = false;
 							}
@@ -822,7 +822,8 @@ void Character::Step()
 					HitBoxList[HitBoxList.size()-1].SetSE(SE_Slash);
 				}
 				Graph[0] = AnimeGraphs[State].Graph[1];
-			}else if(StateTime > 500)
+			}else if(StateTime > 1500)Graph[0] = AnimeGraphs[State].Graph[2];
+			else if(StateTime > 500)
 			{
 				if(BeforeStateTime > 1500)
 				{//ヒットボックスを発生させる
@@ -834,7 +835,7 @@ void Character::Step()
 					Trans.Set(Pos,0);
 					HitBox Box;
 					HitBoxList.push_back(Box);
-					HitBoxList[HitBoxList.size()-1].Initialize(Shape,Trans,this,false,b2Vec2(0,0),1,-1,1000,500,false);
+					HitBoxList[HitBoxList.size()-1].Initialize(Shape,Trans,this,false,b2Vec2(0,0),2,-1,1000,500,false);
 					HitBoxList[HitBoxList.size()-1].SetEffect(EffectGraphs[Effect_Other_Hit0]);
 					HitBoxList[HitBoxList.size()-1].SetSE(SE_Slash);
 				}
