@@ -21,6 +21,7 @@ void Map::Initialize(b2World *World,bool InitPlayerFlag)
 	EnemyData.clear();
 	RigidBodies.clear();
 	MessageWindow.Initialize(Screen_Width/2-150,Screen_Height/2-100,300,200,Black,LightBlack);
+	PlayerData.x = PlayerData.y = 0;
 
 	//フォント読み込み
 	DeleteFontToHandle(FontSmall);
@@ -203,12 +204,24 @@ void Map::DestroyAll(b2World *World)
 	PlayerData.GetBody()->SetLinearVelocity(b2Vec2(0,0));
 	PlayerData.DeleteCharacterList();
 	PlayerData.Unload();
+	int Length = EnemyData.size();
+	for(int i=0;i<Length;i++)
+	{
+		EnemyData[i].DestroyBody();
+	}
+	EnemyData.clear();
 }
 
 void Map::DestroyMap(b2World *World)
 {
 	World->DestroyBody(GroundBody);
 	PlayerData.GetBody()->SetLinearVelocity(b2Vec2(0,0));
+	int Length = EnemyData.size();
+	for(int i=0;i<Length;i++)
+	{
+		EnemyData[i].DestroyBody();
+	}
+	EnemyData.clear();
 }
 
 bool Map::GetPauseFlag()
@@ -290,6 +303,7 @@ void Map::Step()
 
 		if(EnemyData[i].HP < 0)
 		{
+			EnemyData[i].DestroyBody();
 			EnemyData.erase(EnemyData.begin()+i);
 			i--;
 			Length--;

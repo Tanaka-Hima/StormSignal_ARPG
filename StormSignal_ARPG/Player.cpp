@@ -155,7 +155,7 @@ void Player::Ctrl()
 	}
 
 	//地面との摩擦
-	if(Flag && Vect.x != 0)Vect.x -= (float32)(Vect.x / fabs(Vect.x) * 0.05);
+	if(Flag && Vect.x != 0)Vect.x -= (float32)(Vect.x / fabs(Vect.x) * 0.13);
 
 	//ベクトルを適用
 	GetBody()->SetLinearVelocity(Vect);

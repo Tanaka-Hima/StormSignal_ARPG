@@ -69,7 +69,8 @@ void Character::InitChara(b2World *World,string CharaType,float Density,float Fr
 	BeforeStateTime = 0;
 	BeforeVect = b2Vec2(0,0);
 	ScrollDistance = 0;
-	Time = GetNowCount();
+	InitTime = Time = GetNowCount();
+	DestFlag = false;
 
 	if(AnimeGraphs.size() != 0)return;
 
@@ -983,6 +984,13 @@ void Character::DeleteCharacterList()
 			break;
 		}
 	}
+}
+
+void Character::DestroyBody()
+{
+	b2World *World = GetBody()->GetWorld();
+	World->DestroyBody(GetBody());
+	DestFlag = true;
 }
 
 void Character::SetScrollDistance(float Distance)

@@ -138,11 +138,29 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 						Map.LoadMapData("Map/AC_Stage1.txt");
 						Map.LoadScriptData("Map/AC_Stage1_Script.txt");
 						Map.CreateMap(&World);
+
+						Sleep(100);
+
+						Map.DestroyMap(&World);
+						Map.Initialize(&World,false);
+						Map.LoadMapData(Map.GetStagePass());
+						Map.LoadScriptData(Map.GetScriptPass());
+						Map.CreateMap(&World);
+						Map.InitPlayerHP();
 					}else if(Scene == TrainingMode)
 					{
 						Map.LoadMapData("Map/Training.txt");
 						Map.LoadScriptData("Map/Training_Script.txt");
 						Map.CreateMap(&World);
+
+						Sleep(100);
+
+						Map.DestroyMap(&World);
+						Map.Initialize(&World,false);
+						Map.LoadMapData(Map.GetStagePass());
+						Map.LoadScriptData(Map.GetScriptPass());
+						Map.CreateMap(&World);
+						Map.InitPlayerHP();
 					}
 				}
 
@@ -173,16 +191,15 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 					Map.LoadScriptData(Map.GetScriptPass());
 					Map.CreateMap(&World);
 					Map.InitPlayerHP();
-				}
-
-				if(Name != "")
+					continue;
+				}else if(Name != "")
 				{
 					Map.DestroyMap(&World);
 					Map.Initialize(&World,false);
 					Map.LoadMapData("Map/"+Name+".txt");
 					Map.LoadScriptData("Map/"+Name+"_Script.txt");
 					Map.CreateMap(&World);
-
+					continue;
 				}
 
 				Map.Step();

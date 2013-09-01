@@ -1,4 +1,5 @@
 ﻿#include "Physics2DImage.h"
+#include <DxLib.h>
 
 #ifndef _CHARACTER
 #define _CHARACTER
@@ -110,7 +111,9 @@ public:
 	int StateTime;//現在の状態が続く時間
 	int BeforeStateTime;//前フレームでのStateTime
 	int Time;//時間
+	int InitTime;
 	int Width,Height;
+	bool DestFlag;
 	b2Vec2 BeforeVect;//前フレームでの速度
 	int AffectStanTime;//自分の攻撃で敵に与えたStanTime
 	int ComboCount;//コンボ数
@@ -131,15 +134,20 @@ public:
 	virtual Character* GetPlayer();//プレイヤーのポインターを取得
 	void SetScrollDistance(float Distance);
 	string GetCharaType();//このCharacterの種類を取得
-	void DeleteCharacterList();//自信をCharacterListから削除
+	void DeleteCharacterList();//自身をCharacterListから削除
+	void DestroyBody();//自身を削除
 	virtual ~Character()
 	{
 		DeleteCharacterList();
-		if(Graph.size() > 0)
+		
+		/*
+		if(Graph.size() > 0 && InitTime + 50 < GetNowCount() && !DestFlag)
 		{
 			b2World *World = GetBody()->GetWorld();
 			World->DestroyBody(GetBody());
+			InitTime = GetNowCount();
 		}
+		*/
 	}
 };
 
