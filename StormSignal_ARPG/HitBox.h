@@ -50,13 +50,15 @@ public:
 	void SetMoveFlag(b2Vec2 InputMoveVect,bool InputAutoAngle = false);//この関数を呼び出した場合、1秒に指定分だけHitBoxが移動する
 	void SetGraph(Image_2D Image);//この関数を呼び出した場合、ヒットボックスが存在する位置に画像が描画される
 	void SetEffect(Image_2D Image);//この関数を呼び出した場合、ヒット時にエフェクトが描画される
-	void SetSE(int Handle);//この関数を呼び出した場合、
+	void SetSE(int Handle);//この関数を呼び出した場合、ヒット時に効果音が発生する
+	void SetTransform(b2Transform InputTrans);//姿勢情報の書き換え
 	bool HitTestShape(Character* Target,b2PolygonShape* TargetShape,b2Transform TargetTrans);//Characterとの当たり判定
 	bool Step();//毎フレームの処理
 	Character* GetCharacter();//ヒットボックスを生成したCharacterを取得
 	b2Vec2 GetHitVect();//ヒット時に対象へ与えるベクトルを取得
 	int GetDamage();//対象へ与えるダメージを取得
 	int GetStanTime();//対象が行動不能になる時間を取得
+	b2Transform GetTransform();//姿勢情報の取得
 
 	void Draw();//描画
 

@@ -52,6 +52,11 @@ void HitBox::SetSE(int Handle)
 	SEHandle = Handle;
 }
 
+void HitBox::SetTransform(b2Transform InputTrans)
+{
+	Transform = InputTrans;
+}
+
 bool HitBox::HitTestShape(Character* Target,b2PolygonShape *TargetShape,b2Transform TargetTrans)
 {
 	if(Target == Attacker && !Suicide)return false;
@@ -131,6 +136,11 @@ int HitBox::GetDamage()
 int HitBox::GetStanTime()
 {
 	return StanTime;
+}
+
+b2Transform HitBox::GetTransform()
+{
+	return Transform;
 }
 
 void HitBox::Draw()

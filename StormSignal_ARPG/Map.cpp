@@ -317,6 +317,14 @@ void Map::Step()
 			PlayerData.CharacterList[i]->GetBody()->SetTransform(Trans.p,Trans.q.GetAngle());
 		}
 
+		Length = PlayerData.HitBoxList.size();
+		for(int i=0;i<Length;i++)
+		{
+			b2Transform Trans = PlayerData.HitBoxList[i].GetTransform();
+			Trans.p.x += ScrollDistance;
+			PlayerData.HitBoxList[i].SetTransform(Trans);
+		}
+
 		GroundBody->SetTransform(MapTrans.p,MapTrans.q.GetAngle());
 	}else if(PlayerTrans.p.x > Screen_Width*(4.0/7.0)/Box_Rate)
 	{
@@ -329,6 +337,14 @@ void Map::Step()
 			b2Transform Trans = PlayerData.CharacterList[i]->GetBody()->GetTransform();
 			Trans.p.x -= ScrollDistance;
 			PlayerData.CharacterList[i]->GetBody()->SetTransform(Trans.p,Trans.q.GetAngle());
+		}
+
+		Length = PlayerData.HitBoxList.size();
+		for(int i=0;i<Length;i++)
+		{
+			b2Transform Trans = PlayerData.HitBoxList[i].GetTransform();
+			Trans.p.x -= ScrollDistance;
+			PlayerData.HitBoxList[i].SetTransform(Trans);
 		}
 
 		GroundBody->SetTransform(MapTrans.p,MapTrans.q.GetAngle());
