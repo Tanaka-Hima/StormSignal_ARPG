@@ -191,6 +191,15 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 					Map.LoadScriptData(Map.GetScriptPass());
 					Map.CreateMap(&World);
 					Map.InitPlayerHP();
+
+					Sleep(100);
+
+					Map.DestroyMap(&World);
+					Map.Initialize(&World,false);
+					Map.LoadMapData(Map.GetStagePass());
+					Map.LoadScriptData(Map.GetScriptPass());
+					Map.CreateMap(&World);
+					Map.InitPlayerHP();
 					continue;
 				}else if(Name != "")
 				{
@@ -199,6 +208,15 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 					Map.LoadMapData("Map/"+Name+".txt");
 					Map.LoadScriptData("Map/"+Name+"_Script.txt");
 					Map.CreateMap(&World);
+
+					Sleep(100);
+
+					Map.DestroyMap(&World);
+					Map.Initialize(&World,false);
+					Map.LoadMapData(Map.GetStagePass());
+					Map.LoadScriptData(Map.GetScriptPass());
+					Map.CreateMap(&World);
+					Map.InitPlayerHP();
 					continue;
 				}
 
