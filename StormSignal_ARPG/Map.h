@@ -17,6 +17,7 @@ const string Mapchip_Switch1 = "04";
 const string Mapchip_Switch2 = "05";
 const string Mapchip_Board = "06";
 const string Mapchip_Flag = "07";
+const string Mapchip_BlankBlock = "08";
 
 const string Mapchip_TrainingBag = "10";
 const string Mapchip_CommonEnemy1 = "11";
@@ -31,6 +32,7 @@ const string Trigger_Flag = "Flag";
 const string Trigger_Flagged = "Flagged";
 
 const string Action_Redraw = "Redraw";
+const string Action_Replace = "Replace";
 const string Action_Flag = "Flag";
 const string Action_Delete = "Delete";
 const string Action_Sound = "Sound";

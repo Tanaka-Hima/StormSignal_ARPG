@@ -64,6 +64,10 @@ void Map::Initialize(b2World *World,bool InitPlayerFlag)
 	MapChips.push_back(TempGraph);
 	MapChips[MapChips.size()-1].Load("Image/Map/Flag.png");
 
+	//点線ブロック 8
+	MapChips.push_back(TempGraph);
+	MapChips[MapChips.size()-1].Load("Image/Map/BlankBlock.png");
+
 	//Interface
 	Interfaces.push_back(TempGraph);
 	Interfaces[Interfaces.size()-1].Load("Image/Interface/HPFrame.png");
@@ -412,11 +416,16 @@ void Map::Step()
 							ScriptData[i][3] == Trigger_Flag;
 						}
 
+						if(ScriptData[i].size() == 7)
+						{//インターバル用領域追加
+							ScriptData[i].push_back(ntos(atoi(ScriptData[i][6].c_str())+GetNowCount()));
+						}
 						int Count = atoi(ScriptData[i][5].c_str());
-						if(Flag && (Count > 0 || Count < 0))
+						if(Flag && (Count > 0 || Count <= -1) && atoi(ScriptData[i][7].c_str()) < GetNowCount())
 						{
 							Count--;
 							ScriptData[i][5] = ntos(Count);
+							ScriptData[i][7] = ntos(GetNowCount()+atoi(ScriptData[i][6].c_str()));
 							if(ScriptData[i][4].find(Action_Flag) != string::npos)
 							{//Targetのフラグを立てる
 								vector<string> Data = split(ScriptData[i][4],"|");
@@ -431,6 +440,10 @@ void Map::Step()
 							{//自分の見た目をNumberへ変更する
 								vector<string> Data = split(ScriptData[i][4],"|");
 								ScriptData[i][1] = Data[1];
+							}else if(ScriptData[i][4].find(Action_Replace) != string::npos)
+							{//自分を指定した文字の特殊ブロックへ置き換える
+								vector<string> Data = split(ScriptData[i][4],"|");
+								MapData[y][x] = Data[1];
 							}else if(ScriptData[i][4] == Action_Delete)
 							{//自分をマップから削除する
 								int FixLength = FixtureDataToMapChip.size();
@@ -530,6 +543,7 @@ void Map::Draw()
 			if(GraphNum == Mapchip_Switch2)Graph = MapChips[5].Graph[0];
 			if(GraphNum == Mapchip_Board)Graph = MapChips[6].Graph[0];
 			if(GraphNum == Mapchip_Flag)Graph = MapChips[7].Graph[0];
+			if(GraphNum == Mapchip_BlankBlock)Graph = MapChips[8].Graph[0];
 
 			DrawGraph(MapTrans.p.x*Box_Rate+x*32,y*32,Graph,true);
 		}
