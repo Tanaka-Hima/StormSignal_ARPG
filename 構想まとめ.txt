@@ -1,306 +1,306 @@
-�����[�h
-�@�EStory
-�@�EArcade
-�@�ETraining
-�@�EOption
+﻿○モード
+　・Story
+　・Arcade
+　・Training
+　・Option
 
-��������@
-�@�J�[�\���L�[ - �ړ��A�A�N�V����
-�@Enter - ����
-�@Space - �W�����v
-�@QWEASDZXC - �X�L��
-�@Alt - ���j���[
+○操作方法
+　カーソルキー - 移動、アクション
+　Enter - 決定
+　Space - ジャンプ
+　QWEASDZXC - スキル
+　Alt - メニュー
 
-��Option
-�@�EBGM
-�@�ESE
-�@�EKeyConfig
+○Option
+　・BGM
+　・SE
+　・KeyConfig
 
-���}�b�v
-�@32*32�̃}�b�v�`�b�v���g�p(�c��14�� 2�h�b�g�]��)
-�@�܂����R���X�g���N�V�����̂悤�ɁA�e�L�X�g�G�f�B�^�Ń}�b�v������s����悤�ɂ���
-�@
-�@��{�����@�� - Mapchip_(���)
-�@�E�n�`
-�@�@- "00"	��		(Mapchip_Blank)
-�@�@- "01"	�y		(Mapchip_Clay)
-�@�@- "02"	�y��		(Mapchip_ClayFloor)
-�@�@- "03"	�ؔ�		(Mapchip_Woodbox)
-	�������肷��Ɠ���
-�@�@- "04"	�X�C�b�`1(off)	(Mapchip_Switch1)
-�@�@- "05"	�X�C�b�`2(on)	(Mapchip_Switch2)
-�@�@- "06"	�Ŕ�		(Mapchip_Board)
-�@�@- "07"	��		(Mapchip_Flag)
-�@�@- "08"	�_���u���b�N	(Mapchip_BlankBlock)
-�@�E�G
-�@�@- "10" �T���h�o�b�O		(Mapchip_TrainingBag)
-	���G�A�������Ȃ����K��
-�@�@- "11" �G��1		(Mapchip_CommonEnemy1)
-	�߂Â��Ďa��
-
-
-�@�E���̑�
-�@�@- "99"	�v���C���[	(Mapchip_Player)
-	�v���C���[�̏����n�_
-�@�@- "AA~ZZ"	����u���b�N
-	�ړ���,�X�C�b�`,�Q�[�g��
-	�����ɂ��Ă͕ʂɒ�`����
+○マップ
+　32*32のマップチップを使用(縦に14枚 2ドット余る)
+　まさおコンストラクションのように、テキストエディタでマップ制作を行えるようにする
+　
+　基本命名法則 - Mapchip_(種類)
+　・地形
+　　- "00"	空欄		(Mapchip_Blank)
+　　- "01"	土		(Mapchip_Clay)
+　　- "02"	土床		(Mapchip_ClayFloor)
+　　- "03"	木箱		(Mapchip_Woodbox)
+	押したりすると動く
+　　- "04"	スイッチ1(off)	(Mapchip_Switch1)
+　　- "05"	スイッチ2(on)	(Mapchip_Switch2)
+　　- "06"	看板		(Mapchip_Board)
+　　- "07"	旗		(Mapchip_Flag)
+　　- "08"	点線ブロック	(Mapchip_BlankBlock)
+　・敵
+　　- "10" サンドバッグ		(Mapchip_TrainingBag)
+	無敵、何もしない練習台
+　　- "11" 雑兵1		(Mapchip_CommonEnemy1)
+	近づいて斬る
 
 
-������u���b�N
-�@���q�@�� - �ΏۃA���t�@�x�b�g,�O��,�ʂ蔲������,�g���K�[,�A�N�V����,�����,�C���^�[�o��
+　・その他
+　　- "99"	プレイヤー	(Mapchip_Player)
+	プレイヤーの初期地点
+　　- "AA~ZZ"	特殊ブロック
+	移動床,スイッチ,ゲート等
+	働きについては別に定義する
 
-�@�E�ΏۃA���t�@�x�b�g
-�@�@AA~ZZ�̂ǂ�ɓK�����邩���w��
 
-�@�E�O��
-�@�@�ǂ̌����ڂɂ��邩���w��
-�@�@�Ⴆ�΁A1���w�肷��Γy�̌����ڂƂȂ�
+○特殊ブロック
+　既述法則 - 対象アルファベット,外見,通り抜け判定,トリガー,アクション,動作回数,インターバル
 
-�@�E�ʂ蔲������
-�@�@1���w�肷�邱�ƂŃv���C���[���ʂ蔲�����Ȃ��悤�ɂ���
+　・対象アルファベット
+　　AA~ZZのどれに適応するかを指定
 
-�@�E�g���K�[
-�@�@�Ώۂɉ����N�����瓮������邩�w��
-�@�@- Hit(Hited -> �O�t���[���ŐG��Ă���)
-	�ΏۂɐG�ꂽ�u�Ԃ̂݋N��
-�@�@- Touch
-	�ΏۂɐG��Ă���ԏ�ɋN��
-�@�@- Use
-	�Ώۂ̋߂��Ł��L�[�������ƋN��
-�@�@- Flag -> Flagged
-	���Ώۂ���t���O�𗧂Ă���ƋN��
-�@�@- Repeat -> Repeated -> Repeat......
-	�ŏ�����N�����Ă���A���삪�I���Ɣ��΂̓�����n�߂�
+　・外見
+　　どの見た目にするかを指定
+　　例えば、1を指定すれば土の見た目となる
 
-�@�E�A�N�V����
-�@�@�g���K�[�������ꂽ���A�����s�����w��
-�@�@- Flag|Target(AA~ZZ)
-	Target�̃t���O�𗧂Ă�(Target�̃g���K�[��Flag�łȂ��ꍇ�͖���)
-�@�@- Move|x/ms|y/ms|msec
-	������msec���ړ�������
-�@�@- Delete
-	�������}�b�v����폜����
-�@�@- Redraw|Number
-	�����̌����ڂ�Number�֕ύX����
-�@�@- Replace|Str
-�@�@�@�@�������w�肵�������̃u���b�N�֒u��������
-�@�@- Sound|FileName
-	�w��T�E���h��炷
-�@�@- Message|ShowMessage
-	�Q�[���̐i�s���~�߁AShowMessage��\������
-�@�@- Collision|Flag(0 or 1)
-	�����̓����蔻���ύX����
-�@�@- Clear|NextStageName
-	���݃v���C���Ă���X�e�[�W���������A���̃X�e�[�W�ֈړ�����
-	(��:Clear|AC_Stage2 -> AC_Stage2.txt,AC_Stage2_Script.txt��ǂݍ���)
+　・通り抜け判定
+　　1を指定することでプレイヤーが通り抜けられないようにする
 
-�@�E�����
-�@�@���̓��������s�������w��
-�@�@-1�Ŗ�����
+　・トリガー
+　　対象に何が起きたら動作をするか指定
+　　- Hit(Hited -> 前フレームで触れている)
+	対象に触れた瞬間のみ起動
+　　- Touch
+	対象に触れている間常に起動
+　　- Use
+	対象の近くで↑キーを押すと起動
+　　- Flag -> Flagged
+	他対象からフラグを立てられると起動
+　　- Repeat -> Repeated -> Repeat......
+	最初から起動しており、動作が終わると反対の動作を始める
 
-�@�E�C���^�[�o��
-�@�@���̓���܂ł̃C���^�[�o�����w��
+　・アクション
+　　トリガーが引かれた時、何を行うか指定
+　　- Flag|Target(AA~ZZ)
+	Targetのフラグを立てる(TargetのトリガーがFlagでない場合は無効)
+　　- Move|x/ms|y/ms|msec
+	自分をmsec分移動させる
+　　- Delete
+	自分をマップから削除する
+　　- Redraw|Number
+	自分の見た目をNumberへ変更する
+　　- Replace|Str
+　　　　自分を指定した文字のブロックへ置き換える
+　　- Sound|FileName
+	指定サウンドを鳴らす
+　　- Message|ShowMessage
+	ゲームの進行を止め、ShowMessageを表示する
+　　- Collision|Flag(0 or 1)
+	自分の当たり判定を変更する
+　　- Clear|NextStageName
+	現在プレイしているステージを完了し、次のステージへ移動する
+	(例:Clear|AC_Stage2 -> AC_Stage2.txt,AC_Stage2_Script.txtを読み込む)
 
-�@�E��
-�@�@AA,04,Hit,Redraw|05,1,0
-�@�@�ݒu����AA�u���b�N�̌����ڂ��X�C�b�`(off)�Ƃ���
-�@�@�G��ƃX�C�b�`(on)�֕ω�����
+　・動作回数
+　　この動作を何回行うかを指定
+　　-1で無限大
 
-������
-�@��������3�p�ӂ��A�����ւ͂߂�
-�@�X�L���͑�����������Ɋ֘A������̂����g�p�ł��Ȃ�
-�@������"���A�n���h�K���A��"���Ƃ���ƁA���╀�Ȃǂ��g�p����X�L���͎g�p�s�\
+　・インターバル
+　　次の動作までのインターバルを指定
 
-��EX�Q�[�W
-�@�K�E�Z�ȂǁA���\�������X�L�����g�p����ۂɎg�p
-�@�R���{�������قǑ����₷��
+　・例
+　　AA,04,Hit,Redraw|05,1,0
+　　設置したAAブロックの見た目をスイッチ(off)とする
+　　触るとスイッチ(on)へ変化する
 
-���X�L���E�B���h�E(750,400)
+○装備
+　装備欄を3つ用意し、そこへはめる
+　スキルは装備した武器に関連するものしか使用できない
+　装備が"剣、ハンドガン、盾"だとすると、槍や斧などを使用するスキルは使用不能
+
+○EXゲージ
+　必殺技など、性能が高いスキルを使用する際に使用
+　コンボが長いほど増えやすい
+
+○スキルウィンドウ(750,400)
 --------------------------------------
-�@�X�L���A�����^�u(3*1)	
+　スキル、装備タブ(3*1)	
 
-�@������(3*1)		�������ꗗ��
+　装備窓(3*1)		←装備一覧→
 
-�@�X�L����(3*3)		���@�X�L���ꗗ(5*3)��
-�@�X�L����		���A�X�L���ꗗ��
-�@�X�L����		���B�X�L���ꗗ��
+　スキル窓(3*3)		←①スキル一覧(5*3)→
+　スキル窓		←②スキル一覧→
+　スキル窓		←③スキル一覧→
 
-	�I���X�L���A�@��������(2*2)
-	�I���X�L���A�@��������
+	選択スキル、　装備説明(2*2)
+	選択スキル、　装備説明
 ---------------------------------------
-�@�������ɑ����������̂ɑΉ�����X�L�����ꗗ�֕\��
-�@��x�ݒ肵�������͕ۑ�����A�^�u�؂�ւ��ŌĂяo�����\
+　装備窓に装備したものに対応するスキルを一覧へ表示
+　一度設定した装備は保存され、タブ切り替えで呼び出しが可能
 
-������
-�@��{�����@�� - Equipment_(������)_(���)
+○装備
+　基本命名法則 - Equipment_(装備名)_(種類)
 
-�@�E��
-�@�@- �ʏ팕		(Equipment_Sword_Normal)
-�@�@- ����		(Equipment_Sword_Flame)
-	���X�L���̃_���[�W*1.5
-�@�@- �X��		(Equipment_Sword_Ice)
-	���X�L���̃X�^������*2
-�@�@- ����		(Equipment_Sword_Thunder)
-	���X�L���ɂ��EX�Q�[�W������*2
-�@�E�e��
-�@�@- �n���h�K��	(Equipment_Handgun_Normal)
-�@�@- �A�T���g���C�t��
-�@�@	�t���I�[�g	(Equipment_Assaultrifle_Fullauto)
-	3�_�o�[�X�g	(Equipment_Assaultrifle_3PBurst)
-�@�E�Ί�
-�@�@- RPG		(Equipment_RPG_Normal)
-�@�E��
+　・剣
+　　- 通常剣		(Equipment_Sword_Normal)
+　　- 炎剣		(Equipment_Sword_Flame)
+	剣スキルのダメージ*1.5
+　　- 氷剣		(Equipment_Sword_Ice)
+	剣スキルのスタン時間*2
+　　- 雷剣		(Equipment_Sword_Thunder)
+	剣スキルによるEXゲージ増加率*2
+　・銃器
+　　- ハンドガン	(Equipment_Handgun_Normal)
+　　- アサルトライフル
+　　	フルオート	(Equipment_Assaultrifle_Fullauto)
+	3点バースト	(Equipment_Assaultrifle_3PBurst)
+　・火器
+　　- RPG		(Equipment_RPG_Normal)
+　・盾
 
-�@�E���̑�
-�@�@- ��	(Equipment_None_None)
+　・その他
+　　- 空欄	(Equipment_None_None)
 
-���X�L��
-�@��{�����@�� - Skill_(�X�L����)_(�s��)
-�@{���,���x��,�o���l,AD(AvailableCount = �g�p�ł����)}
+○スキル
+　基本命名法則 - Skill_(スキル名)_(行動)
+　{種類,レベル,経験値,AD(AvailableCount = 使用できる回数)}
 
-�@�E��(���ׂ�AD1)
-�@�@- �O���֌���U�艺�낷		(Skill_Sword_Front)
-�@�@- �O���֏Ռ��g			(Skill_Sword_Shockwave)
-�@�@- �ł��グ				(Skill_Sword_Knockup)
-�@�@- �O���֐�����΂��U��		(Skill_Sword_Smash)
-�@�@- ������]������			(Skill_Sword_Spin)
-�@�@- �O���փX�e�b�v->�U��		(Skill_Sword_Step)
-�@�@- ���˂�				(Skill_Sword_ThrustTop)
-�@�@- ����Ȃ�����			(Skill_Sword_SweepTop)
-�@�@- �㏸���ł��グ��		(Skill_Sword_StrikeTop)
-�@�@- ����˂�				(Skill_Sword_ThrustBottom)
-�@�@- �����Ȃ�����			(Skill_Sword_SweepBottom)
-�@�@- ���~���@������		(Skill_Sword_StrikeBottom)
-�@�@���K�E
-�@�@- �O���ֈ�苗���ړ� -> ���ԍ��ŊԂɋ����G�֑�_���[�W
-		(Skill_Sword_Spec0Dash),EX���� = 200
+　・剣(すべてAD1)
+　　- 前方へ剣を振り下ろす		(Skill_Sword_Front)
+　　- 前方へ衝撃波			(Skill_Sword_Shockwave)
+　　- 打ち上げ				(Skill_Sword_Knockup)
+　　- 前方へ吹き飛ばし攻撃		(Skill_Sword_Smash)
+　　- 剣を回転させる			(Skill_Sword_Spin)
+　　- 前方へステップ->攻撃		(Skill_Sword_Step)
+　　- 上を突く				(Skill_Sword_ThrustTop)
+　　- 上をなぎ払う			(Skill_Sword_SweepTop)
+　　- 上昇しつつ打ち上げる		(Skill_Sword_StrikeTop)
+　　- 下を突く				(Skill_Sword_ThrustBottom)
+　　- 下をなぎ払う			(Skill_Sword_SweepBottom)
+　　- 下降しつつ叩きつける		(Skill_Sword_StrikeBottom)
+　　◎必殺
+　　- 前方へ一定距離移動 -> 時間差で間に居た敵へ大ダメージ
+		(Skill_Sword_Spec0Dash),EX消費 = 200
 
-�@�E�e��
-�@�@- �������Ă���e���ł�	(Skill_�e�햼_Fire)
-�@�@�@�@�J�[�\���L�[�Ō��������\
-�@�@�@���K�E
-�@�E�Ί�
-�@�@- �������Ă���Ί������
-�@�@�@���K�E
-�@�E��
-�@�@�@���K�E
-�@�E�̏p
-�@�@�@���K�E
-�@�@
+　・銃器
+　　- 装備している銃器を打つ	(Skill_銃器名_Fire)
+　　　　カーソルキーで撃ち分け可能
+　　　◎必殺
+　・火器
+　　- 装備している火器を撃つ
+　　　◎必殺
+　・盾
+　　　◎必殺
+　・体術
+　　　◎必殺
+　　
 
-�@�E���ȋ���
+　・自己強化
 
-�@�E�s��
-�@�@- �t�����g�X�e�b�v	(Skill_None_Frontstep)
-�@�@- �o�b�N�X�e�b�v	(Skill_None_Backstep)
-�@�@- �J�E���^�[	(Skill_None_Counter)
+　・行動
+　　- フロントステップ	(Skill_None_Frontstep)
+　　- バックステップ	(Skill_None_Backstep)
+　　- カウンター	(Skill_None_Counter)
 
-�@�E���̑�
-�@�@- ��(Skill_None_None)
+　・その他
+　　- 空欄(Skill_None_None)
 
-�@���A�C�e��
-	��{���ߖ@�� - Item_(�A�C�e����)
-	�EHP�n
-	�E�⏕���ʌn
+　○アイテム
+	基本命令法則 - Item_(アイテム名)
+	・HP系
+	・補助効果系
 
-���X�e�[�W(ArcadeMode)
-�@�E�X�e�[�W1
-�@�@�`���[�g���A�������˂�̂ŁA�v���C���[������ł��܂��悤�Ȏd�|���A�G�͔z�u���Ȃ�
-�@�@�e�n�`�ɂ͊Ŕ�p�ӂ��A������@��������Ă���
-�@�E�X�e�[�W2
-�@�@��{�I�ȃM�~�b�N�A��{�I�ȓG��z�u
+○ステージ(ArcadeMode)
+　・ステージ1
+　　チュートリアルも兼ねるので、プレイヤーが死んでしまうような仕掛け、敵は配置しない
+　　各地形には看板を用意し、操作方法を説明していく
+　・ステージ2
+　　基本的なギミック、基本的な敵を配置
 
-���R���{
-�@�G�ɍU����������ƃX�^����ԂƂȂ�
-�@���̏�ԂŎ��̍U�������Ă�ƃR���{�Ƃ��Ĉ�����
-�@�����̂̓G���U���Ɋ������񂾏ꍇ�A���̒���1�̂ł��X�^����Ԃ��ێ��ł���΃R���{���q����
-�@�R���{���A�����X�L����AD�Ŏw�肵���񐔂����g�p�ł��Ȃ�
+○コンボ
+　敵に攻撃を加えるとスタン状態となる
+　その状態で次の攻撃をあてるとコンボとして扱われる
+　複数体の敵を攻撃に巻き込んだ場合、その中の1体でもスタン状態を維持できればコンボが繋がる
+　コンボ中、同じスキルはADで指定した回数しか使用できない
 
-�E��v�o��l��  
-  �n ����(��)  
-  �n���ւ̒������A���g�Ɋւ���L���𖳂����Ă��܂����@�B�����P���B  
-  �������ꂽ�g�̔\�͂ɂ�锒���퓬�Ȃǂ𓾈ӂƂ���B  
-  �����ꏊ�t�߂œ|��Ă����Ƃ����R�ǂɕی삳��A�B��̒n�㑤�ɂ����@�B�����ƂȂ�B  
-  ���������f�����s���鐫�i�����A�L���Ɋւ���b�ɂ͖����𐶂�������B  
-  �ڂ��ڂ��ł͂��邪�Z�����A�w�͍����A���₹����^�C�v�B  
+・主要登場人物  
+  渡 恭也(仮)  
+  地球への着陸時、自身に関する記憶を無くしてしまった機械化兵１号。  
+  強化された身体能力による白兵戦闘などを得意とする。  
+  着陸場所付近で倒れていたところを由良に保護され、唯一の地上側についた機械化兵となる。  
+  何事も即断即実行する性格だが、記憶に関する話には迷いを生じさせる。  
+  ぼさぼさではあるが短い髪、背は高く、着やせするタイプ。  
   
-  ���� �R�ǁi���j  
-  �H������邽�߂̔��ɍs���r���ŋ���������A�����������B  
-  �����������Ɗۂ����̓���B  
-  ���g�̖����ł��锨�d���̎�`���Ȃǂ�ӔC�������Ă��Ȃ�����ŁA�ǂ��������ɕs��������Ă���B  
-  �������Ƃ���̋��ł����C�ł��邪�A�ӎv��ʂ��ׂ���ʂł͈����Ȃ������������Ă���B  
+  鹿島 由良（仮）  
+  食料を作るための畑に行く途中で恭也を見つけ、助けた少女。  
+  黒く長い髪と丸い瞳の童顔。  
+  自身の役割である畑仕事の手伝いなどを責任を持ってこなす一方で、閉塞した未来に不安を抱いている。  
+  争いごとが大の苦手であり弱気であるが、意思を通すべき場面では引かない強さも持っている。  
 
 
-  �@�B��2���i�ǂ����悤���ˁj  
-  �������ꂽ�]�̏����\�͂Ɣ�s�^�C��ɂ�鐧����퓬�̎�Ƃ���B  
-  �v�͂��ꂾ�A�r�b�g�Əe�B  
+  機械兵2号（どうしようかね）  
+  強化された脳の処理能力と飛行型砲台による制圧を戦闘の主とする。  
+  要はあれだ、ビットと銃。  
     
-  �@�B��3���i�v�Ē��j  
-  �@�B��4��
-  �ڊo�߂�5���ɉ󂳂�邾���̃L�����H
-  �@�B��5��  
-  ���X�{�X�B�オ�Ȃ��Ȃ����F�����̐l�Ԃ��J�����������l���Ă��Ȃ�����B  
-  ���͂�@�B���ƌĂׂ�X�P�[���ł͂Ȃ�������ʎE�C����ƌĂ�Ŗ��Ȃ��B  
-  ��O�`�Ԉʂ܂ł�\��B  
+  機械兵3号（思案中）  
+  機械兵4号
+  目覚めた5号に壊されるだけのキャラ？
+  機械兵5号  
+  ラスボス。後がなくなった宇宙側の人間が開発した後先を考えていない兵器。  
+  もはや機械兵と呼べるスケールではなく歩く大量殺戮兵器と呼んで問題ない。  
+  第三形態位までを予定。  
     
-�E���E�ݒ�  
-    �n���̊��͈������A�l�Ԃ������Ă�����ꏊ�����Ȃ��Ȃ��Ă����Ă���B  
-    �S�l����30�p�[�Z���g�قǂ͉q���O����̉F���X�e�[�V�����ɂ���A���̈ێ��̂��߂ɒn���̎������g���Ă���B  
-    ���e�l���̓s���ŉF���X�e�[�V�����ɂ����Ȃ������l�Ԃ͏��X�ɏ��Ȃ��Ȃ��Ă������Z�ꏊ�ŉ��Ƃ�21���I�̐���������ۂƂ��Ɠw�͂��Ă���B  
-    �n���̊��𖳎����Ď������g���A�������������Ă���u�F�����v�ƒn���̈������Ă������ɐ�����u�n�㑤�v�̍a�͒��X�Ɛ[�܂��Ă���B  
-    ���ʓI�ɒn�㑤�̐l�Ԃ͉F���X�e�[�V�����p�̎������@�E�A���{�݂̔j������s�����B�v����ʂ����߂̌v�Z���ꂽ�j�󊈓��ł���B  
-    �푈�̋Z�p�ŏ���F�����ƒn�㑤�̐l�ԓ��m�ɂ��ߋ��ő�̐푈�ł�����̂̂������P����ԂɊׂ��Ă��܂��Ă���B  
-    �F�����̐l�Ԃ͒N���������������̒n��ɍs��������Ȃ������ׁB  
-    �n�㑤�̐l�Ԃ͔j�󊈓��̋K�͂�傫������΁A������Ȃ��Ȃ�͎̂������ƋC�Â����ׁB  
-    ����Ȓ��A�@�B���ɋ������󂯂����m�̂��̈��|�I�Ȑ퓬�͂Œn�����̐l�Ԃ��򉻂���Ƃ����v�悪�F�����Ői�݁A���s���ꂽ�Ƃ��납�畨�ꂪ�n�܂�B  
+・世界設定  
+    地球の環境は悪化し、人間が生きていける場所が少なくなっていっている。  
+    全人口の30パーセントほどは衛星軌道上の宇宙ステーションにおり、その維持のために地球の資源を使っている。  
+    収容人数の都合で宇宙ステーションにいけなかった人間は徐々に少なくなっていく居住場所で何とか21世紀の生活水準を保とうと努力している。  
+    地球の環境を無視して資源を使い、環境を悪化させている「宇宙側」と地球の悪化していく環境に生きる「地上側」の溝は着々と深まっている。  
+    結果的に地上側の人間は宇宙ステーション用の資源発掘・輸送施設の破壊を決行した。要求を通すための計算された破壊活動である。  
+    戦争の技術で勝る宇宙側と地上側の人間同士による過去最大の戦争であるもののすぐに膠着状態に陥ってしまっている。  
+    宇宙側の人間は誰もが悪化した環境の地上に行きたがらなかった為。  
+    地上側の人間は破壊活動の規模を大きくすれば、助からなくなるのは自分だと気づいた為。  
+    そんな中、機械化に強化を受けた兵士のその圧倒的な戦闘力で地球側の人間を浄化するという計画が宇宙側で進み、実行されたところから物語が始まる。  
 
- �v�����[�O
-��
-1��
-�q���C���ɏE��ꂽ�Ƃ���ŏP���Ă����F�����̐l�Ԃ����ށi�`���[�g���A���F��{����+�e�j
-�q���C���̉ƂŎ�������B
-�ƂŐ��b�ɂȂ����ɁA���̗͂�𗧂Ă邱�Ƃ����ӁB
-�{�݂����P�B
-�G�����̓��|���ďI��
-��
-2��
-�F�����̐l�Ԃ��{�ݐ苒�ɑ΍R���邽�߂ɒn��ɑO����n�𗧂Ă�Ƃ̏��B
-�������܂藧�Ă��Ȃ����߁A�R�ǂ̐e���Ɍ����炤�B�i�`���[�g���A���F���j
-���Ƃ��Đ����B���͂����炩��ɓ�����̖̂������S�ŁB
-�@�B��2���ƐړG�B�e���ցB
-vs�@�B��2���i�{�X��j
-������Ɖ�b�i����łȂ�����ˁH�j�B
-��
-3��
-�L���ɂ���2���ƌ��킵����b�ɓ��h������X�𑗂鋱��B
-�R�ǂ̒�Ăɂ�肵�΂��̋x�ɂ��Ƃ��Ă����̂����A�˔@��󂩂�F�����̌R���~�蒍���B
-�R�ǂ̌��֑��鋱�炾���Ԃɍ��킸�A�������w������3���Ɛ퓬�B
-3����|�������̂𒇊Ԃɂ΂炳��Ă��܂��B
-�Ȃ�ƂȂ����Â炭�Ȃ����̂ƗR�ǂ������ɍs�����߂ɊX������
-�����Ă��������E���i�`���[�g���A���F���j
-��
-4��
-��n���Ђ�����j��i��n�̍Ő[���ɂق��̊�n�ւ̃��[�v�u���Ē��{�X��R�񂭂炢���Ⴂ����j
-�Ō�̊�n�Ŏi�ߕ��̈ʒu�����
-�����ɗR�ǂ����邱�Ƃ��������n�ɂ������Ί���E���i�`���[�g���A���F�Ί�j
-��
-5��
-�i�ߕ��ɓ˂�����
-�G����
-����3��
-�G����
-����2��
-�G����
-4������^���������^�C���B
-���͗R�ǂ��@�B�l�Ԃł����B
-5���̃R�A�Ƃ��ĊJ�����ꂽ�R�ǂ͂��̍�������v�Z�\�͂Œn�㑤�̑S�łɂ��n���̍r�p�͐l�ނ̖ŖS�������ƋC�Â��E�o�B
-�������A�퓬�p�Ƃ��ĊJ������Ă��Ȃ��������߂ɒ������̏Ռ��ŋL���������B
-���g���l�Ԃ��Ǝv�����܂ܐ������A���Ɏ���B
-���5���o���B
-�������A�l�ԂƂ��Ď��g��F�����Ă����R�ǂ��V���b�N�ɑς���ꂸ�\���B
-4�������l�U�B
-vs5���B
-�ӎ������������钆�A�R�ǂ͋���ɐl�ނ̋~�ς�����B
-�R�ǂ����̋@�\�̂��ׂĂ��~�B
-����ꂽ�Ƃ���ɐl���m�̑����ɂЂ����������A�������ʂ������Ƃ���΂�G���h�B
+ プロローグ
+↓
+1面
+ヒロインに拾われたところで襲ってきた宇宙側の人間を撃退（チュートリアル：基本操作+銃）
+ヒロインの家で事情説明。
+家で世話になる代わりに、その力を役立てることを決意。
+施設を強襲。
+雑魚兵の頭倒して終了
+↓
+2面
+宇宙側の人間が施設占拠に対抗するために地上に前線基地を立てるとの情報。
+音をあまり立てられないため、由良の親父に剣もらう。（チュートリアル：剣）
+囮として潜入。情報はいくらか手に入るものの味方が全滅。
+機械兵2号と接敵。銃解禁。
+vs機械兵2号（ボス戦）
+ちょっと会話（死んでないからね？）。
+↓
+3面
+記憶について2号と交わした会話に動揺する日々を送る恭也。
+由良の提案によりしばしの休暇をとっていたのだが、突如上空から宇宙側の軍が降り注ぐ。
+由良の元へ走る恭也だが間に合わず、部隊を指揮する3号と戦闘。
+3号を倒すも正体を仲間にばらされてしまう。
+なんとなく居づらくなったのと由良を助けに行くために街抜ける
+落ちていた盾を拾う（チュートリアル：盾）
+↓
+4面
+基地をひたすら破壊（基地の最深部にほかの基地へのワープ置いて中ボス戦３回くらいやりゃいいよ）
+最後の基地で司令部の位置を入手
+そこに由良もいることも分かり基地にあった火器を拾う（チュートリアル：火器）
+↓
+5面
+司令部に突っ込む
+雑魚戦
+強化3号
+雑魚戦
+強化2号
+雑魚戦
+4号から真実明かしタイム。
+実は由良も機械人間でした。
+5号のコアとして開発された由良はその高すぎる計算能力で地上側の全滅による地球の荒廃は人類の滅亡を招くと気づき脱出。
+しかし、戦闘用として開発されていなかったために着陸時の衝撃で記憶を失う。
+自身が人間だと思ったまま生活し、今に至る。
+んで5号覚醒。
+しかし、人間として自身を認識していた由良がショックに耐えられず暴走。
+4号爆発四散。
+vs5号。
+意識が消えかかる中、由良は恭也に人類の救済を託す。
+由良がその機能のすべてを停止。
+言われたとおりに人同士の争いにひたすら介入し、誓いを果たそうとがんばるエンド。
