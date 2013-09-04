@@ -1,0 +1,7 @@
+AA,04,0,Use,Redraw|05,-1,0
+AA,04,0,Use,Flag|AB,-1,0
+AA,04,0,Use,Sound|SE/Switch.wav,1,0
+AB,08,0,Flag,Collision|1,-1,0
+AB,08,0,Flag,Replace|AC,-1,0
+AC,02,1,None,None,-1,0
+AD,07,1,Touch,Clear|AC_Stage1,-1,0
