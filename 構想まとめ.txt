@@ -71,14 +71,14 @@
 　　- Flag -> Flagged
 	他対象からフラグを立てられると起動
 　　- Repeat -> Repeated -> Repeat......
-	最初から起動しており、動作が終わると反対の動作を始める
+	最初から起動しており、動作が終わると反対の動作を始める//未実装
 
 　・アクション
 　　トリガーが引かれた時、何を行うか指定
 　　- Flag|Target(AA~ZZ)
 	Targetのフラグを立てる(TargetのトリガーがFlagでない場合は無効)
 　　- Move|x/ms|y/ms|msec
-	自分をmsec分移動させる
+	自分をmsec分移動させる//未実装
 　　- Delete
 	自分をマップから削除する
 　　- Redraw|Number
