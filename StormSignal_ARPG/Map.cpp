@@ -138,6 +138,9 @@ void Map::CreateMap(b2World *World)
 	{
 		for(int x=0;x<Width;x++)
 		{
+			//改行コードの削除(2文字より大きい場合は切り捨てる)
+			if(MapData[y][x].size() > 2)MapData[y][x].erase(MapData[y][x].begin()+2,MapData[y][x].end());
+
 			//マップデータとマップチップを照らし合わせ、一致したものを設置していく
 			if(MapData[y][x] == Mapchip_Blank)continue;
 			else if(MapData[y][x] == Mapchip_Player)
