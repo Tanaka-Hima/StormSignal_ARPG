@@ -79,6 +79,9 @@
     <Filter Include="リソース ファイル\SE">
       <UniqueIdentifier>{96e736f4-dc1c-4537-9203-73799ef95c1d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="リソース ファイル\Image\Interface">
+      <UniqueIdentifier>{5d92dcd5-aa14-4622-b927-6d1446355152}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -684,6 +687,18 @@
     </Image>
     <Image Include="Image\Skill\Sword\Spec0Dash_2.png">
       <Filter>リソース ファイル\Image\Skill\Sword</Filter>
+    </Image>
+    <Image Include="Image\Interface\EXBar.png">
+      <Filter>リソース ファイル\Image\Interface</Filter>
+    </Image>
+    <Image Include="Image\Interface\EXFrame.png">
+      <Filter>リソース ファイル\Image\Interface</Filter>
+    </Image>
+    <Image Include="Image\Interface\HPBar.png">
+      <Filter>リソース ファイル\Image\Interface</Filter>
+    </Image>
+    <Image Include="Image\Interface\HPFrame.png">
+      <Filter>リソース ファイル\Image\Interface</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>

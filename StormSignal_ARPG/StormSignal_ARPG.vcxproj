@@ -259,6 +259,10 @@
     <Image Include="Image\Equipment\None.png" />
     <Image Include="Image\Equipment\Sword\Flame_0.png" />
     <Image Include="Image\Equipment\Sword\Normal_0.png" />
+    <Image Include="Image\Interface\EXBar.png" />
+    <Image Include="Image\Interface\EXFrame.png" />
+    <Image Include="Image\Interface\HPBar.png" />
+    <Image Include="Image\Interface\HPFrame.png" />
     <Image Include="Image\Map\Clay.png" />
     <Image Include="Image\Map\ClayFloor.png" />
     <Image Include="Image\Map\Switch1.png" />
