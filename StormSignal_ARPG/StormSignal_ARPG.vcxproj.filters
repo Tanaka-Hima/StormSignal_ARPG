@@ -700,6 +700,15 @@
     <Image Include="Image\Interface\HPFrame.png">
       <Filter>リソース ファイル\Image\Interface</Filter>
     </Image>
+    <Image Include="Image\Map\BlankBlock.png">
+      <Filter>リソース ファイル\Image\Map</Filter>
+    </Image>
+    <Image Include="Image\Map\Board.png">
+      <Filter>リソース ファイル\Image\Map</Filter>
+    </Image>
+    <Image Include="Image\Map\Flag.png">
+      <Filter>リソース ファイル\Image\Map</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\構想まとめ.txt">

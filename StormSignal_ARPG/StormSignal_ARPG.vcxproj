@@ -263,8 +263,11 @@
     <Image Include="Image\Interface\EXFrame.png" />
     <Image Include="Image\Interface\HPBar.png" />
     <Image Include="Image\Interface\HPFrame.png" />
+    <Image Include="Image\Map\BlankBlock.png" />
+    <Image Include="Image\Map\Board.png" />
     <Image Include="Image\Map\Clay.png" />
     <Image Include="Image\Map\ClayFloor.png" />
+    <Image Include="Image\Map\Flag.png" />
     <Image Include="Image\Map\Switch1.png" />
     <Image Include="Image\Map\Switch2.png" />
     <Image Include="Image\Map\Woodbox.png" />
