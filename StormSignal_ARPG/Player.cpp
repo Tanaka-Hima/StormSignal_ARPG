@@ -359,8 +359,9 @@ void Player::StepSkillWindow()
 			int Select2 = 0;
 			if(i>0)
 			{//スキル窓の描画
-				int ShowSkill = j;
-				if(ChangeSkillPoint.x >= 5 && ChangeSkillPoint.y == i)ShowSkill += ChangeSkillPoint.x - 4;
+				int ShowSkill = j + ChangeSkillPoint.x - 2;
+				if(ChangeSkillPoint.x < 2)ShowSkill += 2 - ChangeSkillPoint.x;
+				else if(ChangeSkillPoint.x >= EnableSkillList[i-1].size()-2)ShowSkill -= ChangeSkillPoint.x - (EnableSkillList[i-1].size()-3);
 				if(ChangeSkillPoint.x == ShowSkill && ChangeSkillPoint.y == i && SkillChangeFlag)Select2 = 10;
 				if(EnableSkillList[i-1].size() <= j)continue;
 				SkillPanels[EnableSkillList[i-1][ShowSkill]].x = 15+j*70 + SkillWindow.GetWidth()/2;
