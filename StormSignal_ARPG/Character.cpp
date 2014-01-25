@@ -365,7 +365,7 @@ bool Character::UseSkill(int SkillNumber,int EquipmentNumber)
 			State = Skill_None_Frontstep;
 			StateTime = 1000;
 
-			GetBody()->ApplyForceToCenter(b2Vec2((int)Direction*1000,-100));
+			GetBody()->ApplyForceToCenter(b2Vec2((int)Direction*1000,-100),true);
 			return true;
 		}
 
@@ -376,7 +376,7 @@ bool Character::UseSkill(int SkillNumber,int EquipmentNumber)
 			State = Skill_None_Backstep;
 			StateTime = 1000;
 
-			GetBody()->ApplyForceToCenter(b2Vec2(-(int)Direction*1000,-100));
+			GetBody()->ApplyForceToCenter(b2Vec2(-(int)Direction*1000,-100),true);
 			return true;
 		}
 
@@ -927,7 +927,7 @@ void Character::Step()
 	{
 		if(HitBoxList[i].HitTestShape(this,this->GetShape(),this->GetBody()->GetTransform()))
 		{//当たっていた場合
-			GetBody()->ApplyLinearImpulse(HitBoxList[i].GetHitVect(),GetBody()->GetPosition());
+			GetBody()->ApplyLinearImpulse(HitBoxList[i].GetHitVect(),GetBody()->GetPosition(),true);
 			HP -= HitBoxList[i].GetDamage();
 			State = Skill_None_Stan;
 			StateTime = HitBoxList[i].GetStanTime();
